@@ -1,2 +1,2 @@
 # ldaPrototype
-Find a prototype Latent Dirichlet Allocation from a number of runs.
+Find a Prototype Latent Dirichlet Allocation from a number of Runs.
