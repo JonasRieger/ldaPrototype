@@ -1,0 +1,22 @@
+Package: ldaPrototype
+Type: Package
+Title: Find a Prototype Latent Dirichlet Allocation from a number of Runs.
+Version: 0.1.0
+Date: 2019-05-21
+Authors@R: person("Jonas", "Rieger", email="jonas.rieger@tu-dortmund.de", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0007-4478"))
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+URL: https://github.com/JonasRieger/ldaPrototype
+License: GPL (>= 2)
+Encoding: UTF-8
+Depends:
+	R (>= 3.5.3)
+Imports:
+	batchtools (>= 0.9.11),
+	data.table (>= 1.12.2),
+	lda (>= 1.4.2),
+	RColorBrewer (>= 1.1-2)
+Suggests:
+	tosca (>= 0.1-4)
+RoxygenNote: 6.1.1
+LazyData: true
