@@ -18,7 +18,8 @@
 #' \describe{
 #'   \item{\code{MMS}}{[0,1] value specifying the MMS for the best possible
 #'   local pruning state of the given dendrogram.}
-#'   \item{\code{pruneMMS}}{[\code{list of \link[stats]{dendrogram}s}] }
+#'   \item{\code{pruneMMS}}{[\code{list of \link[stats]{dendrogram}s}] specifying
+#'   the best possible local pruning state.}
 #'   \item{\code{disparitySum}}{[\code{numeric(1)}] value specifying the least
 #'   possible sum of disparities on the given dendrogram.}
 #'   \item{\code{MMS.pairwise}}{[\code{symmetrical named matrix}] with all
