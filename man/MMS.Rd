@@ -19,7 +19,7 @@ MMS.pairwise(sims)
 \item{dend}{[\code{\link[stats]{dendrogram}}]\cr
 Output from \code{\link{dendTopics}}.}
 
-\item{sims}{[\code{symmetrical named matrix}]\cr
+\item{sims}{[\code{lower triangular named matrix}]\cr
 Pairwise jaccard similarities of underlying topics like
 the output from \code{\link{jaccardTopics}}. The topic names should be
 formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the

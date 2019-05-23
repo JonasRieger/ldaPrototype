@@ -20,7 +20,7 @@ An absolute lower bound limit for which words are taken into account. All words
 are taken as relevant for a topic that have a count higher than \code{limit.abs}.}
 }
 \value{
-[\code{symmetrical named matrix}] with all pairwise jaccard similarities
+[\code{lower triangular named matrix}] with all pairwise jaccard similarities
 of the given topics.
 }
 \description{

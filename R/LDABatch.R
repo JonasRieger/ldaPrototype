@@ -121,6 +121,7 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
 }
 
 #' @export
+
 print.LDABatch = function(x){
   chunked = ifelse("chunk" %in% colnames(x$jobs), "Chunked ", "")
   parameters = unique(x$jobs[, !colnames(x$jobs) %in% c("job.id", "chunk", "seed"), with = FALSE])
