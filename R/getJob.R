@@ -12,6 +12,6 @@ getJob = function(x) UseMethod("getJob", x)
 
 #' @export
 
-getJobs.LDABatch = function(x){
+getJob.LDABatch = function(x){
   x$jobs
 }
