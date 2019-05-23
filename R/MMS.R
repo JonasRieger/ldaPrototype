@@ -83,7 +83,7 @@ disparitySum = function(dend){
 }
 
 #' @rdname MMS
-#' @param sims [\code{symmetrical named matrix}]\cr
+#' @param sims [\code{lower triangular named matrix}]\cr
 #' Pairwise jaccard similarities of underlying topics like
 #' the output from \code{\link{jaccardTopics}}. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
@@ -94,10 +94,10 @@ MMS.pairwise = function(sims){
   names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
 
   combs = combn(names, 2)
+  rownames(combs) = c("V1", "V2")
   vals = apply(combs, 2, function(x) MMS(dendTopics(sims = sims, ind = x)))
-  dat = data.table::data.table(t(combs))
-  dat[, MMS := vals]
-  data.table::setkey(x = dat, MMS)
+  dat = data.frame(t(combs))
+  dat$MMS = vals
 
   mat = matrix(ncol = length(names), nrow = length(names))
   k = 1

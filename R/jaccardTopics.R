@@ -15,7 +15,7 @@
 #' @param limit.abs [\code{integer(1)}]\cr
 #' An absolute lower bound limit for which words are taken into account. All words
 #' are taken as relevant for a topic that have a count higher than \code{limit.abs}.
-#' @return [\code{symmetrical named matrix}] with all pairwise jaccard similarities
+#' @return [\code{lower triangular named matrix}] with all pairwise jaccard similarities
 #' of the given topics.
 #'
 #' @examples
@@ -35,6 +35,8 @@ jaccardTopics = function(topics, limit.rel = 1/200, limit.abs = 10){
     sims[(i+1):N,i] = colSums(index[,i] * index[,(i+1):N]) / colSums((index[,i] + index[,(i+1):N]) > 0)
   }
   sims[N, N-1] = sum(index[, N] & index[, N-1]) / sum(index[, N] | index[, N-1])
+
+  sims[is.nan(sims)] = 0
 
   invisible(sims)
 }
