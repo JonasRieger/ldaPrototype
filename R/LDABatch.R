@@ -44,6 +44,11 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
     is.numeric(chunk.size), as.integer(chunk.size) == chunk.size)
 
   moreArgs = list(...)
+  if(anyDuplicated(names(moreArgs))){
+    tmp = duplicated(names(moreArgs), fromLast = TRUE)
+    warning("Parameter(s) ", paste0(names(moreArgs)[tmp], collapse = ", "), " are duplicated. Take last ones.")
+    moreArgs = moreArgs[!tmp]
+  }
   if ("K" %in% names(moreArgs)){
     default = list(K = 0, alpha = 1/moreArgs$K, eta = 1/moreArgs$K, num.iterations = 200)
   }else{
@@ -71,9 +76,9 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
     reg = batchtools::makeExperimentRegistry(file.dir = fd, packages = "lda")
   }
 
-  addProblem(paste0(id, "Problem"), data = list(docs = docs, vocab = vocab))
+  batchtools::addProblem(paste0(id, "Problem"), data = list(docs = docs, vocab = vocab))
 
-  addAlgorithm(paste0(id, "Algorithm"),
+  batchtools::addAlgorithm(paste0(id, "Algorithm"),
     fun = function(job, data, instance, seed, ...){
       set.seed(seed)
       return(lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...))
@@ -100,7 +105,7 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
   )
 
   if(chunk.size > 1)
-    ids$chunk = chunk(ids$job.id, chunk.size = chunk.size)
+    ids$chunk = batchtools::chunk(ids$job.id, chunk.size = chunk.size)
 
   if (missing(resources)){
     message("Argument resources is missing: using default resources.")
@@ -110,5 +115,25 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
   }
 
   .Random.seed <<- oldseed
-  invisible(list(id = id, ids = ids, reg = reg))
+  res = list(id = id, jobs = cbind(ids, algo.designs[[1]]), reg = reg)
+  class(res) = "LDABatch"
+  invisible(res)
+}
+
+#' @export
+print.LDABatch = function(x){
+  chunked = ifelse("chunk" %in% colnames(x$jobs), "Chunked ", "")
+  parameters = unique(x$jobs[, !colnames(x$jobs) %in% c("job.id", "chunk", "seed"), with = FALSE])
+  if (nrow(parameters) == 1){
+    parameters = paste0("parameters ",
+      paste0(paste0(colnames(parameters), ": ", as.character(round(parameters, 4))), collapse = ", "))
+  }else{
+    parameters = paste0(nrow(parameters), " different parameter sets.")
+  }
+  cat(
+    chunked, "LDABatch Object \"", x$id, "\"\n ",
+    nrow(x$jobs), " LDA Runs", "\n ",
+    "with ", parameters, "\n\n",
+    sep = ""
+  )
 }
