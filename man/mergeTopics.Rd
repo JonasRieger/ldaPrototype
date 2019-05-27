@@ -18,8 +18,8 @@ Vocabularies taken into consideration for merging topic matrices.}
 }
 \description{
 generic function to collect LDA results and merges their topic matrices for a
-given set of vocabularies. Uses the functions \code{\link{mergeTopics.LDARep}}
-or \code{\link{mergeTopics.LDABatch}}.
+given set of vocabularies. Uses the function \code{\link{mergeRepTopics}}
+or \code{\link{mergeBatchTopics}}.
 }
 \details{
 

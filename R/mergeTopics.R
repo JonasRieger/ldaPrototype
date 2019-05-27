@@ -2,8 +2,8 @@
 #'
 #' @description
 #' generic function to collect LDA results and merges their topic matrices for a
-#' given set of vocabularies. Uses the functions \code{\link{mergeTopics.LDARep}}
-#' or \code{\link{mergeTopics.LDABatch}}.
+#' given set of vocabularies. Uses the function \code{\link{mergeRepTopics}}
+#' or \code{\link{mergeBatchTopics}}.
 #'
 #' @details
 #'
@@ -20,4 +20,14 @@
 
 mergeTopics = function(x, vocab){
   UseMethod("mergeTopics")
+}
+
+#' @export
+mergeTopics.LDABatch = function(x, vocab){
+  mergeBatchTopics(x = x, vocab = vocab)
+}
+
+#' @export
+mergeTopics.LDARep = function(x, vocab){
+  mergeRepTopics(x = x, vocab = vocab)
 }

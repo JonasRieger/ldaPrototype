@@ -1,28 +1,38 @@
 #' @title Merge LDA Topic Matrices
 #'
 #' @description
-#' Collects LDA results from a list of replicated runs and merges their topic
-#' matrices for a given set of vocabularies.
+#' Collects LDA results from a given registry and merges their topic matrices for
+#' a given set of vocabularies.
 #'
 #' @details
 #'
 #' @param x [\code{named list}]\cr
-#' Output from \code{\link{LDARep}}.
+#' Output from \code{\link{LDABatch}}. Alternatively \code{job}, \code{reg} and
+#' \code{id} can be passed or their defaults are taken.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
+#' @param job [\code{\link{data.frame}} or \code{integer}]\cr
+#' A data.frame or data.table with a column named "job.id" or a vector of integerish job ids.
+#' See \code{\link[batchtools]{reduceResultsList}}.
+#' @param reg [\code{\link[batchtools]{Registry}}]\cr
+#' Registry. See \code{\link[batchtools]{reduceResultsList}}.
+#' @param id [\code{character(1)}]\cr
+#' A name for the registry. If not passed, the folder's name is extracted from \code{reg}.
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
 #' #TODO
 #'
-#' @export
-mergeTopics.LDARep = function(x, vocab){
+#' @export mergeBatchTopics
+mergeBatchTopics = function(x, vocab, job, reg, id){
 
   if (!missing(x)){
-    if (!is.LDARep(x)){
+    if (!is.LDABatch(x)){
       stop("TEXT")
     }
-
+    id = getID(x)
+    job = getJob(x)
+    reg = getRegistry(x)
   }else{
     if (missing(reg)) reg = batchtools::getDefaultRegistry()
     if (missing(job)) job = batchtools::findDone(reg = reg)
