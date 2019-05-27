@@ -2,10 +2,11 @@
 #'
 #' @description
 #' Returns the job ids and its parameter set (\code{getJob}) or the registry's
-#' id (\code{getID}) or the registry itself (\code{getRegistry}).
+#' id (\code{getID}) or the registry itself (\code{getRegistry}) for a
+#' \code{\link{LDABatch}} object.
 #'
-#' @name getJob
-#' @rdname getJob
+#' @param x [\code{named list}]\cr
+#' Output from \code{\link{LDABatch}}.
 
 #' @export getJob
 getJob = function(x) UseMethod("getJob")

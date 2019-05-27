@@ -15,7 +15,12 @@ getRegistry(x)
 
 setFileDir(x, file.dir)
 }
+\arguments{
+\item{x}{[\code{named list}]\cr
+Output from \code{\link{LDABatch}}.}
+}
 \description{
 Returns the job ids and its parameter set (\code{getJob}) or the registry's
-id (\code{getID}) or the registry itself (\code{getRegistry}).
+id (\code{getID}) or the registry itself (\code{getRegistry}) for a
+\code{\link{LDABatch}} object.
 }
