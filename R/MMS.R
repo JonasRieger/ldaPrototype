@@ -42,27 +42,26 @@ MMS = function(dend){
 pruneMMS = function(dend){
   tmpPruneMMSlist = list()
   nruns = length(unique(dendextend::labels_colors(dend)))
-  .pruneMMS(dend = dend, nruns = nruns)
-  return(tmpPruneMMSlist)
-}
-
-.pruneMMS = function(dend, nruns){
-  if(is.leaf(dend)){
-    tmpPruneMMSlist[[length(tmpPruneMMSlist)+1]] <<- dend
-  }
-  else{
-    tab = table(dendextend::labels_colors(dend))
-    tmp = integer(nruns)
-    tmp[1:length(tab)] = tab
-    tab = tmp
-    if(all.equal((mean(abs(tab-1)) * sum(tab)), .disparitySum(dend = dend, nruns = nruns)) == TRUE){
+  .pruneMMS = function(dend, nruns){
+    if(is.leaf(dend)){
       tmpPruneMMSlist[[length(tmpPruneMMSlist)+1]] <<- dend
     }
     else{
-      Recall(dend = dend[[1]], nruns = nruns)
-      Recall(dend = dend[[2]], nruns = nruns)
+      tab = table(dendextend::labels_colors(dend))
+      tmp = integer(nruns)
+      tmp[1:length(tab)] = tab
+      tab = tmp
+      if(all.equal((mean(abs(tab-1)) * sum(tab)), .disparitySum(dend = dend, nruns = nruns)) == TRUE){
+        tmpPruneMMSlist[[length(tmpPruneMMSlist)+1]] <<- dend
+      }
+      else{
+        Recall(dend = dend[[1]], nruns = nruns)
+        Recall(dend = dend[[2]], nruns = nruns)
+      }
     }
   }
+  .pruneMMS(dend = dend, nruns = nruns)
+  return(tmpPruneMMSlist)
 }
 
 #' @rdname MMS
