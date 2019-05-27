@@ -18,9 +18,7 @@
 #'
 #' @export mergeTopics
 
-mergeTopics = function(x, vocab){
-  UseMethod("mergeTopics")
-}
+mergeTopics = function(x, vocab) UseMethod("mergeTopics")
 
 #' @export
 mergeTopics.LDABatch = function(x, vocab){
