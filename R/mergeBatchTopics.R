@@ -28,11 +28,12 @@ mergeBatchTopics = function(x, vocab, job, reg, id){
 
   if (!missing(x)){
     if (!is.LDABatch(x)){
-      stop("TEXT")
+      stop("object is not a LDABatch object")
     }
     id = getID(x)
     job = getJob(x)
     reg = getRegistry(x)
+    batchtools::loadRegistry(reg$file.dir)
   }else{
     if (missing(reg)) reg = batchtools::getDefaultRegistry()
     if (missing(job)) job = batchtools::findDone(reg = reg)
