@@ -10,21 +10,21 @@ LDA(x, assignments = NULL, topics = NULL, document_sums = NULL,
 \arguments{
 \item{x}{[\code{named list}]\cr
 Output from \code{\link[lda]{lda.collapsed.gibbs.sampler}}. Alternatively each
-element can be passed for individual results. Individually set parameters
+element can be passed for individual results. Individually set elements
 overwrite elements from \code{x}.}
 
-\item{assignments}{.}
+\item{assignments}{Individual element for LDA object.}
 
-\item{topics}{.}
+\item{topics}{Individual element for LDA object.}
 
-\item{document_sums}{.}
+\item{document_sums}{Individual element for LDA object.}
 
-\item{document_expects}{.}
+\item{document_expects}{Individual element for LDA object.}
 
-\item{log.likelihoods}{.}
+\item{log.likelihoods}{Individual element for LDA object.}
 }
 \value{
-[\code{named list}] as LDA object.
+[\code{named list}] LDA object.
 }
 \description{
 Constructor for LDA objects used in this package.

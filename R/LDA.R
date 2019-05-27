@@ -6,13 +6,13 @@
 #'
 #' @param x [\code{named list}]\cr
 #' Output from \code{\link[lda]{lda.collapsed.gibbs.sampler}}. Alternatively each
-#' element can be passed for individual results. Individually set parameters
+#' element can be passed for individual results. Individually set elements
 #' overwrite elements from \code{x}.
-#' @param assignments .
-#' @param topics .
-#' @param document_sums .
-#' @param document_expects .
-#' @param log.likelihoods .
+#' @param assignments Individual element for LDA object.
+#' @param topics Individual element for LDA object.
+#' @param document_sums Individual element for LDA object.
+#' @param document_expects Individual element for LDA object.
+#' @param log.likelihoods Individual element for LDA object.
 #' @return [\code{named list}] LDA object.
 #'
 #' @examples
@@ -62,7 +62,7 @@ is.LDA = function(x, verbose = FALSE){
       return(FALSE)
     }
     NDocs = lengths(x$assignments)
-    NTopic = max(unlist(a$assignments)) + 1
+    NTopic = max(unlist(x$assignments)) + 1
     if (!all(sapply(x$assignments, is.integer))){
       if (verbose) message("list elements are not all integerish")
       return(FALSE)
@@ -172,5 +172,49 @@ is.LDA = function(x, verbose = FALSE){
 
 #' @export
 print.LDA = function(x){
-  cat("print")
+  val = .getValues.LDA(x)
+  like = ifelse(val[5], paste0("\n Computed Log-Likelihoods of ", val[6], " Iterations"), "")
+  elements = paste0("\"", names(which(!sapply(x, is.null))), "\"")
+  cat(
+    "LDA Object with element(s)\n",
+    paste0(elements, collapse = ", "), "\n ",
+    val[1], " Texts with mean length of ", round(val[2], 2), " Tokens\n ",
+    val[4], " different Words\n ",
+    val[3], " latent Topics",
+    like, "\n\n",
+    sep = ""
+  )
+}
+
+.getValues.LDA = function(x){
+  NDoc = NA
+  meanDocLength = NA
+  NTopic = NA
+  NWord = NA
+  like = !is.null(x$log.likelihoods)
+  iter = ifelse(like, ncol(x$log.likelihoods), NA)
+  if (!is.null(x$assignments)){
+    NDocs = lengths(x$assignments)
+    NDoc = length(NDocs)
+    meanDocLength = mean(NDocs)
+    NTopic = max(unlist(x$assignments)) + 1
+  }else{
+    if (!is.null(x$document_sums)){
+      NDocs = colSums(x$document_sums)
+      NDoc = length(NDocs)
+      meanDocLength = mean(NDocs)
+      NTopic = nrow(x$document_sums)
+    }else{
+      if (!is.null(x$document_expects)){
+        NDoc = ncol(x$document_expects)
+        NTopic = nrow(x$document_expects)
+      }
+    }
+  }
+  if (!is.null(x$topics)){
+    NWord = ncol(x$topics)
+    NTopic = nrow(x$topics)
+  }
+  return(c(NDoc = NDoc, meanDocLength = meanDocLength, NTopic = NTopic,
+    NWord = NWord, like = like, iter = iter))
 }
