@@ -33,7 +33,7 @@ mergeBatchTopics = function(x, vocab, job, reg, id){
     id = getID(x)
     job = getJob(x)
     reg = getRegistry(x)
-    batchtools::loadRegistry(reg$file.dir)
+    reg = batchtools::loadRegistry(reg$file.dir)
   }else{
     if (missing(reg)) reg = batchtools::getDefaultRegistry()
     if (missing(job)) job = batchtools::findDone(reg = reg)

@@ -37,5 +37,5 @@ setFileDir = function(x, file.dir) UseMethod("setFileDir")
 #' @export
 setFileDir.LDABatch = function(x, file.dir){
   x$reg$file.dir = file.dir
-  return(x)
+  invisible(x)
 }
