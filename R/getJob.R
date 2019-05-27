@@ -32,7 +32,7 @@ getRegistry.LDABatch = function(x){
 }
 
 #' @export setFileDir
-setFileDir = function(x, file.dir) UseMethod("getRegistry")
+setFileDir = function(x, file.dir) UseMethod("setFileDir")
 
 #' @export
 setFileDir.LDABatch = function(x, file.dir){
