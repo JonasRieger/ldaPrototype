@@ -31,7 +31,7 @@ getRegistry.LDABatch = function(x){
   x$reg
 }
 
-#' @export setRegistry
+#' @export setFileDir
 setFileDir = function(x, file.dir) UseMethod("getRegistry")
 
 #' @export
