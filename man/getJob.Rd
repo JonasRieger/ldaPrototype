@@ -18,6 +18,10 @@ setFileDir(x, file.dir)
 \arguments{
 \item{x}{[\code{named list}]\cr
 Output from \code{\link{LDABatch}}.}
+
+\item{file.dir}{[\code{character(1)}]\cr
+New file directory to overwrite the registry's old one. This can be useful
+if the registry is transferred from a batch system.}
 }
 \description{
 Returns the job ids and its parameter set (\code{getJob}) or the registry's

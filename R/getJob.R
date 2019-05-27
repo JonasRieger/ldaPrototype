@@ -34,6 +34,9 @@ getRegistry.LDABatch = function(x){
   x$reg
 }
 
+#' @param file.dir [\code{character(1)}]\cr
+#' New file directory to overwrite the registry's old one. This can be useful
+#' if the registry is transferred from a batch system.
 #' @rdname getJob
 #' @export setFileDir
 setFileDir = function(x, file.dir) UseMethod("setFileDir")
