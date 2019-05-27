@@ -4,17 +4,22 @@
 \alias{mergeTopics}
 \title{Merge LDA Topic Matrices}
 \usage{
-mergeTopics(x)
+mergeTopics(x, vocab)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
 Output from \code{\link{LDARep}} or \code{\link{LDABatch}}.}
+
+\item{vocab}{[\code{character}]\cr
+Vocabularies taken into consideration for merging topic matrices.}
 }
 \value{
 [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 }
 \description{
-Collects LDA results and merges their topic matrices for a given set of vocabularies.
+generic function to collect LDA results and merges their topic matrices for a
+given set of vocabularies. Uses the functions \code{\link{mergeTopics.LDARep}}
+or \code{\link{mergeTopics.LDABatch}}.
 }
 \details{
 

@@ -1,12 +1,16 @@
 #' @title Merge LDA Topic Matrices
 #'
 #' @description
-#' Collects LDA results and merges their topic matrices for a given set of vocabularies.
+#' generic function to collect LDA results and merges their topic matrices for a
+#' given set of vocabularies. Uses the functions \code{\link{mergeTopics.LDARep}}
+#' or \code{\link{mergeTopics.LDABatch}}.
 #'
 #' @details
 #'
 #' @param x [\code{named list}]\cr
 #' Output from \code{\link{LDARep}} or \code{\link{LDABatch}}.
+#' @param vocab [\code{character}]\cr
+#' Vocabularies taken into consideration for merging topic matrices.
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
@@ -14,6 +18,6 @@
 #'
 #' @export mergeTopics
 
-mergeTopics = function(x){
+mergeTopics = function(x, vocab){
   UseMethod("mergeTopics")
 }
