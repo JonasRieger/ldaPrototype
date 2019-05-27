@@ -143,5 +143,5 @@ print.LDABatch = function(x){
 #' @rdname is.LDA
 #' @export
 is.LDABatch = function(x){
-  TRUE
+  inherits(x, "LDABatch")
 }

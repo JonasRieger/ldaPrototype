@@ -15,6 +15,7 @@ getJob.LDABatch = function(x){
   x$jobs
 }
 
+#' @rdname getJob
 #' @export getID
 getID = function(x) UseMethod("getID")
 
@@ -23,6 +24,7 @@ getID.LDABatch = function(x){
   x$id
 }
 
+#' @rdname getJob
 #' @export getRegistry
 getRegistry = function(x) UseMethod("getRegistry")
 
@@ -31,6 +33,7 @@ getRegistry.LDABatch = function(x){
   x$reg
 }
 
+#' @rdname getJob
 #' @export setFileDir
 setFileDir = function(x, file.dir) UseMethod("setFileDir")
 

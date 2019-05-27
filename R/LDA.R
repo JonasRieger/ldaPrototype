@@ -46,6 +46,11 @@ LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
 #' @export
 is.LDA = function(x, verbose = FALSE){
 
+  if (!inherits(x, "LDA")){
+    if (verbose) message("object is not of class \"LDA\"")
+    return(FALSE)
+  }
+
   if (!is.list(x)){
     if (verbose) message("object is not a list")
     return(FALSE)

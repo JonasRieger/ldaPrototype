@@ -2,9 +2,18 @@
 % Please edit documentation in R/getJob.R
 \name{getJob}
 \alias{getJob}
+\alias{getID}
+\alias{getRegistry}
+\alias{setFileDir}
 \title{Get Registry and Jobs}
 \usage{
 getJob(x)
+
+getID(x)
+
+getRegistry(x)
+
+setFileDir(x, file.dir)
 }
 \description{
 Returns the job ids and its parameter set (\code{getJob}) or the registry's

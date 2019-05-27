@@ -13,7 +13,7 @@
 #' Number of Replications.
 #' @param seeds [\code{integer(n)}]\cr
 #' Random Seeds for each Replication.
-#' @return [\code{named list}] 
+#' @return [\code{named list}]
 #'
 #' @examples
 #' #TODO
@@ -21,8 +21,8 @@
 #' @export LDARep
 
 LDARep = function(docs, vocab, n = 100, seeds){
-  
-  
+
+
   .Random.seed <<- oldseed
   class(res) = "LDARep"
   invisible(res)
@@ -36,5 +36,5 @@ print.LDARep = function(x){
 #' @rdname is.LDA
 #' @export
 is.LDARep = function(x){
-  TRUE
+  inherits(x, "LDARep")
 }
