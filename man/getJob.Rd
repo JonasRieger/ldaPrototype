@@ -5,7 +5,7 @@
 \alias{getID}
 \alias{getRegistry}
 \alias{setFileDir}
-\title{Get Registry and Jobs}
+\title{Getter and Setter for LDABatch}
 \usage{
 getJob(x)
 
@@ -24,7 +24,8 @@ New file directory to overwrite the registry's old one. This can be useful
 if the registry is transferred from a batch system.}
 }
 \description{
-Returns the job ids and its parameter set (\code{getJob}) or the registry's
+Returns the job ids and its parameter set (\code{getJob}), the registry's
 id (\code{getID}) or the registry itself (\code{getRegistry}) for a
-\code{\link{LDABatch}} object.
+\code{\link{LDABatch}} object.\cr
+Sets the registry's file directory (\code{setFilDir}).
 }
