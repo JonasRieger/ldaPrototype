@@ -13,7 +13,7 @@
 #' @param document_sums .
 #' @param document_expects .
 #' @param log.likelihoods .
-#' @return [\code{named list}] as LDA object.
+#' @return [\code{named list}] LDA object.
 #'
 #' @examples
 #' #TODO
