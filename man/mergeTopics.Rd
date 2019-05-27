@@ -17,7 +17,7 @@ Vocabularies taken into consideration for merging topic matrices.}
 [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 }
 \description{
-generic function to collect LDA results and merges their topic matrices for a
+Generic function, which collects LDA results and merges their topic matrices for a
 given set of vocabularies. Uses the function \code{\link{mergeRepTopics}}
 or \code{\link{mergeBatchTopics}}.
 }
