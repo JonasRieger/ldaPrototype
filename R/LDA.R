@@ -40,9 +40,9 @@ LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
   invisible(res)
 }
 
-#' @title Checking
-#' @name is
-#' @rdname is
+#' @title Checking Objects
+#' @name is.LDA
+#' @rdname is.LDA
 #' @export
 is.LDA = function(x, verbose = FALSE){
 

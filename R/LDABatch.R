@@ -140,7 +140,7 @@ print.LDABatch = function(x){
   )
 }
 
-#' @rdname is
+#' @rdname is.LDA
 #' @export
 is.LDABatch = function(x){
   TRUE
