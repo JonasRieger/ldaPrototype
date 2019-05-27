@@ -2,10 +2,16 @@
 % Please edit documentation in R/LDABatch.R
 \name{LDABatch}
 \alias{LDABatch}
+\alias{print.LDABatch}
+\alias{is.LDABatch}
 \title{LDA Replications on a Batch System}
 \usage{
 LDABatch(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE,
   chunk.size = 1, resources, ...)
+
+\method{print}{LDABatch}(x)
+
+is.LDABatch(x)
 }
 \arguments{
 \item{id}{[\code{character(1)}]\cr

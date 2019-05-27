@@ -122,6 +122,7 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
   invisible(res)
 }
 
+#' @rdname LDABatch
 #' @export
 print.LDABatch = function(x){
   chunked = ifelse("chunk" %in% colnames(x$jobs), "Chunked ", "")
@@ -140,6 +141,7 @@ print.LDABatch = function(x){
   )
 }
 
+#' @rdname LDABatch
 #' @export
 is.LDABatch = function(x){
   TRUE

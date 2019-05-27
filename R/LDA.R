@@ -40,6 +40,7 @@ LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
   invisible(res)
 }
 
+#' @rdname LDA
 #' @export
 is.LDA = function(x, verbose = FALSE){
 
@@ -170,6 +171,7 @@ is.LDA = function(x, verbose = FALSE){
   return(TRUE)
 }
 
+#' @rdname LDA
 #' @export
 print.LDA = function(x){
   val = .getValues.LDA(x)

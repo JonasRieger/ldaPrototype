@@ -2,10 +2,16 @@
 % Please edit documentation in R/LDA.R
 \name{LDA}
 \alias{LDA}
+\alias{is.LDA}
+\alias{print.LDA}
 \title{LDA Object}
 \usage{
 LDA(x, assignments = NULL, topics = NULL, document_sums = NULL,
   document_expects = NULL, log.likelihoods = NULL)
+
+is.LDA(x, verbose = FALSE)
+
+\method{print}{LDA}(x)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
