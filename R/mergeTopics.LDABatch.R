@@ -7,11 +7,11 @@
 #' @details
 #'
 #' @param x [\code{named list}]\cr
-#' Output from \code{\link{LDABatch}}. Alternatively \code{ids}, \code{reg} and
+#' Output from \code{\link{LDABatch}}. Alternatively \code{job}, \code{reg} and
 #' \code{id} can be passed or their defaults are taken.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
-#' @param ids [\code{\link{data.frame}} or \code{integer}]\cr
+#' @param job [\code{\link{data.frame}} or \code{integer}]\cr
 #' A data.frame or data.table with a column named "job.id" or a vector of integerish job ids.
 #' See \code{\link[batchtools]{reduceResultsList}}.
 #' @param reg [\code{\link[batchtools]{Registry}}]\cr
@@ -23,24 +23,26 @@
 #' @examples
 #' #TODO
 #'
-#' @export mergeBatchTopics
-
-mergeBatchTopics = function(x, vocab, ids, reg, id){
+#' @export
+mergeTopics.LDABatch = function(x, vocab, job, reg, id){
 
   if (!missing(x)){
-    id = x$id
-    ids = x$ids
-    reg = x$reg
+    if (!is.LDABatch(x)){
+      stop("TEXT")
+    }
+    id = getID(x)
+    job = getJob(x)
+    reg = getRegistry(reg)
   }else{
     if (missing(reg)) reg = batchtools::getDefaultRegistry()
-    if (missing(ids)) ids = batchtools::findDone(reg = reg)
+    if (missing(job)) job = batchtools::findDone(reg = reg)
     if (missing(id))
       id = as.character(gsub(pattern = trimws(file.path(reg$work.dir, " ")),
         replacement = "", x = reg$file.dir))
   }
-  if (is.vector(ids)) ids = data.frame(job.id = ids)
-  Nlda = nrow(ids)
-  topicList = batchtools::reduceResultsList(ids = ids, fun = function(x) x$topics, reg = reg)
+  if (is.vector(job)) job = data.frame(job.id = job)
+  Nlda = nrow(job)
+  topicList = batchtools::reduceResultsList(job = job, fun = function(x) x$topics, reg = reg)
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)
 
@@ -53,7 +55,7 @@ mergeBatchTopics = function(x, vocab, ids, reg, id){
   k = 1
   for(l in topicList){
     topics[match(colnames(l), vocab), seq_len(Ntopic[k]) + counter] = t(l)
-    colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, ids$job.id[k], ".", seq_len(Ntopic[k]))
+    colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, job$job.id[k], ".", seq_len(Ntopic[k]))
     counter = counter + Ntopic[k]
     k = k + 1
   }

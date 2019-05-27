@@ -81,7 +81,9 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
   batchtools::addAlgorithm(paste0(id, "Algorithm"),
     fun = function(job, data, instance, seed, ...){
       set.seed(seed)
-      return(lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...))
+      res = lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...)
+      class(res) = "LDA"
+      return(res[!is.na(names(res))])
     })
 
   if (missing(seeds) || length(seeds) != n){
@@ -121,7 +123,6 @@ LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, ch
 }
 
 #' @export
-
 print.LDABatch = function(x){
   chunked = ifelse("chunk" %in% colnames(x$jobs), "Chunked ", "")
   parameters = unique(x$jobs[, !colnames(x$jobs) %in% c("job.id", "chunk", "seed"), with = FALSE])
@@ -137,4 +138,9 @@ print.LDABatch = function(x){
     "with ", parameters, "\n\n",
     sep = ""
   )
+}
+
+#' @export
+is.LDABatch = function(x){
+  TRUE
 }
