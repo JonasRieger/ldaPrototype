@@ -27,5 +27,6 @@ if the registry is transferred from a batch system.}
 Returns the job ids and its parameter set (\code{getJob}), the registry's
 id (\code{getID}) or the registry itself (\code{getRegistry}) for a
 \code{\link{LDABatch}} object.\cr
-Sets the registry's file directory (\code{setFilDir}).
+Sets the registry's file directory (\code{setFilDir}) for a
+\code{\link{LDABatch}} object.
 }
