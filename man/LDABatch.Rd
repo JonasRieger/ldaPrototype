@@ -4,7 +4,7 @@
 \alias{LDABatch}
 \title{LDA Replications on a Batch System}
 \usage{
-LDABatch(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE,
+LDABatch(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE,
   chunk.size = 1, resources, ...)
 }
 \arguments{

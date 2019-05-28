@@ -33,7 +33,7 @@
 #'
 #' @export LDABatch
 
-LDABatch = function(id = "LDArep", docs, vocab, n = 100, seeds, load = FALSE, chunk.size = 1, resources, ...){
+LDABatch = function(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE, chunk.size = 1, resources, ...){
 
   stopifnot(is.character(id), length(id) == 1,
     is.list(docs), all(sapply(docs, is.matrix)), all(sapply(docs, nrow) == 2),
@@ -138,10 +138,4 @@ print.LDABatch = function(x){
     "with ", parameters, "\n\n",
     sep = ""
   )
-}
-
-#' @rdname is.LDA
-#' @export
-is.LDABatch = function(x){
-  inherits(x, "LDABatch")
 }

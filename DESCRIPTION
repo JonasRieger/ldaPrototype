@@ -13,7 +13,8 @@ Depends:
 	R (>= 3.5.0)
 Imports:
 	batchtools (>= 0.9.11),
-	data.table (>= 1.12.2),
+	data.table (>= 1.11.2),
+	fs (>= 1.2.0),
 	lda (>= 1.4.2),
 	RColorBrewer (>= 1.1-2)
 Suggests:

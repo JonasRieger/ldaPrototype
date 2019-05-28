@@ -40,9 +40,27 @@ LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
   invisible(res)
 }
 
-#' @title Checking Objects
-#' @name is.LDA
-#' @rdname is.LDA
+#' @export
+as.LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
+  document_expects = NULL, log.likelihoods = NULL){
+  if (!missing(x)){
+    LDA(
+      x = x,
+      assignments = assignments,
+      topics = topics,
+      document_sums = document_sums,
+      document_expects = document_expects,
+      log.likelihoods = log.likelihoods)
+  }else{
+    LDA(
+      assignments = assignments,
+      topics = topics,
+      document_sums = document_sums,
+      document_expects = document_expects,
+      log.likelihoods = log.likelihoods)
+  }
+}
+
 #' @export
 is.LDA = function(x, verbose = FALSE){
 
@@ -173,7 +191,6 @@ is.LDA = function(x, verbose = FALSE){
     }
   }
   if (verbose) message("checked")
-
 
   return(TRUE)
 }

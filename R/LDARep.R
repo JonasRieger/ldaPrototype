@@ -32,9 +32,3 @@ LDARep = function(docs, vocab, n = 100, seeds){
 print.LDARep = function(x){
   cat("print")
 }
-
-#' @rdname is.LDA
-#' @export
-is.LDARep = function(x){
-  inherits(x, "LDARep")
-}
