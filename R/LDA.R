@@ -79,7 +79,7 @@ is.LDA = function(obj, verbose = FALSE){
   emptyLDA = LDA()
   if (length(setdiff(names(obj), names(emptyLDA))) != 0  ||
       length(intersect(names(obj), names(emptyLDA))) != 5){
-    if (verbose) message("object does not contain exactly the list elements of an LDA object")
+    if (verbose) message("object does not contain exactly the list elements of an \"LDA\" object")
     return(FALSE)
   }
 

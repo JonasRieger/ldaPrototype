@@ -53,7 +53,35 @@ is.LDABatch = function(obj, verbose = FALSE){
     return(FALSE)
   }
 
+  testNames = c("id", "jobs", "reg")
 
+  if (length(setdiff(names(obj), testNames)) != 0  ||
+      length(intersect(names(obj), testNames)) != 3){
+    if (verbose) message("object does not contain exactly the list elements of an \"LDABatch\" object")
+    return(FALSE)
+  }
+
+  if (inherits(try(batchtools::assertRegistry(reg = getRegistry(obj))), "try-error")){
+    if (verbose) message("registry: assertion failed")
+    return(FALSE)
+  }
+  if (verbose) message("registry: checked")
+
+  if (verbose) message("jobs: ", appendLF = FALSE)
+  job = getJob(obj)
+  if (!data.table::is.data.table(job) || !("job.id" %in% colnames(job))){
+    if (verbose) message("not a data.table with element job.id")
+    return(FALSE)
+  }
+  if (verbose) message("checked")
+
+  if (verbose) message("id: ", appendLF = FALSE)
+  id = getID(obj)
+  if (!is.character(id) || !(length(id) == 1)){
+    if (verbose) message("not a character of length 1")
+    return(FALSE)
+  }
+  if (verbose) message("checked")
 
   return(TRUE)
 }
