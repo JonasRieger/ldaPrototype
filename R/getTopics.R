@@ -1,4 +1,4 @@
-#' @title Getter and Setter for LDA
+#' @title Getter for LDA
 #'
 #' @description
 #'

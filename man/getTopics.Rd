@@ -6,7 +6,7 @@
 \alias{getDocument_sums}
 \alias{getDocument_expects}
 \alias{getLog_likelihoods}
-\title{Getter and Setter for LDA}
+\title{Getter for LDA}
 \usage{
 getTopics(x)
 

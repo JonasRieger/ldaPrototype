@@ -84,14 +84,15 @@ is.LDA = function(obj, verbose = FALSE){
   }
 
   if (verbose) message("assignments: ", appendLF = FALSE)
-  if (!is.null(obj$assignments)){
-    if (!is.list(obj$assignments)){
+  assignments = getAssignments(obj)
+  if (!is.null(assignments)){
+    if (!is.list(assignments)){
       if (verbose) message("not a list")
       return(FALSE)
     }
-    NDocs = lengths(obj$assignments)
-    NTopic = max(unlist(obj$assignments)) + 1
-    if (!all(sapply(obj$assignments, is.integer))){
+    NDocs = lengths(assignments)
+    NTopic = max(unlist(assignments)) + 1
+    if (!all(sapply(assignments, is.integer))){
       if (verbose) message("list elements are not all integerish")
       return(FALSE)
     }
@@ -99,18 +100,19 @@ is.LDA = function(obj, verbose = FALSE){
   if (verbose) message("checked")
 
   if (verbose) message("topics: ", appendLF = FALSE)
-  if (!is.null(obj$topics)){
-    if (!is.matrix(obj$topics)){
+  topics = getTopics(obj)
+  if (!is.null(topics)){
+    if (!is.matrix(topics)){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (exists("NTopic") && NTopic != nrow(obj$topics)){
+    if (exists("NTopic") && NTopic != nrow(topics)){
       if (verbose) message("number of topics is not consistent")
       return(FALSE)
     }else{
-      NTopic = nrow(obj$topics)
+      NTopic = nrow(topics)
     }
-    if (!is.integer(obj$topics)){
+    if (!is.integer(topics)){
       if (verbose) message("matrix is not integerish")
       return(FALSE)
     }
@@ -118,30 +120,31 @@ is.LDA = function(obj, verbose = FALSE){
   if (verbose) message("checked")
 
   if (verbose) message("document_sums: ", appendLF = FALSE)
-  if (!is.null(obj$document_sums)){
-    if (!is.matrix(obj$document_sums)){
+  document_sums = getDocument_sums(obj)
+  if (!is.null(document_sums)){
+    if (!is.matrix(document_sums)){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (exists("NTopic") && NTopic != nrow(obj$document_sums)){
+    if (exists("NTopic") && NTopic != nrow(document_sums)){
       if (verbose) message("number of topics is not consistent")
       return(FALSE)
     }else{
-      NTopic = nrow(obj$document_sums)
+      NTopic = nrow(document_sums)
     }
     if (exists("NDocs")){
-      if (length(NDocs) != ncol(obj$document_sums)){
+      if (length(NDocs) != ncol(document_sums)){
         if (verbose) message("number of documents is not consistent")
         return(FALSE)
       }
-      if (any(NDocs != colSums(obj$document_sums))){
+      if (any(NDocs != colSums(document_sums))){
         if (verbose) message("lengths of documents is not consistent")
         return(FALSE)
       }
     }else{
-      NDocs = colSums(obj$document_sums)
+      NDocs = colSums(document_sums)
     }
-    if (!all(sapply(obj$document_sums, is.integer))){
+    if (!all(sapply(document_sums, is.integer))){
       if (verbose) message("list elements are not all integerish")
       return(FALSE)
     }
@@ -149,28 +152,29 @@ is.LDA = function(obj, verbose = FALSE){
   if (verbose) message("checked")
 
   if (verbose) message("document_expects: ", appendLF = FALSE)
-  if (!is.null(obj$document_expects)){
-    if (!is.matrix(obj$document_expects)){
+  document_expects = getDocument_expects(obj)
+  if (!is.null(document_expects)){
+    if (!is.matrix(document_expects)){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (exists("NTopic") && NTopic != nrow(obj$document_expects)){
+    if (exists("NTopic") && NTopic != nrow(document_expects)){
       if (verbose) message("number of topics is not consistent")
       return(FALSE)
     }else{
-      NTopic = nrow(obj$document_expects)
+      NTopic = nrow(document_expects)
     }
     if (exists("NDocs")){
-      if (length(NDocs) != ncol(obj$document_expects)){
+      if (length(NDocs) != ncol(document_expects)){
         if (verbose) message("number of documents is not consistent")
         return(FALSE)
       }
-      if (any(colSums(obj$document_expects) %% NDocs > 0)){
+      if (any(colSums(document_expects) %% NDocs > 0)){
         if (verbose) message("lengths of documents is not consistent")
         return(FALSE)
       }
     }
-    if (!all(sapply(obj$document_expects, is.integer))){
+    if (!all(sapply(document_expects, is.integer))){
       if (verbose) message("list elements are not all integerish")
       return(FALSE)
     }
@@ -178,16 +182,17 @@ is.LDA = function(obj, verbose = FALSE){
   if (verbose) message("checked")
 
   if (verbose) message("log.likelihoods: ", appendLF = FALSE)
-  if (!is.null(obj$log.likelihoods)){
-    if (!is.matrix(obj$log.likelihoods)){
+  log.likelihoods = getLog_likelihoods(obj)
+  if (!is.null(log.likelihoods)){
+    if (!is.matrix(log.likelihoods)){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (nrow(obj$log.likelihoods) != 2){
+    if (nrow(log.likelihoods) != 2){
       if (verbose) message("not two rows")
       return(FALSE)
     }
-    if (!is.numeric(obj$log.likelihoods)){
+    if (!is.numeric(log.likelihoods)){
       if (verbose) message("not numeric")
       return(FALSE)
     }
