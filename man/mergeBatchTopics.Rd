@@ -8,7 +8,7 @@ mergeBatchTopics(x, vocab, job, reg, id)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
-Output from \code{\link{LDABatch}}. Alternatively \code{job}, \code{reg} and
+\code{\link{LDABatch}} object. Alternatively \code{job}, \code{reg} and
 \code{id} can be passed or their defaults are taken.}
 
 \item{vocab}{[\code{character}]\cr

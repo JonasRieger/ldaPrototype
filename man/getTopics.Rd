@@ -23,5 +23,5 @@ getLog_likelihoods(x)
 \code{\link{LDA}} object.}
 }
 \description{
-
+Returns the corresponding element of a \code{\link{LDA}} object.
 }

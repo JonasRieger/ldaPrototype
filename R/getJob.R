@@ -8,7 +8,7 @@
 #' \code{\link{LDABatch}} object.
 #'
 #' @param x [\code{named list}]\cr
-#' Output from \code{\link{LDABatch}}.
+#' \code{\link{LDABatch}} object.
 
 #' @export getJob
 getJob = function(x) UseMethod("getJob")

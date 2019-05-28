@@ -1,6 +1,7 @@
 #' @title Getter for LDA
 #'
 #' @description
+#' Returns the corresponding element of a \code{\link{LDA}} object.
 #'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDA}} object.

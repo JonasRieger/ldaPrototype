@@ -8,7 +8,7 @@ mergeTopics(x, vocab)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
-Output from \code{\link{LDARep}} or \code{\link{LDABatch}}.}
+\code{\link{LDARep}} object or \code{\link{LDABatch}} object.}
 
 \item{vocab}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}

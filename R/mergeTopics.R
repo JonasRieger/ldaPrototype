@@ -8,7 +8,7 @@
 #' @details
 #'
 #' @param x [\code{named list}]\cr
-#' Output from \code{\link{LDARep}} or \code{\link{LDABatch}}.
+#' \code{\link{LDARep}} object or \code{\link{LDABatch}} object.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
