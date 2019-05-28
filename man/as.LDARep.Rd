@@ -2,9 +2,12 @@
 % Please edit documentation in R/as.LDARep.R
 \name{as.LDARep}
 \alias{as.LDARep}
+\alias{is.LDARep}
 \title{LDARep Constructor}
 \usage{
 as.LDARep(reg, job, id)
+
+is.LDARep(x, verbose = FALSE)
 }
 \value{
 [\code{named list}] with entries

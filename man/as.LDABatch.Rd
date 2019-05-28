@@ -2,9 +2,12 @@
 % Please edit documentation in R/as.LDABatch.R
 \name{as.LDABatch}
 \alias{as.LDABatch}
+\alias{is.LDABatch}
 \title{LDABatch Constructor}
 \usage{
 as.LDABatch(reg, job, id)
+
+is.LDABatch(x, verbose = FALSE)
 }
 \arguments{
 \item{reg}{[\code{\link[batchtools]{Registry}}]\cr

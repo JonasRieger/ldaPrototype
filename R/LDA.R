@@ -40,6 +40,7 @@ LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
   invisible(res)
 }
 
+#' @rdname LDA
 #' @export
 as.LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
   document_expects = NULL, log.likelihoods = NULL){
@@ -61,6 +62,7 @@ as.LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
   }
 }
 
+#' @rdname LDA
 #' @export
 is.LDA = function(x, verbose = FALSE){
 

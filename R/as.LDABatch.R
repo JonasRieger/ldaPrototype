@@ -39,6 +39,7 @@ as.LDABatch = function(reg, job, id){
   invisible(res)
 }
 
+#' @rdname as.LDABatch
 #' @export
 is.LDABatch = function(x, verbose = FALSE){
 

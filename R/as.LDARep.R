@@ -31,6 +31,7 @@ as.LDARep = function(reg, job, id){
   invisible(res)
 }
 
+#' @rdname as.LDARep
 #' @export
 is.LDARep = function(x, verbose = FALSE){
   
