@@ -1,11 +1,11 @@
-#' @title Mixed Memberships Similarity/Stability
+#' @title Similarity/Stability of multiple sets of Objects using Clustering with Local Pruning
 #'
 #' @description
-#' The function \code{MMS} calculates the MMS for the best possible local pruning state
-#' of a dendrogram from \code{\link{dendTopics}}. The function \code{pruneMMS}
+#' The function \code{SCLOP} calculates the S-CLOP for the best possible local pruning state
+#' of a dendrogram from \code{\link{dendTopics}}. The function \code{pruneSCLOP}
 #' supplies the corresponding pruning state itself.\cr
-#' To get all pairwise MMS scores of two LDA runs, the function \code{MMS.pairwise}
-#' can be used. It returnes a matrix of the pairwise MMS scores.\cr
+#' To get all pairwise S-CLOP scores of two LDA runs, the function \code{SCLOP.pairwise}
+#' can be used. It returnes a matrix of the pairwise S-CLOP scores.\cr
 #' All three functions use the function \code{disparitySum} to calculate the
 #' least possible sum of disparities (on the best possible local pruning state)
 #' on a given dendrogram.
@@ -16,35 +16,35 @@
 #' Output from \code{\link{dendTopics}}.
 #' @return
 #' \describe{
-#'   \item{\code{MMS}}{[0,1] value specifying the MMS for the best possible
+#'   \item{\code{SCLOP}}{[0,1] value specifying the S-CLOP for the best possible
 #'   local pruning state of the given dendrogram.}
-#'   \item{\code{pruneMMS}}{[\code{list of \link[stats]{dendrogram}s}] specifying
+#'   \item{\code{pruneSCLOP}}{[\code{list of \link[stats]{dendrogram}s}] specifying
 #'   the best possible local pruning state.}
 #'   \item{\code{disparitySum}}{[\code{numeric(1)}] value specifying the least
 #'   possible sum of disparities on the given dendrogram.}
-#'   \item{\code{MMS.pairwise}}{[\code{symmetrical named matrix}] with all
-#'   pairwise MMS scores of the given LDA runs.}
+#'   \item{\code{SCLOP.pairwise}}{[\code{symmetrical named matrix}] with all
+#'   pairwise SCLOP scores of the given LDA runs.}
 #' }
 #'
 #' @examples
 #' # TODO
 #'
-#' @export MMS
+#' @export SCLOP
 
-MMS = function(dend){
+SCLOP = function(dend){
   nruns = length(unique(dendextend::labels_colors(dend)))
   return(1 - (nruns/(nruns-1)) * disparitySum(dend) / nobs(dend))
 }
 
-#' @rdname MMS
-#' @export pruneMMS
+#' @rdname SCLOP
+#' @export pruneSCLOP
 
-pruneMMS = function(dend){
-  tmpPruneMMSlist = list()
+pruneSCLOP = function(dend){
+  tmpPruneSCLOPlist = list()
   nruns = length(unique(dendextend::labels_colors(dend)))
-  .pruneMMS = function(dend, nruns){
+  .pruneSCLOP = function(dend, nruns){
     if(is.leaf(dend)){
-      tmpPruneMMSlist[[length(tmpPruneMMSlist)+1]] <<- dend
+      tmpPruneSCLOPlist[[length(tmpPruneSCLOPlist)+1]] <<- dend
     }
     else{
       tab = table(dendextend::labels_colors(dend))
@@ -52,7 +52,7 @@ pruneMMS = function(dend){
       tmp[1:length(tab)] = tab
       tab = tmp
       if(all.equal((mean(abs(tab-1)) * sum(tab)), .disparitySum(dend = dend, nruns = nruns)) == TRUE){
-        tmpPruneMMSlist[[length(tmpPruneMMSlist)+1]] <<- dend
+        tmpPruneSCLOPlist[[length(tmpPruneSCLOPlist)+1]] <<- dend
       }
       else{
         Recall(dend = dend[[1]], nruns = nruns)
@@ -60,11 +60,11 @@ pruneMMS = function(dend){
       }
     }
   }
-  .pruneMMS(dend = dend, nruns = nruns)
-  return(tmpPruneMMSlist)
+  .pruneSCLOP(dend = dend, nruns = nruns)
+  return(tmpPruneSCLOPlist)
 }
 
-#' @rdname MMS
+#' @rdname SCLOP
 #' @export disparitySum
 
 disparitySum = function(dend){
@@ -81,30 +81,30 @@ disparitySum = function(dend){
     Recall(dend[[1]], nruns) + Recall(dend[[2]], nruns)))
 }
 
-#' @rdname MMS
+#' @rdname SCLOP
 #' @param sims [\code{lower triangular named matrix}]\cr
 #' Pairwise jaccard similarities of underlying topics like
 #' the output from \code{\link{jaccardTopics}}. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
-#' @export MMS.pairwise
+#' @export SCLOP.pairwise
 
-MMS.pairwise = function(sims){
+SCLOP.pairwise = function(sims){
   names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
 
   combs = combn(names, 2)
   rownames(combs) = c("V1", "V2")
-  vals = apply(combs, 2, function(x) MMS(dendTopics(sims = sims, ind = x)))
+  vals = apply(combs, 2, function(x) SCLOP(dendTopics(sims = sims, ind = x)))
   dat = data.frame(t(combs))
-  dat$MMS = vals
+  dat$SCLOP = vals
 
   mat = matrix(ncol = length(names), nrow = length(names))
   k = 1
   i = match(dat$V2, names)
   j = match(dat$V1, names)
   for(k in seq_len(nrow(dat))){
-    mat[i[k], j[k]] = dat$MMS[k]
-    mat[j[k], i[k]] = dat$MMS[k]
+    mat[i[k], j[k]] = dat$SCLOP[k]
+    mat[j[k], i[k]] = dat$SCLOP[k]
   }
   colnames(mat) = rownames(mat) = names
   return(mat)
