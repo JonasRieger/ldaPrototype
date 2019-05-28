@@ -34,7 +34,7 @@ first dot identifies the LDA run.}
   \item{\code{disparitySum}}{[\code{numeric(1)}] value specifying the least
   possible sum of disparities on the given dendrogram.}
   \item{\code{SCLOP.pairwise}}{[\code{symmetrical named matrix}] with all
-  pairwise SCLOP scores of the given LDA runs.}
+  pairwise S-CLOP scores of the given LDA runs.}
 }
 }
 \description{
