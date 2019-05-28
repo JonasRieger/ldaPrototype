@@ -45,6 +45,6 @@ getDocument_expects.LDA = function(x){
 getLog_likelihoods = function(x) UseMethod("getLog_likelihoods")
 
 #' @export
-getLog_Likelihoods.LDA = function(x){
+getLog_likelihoods.LDA = function(x){
   x$log.likelihoods
 }
