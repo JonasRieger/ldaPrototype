@@ -7,7 +7,7 @@
 \usage{
 as.LDABatch(reg, job, id)
 
-is.LDABatch(x, verbose = FALSE)
+is.LDABatch(obj, verbose = FALSE)
 }
 \arguments{
 \item{reg}{[\code{\link[batchtools]{Registry}}]\cr

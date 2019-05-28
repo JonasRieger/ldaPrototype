@@ -5,9 +5,9 @@
 \alias{is.LDARep}
 \title{LDARep Constructor}
 \usage{
-as.LDARep(reg, job, id)
+as.LDARep()
 
-is.LDARep(x, verbose = FALSE)
+is.LDARep(obj, verbose = FALSE)
 }
 \value{
 [\code{named list}] with entries

@@ -12,7 +12,7 @@ LDA(x, assignments = NULL, topics = NULL, document_sums = NULL,
 as.LDA(x, assignments = NULL, topics = NULL, document_sums = NULL,
   document_expects = NULL, log.likelihoods = NULL)
 
-is.LDA(x, verbose = FALSE)
+is.LDA(obj, verbose = FALSE)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr

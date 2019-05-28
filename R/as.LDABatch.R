@@ -41,14 +41,14 @@ as.LDABatch = function(reg, job, id){
 
 #' @rdname as.LDABatch
 #' @export
-is.LDABatch = function(x, verbose = FALSE){
+is.LDABatch = function(obj, verbose = FALSE){
 
-  if (!inherits(x, "LDABatch")){
+  if (!inherits(obj, "LDABatch")){
     if (verbose) message("object is not of class \"LDABatch\"")
     return(FALSE)
   }
 
-  if (!is.list(x)){
+  if (!is.list(obj)){
     if (verbose) message("object is not a list")
     return(FALSE)
   }
