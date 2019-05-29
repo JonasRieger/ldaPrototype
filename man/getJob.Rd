@@ -32,6 +32,6 @@ id (\code{getID}) for a \code{\link{LDABatch}} or \code{\link{LDARep}} object
 \code{getRegistry} returns the registry itself for a \code{\link{LDABatch}}
 object. \code{getLDA} returns the list of \code{\link{LDA}} objects for a
 \code{\link{LDARep}} object\cr
-Sets the registry's file directory (\code{setFilDir}) for a
+\code{setFilDir} sets the registry's file directory for a
 \code{\link{LDABatch}} object.
 }

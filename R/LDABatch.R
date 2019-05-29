@@ -26,7 +26,8 @@
 #' Arguments may be passed as scalar (which will be coerced to a vector of length \code{n})
 #' or vector of length \code{n}.
 #' @return [\code{named list}] with entries \code{id} for the registry's folder name,
-#' \code{ids} for the submitted jobs' ids and \code{reg} for the registry itself.
+#' \code{jobs} for the submitted jobs' ids and its parameter settings and
+#' \code{reg} for the registry itself.
 #'
 #' @examples
 #' #TODO
@@ -65,6 +66,7 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
     })
 
   moreArgs = data.table::data.table(do.call(cbind, .paramList(n = n, ...)))
+
   if (missing(seeds) || length(seeds) != n){
     message("No seeds given or length of given seeds differs from number of replications: sample seeds")
     if (!exists(".Random.seed", envir = globalenv())){
@@ -72,6 +74,7 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
     }
     oldseed = .Random.seed
     seeds = sample(9999999, n)
+    .Random.seed <<- oldseed
   }
   if (anyDuplicated(seeds)){
     message(sum(duplicated(seeds)), " duplicated seeds.")
@@ -96,7 +99,6 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
     batchtools::submitJobs(ids, resources = resources)
   }
 
-  .Random.seed <<- oldseed
   res = list(id = id, jobs = cbind(ids, moreArgs), reg = reg)
   class(res) = "LDABatch"
   invisible(res)

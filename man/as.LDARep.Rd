@@ -5,15 +5,30 @@
 \alias{is.LDARep}
 \title{LDARep Constructor}
 \usage{
-as.LDARep()
+as.LDARep(lda, job, id)
 
 is.LDARep(obj, verbose = FALSE)
 }
+\arguments{
+\item{lda}{[\code{named list}]\cr
+List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
+
+\item{job}{[\code{\link{data.frame}} or \code{named vector}]\cr
+A data.frame or data.table with named columns "job.id", "K", "alpha", "eta"
+and "num.iterations" or a named vector with entries "K", "alpha", "eta" and
+"num.iterations".}
+
+\item{id}{[\code{character(1)}]\cr
+A name for the computation. If not passed, the prefix (everything before the
+first dot) from \code{names(lda)} is extracted, if applicable. Else is set to "LDARep".}
+}
 \value{
-[\code{named list}] with entries
+[\code{named list}] with entries \code{id} for computation's name,
+\code{jobs} for the parameter settings and \code{lda} for the results itself.
 }
 \description{
-Constructs a \code{\link{LDARep}} object for given elements ...
+Constructs a \code{\link{LDARep}} object for given elements \code{lda},
+\code{job} and \code{id}.
 }
 \details{
 

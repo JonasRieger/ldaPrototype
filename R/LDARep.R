@@ -22,7 +22,8 @@
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
 #' Number of (physical) CPUs to use.
-#' @return [\code{named list}]
+#' @return [\code{named list}] with entries \code{id} for computation's name,
+#' \code{jobs} for the parameter settings and \code{lda} for the results itself.
 #'
 #' @examples
 #' #TODO
@@ -39,6 +40,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
     }
     oldseed = .Random.seed
     seeds = sample(9999999, n)
+    .Random.seed <<- oldseed
   }
   if (anyDuplicated(seeds)){
     message(sum(duplicated(seeds)), " duplicated seeds.")
@@ -56,10 +58,10 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
 
   ldas = do.call(parallelMap::parallelMap, args = args)
   if (!missing(pm.backend)) parallelMap::parallelStop()
-  args = data.table::data.table(job.id = paste(id, seq_len(n), sep = "."),
+  job.id = paste(id, seq_len(n), sep = ".")
+  args = data.table::data.table(job.id = job.id,
     do.call(cbind, args[names(args) != "fun"]))
-
-  .Random.seed <<- oldseed
+  names(ldas) = job.id
 
   res = list(id = id, lda = ldas, jobs = args)
   class(res) = "LDARep"

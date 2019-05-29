@@ -22,7 +22,8 @@ A name for the registry. If not passed, the folder's name is extracted from \cod
 }
 \value{
 [\code{named list}] with entries \code{id} for the registry's folder name,
-\code{ids} for the submitted jobs' ids and \code{reg} for the registry itself.
+\code{jobs} for the submitted jobs' ids and its parameter settings and
+\code{reg} for the registry itself.
 }
 \description{
 Constructs a \code{\link{LDABatch}} object for given elements \code{reg},

@@ -14,7 +14,8 @@
 #' @param id [\code{character(1)}]\cr
 #' A name for the registry. If not passed, the folder's name is extracted from \code{reg}.
 #' @return [\code{named list}] with entries \code{id} for the registry's folder name,
-#' \code{ids} for the submitted jobs' ids and \code{reg} for the registry itself.
+#' \code{jobs} for the submitted jobs' ids and its parameter settings and
+#' \code{reg} for the registry itself.
 #'
 #' @examples
 #' #TODO

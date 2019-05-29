@@ -33,7 +33,8 @@ is called after.}
 Number of (physical) CPUs to use.}
 }
 \value{
-[\code{named list}]
+[\code{named list}] with entries \code{id} for computation's name,
+\code{jobs} for the parameter settings and \code{lda} for the results itself.
 }
 \description{
 Performs multiple runs of Latent Dirichlet Allocation.

@@ -38,7 +38,8 @@ or vector of length \code{n}.}
 }
 \value{
 [\code{named list}] with entries \code{id} for the registry's folder name,
-\code{ids} for the submitted jobs' ids and \code{reg} for the registry itself.
+\code{jobs} for the submitted jobs' ids and its parameter settings and
+\code{reg} for the registry itself.
 }
 \description{
 Performs multiple runs of Latent Dirichlet Allocation on a batch system using
