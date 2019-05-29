@@ -24,7 +24,7 @@ Random Seeds for each Replication.}
 Name for the computation and prefix for the replication's ids.}
 
 \item{pm.backend}{[\code{character(1)}]\cr
-One of \"multicore\", \"socket\" or \"mpi\".
+One of "multicore", "socket" or "mpi".
 If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
 called before computation is started and \code{\link[parallelMap]{parallelStop}}
 is called after.}

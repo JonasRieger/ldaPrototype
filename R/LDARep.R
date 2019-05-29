@@ -16,7 +16,7 @@
 #' @param id [\code{character(1)}]\cr
 #' Name for the computation and prefix for the replication's ids.
 #' @param pm.backend [\code{character(1)}]\cr
-#' One of \"multicore\", \"socket\" or \"mpi\".
+#' One of "multicore", "socket" or "mpi".
 #' If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
 #' called before computation is started and \code{\link[parallelMap]{parallelStop}}
 #' is called after.
@@ -56,8 +56,8 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
 
   ldas = do.call(parallelMap::parallelMap, args = args)
   if (!missing(pm.backend)) parallelMap::parallelStop()
-  args = data.table::data.table(do.call(cbind, args[names(args) != "fun"]))
-  args$job.id = paste(id, seq_len(n), ".")
+  args = data.table::data.table(job.id = paste(id, seq_len(n), sep = "."),
+    do.call(cbind, args[names(args) != "fun"]))
 
   .Random.seed <<- oldseed
 
