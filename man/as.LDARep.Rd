@@ -24,7 +24,7 @@ first dot) from \code{names(lda)} is extracted, if applicable. Else is set to "L
 }
 \value{
 [\code{named list}] with entries \code{id} for computation's name,
-\code{jobs} for the parameter settings and \code{lda} for the results itself.
+\code{jobs} for the parameter settings and \code{lda} for the results themselves.
 }
 \description{
 Constructs a \code{\link{LDARep}} object for given elements \code{lda},

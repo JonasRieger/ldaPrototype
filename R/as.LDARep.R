@@ -16,7 +16,7 @@
 #' A name for the computation. If not passed, the prefix (everything before the
 #' first dot) from \code{names(lda)} is extracted, if applicable. Else is set to "LDARep".
 #' @return [\code{named list}] with entries \code{id} for computation's name,
-#' \code{jobs} for the parameter settings and \code{lda} for the results itself.
+#' \code{jobs} for the parameter settings and \code{lda} for the results themselves.
 #'
 #' @examples
 #' #TODO
