@@ -5,7 +5,7 @@
 \alias{is.LDARep}
 \title{LDARep Constructor}
 \usage{
-as.LDARep(lda, job, id)
+as.LDARep(x, lda, job, id)
 
 is.LDARep(obj, verbose = FALSE)
 }

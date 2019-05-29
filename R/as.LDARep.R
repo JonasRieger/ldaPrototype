@@ -22,8 +22,10 @@
 #' #TODO
 #'
 #' @export as.LDARep
+as.LDARep = function(x, lda, job, id) UseMethod("as.LDARep")
 
-as.LDARep = function(lda, job, id){
+#' @export
+as.LDARep.default = function(lda, job, id){
 
   if (missing(id)){
     id = unique(gsub(x = names(lda), pattern = "\\.(.*)?", replacement = ""))
@@ -53,6 +55,11 @@ as.LDARep = function(lda, job, id){
   res = list(id = id, lda = lda, jobs = job)
   class(res) = "LDARep"
   invisible(res)
+}
+
+#' @export
+as.LDARep.LDABatch = function(x){
+  invisible(x)
 }
 
 #' @rdname as.LDARep
