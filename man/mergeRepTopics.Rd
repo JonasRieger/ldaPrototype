@@ -2,9 +2,15 @@
 % Please edit documentation in R/mergeRepTopics.R
 \name{mergeRepTopics}
 \alias{mergeRepTopics}
+\alias{mergeRepTopics.LDARep}
+\alias{mergeRepTopics.default}
 \title{Merge LDA Topic Matrices}
 \usage{
-mergeRepTopics(x, vocab, ...)
+mergeRepTopics(x, vocab, lda)
+
+\method{mergeRepTopics}{LDARep}(x, vocab)
+
+\method{mergeRepTopics}{default}(vocab, lda)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
@@ -12,6 +18,9 @@ Output from \code{\link{LDARep}}.}
 
 \item{vocab}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}
+
+\item{lda}{[\code{named list}]\cr
+List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 }
 \value{
 [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).

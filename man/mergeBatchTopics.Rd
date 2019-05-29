@@ -2,9 +2,15 @@
 % Please edit documentation in R/mergeBatchTopics.R
 \name{mergeBatchTopics}
 \alias{mergeBatchTopics}
+\alias{mergeBatchTopics.LDABatch}
+\alias{mergeBatchTopics.default}
 \title{Merge LDA Topic Matrices}
 \usage{
-mergeBatchTopics(x, vocab, job, reg, id)
+mergeBatchTopics(x, vocab, reg, job, id)
+
+\method{mergeBatchTopics}{LDABatch}(x, vocab)
+
+\method{mergeBatchTopics}{default}(vocab, reg, job, id)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
@@ -14,12 +20,12 @@ mergeBatchTopics(x, vocab, job, reg, id)
 \item{vocab}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}
 
+\item{reg}{[\code{\link[batchtools]{Registry}}]\cr
+Registry. See \code{\link[batchtools]{reduceResultsList}}.}
+
 \item{job}{[\code{\link{data.frame}} or \code{integer}]\cr
 A data.frame or data.table with a column named "job.id" or a vector of integerish job ids.
 See \code{\link[batchtools]{reduceResultsList}}.}
-
-\item{reg}{[\code{\link[batchtools]{Registry}}]\cr
-Registry. See \code{\link[batchtools]{reduceResultsList}}.}
 
 \item{id}{[\code{character(1)}]\cr
 A name for the registry. If not passed, the folder's name is extracted from \code{reg}.}

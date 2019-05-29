@@ -10,20 +10,29 @@
 #' Output from \code{\link{LDARep}}.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
+#' @param lda [\code{named list}]\cr
+#' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
 #' #TODO
 #'
 #' @export mergeRepTopics
-mergeRepTopics = function(x, vocab, ...){
+mergeRepTopics = function(x, vocab, lda) UseMethod("mergeRepTopics")
 
-  if (!missing(x)){
-    if (!is.LDARep(x)){
-      stop("TEXT")
-    }
+#' @rdname mergeRepTopics
+#' @export
+mergeRepTopics.LDARep = function(x, vocab){
 
-  }else{
-
+  if (!is.LDARep(x)){
+    stop("TEXT")
   }
+
+}
+
+#' @rdname mergeRepTopics
+#' @export
+mergeRepTopics.default = function(vocab, lda){
+
+
 }

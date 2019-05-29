@@ -24,23 +24,33 @@
 #' #TODO
 #'
 #' @export mergeBatchTopics
-mergeBatchTopics = function(x, vocab, job, reg, id){
 
-  if (!missing(x)){
-    if (!is.LDABatch(x)){
-      stop("object is not a LDABatch object")
-    }
-    id = getID(x)
-    job = getJob(x)
-    reg = getRegistry(x)
-    reg = batchtools::loadRegistry(reg$file.dir)
-  }else{
-    if (missing(reg)) reg = batchtools::getDefaultRegistry()
-    if (missing(job)) job = batchtools::findDone(reg = reg)
-    if (missing(id))
-      id = as.character(gsub(pattern = trimws(file.path(reg$work.dir, " ")),
-        replacement = "", x = reg$file.dir))
+mergeBatchTopics = function(x, vocab, reg, job, id) UseMethod("mergeBatchTopics")
+
+#' @rdname mergeBatchTopics
+#' @export
+mergeBatchTopics.LDABatch = function(x, vocab){
+
+  if (!is.LDABatch(x)){
+    stop("object is not a LDABatch object")
   }
+  id = getID(x)
+  job = getJob(x)
+  reg = getRegistry(x)
+  reg = batchtools::loadRegistry(reg$file.dir)
+
+  mergeBatchTopics.default(vocab = vocab, reg = reg, job = job, id = id)
+}
+
+#' @rdname mergeBatchTopics
+#' @export
+mergeBatchTopics.default = function(vocab, reg, job, id){
+
+  if (missing(reg)) reg = batchtools::getDefaultRegistry()
+  if (missing(job)) job = batchtools::findDone(reg = reg)
+  if (missing(id))
+    id = as.character(gsub(pattern = trimws(file.path(reg$work.dir, " ")),
+      replacement = "", x = reg$file.dir))
   if (is.vector(job)) job = data.frame(job.id = job)
   Nlda = nrow(job)
   topicList = batchtools::reduceResultsList(ids = job, fun = function(x) x$topics, reg = reg)

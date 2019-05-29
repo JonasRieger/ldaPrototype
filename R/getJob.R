@@ -2,10 +2,10 @@
 #'
 #' @description
 #' Returns the job ids and its parameter set (\code{getJob}) or the (registry's)
-#' id (\code{getID}) for a \code{\link{LDABatch}} or \code{\link{LDARep}} object
+#' id (\code{getID}) for a \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 #' \code{getRegistry} returns the registry itself for a \code{\link{LDABatch}}
 #' object. \code{getLDA} returns the list of \code{\link{LDA}} objects for a
-#' \code{\link{LDARep}} object\cr
+#' \code{\link{LDARep}} object.\cr
 #' \code{setFilDir} sets the registry's file directory for a
 #' \code{\link{LDABatch}} object.
 #'

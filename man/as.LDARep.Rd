@@ -2,14 +2,23 @@
 % Please edit documentation in R/as.LDARep.R
 \name{as.LDARep}
 \alias{as.LDARep}
+\alias{as.LDARep.default}
+\alias{as.LDARep.LDABatch}
 \alias{is.LDARep}
 \title{LDARep Constructor}
 \usage{
 as.LDARep(x, lda, job, id)
 
+\method{as.LDARep}{default}(lda, job, id)
+
+\method{as.LDARep}{LDABatch}(x)
+
 is.LDARep(obj, verbose = FALSE)
 }
 \arguments{
+\item{x}{[\code{named list}]\cr
+\code{\link{LDABatch}} or \code{\link{LDARep}} object.}
+
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 

@@ -6,6 +6,8 @@
 #'
 #' @details
 #'
+#' @param x [\code{named list}]\cr
+#' \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 #' @param lda [\code{named list}]\cr
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
 #' @param job [\code{\link{data.frame}} or \code{named vector}]\cr
@@ -24,6 +26,7 @@
 #' @export as.LDARep
 as.LDARep = function(x, lda, job, id) UseMethod("as.LDARep")
 
+#' @rdname as.LDARep
 #' @export
 as.LDARep.default = function(lda, job, id){
 
@@ -57,10 +60,17 @@ as.LDARep.default = function(lda, job, id){
   invisible(res)
 }
 
+#' @rdname as.LDARep
 #' @export
 as.LDARep.LDABatch = function(x){
+
+}
+
+#' @export
+as.LDARep.LDARep = function(x){
   invisible(x)
 }
+
 
 #' @rdname as.LDARep
 #' @export
