@@ -6,8 +6,6 @@
 #'
 #' @details
 #'
-#' @param id [\code{character(1)}]\cr
-#' Name for the registry's folder.
 #' @param docs [\code{list}]\cr
 #' Documents as received from \code{\link[tosca]{LDAprep}}.
 #' @param vocab [\code{character}]\cr
@@ -16,6 +14,8 @@
 #' Number of Replications.
 #' @param seeds [\code{integer(n)}]\cr
 #' Random Seeds for each Replication.
+#' @param id [\code{character(1)}]\cr
+#' Name for the registry's folder.
 #' @param load [\code{logical(1)}]\cr
 #' If a folder with name \code{id} exists: should the existing registry be loaded?
 #' @param chunk.size [\code{integer(1)}]\cr
@@ -33,7 +33,7 @@
 #'
 #' @export LDABatch
 
-LDABatch = function(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE, chunk.size = 1, resources, ...){
+LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, chunk.size = 1, resources, ...){
 
   stopifnot(is.character(id), length(id) == 1,
     is.list(docs), all(sapply(docs, is.matrix)), all(sapply(docs, nrow) == 2),
@@ -42,26 +42,6 @@ LDABatch = function(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE, 
     is.numeric(n), length(n) == 1, as.integer(n) == n,
     is.logical(load), length(load) == 1,
     is.numeric(chunk.size), as.integer(chunk.size) == chunk.size)
-
-  moreArgs = list(...)
-  if(anyDuplicated(names(moreArgs))){
-    tmp = duplicated(names(moreArgs), fromLast = TRUE)
-    warning("Parameter(s) ", paste0(names(moreArgs)[tmp], collapse = ", "), " are duplicated. Take last ones.")
-    moreArgs = moreArgs[!tmp]
-  }
-  if ("K" %in% names(moreArgs)){
-    default = list(K = 0, alpha = 1/moreArgs$K, eta = 1/moreArgs$K, num.iterations = 200)
-  }else{
-    default = list(K = 100, alpha = 0.01, eta = 0.01, num.iterations = 200)
-  }
-  moreArgs = c(moreArgs, default[!(c("K", "alpha", "eta", "num.iterations") %in% names(moreArgs))])
-  moreArgs[lengths(moreArgs) == 1] = lapply(moreArgs[lengths(moreArgs) == 1], rep, times = n)
-  if (any(lengths(moreArgs) != n)){
-    stop("Additional arguments for lda::lda.collapsed.gibbs.sampler \"",
-      paste(names(moreArgs)[lengths(moreArgs) != n], collapse = ","),
-      "\" are not of length 1 or ", n)
-  }
-  moreArgs = do.call(cbind, moreArgs)
 
   fd = file.path(id)
   if (dir.exists(fd)){
@@ -81,11 +61,10 @@ LDABatch = function(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE, 
   batchtools::addAlgorithm(paste0(id, "Algorithm"),
     fun = function(job, data, instance, seed, ...){
       set.seed(seed)
-      res = lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...)
-      class(res) = "LDA"
-      return(res[!is.na(names(res))])
+      LDA(lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...))
     })
 
+  moreArgs = data.table::data.table(do.call(cbind, .paramList(n = n, ...)))
   if (missing(seeds) || length(seeds) != n){
     message("No seeds given or length of given seeds differs from number of replications: sample seeds")
     if (!exists(".Random.seed", envir = globalenv())){
@@ -97,8 +76,9 @@ LDABatch = function(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE, 
   if (anyDuplicated(seeds)){
     message(sum(duplicated(seeds)), " duplicated seeds.")
   }
+  moreArgs = data.table::data.table(seed = seeds, moreArgs)
 
-  algo.designs = list(data.table::data.table(seed = seeds, moreArgs))
+  algo.designs = list(moreArgs)
   names(algo.designs) = paste0(id, "Algorithm")
 
   ids = batchtools::addExperiments(
@@ -117,15 +97,16 @@ LDABatch = function(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE, 
   }
 
   .Random.seed <<- oldseed
-  res = list(id = id, jobs = cbind(ids, algo.designs[[1]]), reg = reg)
+  res = list(id = id, jobs = cbind(ids, moreArgs), reg = reg)
   class(res) = "LDABatch"
   invisible(res)
 }
 
 #' @export
 print.LDABatch = function(x){
-  chunked = ifelse("chunk" %in% colnames(x$jobs), "Chunked ", "")
-  parameters = unique(x$jobs[, !colnames(x$jobs) %in% c("job.id", "chunk", "seed"), with = FALSE])
+  jobs = getJob(x)
+  chunked = ifelse("chunk" %in% colnames(jobs), "Chunked ", "")
+  parameters = unique(jobs[, !colnames(jobs) %in% c("job.id", "chunk", "seed"), with = FALSE])
   if (nrow(parameters) == 1){
     parameters = paste0("parameters ",
       paste0(paste0(colnames(parameters), ": ", as.character(round(parameters, 4))), collapse = ", "))
@@ -133,8 +114,8 @@ print.LDABatch = function(x){
     parameters = paste0(nrow(parameters), " different parameter sets.")
   }
   cat(
-    chunked, "LDABatch Object \"", x$id, "\"\n ",
-    nrow(x$jobs), " LDA Runs", "\n ",
+    chunked, "LDABatch Object \"", getID(x), "\"\n ",
+    nrow(jobs), " LDA Runs", "\n ",
     "with ", parameters, "\n\n",
     sep = ""
   )

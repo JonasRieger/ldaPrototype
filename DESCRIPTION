@@ -18,6 +18,8 @@ Imports:
 	lda (>= 1.4.2),
 	RColorBrewer (>= 1.1-2)
 Suggests:
-	tosca (>= 0.1-4)
+	parallel,
+	parallelMap,
+	tosca
 RoxygenNote: 6.1.1
 LazyData: true

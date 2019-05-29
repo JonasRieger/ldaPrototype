@@ -4,13 +4,10 @@
 \alias{LDABatch}
 \title{LDA Replications on a Batch System}
 \usage{
-LDABatch(id = "LDABatch", docs, vocab, n = 100, seeds, load = FALSE,
+LDABatch(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE,
   chunk.size = 1, resources, ...)
 }
 \arguments{
-\item{id}{[\code{character(1)}]\cr
-Name for the registry's folder.}
-
 \item{docs}{[\code{list}]\cr
 Documents as received from \code{\link[tosca]{LDAprep}}.}
 
@@ -22,6 +19,9 @@ Number of Replications.}
 
 \item{seeds}{[\code{integer(n)}]\cr
 Random Seeds for each Replication.}
+
+\item{id}{[\code{character(1)}]\cr
+Name for the registry's folder.}
 
 \item{load}{[\code{logical(1)}]\cr
 If a folder with name \code{id} exists: should the existing registry be loaded?}

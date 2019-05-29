@@ -4,7 +4,8 @@
 \alias{LDARep}
 \title{LDA Replications}
 \usage{
-LDARep(docs, vocab, n = 100, seeds)
+LDARep(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
+  ...)
 }
 \arguments{
 \item{docs}{[\code{list}]\cr
@@ -18,6 +19,18 @@ Number of Replications.}
 
 \item{seeds}{[\code{integer(n)}]\cr
 Random Seeds for each Replication.}
+
+\item{id}{[\code{character(1)}]\cr
+Name for the computation and prefix for the replication's ids.}
+
+\item{pm.backend}{[\code{character(1)}]\cr
+One of \"multicore\", \"socket\" or \"mpi\".
+If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
+called before computation is started and \code{\link[parallelMap]{parallelStop}}
+is called after.}
+
+\item{ncpus}{[\code{integer(1)}]\cr
+Number of (physical) CPUs to use.}
 }
 \value{
 [\code{named list}]

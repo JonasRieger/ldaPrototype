@@ -4,8 +4,9 @@
 \alias{getJob}
 \alias{getID}
 \alias{getRegistry}
+\alias{getLDA}
 \alias{setFileDir}
-\title{Getter and Setter for LDABatch}
+\title{Getter and Setter for LDARep and LDABatch}
 \usage{
 getJob(x)
 
@@ -13,20 +14,24 @@ getID(x)
 
 getRegistry(x)
 
+getLDA(x)
+
 setFileDir(x, file.dir)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
-\code{\link{LDABatch}} object.}
+\code{\link{LDABatch}} or \code{\link{LDARep}} object.}
 
 \item{file.dir}{[\code{character(1)}]\cr
 New file directory to overwrite the registry's old one. This can be useful
 if the registry is transferred from a batch system.}
 }
 \description{
-Returns the job ids and its parameter set (\code{getJob}), the registry's
-id (\code{getID}) or the registry itself (\code{getRegistry}) for a
-\code{\link{LDABatch}} object.\cr
+Returns the job ids and its parameter set (\code{getJob}) or the (registry's)
+id (\code{getID}) for a \code{\link{LDABatch}} or \code{\link{LDARep}} object
+\code{getRegistry} returns the registry itself for a \code{\link{LDABatch}}
+object. \code{getLDA} returns the list of \code{\link{LDA}} objects for a
+\code{\link{LDARep}} object\cr
 Sets the registry's file directory (\code{setFilDir}) for a
 \code{\link{LDABatch}} object.
 }

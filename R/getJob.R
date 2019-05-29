@@ -1,20 +1,27 @@
-#' @title Getter and Setter for LDABatch
+#' @title Getter and Setter for LDARep and LDABatch
 #'
 #' @description
-#' Returns the job ids and its parameter set (\code{getJob}), the registry's
-#' id (\code{getID}) or the registry itself (\code{getRegistry}) for a
-#' \code{\link{LDABatch}} object.\cr
+#' Returns the job ids and its parameter set (\code{getJob}) or the (registry's)
+#' id (\code{getID}) for a \code{\link{LDABatch}} or \code{\link{LDARep}} object
+#' \code{getRegistry} returns the registry itself for a \code{\link{LDABatch}}
+#' object. \code{getLDA} returns the list of \code{\link{LDA}} objects for a
+#' \code{\link{LDARep}} object\cr
 #' Sets the registry's file directory (\code{setFilDir}) for a
 #' \code{\link{LDABatch}} object.
 #'
 #' @param x [\code{named list}]\cr
-#' \code{\link{LDABatch}} object.
+#' \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 
 #' @export getJob
 getJob = function(x) UseMethod("getJob")
 
 #' @export
 getJob.LDABatch = function(x){
+  x$jobs
+}
+
+#' @export
+getJob.LDARep = function(x){
   x$jobs
 }
 
@@ -27,6 +34,11 @@ getID.LDABatch = function(x){
   x$id
 }
 
+#' @export
+getID.LDARep = function(x){
+  x$id
+}
+
 #' @rdname getJob
 #' @export getRegistry
 getRegistry = function(x) UseMethod("getRegistry")
@@ -34,6 +46,15 @@ getRegistry = function(x) UseMethod("getRegistry")
 #' @export
 getRegistry.LDABatch = function(x){
   x$reg
+}
+
+#' @rdname getJob
+#' @export getLDA
+getLDA = function(x) UseMethod("getLDA")
+
+#' @export
+getLDA.LDARep = function(x){
+  x$lda
 }
 
 #' @param file.dir [\code{character(1)}]\cr
