@@ -60,7 +60,7 @@ as.LDARep = function(lda, job, id){
 is.LDARep = function(obj, verbose = FALSE){
 
   if (!inherits(obj, "LDARep")){
-    if (verbose) message("object is not of class \"LDABatch\"")
+    if (verbose) message("object is not of class \"LDARep\"")
     return(FALSE)
   }
 
@@ -69,7 +69,51 @@ is.LDARep = function(obj, verbose = FALSE){
     return(FALSE)
   }
 
+  testNames = c("id", "jobs", "lda")
 
+  if (length(setdiff(names(obj), testNames)) != 0  ||
+      length(intersect(names(obj), testNames)) != 3){
+    if (verbose) message("object does not contain exactly the list elements of a \"LDARep\" object")
+    return(FALSE)
+  }
+
+  if (verbose) message("lda: ", appendLF = FALSE)
+  lda = getLDA(obj)
+  if(!is.list(lda)){
+    if (verbose) message("not a list")
+    return(FALSE)
+  }
+  if(!all(sapply(lda, is.LDA))){
+    if (verbose) message("not all elements are \"LDA\" objects")
+    return(FALSE)
+  }
+  if (verbose) message("checked")
+
+  if (verbose) message("jobs: ", appendLF = FALSE)
+  job = getJob(obj)
+  if (!data.table::is.data.table(job) ||
+      !all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
+    if (verbose) message("not a data.table with standard parameters")
+    return(FALSE)
+    if (!all(intersect(job$job.id, names(lda)) %in% union(job$job.id, names(lda))) ||
+        nrow(job) != length(lda)){
+      if (verbose) message("names of LDAs and \"job.id\" do not fit together")
+      return(FALSE)
+    }
+    if (anyDuplicated(job$job.id) || anyDuplicated(names(lda))){
+      if (verbose) message("duplicated LDA names or \"job.id\"")
+      return(FALSE)
+    }
+  }
+  if (verbose) message("checked")
+
+  if (verbose) message("id: ", appendLF = FALSE)
+  id = getID(obj)
+  if (!is.character(id) || !(length(id) == 1)){
+    if (verbose) message("not a character of length 1")
+    return(FALSE)
+  }
+  if (verbose) message("checked")
 
   return(TRUE)
 }

@@ -58,7 +58,7 @@ is.LDABatch = function(obj, verbose = FALSE){
 
   if (length(setdiff(names(obj), testNames)) != 0  ||
       length(intersect(names(obj), testNames)) != 3){
-    if (verbose) message("object does not contain exactly the list elements of an \"LDABatch\" object")
+    if (verbose) message("object does not contain exactly the list elements of a \"LDABatch\" object")
     return(FALSE)
   }
 
