@@ -60,15 +60,16 @@ mergeBatchTopics.default = function(vocab, reg, job, id, progress = TRUE){
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)
 
+  pb = .makeProgressBar(progress = progress,
+    total = length(topicList)+1, format = "Merge [:bar] :percent eta: :eta")
   topics = matrix(nrow = length(vocab), ncol = N)
   counter = 0
   mode(topics) = "integer"
   colnames(topics) = rep("", ncol(topics))
   rownames(topics) = vocab
+  pb$tick()
 
   k = 1
-  pb = .makeProgressBar(progress = progress,
-    total = length(topicList), format = "Merge [:bar] :percent eta: :eta")
   for(l in topicList){
     topics[match(colnames(l), vocab), seq_len(Ntopic[k]) + counter] = t(l)
     colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, job$job.id[k], ".", seq_len(Ntopic[k]))
