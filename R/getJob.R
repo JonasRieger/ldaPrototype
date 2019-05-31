@@ -17,8 +17,9 @@
 #' @param reduce [\code{logical(1)}]\cr
 #' If the list of LDAs contains only one element, should the list be reduced and
 #' the single (unnamed) element be returned?
-#' @param file.dir \cr
-#' Vector to be coerced to a \code{\link[fs]{fs_path}} object.
+#' @param file.dir [Vector to be coerced to a \code{\link[fs]{fs_path}} object.]\cr
+#' New file directory to overwrite the registry's old one. This can be useful
+#' if the registry is transferred from a batch system.
 
 #' @export getJob
 getJob = function(x) UseMethod("getJob")
@@ -86,9 +87,6 @@ getLDA.LDABatch = function(x, job, reduce = TRUE){
   lda
 }
 
-#' @param file.dir [\code{character(1)}]\cr
-#' New file directory to overwrite the registry's old one. This can be useful
-#' if the registry is transferred from a batch system.
 #' @rdname getJob
 #' @export setFileDir
 setFileDir = function(x, file.dir) UseMethod("setFileDir")

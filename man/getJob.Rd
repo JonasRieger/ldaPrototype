@@ -29,10 +29,7 @@ A data.frame or data.table with a column named "job.id" or a vector of integeris
 If the list of LDAs contains only one element, should the list be reduced and
 the single (unnamed) element be returned?}
 
-\item{file.dir}{\cr
-Vector to be coerced to a \code{\link[fs]{fs_path}} object.}
-
-\item{file.dir}{[\code{character(1)}]\cr
+\item{file.dir}{[Vector to be coerced to a \code{\link[fs]{fs_path}} object.]\cr
 New file directory to overwrite the registry's old one. This can be useful
 if the registry is transferred from a batch system.}
 }
