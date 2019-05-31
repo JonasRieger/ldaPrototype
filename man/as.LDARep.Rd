@@ -7,7 +7,7 @@
 \alias{is.LDARep}
 \title{LDARep Constructor}
 \usage{
-as.LDARep(x, lda, job, id)
+as.LDARep(...)
 
 \method{as.LDARep}{default}(lda, job, id)
 
@@ -16,9 +16,6 @@ as.LDARep(x, lda, job, id)
 is.LDARep(obj, verbose = FALSE)
 }
 \arguments{
-\item{x}{[\code{named list}]\cr
-\code{\link{LDABatch}} or \code{\link{LDARep}} object.}
-
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id" (\code{integerish}).}
 
@@ -29,6 +26,9 @@ and "num.iterations" or a named vector with entries "K", "alpha", "eta" and
 
 \item{id}{[\code{character(1)}]\cr
 A name for the computation. If not passed, is set to "LDARep".}
+
+\item{x}{[\code{named list}]\cr
+\code{\link{LDABatch}} or \code{\link{LDARep}} object.}
 }
 \value{
 [\code{named list}] with entries \code{id} for computation's name,

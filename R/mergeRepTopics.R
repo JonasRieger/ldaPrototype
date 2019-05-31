@@ -14,28 +14,31 @@
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
 #' @param @param id [\code{character(1)}]\cr
 #' Name for the computation. Default is "LDARep".
+#' @param progress [\code{logical(1)}]\cr
+#' Should a nice progress bar be shown? Turning it off, could lead to significantly
+#' faster calculation. Default ist \code{TRUE}.
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
 #' #TODO
 #'
 #' @export mergeRepTopics
-mergeRepTopics = function(x, vocab, lda, id) UseMethod("mergeRepTopics")
+mergeRepTopics = function(...) UseMethod("mergeRepTopics")
 
 #' @rdname mergeRepTopics
 #' @export
-mergeRepTopics.LDARep = function(x, vocab){
+mergeRepTopics.LDARep = function(x, vocab, progress = TRUE){
 
   if (!is.LDARep(x)){
     stop("object is not a \"LDARep\" object")
   }
 
-  mergeRepTopics.default(vocab = vocab, lda = getLDA(x), id = getID(x))
+  mergeRepTopics.default(vocab = vocab, lda = getLDA(x), id = getID(x), progress = progress)
 }
 
 #' @rdname mergeRepTopics
 #' @export
-mergeRepTopics.default = function(vocab, lda, id){
+mergeRepTopics.default = function(vocab, lda, id, progress = TRUE){
 
   if (missing(id)) id = "LDARep"
   Nlda = length(lda)
@@ -51,11 +54,14 @@ mergeRepTopics.default = function(vocab, lda, id){
   name = names(lda)
 
   k = 1
+  pb = .makeProgressBar(progress = progress,
+    total = length(topicList), format = "Merge [:bar] :percent eta: :eta")
   for(l in topicList){
     topics[match(colnames(l), vocab), seq_len(Ntopic[k]) + counter] = t(l)
     colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, name[k], ".", seq_len(Ntopic[k]))
     counter = counter + Ntopic[k]
     k = k + 1
+    pb$tick()
   }
   topics[is.na(topics)] = 0
   invisible(topics)

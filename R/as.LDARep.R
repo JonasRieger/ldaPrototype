@@ -23,7 +23,7 @@
 #' #TODO
 #'
 #' @export as.LDARep
-as.LDARep = function(x, lda, job, id) UseMethod("as.LDARep")
+as.LDARep = function(...) UseMethod("as.LDARep")
 
 #' @rdname as.LDARep
 #' @export

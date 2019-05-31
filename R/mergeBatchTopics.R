@@ -18,6 +18,9 @@
 #' Registry. See \code{\link[batchtools]{reduceResultsList}}.
 #' @param id [\code{character(1)}]\cr
 #' A name for the registry. If not passed, the folder's name is extracted from \code{reg}.
+#' @param progress [\code{logical(1)}]\cr
+#' Should a nice progress bar be shown? Turning it off, could lead to significantly
+#' faster calculation. Default ist \code{TRUE}.
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
@@ -25,11 +28,11 @@
 #'
 #' @export mergeBatchTopics
 
-mergeBatchTopics = function(x, vocab, reg, job, id) UseMethod("mergeBatchTopics")
+mergeBatchTopics = function(...) UseMethod("mergeBatchTopics")
 
 #' @rdname mergeBatchTopics
 #' @export
-mergeBatchTopics.LDABatch = function(x, vocab){
+mergeBatchTopics.LDABatch = function(x, vocab, progress = TRUE){
 
   if (!is.LDABatch(x)){
     stop("object is not a \"LDABatch\" object")
@@ -39,12 +42,12 @@ mergeBatchTopics.LDABatch = function(x, vocab){
   reg = getRegistry(x)
   reg = batchtools::loadRegistry(reg$file.dir)
 
-  mergeBatchTopics.default(vocab = vocab, reg = reg, job = job, id = id)
+  mergeBatchTopics.default(vocab = vocab, reg = reg, job = job, id = id, progress = progress)
 }
 
 #' @rdname mergeBatchTopics
 #' @export
-mergeBatchTopics.default = function(vocab, reg, job, id){
+mergeBatchTopics.default = function(vocab, reg, job, id, progress = TRUE){
 
   if (missing(reg)) reg = batchtools::getDefaultRegistry()
   if (missing(job)) job = batchtools::findDone(reg = reg)
@@ -53,7 +56,7 @@ mergeBatchTopics.default = function(vocab, reg, job, id){
       replacement = "", x = reg$file.dir))
   if (is.vector(job)) job = data.frame(job.id = job)
   Nlda = nrow(job)
-  topicList = batchtools::reduceResultsList(ids = job, fun = getTopics, reg = reg)
+  topicList = batchtools::reduceResultsList(ids = job, fun = function(x) getTopics(LDA(x)), reg = reg)
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)
 
@@ -64,11 +67,14 @@ mergeBatchTopics.default = function(vocab, reg, job, id){
   rownames(topics) = vocab
 
   k = 1
+  pb = .makeProgressBar(progress = progress,
+    total = length(topicList), format = "Merge [:bar] :percent eta: :eta")
   for(l in topicList){
     topics[match(colnames(l), vocab), seq_len(Ntopic[k]) + counter] = t(l)
     colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, job$job.id[k], ".", seq_len(Ntopic[k]))
     counter = counter + Ntopic[k]
     k = k + 1
+    pb$tick()
   }
   topics[is.na(topics)] = 0
   invisible(topics)

@@ -11,6 +11,9 @@
 #' \code{\link{LDARep}} object or \code{\link{LDABatch}} object.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
+#' @param progress [\code{logical(1)}]\cr
+#' Should a nice progress bar be shown? Turning it off, could lead to significantly
+#' faster calculation. Default ist \code{TRUE}.
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
@@ -18,14 +21,14 @@
 #'
 #' @export mergeTopics
 
-mergeTopics = function(x, vocab) UseMethod("mergeTopics")
+mergeTopics = function(...) UseMethod("mergeTopics")
 
 #' @export
-mergeTopics.LDABatch = function(x, vocab){
-  mergeBatchTopics(x = x, vocab = vocab)
+mergeTopics.LDABatch = function(x, vocab, progress = TRUE){
+  mergeBatchTopics(x = x, vocab = vocab, progress = progress)
 }
 
 #' @export
-mergeTopics.LDARep = function(x, vocab){
-  mergeRepTopics(x = x, vocab = vocab)
+mergeTopics.LDARep = function(x, vocab, progress = TRUE){
+  mergeRepTopics(x = x, vocab = vocab, progress = progress)
 }

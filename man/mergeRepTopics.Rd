@@ -6,11 +6,11 @@
 \alias{mergeRepTopics.default}
 \title{Merge LDA Topic Matrices}
 \usage{
-mergeRepTopics(x, vocab, lda, id)
+mergeRepTopics(...)
 
-\method{mergeRepTopics}{LDARep}(x, vocab)
+\method{mergeRepTopics}{LDARep}(x, vocab, progress = TRUE)
 
-\method{mergeRepTopics}{default}(vocab, lda, id)
+\method{mergeRepTopics}{default}(vocab, lda, id, progress = TRUE)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
@@ -18,6 +18,10 @@ mergeRepTopics(x, vocab, lda, id)
 
 \item{vocab}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}
+
+\item{progress}{[\code{logical(1)}]\cr
+Should a nice progress bar be shown? Turning it off, could lead to significantly
+faster calculation. Default ist \code{TRUE}.}
 
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}

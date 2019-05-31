@@ -6,11 +6,11 @@
 \alias{mergeBatchTopics.default}
 \title{Merge LDA Topic Matrices}
 \usage{
-mergeBatchTopics(x, vocab, reg, job, id)
+mergeBatchTopics(...)
 
-\method{mergeBatchTopics}{LDABatch}(x, vocab)
+\method{mergeBatchTopics}{LDABatch}(x, vocab, progress = TRUE)
 
-\method{mergeBatchTopics}{default}(vocab, reg, job, id)
+\method{mergeBatchTopics}{default}(vocab, reg, job, id, progress = TRUE)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
@@ -19,6 +19,10 @@ mergeBatchTopics(x, vocab, reg, job, id)
 
 \item{vocab}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}
+
+\item{progress}{[\code{logical(1)}]\cr
+Should a nice progress bar be shown? Turning it off, could lead to significantly
+faster calculation. Default ist \code{TRUE}.}
 
 \item{reg}{[\code{\link[batchtools]{Registry}}]\cr
 Registry. See \code{\link[batchtools]{reduceResultsList}}.}
