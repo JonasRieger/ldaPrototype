@@ -48,11 +48,12 @@ mergeRepTopics.default = function(vocab, lda, id){
   mode(topics) = "integer"
   colnames(topics) = rep("", ncol(topics))
   rownames(topics) = vocab
+  name = names(lda)
 
   k = 1
   for(l in topicList){
     topics[match(colnames(l), vocab), seq_len(Ntopic[k]) + counter] = t(l)
-    colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, job$job.id[k], ".", seq_len(Ntopic[k]))
+    colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, name[k], ".", seq_len(Ntopic[k]))
     counter = counter + Ntopic[k]
     k = k + 1
   }
