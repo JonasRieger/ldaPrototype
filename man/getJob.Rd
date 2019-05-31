@@ -27,7 +27,7 @@ A data.frame or data.table with a column named "job.id" or a vector of integeris
 
 \item{reduce}{[\code{logical(1)}]\cr
 If the list of LDAs contains only one element, should the list be reduced and
-the single (unnamed) element be returned?}
+the single (unnamed) element be returned? Default is \code{TRUE}.}
 
 \item{file.dir}{[Vector to be coerced to a \code{\link[fs]{fs_path}} object.]\cr
 New file directory to overwrite the registry's old one. This can be useful
