@@ -41,11 +41,7 @@ mergeRepTopics.LDARep = function(x, vocab, progress = TRUE){
 mergeRepTopics.default = function(vocab, lda, id, progress = TRUE){
 
   if (missing(id)) id = "LDARep"
-  pb = .makeProgressBar(progress = progress,
-    total = length(lda), format = "Reducing [:bar] :percent eta: :eta")
-  topicList = lapply(lda, function(x){
-    pb$tick()
-    getTopics(x)})
+  topicList = lapply(lda, getTopics)
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)
 
