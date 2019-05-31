@@ -26,7 +26,7 @@
 #'
 #' @export jaccardTopics
 
-jaccardTopics = function(topics, limit.rel = 1/200, limit.abs = 10, progress = TRUE){
+jaccardTopics = function(topics, limit.rel = 1/500, limit.abs = 10, progress = TRUE){
 
   N = ncol(topics)
   index = apply(topics, 2, function(x) x > (sum(x) * limit.rel))

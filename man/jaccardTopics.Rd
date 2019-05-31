@@ -4,7 +4,7 @@
 \alias{jaccardTopics}
 \title{Pairwise Jaccard Coefficients}
 \usage{
-jaccardTopics(topics, limit.rel = 1/200, limit.abs = 10,
+jaccardTopics(topics, limit.rel = 1/500, limit.abs = 10,
   progress = TRUE)
 }
 \arguments{
