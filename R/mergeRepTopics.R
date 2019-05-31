@@ -7,32 +7,55 @@
 #' @details
 #'
 #' @param x [\code{named list}]\cr
-#' Output from \code{\link{LDARep}}.
+#' \code{\link{LDARep}} object. Alternatively \code{lda} and \code{id} can be passed.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
 #' @param lda [\code{named list}]\cr
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
+#' @param @param id [\code{character(1)}]\cr
+#' Name for the computation. Default is "LDARep".
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
 #' #TODO
 #'
 #' @export mergeRepTopics
-mergeRepTopics = function(x, vocab, lda) UseMethod("mergeRepTopics")
+mergeRepTopics = function(x, vocab, lda, id) UseMethod("mergeRepTopics")
 
 #' @rdname mergeRepTopics
 #' @export
 mergeRepTopics.LDARep = function(x, vocab){
 
   if (!is.LDARep(x)){
-    stop("TEXT")
+    stop("object is not a \"LDARep\" object")
   }
 
+  mergeRepTopics.default(vocab = vocab, lda = getLDA(x), id = getID(x))
 }
 
 #' @rdname mergeRepTopics
 #' @export
-mergeRepTopics.default = function(vocab, lda){
+mergeRepTopics.default = function(vocab, lda, id){
 
+  if (missing(id)) id = "LDARep"
+  Nlda = length(lda)
+  topicList = lapply(lda, getTopics)
+  Ntopic = sapply(topicList, nrow)
+  N = sum(Ntopic)
 
+  topics = matrix(nrow = length(vocab), ncol = N)
+  counter = 0
+  mode(topics) = "integer"
+  colnames(topics) = rep("", ncol(topics))
+  rownames(topics) = vocab
+
+  k = 1
+  for(l in topicList){
+    topics[match(colnames(l), vocab), seq_len(Ntopic[k]) + counter] = t(l)
+    colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, job$job.id[k], ".", seq_len(Ntopic[k]))
+    counter = counter + Ntopic[k]
+    k = k + 1
+  }
+  topics[is.na(topics)] = 0
+  invisible(topics)
 }

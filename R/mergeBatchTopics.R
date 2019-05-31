@@ -32,7 +32,7 @@ mergeBatchTopics = function(x, vocab, reg, job, id) UseMethod("mergeBatchTopics"
 mergeBatchTopics.LDABatch = function(x, vocab){
 
   if (!is.LDABatch(x)){
-    stop("object is not a LDABatch object")
+    stop("object is not a \"LDABatch\" object")
   }
   id = getID(x)
   job = getJob(x)
@@ -53,7 +53,7 @@ mergeBatchTopics.default = function(vocab, reg, job, id){
       replacement = "", x = reg$file.dir))
   if (is.vector(job)) job = data.frame(job.id = job)
   Nlda = nrow(job)
-  topicList = batchtools::reduceResultsList(ids = job, fun = function(x) x$topics, reg = reg)
+  topicList = batchtools::reduceResultsList(ids = job, fun = getTopics, reg = reg)
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)
 

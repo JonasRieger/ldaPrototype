@@ -6,21 +6,24 @@
 \alias{mergeRepTopics.default}
 \title{Merge LDA Topic Matrices}
 \usage{
-mergeRepTopics(x, vocab, lda)
+mergeRepTopics(x, vocab, lda, id)
 
 \method{mergeRepTopics}{LDARep}(x, vocab)
 
-\method{mergeRepTopics}{default}(vocab, lda)
+\method{mergeRepTopics}{default}(vocab, lda, id)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
-Output from \code{\link{LDARep}}.}
+\code{\link{LDARep}} object. Alternatively \code{lda} and \code{id} can be passed.}
 
 \item{vocab}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}
 
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
+
+\item{@param}{id [\code{character(1)}]\cr
+Name for the computation. Default is "LDARep".}
 }
 \value{
 [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
