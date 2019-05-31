@@ -20,16 +20,15 @@ is.LDARep(obj, verbose = FALSE)
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}
 
 \item{lda}{[\code{named list}]\cr
-List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
+List of \code{\link{LDA}} objects, named by the corresponding "job.id" (\code{integerish}).}
 
 \item{job}{[\code{\link{data.frame}} or \code{named vector}]\cr
-A data.frame or data.table with named columns "job.id", "K", "alpha", "eta"
+A data.frame or data.table with named columns "job.id" (\code{integerish}), "K", "alpha", "eta"
 and "num.iterations" or a named vector with entries "K", "alpha", "eta" and
 "num.iterations".}
 
 \item{id}{[\code{character(1)}]\cr
-A name for the computation. If not passed, the prefix (everything before the
-first dot) from \code{names(lda)} is extracted, if applicable. Else is set to "LDARep".}
+A name for the computation. If not passed, is set to "LDARep".}
 }
 \value{
 [\code{named list}] with entries \code{id} for computation's name,

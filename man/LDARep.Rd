@@ -21,7 +21,7 @@ Number of Replications.}
 Random Seeds for each Replication.}
 
 \item{id}{[\code{character(1)}]\cr
-Name for the computation and prefix for the replication's ids.}
+Name for the computation.}
 
 \item{pm.backend}{[\code{character(1)}]\cr
 One of "multicore", "socket" or "mpi".

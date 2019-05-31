@@ -29,7 +29,7 @@ as.LDABatch = function(reg, job, id){
   }
   reg = batchtools::loadRegistry(reg$file.dir)
   if (missing(job)) job = batchtools::findJobs(reg = reg)
-  if (is.vector(job)) job = data.frame(job.id = job)
+  if (is.vector(job)) job = data.frame(job.id = as.integer(job))
   job = batchtools::flatten(batchtools::getJobPars(ids = job$job.id, reg = reg))
   if (missing(id))
     id = as.character(gsub(pattern = trimws(file.path(reg$work.dir, " ")),
@@ -71,7 +71,11 @@ is.LDABatch = function(obj, verbose = FALSE){
   if (verbose) message("jobs: ", appendLF = FALSE)
   job = getJob(obj)
   if (!data.table::is.data.table(job) || !("job.id" %in% colnames(job))){
-    if (verbose) message("not a data.table with element job.id")
+    if (verbose) message("not a data.table with element \"job.id\"")
+    return(FALSE)
+  }
+  if (!is.integer(job$job.id)){
+    if (verbose) message("\"job.id\" is not integerish")
     return(FALSE)
   }
   if (verbose) message("checked")

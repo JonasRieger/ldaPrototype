@@ -5,7 +5,7 @@
 \alias{getAssignments}
 \alias{getDocument_sums}
 \alias{getDocument_expects}
-\alias{getLog_likelihoods}
+\alias{getLog.likelihoods}
 \title{Getter for LDA}
 \usage{
 getTopics(x)
@@ -16,7 +16,7 @@ getDocument_sums(x)
 
 getDocument_expects(x)
 
-getLog_likelihoods(x)
+getLog.likelihoods(x)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr

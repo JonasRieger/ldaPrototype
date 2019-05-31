@@ -14,13 +14,23 @@ getID(x)
 
 getRegistry(x)
 
-getLDA(x)
+getLDA(x, job, reduce)
 
 setFileDir(x, file.dir)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}
+
+\item{job}{[\code{\link{data.frame}} or \code{integer}]\cr
+A data.frame or data.table with a column named "job.id" or a vector of integerish job ids.}
+
+\item{reduce}{[\code{logical(1)}]\cr
+If the list of LDAs contains only one element, should the list be reduced and
+the single (unnamed) element be returned?}
+
+\item{file.dir}{\cr
+Vector to be coerced to a \code{\link[fs]{fs_path}} object.}
 
 \item{file.dir}{[\code{character(1)}]\cr
 New file directory to overwrite the registry's old one. This can be useful
@@ -31,7 +41,8 @@ Returns the job ids and its parameter set (\code{getJob}) or the (registry's)
 id (\code{getID}) for a \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 \code{getRegistry} returns the registry itself for a \code{\link{LDABatch}}
 object. \code{getLDA} returns the list of \code{\link{LDA}} objects for a
-\code{\link{LDARep}} object.\cr
+\code{\link{LDABatch}} or \code{\link{LDARep}} object. In addition, you can
+specify one or more LDAs by their id(s).\cr
 \code{setFilDir} sets the registry's file directory for a
 \code{\link{LDABatch}} object.
 }

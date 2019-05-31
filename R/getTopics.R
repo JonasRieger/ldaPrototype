@@ -42,10 +42,10 @@ getDocument_expects.LDA = function(x){
 }
 
 #' @rdname getTopics
-#' @export getLog_likelihoods
-getLog_likelihoods = function(x) UseMethod("getLog_likelihoods")
+#' @export getLog.likelihoods
+getLog.likelihoods = function(x) UseMethod("getLog.likelihoods")
 
 #' @export
-getLog_likelihoods.LDA = function(x){
+getLog.likelihoods.LDA = function(x){
   x$log.likelihoods
 }
