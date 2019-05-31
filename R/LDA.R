@@ -182,7 +182,7 @@ is.LDA = function(obj, verbose = FALSE){
   if (verbose) message("checked")
 
   if (verbose) message("log.likelihoods: ", appendLF = FALSE)
-  log.likelihoods = getLog_likelihoods(obj)
+  log.likelihoods = getLog.likelihoods(obj)
   if (!is.null(log.likelihoods)){
     if (!is.matrix(log.likelihoods)){
       if (verbose) message("not a matrix")

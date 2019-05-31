@@ -61,7 +61,7 @@ as.LDARep.default = function(lda, job, id){
 as.LDARep.LDABatch = function(x){
 
   lda = getLDA(x)
-  jobs = getJob(x)
+  job = getJob(x)
   id = getID(x)
 
   res = list(id = id, lda = lda, jobs = job)
