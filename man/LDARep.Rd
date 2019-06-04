@@ -31,6 +31,9 @@ is called after.}
 
 \item{ncpus}{[\code{integer(1)}]\cr
 Number of (physical) CPUs to use.}
+
+\item{...}{additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+Arguments will be coerced to a vector of length \code{n}.}
 }
 \value{
 [\code{named list}] with entries \code{id} for computation's name,

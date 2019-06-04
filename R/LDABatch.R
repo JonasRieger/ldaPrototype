@@ -23,8 +23,7 @@
 #' @param resources [\code{named list}]\cr
 #' Computational resources for the jobs to submit. See \code{\link[batchtools]{submitJobs}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-#' Arguments may be passed as scalar (which will be coerced to a vector of length \code{n})
-#' or vector of length \code{n}.
+#' Arguments will be coerced to a vector of length \code{n}.
 #' @return [\code{named list}] with entries \code{id} for the registry's folder name,
 #' \code{jobs} for the submitted jobs' ids and its parameter settings and
 #' \code{reg} for the registry itself.

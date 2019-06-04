@@ -33,8 +33,7 @@ Requested number of chunks. See \code{\link[batchtools]{chunk}}.}
 Computational resources for the jobs to submit. See \code{\link[batchtools]{submitJobs}}.}
 
 \item{...}{additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-Arguments may be passed as scalar (which will be coerced to a vector of length \code{n})
-or vector of length \code{n}.}
+Arguments will be coerced to a vector of length \code{n}.}
 }
 \value{
 [\code{named list}] with entries \code{id} for the registry's folder name,

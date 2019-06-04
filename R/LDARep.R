@@ -22,6 +22,8 @@
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
 #' Number of (physical) CPUs to use.
+#' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+#' Arguments will be coerced to a vector of length \code{n}.
 #' @return [\code{named list}] with entries \code{id} for computation's name,
 #' \code{jobs} for the parameter settings and \code{lda} for the results itself.
 #'
