@@ -10,7 +10,7 @@ mergeRepTopics(...)
 
 \method{mergeRepTopics}{LDARep}(x, vocab, progress = TRUE)
 
-\method{mergeRepTopics}{default}(lda, vocab, id, progress = TRUE)
+\method{mergeRepTopics}{default}(lda, vocab, id, progress = TRUE, ...)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr

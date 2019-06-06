@@ -41,7 +41,7 @@ mergeRepTopics.LDARep = function(x, vocab, progress = TRUE){
 
 #' @rdname mergeRepTopics
 #' @export
-mergeRepTopics.default = function(lda, vocab, id, progress = TRUE){
+mergeRepTopics.default = function(lda, vocab, id, progress = TRUE, ...){
 
   if (missing(id)) id = "LDARep"
   topicList = lapply(lda, getTopics)
