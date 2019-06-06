@@ -33,12 +33,15 @@ mergeRepTopics.LDARep = function(x, vocab, progress = TRUE){
     stop("object is not a \"LDARep\" object")
   }
 
-  mergeRepTopics.default(vocab = vocab, lda = getLDA(x), id = getID(x), progress = progress)
+  lda = getLDA(x)
+  id = getID(x)
+
+  NextMethod("mergeRepTopics", lda = lda, vocab = vocab, id = id, progress = progress)
 }
 
 #' @rdname mergeRepTopics
 #' @export
-mergeRepTopics.default = function(vocab, lda, id, progress = TRUE){
+mergeRepTopics.default = function(lda, vocab, id, progress = TRUE){
 
   if (missing(id)) id = "LDARep"
   topicList = lapply(lda, getTopics)

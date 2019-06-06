@@ -25,10 +25,10 @@ mergeTopics = function(...) UseMethod("mergeTopics")
 
 #' @export
 mergeTopics.LDABatch = function(x, vocab, progress = TRUE){
-  mergeBatchTopics(x = x, vocab = vocab, progress = progress)
+  NextMethod("mergeBatchTopics")
 }
 
 #' @export
 mergeTopics.LDARep = function(x, vocab, progress = TRUE){
-  mergeRepTopics(x = x, vocab = vocab, progress = progress)
+  NextMethod("mergeRepTopics")
 }

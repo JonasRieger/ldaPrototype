@@ -10,7 +10,8 @@ mergeBatchTopics(...)
 
 \method{mergeBatchTopics}{LDABatch}(x, vocab, progress = TRUE)
 
-\method{mergeBatchTopics}{default}(vocab, reg, job, id, progress = TRUE)
+\method{mergeBatchTopics}{default}(vocab, reg, job, id, progress = TRUE,
+  ...)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr

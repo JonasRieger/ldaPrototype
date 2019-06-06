@@ -42,12 +42,12 @@ mergeBatchTopics.LDABatch = function(x, vocab, progress = TRUE){
   reg = getRegistry(x)
   reg = batchtools::loadRegistry(reg$file.dir)
 
-  mergeBatchTopics.default(vocab = vocab, reg = reg, job = job, id = id, progress = progress)
+  NextMethod("mergeBatchTopics", vocab = vocab, reg = reg, job = job, id = id, progress = progress)
 }
 
 #' @rdname mergeBatchTopics
 #' @export
-mergeBatchTopics.default = function(vocab, reg, job, id, progress = TRUE){
+mergeBatchTopics.default = function(vocab, reg, job, id, progress = TRUE, ...){
 
   if (missing(reg)) reg = batchtools::getDefaultRegistry()
   if (missing(job)) job = batchtools::findDone(reg = reg)
