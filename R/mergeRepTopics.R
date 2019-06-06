@@ -27,7 +27,7 @@ mergeRepTopics = function(...) UseMethod("mergeRepTopics")
 
 #' @rdname mergeRepTopics
 #' @export
-mergeRepTopics.LDARep = function(x, vocab, progress = TRUE){
+mergeRepTopics.LDARep = function(x, vocab, progress = TRUE, ...){
 
   if (!is.LDARep(x)){
     stop("object is not a \"LDARep\" object")

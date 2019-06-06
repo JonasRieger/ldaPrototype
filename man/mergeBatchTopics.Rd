@@ -8,7 +8,7 @@
 \usage{
 mergeBatchTopics(...)
 
-\method{mergeBatchTopics}{LDABatch}(x, vocab, progress = TRUE)
+\method{mergeBatchTopics}{LDABatch}(x, vocab, progress = TRUE, ...)
 
 \method{mergeBatchTopics}{default}(vocab, reg, job, id, progress = TRUE,
   ...)

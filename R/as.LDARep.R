@@ -27,7 +27,7 @@ as.LDARep = function(...) UseMethod("as.LDARep")
 
 #' @rdname as.LDARep
 #' @export
-as.LDARep.default = function(lda, job, id){
+as.LDARep.default = function(lda, job, id, ...){
 
   if (missing(id)) id = "LDARep"
   if (is.vector(job)){
@@ -58,7 +58,7 @@ as.LDARep.default = function(lda, job, id){
 
 #' @rdname as.LDARep
 #' @export
-as.LDARep.LDABatch = function(x){
+as.LDARep.LDABatch = function(x, ...){
 
   lda = getLDA(x)
   job = getJob(x)
@@ -70,7 +70,7 @@ as.LDARep.LDABatch = function(x){
 }
 
 #' @export
-as.LDARep.LDARep = function(x){
+as.LDARep.LDARep = function(x, ...){
   invisible(x)
 }
 

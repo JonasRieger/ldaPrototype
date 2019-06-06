@@ -9,9 +9,9 @@
 \usage{
 as.LDARep(...)
 
-\method{as.LDARep}{default}(lda, job, id)
+\method{as.LDARep}{default}(lda, job, id, ...)
 
-\method{as.LDARep}{LDABatch}(x)
+\method{as.LDARep}{LDABatch}(x, ...)
 
 is.LDARep(obj, verbose = FALSE)
 }

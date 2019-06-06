@@ -32,7 +32,7 @@ mergeBatchTopics = function(...) UseMethod("mergeBatchTopics")
 
 #' @rdname mergeBatchTopics
 #' @export
-mergeBatchTopics.LDABatch = function(x, vocab, progress = TRUE){
+mergeBatchTopics.LDABatch = function(x, vocab, progress = TRUE, ...){
 
   if (!is.LDABatch(x)){
     stop("object is not a \"LDABatch\" object")
