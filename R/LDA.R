@@ -207,7 +207,7 @@ is.LDA = function(obj, verbose = FALSE){
 }
 
 #' @export
-print.LDA = function(x){
+print.LDA = function(x, ...){
   val = .getValues.LDA(x)
   like = ifelse(val[5], paste0("\n Computed Log-Likelihoods of ", val[6], " Iterations"), "")
   elements = paste0("\"", names(which(!sapply(x, is.null))), "\"")

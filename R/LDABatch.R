@@ -69,7 +69,7 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
   if (missing(seeds) || length(seeds) != n){
     message("No seeds given or length of given seeds differs from number of replications: sample seeds")
     if (!exists(".Random.seed", envir = globalenv())){
-      runif(1)
+      stats::runif(1)
     }
     oldseed = .Random.seed
     seeds = sample(9999999, n)
@@ -104,7 +104,7 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
 }
 
 #' @export
-print.LDABatch = function(x){
+print.LDABatch = function(x, ...){
   jobs = getJob(x)
   chunked = ifelse("chunk" %in% colnames(jobs), "Chunked ", "")
   parameters = unique(jobs[, !colnames(jobs) %in% c("job.id", "chunk", "seed"), with = FALSE])

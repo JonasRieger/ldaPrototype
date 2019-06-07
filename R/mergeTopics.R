@@ -7,8 +7,13 @@
 #'
 #' @details
 #'
-#' @param ... Arguments \code{x}, \code{vocab} and \code{progress} for
-#' \code{\link{mergeRepTopics}} or \code{\link{mergeBatchTopics}}.
+#' @param x [\code{named list}]\cr
+#' \code{\link{LDARep}} or \code{\link{LDABatch}} object.
+#' @param vocab [\code{character}]\cr
+#' Vocabularies taken into consideration for merging topic matrices.
+#' @param progress [\code{logical(1)}]\cr
+#' Should a nice progress bar be shown? Turning it off, could lead to significantly
+#' faster calculation. Default ist \code{TRUE}.
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples
@@ -16,7 +21,7 @@
 #'
 #' @export mergeTopics
 
-mergeTopics = function(...) UseMethod("mergeTopics")
+mergeTopics = function(x, vocab, progress = TRUE) UseMethod("mergeTopics")
 
 #' @export
 mergeTopics.LDABatch = function(x, vocab, progress = TRUE){

@@ -38,7 +38,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   if (missing(seeds) || length(seeds) != n){
     message("No seeds given or length of given seeds differs from number of replications: sample seeds")
     if (!exists(".Random.seed", envir = globalenv())){
-      runif(1)
+      stats::runif(1)
     }
     oldseed = .Random.seed
     seeds = sample(9999999, n)
@@ -71,7 +71,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
 }
 
 #' @export
-print.LDARep = function(x){
+print.LDARep = function(x, ...){
   jobs = getJob(x)
   parameters = unique(jobs[, !colnames(jobs) %in% c("job.id", "seed"), with = FALSE])
   if (nrow(parameters) == 1){
