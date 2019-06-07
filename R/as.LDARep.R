@@ -16,6 +16,11 @@
 #' "num.iterations".
 #' @param id [\code{character(1)}]\cr
 #' A name for the computation. If not passed, is set to "LDARep".
+#' @param obj [\code{R} object]\cr
+#' Object to test.
+#' @param verbose [\code{integer(1)}]\cr
+#' Should test information be given in the console?
+#' @param ... additional arguments
 #' @return [\code{named list}] with entries \code{id} for computation's name,
 #' \code{jobs} for the parameter settings and \code{lda} for the results themselves.
 #'

@@ -7,15 +7,8 @@
 mergeTopics(...)
 }
 \arguments{
-\item{x}{[\code{named list}]\cr
-\code{\link{LDARep}} object or \code{\link{LDABatch}} object.}
-
-\item{vocab}{[\code{character}]\cr
-Vocabularies taken into consideration for merging topic matrices.}
-
-\item{progress}{[\code{logical(1)}]\cr
-Should a nice progress bar be shown? Turning it off, could lead to significantly
-faster calculation. Default ist \code{TRUE}.}
+\item{...}{Arguments \code{x}, \code{vocab} and \code{progress} for
+\code{\link{mergeRepTopics}} or \code{\link{mergeBatchTopics}}.}
 }
 \value{
 [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).

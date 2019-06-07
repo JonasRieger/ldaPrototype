@@ -12,11 +12,12 @@
 #' Vocabularies taken into consideration for merging topic matrices.
 #' @param lda [\code{named list}]\cr
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
-#' @param @param id [\code{character(1)}]\cr
+#' @param id [\code{character(1)}]\cr
 #' Name for the computation. Default is "LDARep".
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default ist \code{TRUE}.
+#' @param ... additional arguments
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples

@@ -29,6 +29,12 @@ overwrite elements from \code{x}.}
 \item{document_expects}{Individual element for LDA object.}
 
 \item{log.likelihoods}{Individual element for LDA object.}
+
+\item{obj}{[\code{R} object]\cr
+Object to test.}
+
+\item{verbose}{[\code{integer(1)}]\cr
+Should test information be given in the console?}
 }
 \value{
 [\code{named list}] LDA object.

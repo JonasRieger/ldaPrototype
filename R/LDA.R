@@ -13,6 +13,10 @@
 #' @param document_sums Individual element for LDA object.
 #' @param document_expects Individual element for LDA object.
 #' @param log.likelihoods Individual element for LDA object.
+#' @param obj [\code{R} object]\cr
+#' Object to test.
+#' @param verbose [\code{integer(1)}]\cr
+#' Should test information be given in the console?
 #' @return [\code{named list}] LDA object.
 #'
 #' @examples

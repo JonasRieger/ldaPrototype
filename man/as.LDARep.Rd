@@ -16,6 +16,8 @@ as.LDARep(...)
 is.LDARep(obj, verbose = FALSE)
 }
 \arguments{
+\item{...}{additional arguments}
+
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id" (\code{integerish}).}
 
@@ -29,6 +31,12 @@ A name for the computation. If not passed, is set to "LDARep".}
 
 \item{x}{[\code{named list}]\cr
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}
+
+\item{obj}{[\code{R} object]\cr
+Object to test.}
+
+\item{verbose}{[\code{integer(1)}]\cr
+Should test information be given in the console?}
 }
 \value{
 [\code{named list}] with entries \code{id} for computation's name,

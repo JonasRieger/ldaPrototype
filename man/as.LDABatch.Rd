@@ -19,6 +19,12 @@ See \code{\link[batchtools]{reduceResultsList}}.}
 
 \item{id}{[\code{character(1)}]\cr
 A name for the registry. If not passed, the folder's name is extracted from \code{reg}.}
+
+\item{obj}{[\code{R} object]\cr
+Object to test.}
+
+\item{verbose}{[\code{integer(1)}]\cr
+Should test information be given in the console?}
 }
 \value{
 [\code{named list}] with entries \code{id} for the registry's folder name,

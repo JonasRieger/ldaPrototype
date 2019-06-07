@@ -13,6 +13,8 @@ mergeRepTopics(...)
 \method{mergeRepTopics}{default}(lda, vocab, id, progress = TRUE, ...)
 }
 \arguments{
+\item{...}{additional arguments}
+
 \item{x}{[\code{named list}]\cr
 \code{\link{LDARep}} object. Alternatively \code{lda} and \code{id} can be passed.}
 
@@ -26,7 +28,7 @@ faster calculation. Default ist \code{TRUE}.}
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
-\item{@param}{id [\code{character(1)}]\cr
+\item{id}{[\code{character(1)}]\cr
 Name for the computation. Default is "LDARep".}
 }
 \value{

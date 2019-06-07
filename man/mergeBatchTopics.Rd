@@ -14,6 +14,8 @@ mergeBatchTopics(...)
   ...)
 }
 \arguments{
+\item{...}{additional arguments}
+
 \item{x}{[\code{named list}]\cr
 \code{\link{LDABatch}} object. Alternatively \code{job}, \code{reg} and
 \code{id} can be passed or their defaults are taken.}

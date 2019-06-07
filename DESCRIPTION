@@ -13,9 +13,14 @@ Depends:
 Imports:
 	batchtools (>= 0.9.11),
 	data.table (>= 1.11.2),
+	dendextend,
 	fs (>= 1.2.0),
 	lda (>= 1.4.2),
-	RColorBrewer (>= 1.1-2)
+	progress (>= 1.1.1),
+	RColorBrewer (>= 1.1-2),
+	stats,
+	utils,
+	grDevices
 Suggests:
 	parallel,
 	parallelMap,
