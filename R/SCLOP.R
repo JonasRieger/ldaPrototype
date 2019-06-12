@@ -83,7 +83,7 @@ disparitySum = function(dend){
 
 #' @rdname SCLOP
 #' @param sims [\code{lower triangular named matrix}]\cr
-#' Pairwise jaccard similarities of underlying topics like
+#' Pairwise jaccard similarities of underlying topics as
 #' the output from \code{\link{jaccardTopics}}. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
