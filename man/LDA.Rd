@@ -6,11 +6,13 @@
 \alias{is.LDA}
 \title{LDA Object}
 \usage{
-LDA(x, assignments = NULL, topics = NULL, document_sums = NULL,
-  document_expects = NULL, log.likelihoods = NULL)
+LDA(x, param, assignments = NULL, topics = NULL,
+  document_sums = NULL, document_expects = NULL,
+  log.likelihoods = NULL)
 
-as.LDA(x, assignments = NULL, topics = NULL, document_sums = NULL,
-  document_expects = NULL, log.likelihoods = NULL)
+as.LDA(x, param, assignments = NULL, topics = NULL,
+  document_sums = NULL, document_expects = NULL,
+  log.likelihoods = NULL)
 
 is.LDA(obj, verbose = FALSE)
 }
@@ -19,6 +21,10 @@ is.LDA(obj, verbose = FALSE)
 Output from \code{\link[lda]{lda.collapsed.gibbs.sampler}}. Alternatively each
 element can be passed for individual results. Individually set elements
 overwrite elements from \code{x}.}
+
+\item{param}{[\code{named list}]\cr
+Parameters of the function call \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+Names must contain "K", "alpha", "eta" and "num.iterations".}
 
 \item{assignments}{Individual element for LDA object.}
 

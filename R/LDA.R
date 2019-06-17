@@ -50,11 +50,12 @@ LDA = function(x, param, assignments = NULL, topics = NULL, document_sums = NULL
 
 #' @rdname LDA
 #' @export
-as.LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
+as.LDA = function(x, param, assignments = NULL, topics = NULL, document_sums = NULL,
   document_expects = NULL, log.likelihoods = NULL){
   if (!missing(x)){
     LDA(
       x = x,
+      param = param,
       assignments = assignments,
       topics = topics,
       document_sums = document_sums,
@@ -62,6 +63,7 @@ as.LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
       log.likelihoods = log.likelihoods)
   }else{
     LDA(
+      param = param,
       assignments = assignments,
       topics = topics,
       document_sums = document_sums,
@@ -86,10 +88,12 @@ is.LDA = function(obj, verbose = FALSE){
 
   emptyLDA = LDA()
   if (length(setdiff(names(obj), names(emptyLDA))) != 0  ||
-      length(intersect(names(obj), names(emptyLDA))) != 5){
+      length(intersect(names(obj), names(emptyLDA))) != 6){
     if (verbose) message("object does not contain exactly the list elements of an \"LDA\" object")
     return(FALSE)
   }
+
+  NTopic = getK(obj)
 
   if (verbose) message("assignments: ", appendLF = FALSE)
   assignments = getAssignments(obj)
@@ -99,7 +103,9 @@ is.LDA = function(obj, verbose = FALSE){
       return(FALSE)
     }
     NDocs = lengths(assignments)
-    NTopic = max(unlist(assignments)) + 1
+    if (NTopic != max(unlist(assignments)) + 1){
+      warning("Check Assignments. Maximum of Assignments do not correspond to Number of Topics.")
+    }
     if (!all(sapply(assignments, is.integer))){
       if (verbose) message("list elements are not all integerish")
       return(FALSE)
@@ -114,11 +120,9 @@ is.LDA = function(obj, verbose = FALSE){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (exists("NTopic") && NTopic != nrow(topics)){
+    if (NTopic != nrow(topics)){
       if (verbose) message("number of topics is not consistent")
       return(FALSE)
-    }else{
-      NTopic = nrow(topics)
     }
     if (!is.integer(topics)){
       if (verbose) message("matrix is not integerish")
@@ -134,11 +138,9 @@ is.LDA = function(obj, verbose = FALSE){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (exists("NTopic") && NTopic != nrow(document_sums)){
+    if (NTopic != nrow(document_sums)){
       if (verbose) message("number of topics is not consistent")
       return(FALSE)
-    }else{
-      NTopic = nrow(document_sums)
     }
     if (exists("NDocs")){
       if (length(NDocs) != ncol(document_sums)){
@@ -166,11 +168,9 @@ is.LDA = function(obj, verbose = FALSE){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (exists("NTopic") && NTopic != nrow(document_expects)){
+    if (NTopic != nrow(document_expects)){
       if (verbose) message("number of topics is not consistent")
       return(FALSE)
-    }else{
-      NTopic = nrow(document_expects)
     }
     if (exists("NDocs")){
       if (length(NDocs) != ncol(document_expects)){
@@ -200,6 +200,10 @@ is.LDA = function(obj, verbose = FALSE){
       if (verbose) message("not two rows")
       return(FALSE)
     }
+    if (ncol(log.likelihoods) != getNum.iterations(obj)){
+      if (verbose) message("number of columns does not equal num.iterations")
+      return(FALSE)
+    }
     if (!is.numeric(log.likelihoods)){
       if (verbose) message("not numeric")
       return(FALSE)
@@ -213,48 +217,38 @@ is.LDA = function(obj, verbose = FALSE){
 #' @export
 print.LDA = function(x, ...){
   val = .getValues.LDA(x)
-  like = ifelse(val[5], paste0("\n Computed Log-Likelihoods of ", val[6], " Iterations"), "")
   elements = paste0("\"", names(which(!sapply(x, is.null))), "\"")
   cat(
     "LDA Object with element(s)\n",
     paste0(elements, collapse = ", "), "\n ",
     val[1], " Texts with mean length of ", round(val[2], 2), " Tokens\n ",
-    val[4], " different Words\n ",
-    val[3], " latent Topics",
-    like, "\n\n",
-    sep = ""
+    val[3], " different Words\n ",
+    paste0(paste0(names(getParam(x)), ": ", unlist(getParam(x))), collapse = ", "),
+    "\n\n", sep = ""
   )
 }
 
 .getValues.LDA = function(x){
   NDoc = NA
   meanDocLength = NA
-  NTopic = NA
   NWord = NA
-  like = !is.null(x$log.likelihoods)
-  iter = ifelse(like, ncol(x$log.likelihoods), NA)
   if (!is.null(x$assignments)){
     NDocs = lengths(x$assignments)
     NDoc = length(NDocs)
     meanDocLength = mean(NDocs)
-    NTopic = max(unlist(x$assignments)) + 1
   }else{
     if (!is.null(x$document_sums)){
       NDocs = colSums(x$document_sums)
       NDoc = length(NDocs)
       meanDocLength = mean(NDocs)
-      NTopic = nrow(x$document_sums)
     }else{
       if (!is.null(x$document_expects)){
         NDoc = ncol(x$document_expects)
-        NTopic = nrow(x$document_expects)
       }
     }
   }
   if (!is.null(x$topics)){
     NWord = ncol(x$topics)
-    NTopic = nrow(x$topics)
   }
-  return(c(NDoc = NDoc, meanDocLength = meanDocLength, NTopic = NTopic,
-    NWord = NWord, like = like, iter = iter))
+  return(c(NDoc = NDoc, meanDocLength = meanDocLength, NWord = NWord))
 }

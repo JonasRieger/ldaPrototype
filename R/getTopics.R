@@ -50,28 +50,57 @@ getLog.likelihoods.LDA = function(x){
   x$log.likelihoods
 }
 
+#' @rdname getTopics
+#' @export getAlpha
+getAlpha = function(x) UseMethod("getAlpha")
 
-getAlpha = function(x){
+#' @export
+getAlpha.LDA = function(x){
   x$param$alpha
 }
 
-getEta = function(x){
+#' @rdname getTopics
+#' @export getEta
+getEta = function(x) UseMethod("getEta")
+
+#' @export
+getEta.LDA = function(x){
   x$param$eta
 }
 
-getK = function(x){
+#' @rdname getTopics
+#' @export getK
+getK = function(x) UseMethod("getK")
+
+#' @export
+getK.LDA = function(x){
   x$param$K
 }
 
-getNum.iterations = function(x){
+#' @rdname getTopics
+#' @export getNum.iterations
+getNum.iterations = function(x) UseMethod("getNum.iterations")
+
+#' @export
+getNum.iterations.LDA = function(x){
   x$param$num.iterations
 }
 
-getParam = function(x){
+#' @rdname getTopics
+#' @export getParam
+getParam = function(x) UseMethod("getParam")
+
+#' @export
+getParam.LDA = function(x){
   x$param
 }
 
-getEstimators = function(x){
+#' @rdname getTopics
+#' @export getEstimators
+getEstimators = function(x) UseMethod("getEstimators")
+
+#' @export
+getEstimators.LDA = function(x){
   alpha = getAlpha(x)
   beta = getEta(x)
   K = getK(x)

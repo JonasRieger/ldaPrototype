@@ -6,6 +6,12 @@
 \alias{getDocument_sums}
 \alias{getDocument_expects}
 \alias{getLog.likelihoods}
+\alias{getAlpha}
+\alias{getEta}
+\alias{getK}
+\alias{getNum.iterations}
+\alias{getParam}
+\alias{getEstimators}
 \title{Getter for LDA}
 \usage{
 getTopics(x)
@@ -17,6 +23,18 @@ getDocument_sums(x)
 getDocument_expects(x)
 
 getLog.likelihoods(x)
+
+getAlpha(x)
+
+getEta(x)
+
+getK(x)
+
+getNum.iterations(x)
+
+getParam(x)
+
+getEstimators(x)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
