@@ -49,3 +49,40 @@ getLog.likelihoods = function(x) UseMethod("getLog.likelihoods")
 getLog.likelihoods.LDA = function(x){
   x$log.likelihoods
 }
+
+
+getAlpha = function(x){
+  x$param$alpha
+}
+
+getEta = function(x){
+  x$param$eta
+}
+
+getK = function(x){
+  x$param$K
+}
+
+getNum.iterations = function(x){
+  x$param$num.iterations
+}
+
+getParam = function(x){
+  x$param
+}
+
+getEstimators = function(x){
+  alpha = getAlpha(x)
+  beta = getEta(x)
+  K = getK(x)
+  topics = getTopics(x)
+  documents = getDocument_sums(x)
+
+  topicSums = rowSums(topics)
+  documentSums = colSums(documents)
+  L = ncol(topics)
+
+  phi = (topics + beta) / (topicSums + L*beta)
+  theta = t((t(documents) + alpha) / (documentSums + K*alpha))
+  return(list(phi = phi, theta = theta))
+}

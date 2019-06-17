@@ -8,6 +8,9 @@
 #' Output from \code{\link[lda]{lda.collapsed.gibbs.sampler}}. Alternatively each
 #' element can be passed for individual results. Individually set elements
 #' overwrite elements from \code{x}.
+#' @param param [\code{named list}]\cr
+#' Parameters of the function call \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+#' Names must contain "K", "alpha", "eta" and "num.iterations".
 #' @param assignments Individual element for LDA object.
 #' @param topics Individual element for LDA object.
 #' @param document_sums Individual element for LDA object.
@@ -24,7 +27,7 @@
 #'
 #' @export LDA
 
-LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
+LDA = function(x, param, assignments = NULL, topics = NULL, document_sums = NULL,
   document_expects = NULL, log.likelihoods = NULL){
 
   if (!missing(x)){
@@ -35,6 +38,7 @@ LDA = function(x, assignments = NULL, topics = NULL, document_sums = NULL,
     if (is.null(log.likelihoods)) log.likelihoods = x$log.likelihoods
   }
   res = list(
+    param = param,
     assignments = assignments,
     topics = topics,
     document_sums = document_sums,
