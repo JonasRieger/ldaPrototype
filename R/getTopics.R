@@ -2,6 +2,7 @@
 #'
 #' @description
 #' Returns the corresponding element of a \code{\link{LDA}} object.
+#' \code{getEstimators} computes the estimators for \code{phi} and \code{theta}.
 #'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDA}} object.
@@ -51,6 +52,24 @@ getLog.likelihoods.LDA = function(x){
 }
 
 #' @rdname getTopics
+#' @export getParam
+getParam = function(x) UseMethod("getParam")
+
+#' @export
+getParam.LDA = function(x){
+  x$param
+}
+
+#' @rdname getTopics
+#' @export getK
+getK = function(x) UseMethod("getK")
+
+#' @export
+getK.LDA = function(x){
+  x$param$K
+}
+
+#' @rdname getTopics
 #' @export getAlpha
 getAlpha = function(x) UseMethod("getAlpha")
 
@@ -69,30 +88,12 @@ getEta.LDA = function(x){
 }
 
 #' @rdname getTopics
-#' @export getK
-getK = function(x) UseMethod("getK")
-
-#' @export
-getK.LDA = function(x){
-  x$param$K
-}
-
-#' @rdname getTopics
 #' @export getNum.iterations
 getNum.iterations = function(x) UseMethod("getNum.iterations")
 
 #' @export
 getNum.iterations.LDA = function(x){
   x$param$num.iterations
-}
-
-#' @rdname getTopics
-#' @export getParam
-getParam = function(x) UseMethod("getParam")
-
-#' @export
-getParam.LDA = function(x){
-  x$param
 }
 
 #' @rdname getTopics

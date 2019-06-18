@@ -61,7 +61,8 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
   batchtools::addAlgorithm(paste0(id, "Algorithm"),
     fun = function(job, data, instance, seed, ...){
       set.seed(seed)
-      LDA(lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...))
+      LDA(lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...),
+        param = list(...))
     })
 
   moreArgs = data.table::data.table(do.call(cbind, .paramList(n = n, ...)))

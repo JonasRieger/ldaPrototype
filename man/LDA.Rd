@@ -24,7 +24,7 @@ overwrite elements from \code{x}.}
 
 \item{param}{[\code{named list}]\cr
 Parameters of the function call \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-Names must contain "K", "alpha", "eta" and "num.iterations".}
+Names always have to contain "K", "alpha", "eta" and "num.iterations".}
 
 \item{assignments}{Individual element for LDA object.}
 

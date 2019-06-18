@@ -10,7 +10,7 @@
 #' overwrite elements from \code{x}.
 #' @param param [\code{named list}]\cr
 #' Parameters of the function call \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-#' Names must contain "K", "alpha", "eta" and "num.iterations".
+#' Names always have to contain "K", "alpha", "eta" and "num.iterations".
 #' @param assignments Individual element for LDA object.
 #' @param topics Individual element for LDA object.
 #' @param document_sums Individual element for LDA object.
@@ -86,7 +86,7 @@ is.LDA = function(obj, verbose = FALSE){
     return(FALSE)
   }
 
-  emptyLDA = LDA()
+  emptyLDA = LDA(param = .getDefaultParameters())
   if (length(setdiff(names(obj), names(emptyLDA))) != 0  ||
       length(intersect(names(obj), names(emptyLDA))) != 6){
     if (verbose) message("object does not contain exactly the list elements of an \"LDA\" object")

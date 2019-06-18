@@ -6,11 +6,11 @@
 \alias{getDocument_sums}
 \alias{getDocument_expects}
 \alias{getLog.likelihoods}
+\alias{getParam}
+\alias{getK}
 \alias{getAlpha}
 \alias{getEta}
-\alias{getK}
 \alias{getNum.iterations}
-\alias{getParam}
 \alias{getEstimators}
 \title{Getter for LDA}
 \usage{
@@ -24,15 +24,15 @@ getDocument_expects(x)
 
 getLog.likelihoods(x)
 
+getParam(x)
+
+getK(x)
+
 getAlpha(x)
 
 getEta(x)
 
-getK(x)
-
 getNum.iterations(x)
-
-getParam(x)
 
 getEstimators(x)
 }
@@ -42,4 +42,5 @@ getEstimators(x)
 }
 \description{
 Returns the corresponding element of a \code{\link{LDA}} object.
+\code{getEstimators} computes the estimators for \code{phi} and \code{theta}.
 }

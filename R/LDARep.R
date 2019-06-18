@@ -50,7 +50,8 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   args$seed = seeds
   args$fun = function(seed, ...){
     set.seed(seed)
-    LDA(lda::lda.collapsed.gibbs.sampler(documents = docs, vocab = vocab, ...))
+    LDA(lda::lda.collapsed.gibbs.sampler(documents = docs, vocab = vocab, ...),
+      param = list(...))
   }
 
   if (!missing(pm.backend)){
