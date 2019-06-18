@@ -19,15 +19,17 @@ is.LDARep(obj, verbose = FALSE)
 \item{...}{additional arguments}
 
 \item{lda}{[\code{named list}]\cr
-List of \code{\link{LDA}} objects, named by the corresponding "job.id" (\code{integerish}).}
+List of \code{\link{LDA}} objects, named by the corresponding "job.id" (\code{integerish}).
+If list is unnamed, names are set.}
 
 \item{job}{[\code{\link{data.frame}} or \code{named vector}]\cr
-A data.frame or data.table with named columns "job.id" (\code{integerish}), "K", "alpha", "eta"
-and "num.iterations" or a named vector with entries "K", "alpha", "eta" and
-"num.iterations".}
+A data.frame or data.table with named columns (at least)
+"job.id" (\code{integerish}), "K", "alpha", "eta" and "num.iterations"
+or a named vector with entries (at least) "K", "alpha", "eta" and "num.iterations".
+If not passed, it is interpreted from \code{param} of each LDA.}
 
 \item{id}{[\code{character(1)}]\cr
-A name for the computation. If not passed, is set to "LDARep".}
+A name for the computation. If not passed, it is set to "LDARep".}
 
 \item{x}{[\code{named list}]\cr
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}

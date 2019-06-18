@@ -93,6 +93,18 @@ is.LDA = function(obj, verbose = FALSE){
     return(FALSE)
   }
 
+  if (verbose) message("param: ", appendLF = FALSE)
+  param = getParam(obj)
+  if (!is.list(param)){
+    if (verbose) message("not a list")
+    return(FALSE)
+  }
+  if (any(!(names(getParam(emptyLDA)) %in% names(param)))){
+    if (verbose) message("not all standard parameters are specified")
+    return(FALSE)
+  }
+  if (verbose) message("checked")
+
   NTopic = getK(obj)
 
   if (verbose) message("assignments: ", appendLF = FALSE)
@@ -223,7 +235,7 @@ print.LDA = function(x, ...){
     paste0(elements, collapse = ", "), "\n ",
     val[1], " Texts with mean length of ", round(val[2], 2), " Tokens\n ",
     val[3], " different Words\n ",
-    paste0(paste0(names(getParam(x)), ": ", unlist(getParam(x))), collapse = ", "),
+    paste0(paste0(names(getParam(x)), ": ", round(unlist(getParam(x)), 2)), collapse = ", "),
     "\n\n", sep = ""
   )
 }

@@ -10,12 +10,14 @@
 #' \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 #' @param lda [\code{named list}]\cr
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id" (\code{integerish}).
+#' If list is unnamed, names are set.
 #' @param job [\code{\link{data.frame}} or \code{named vector}]\cr
-#' A data.frame or data.table with named columns "job.id" (\code{integerish}), "K", "alpha", "eta"
-#' and "num.iterations" or a named vector with entries "K", "alpha", "eta" and
-#' "num.iterations".
+#' A data.frame or data.table with named columns (at least)
+#' "job.id" (\code{integerish}), "K", "alpha", "eta" and "num.iterations"
+#' or a named vector with entries (at least) "K", "alpha", "eta" and "num.iterations".
+#' If not passed, it is interpreted from \code{param} of each LDA.
 #' @param id [\code{character(1)}]\cr
-#' A name for the computation. If not passed, is set to "LDARep".
+#' A name for the computation. If not passed, it is set to "LDARep".
 #' @param obj [\code{R} object]\cr
 #' Object to test.
 #' @param verbose [\code{integer(1)}]\cr
@@ -35,24 +37,40 @@ as.LDARep = function(...) UseMethod("as.LDARep")
 as.LDARep.default = function(lda, job, id, ...){
 
   if (missing(id)) id = "LDARep"
-  if (is.vector(job)){
-    if (all(names(.getDefaultParameters()) %in% names(job))){
-      job = data.table::data.table(job.id = as.integer(names(lda)), t(job))
-    }else{
-      stop("Not all standard parameters are specified.")
+  if (is.null(names(lda))){
+    if (missing(job) || is.vector(job)){
+      names(lda) = seq_along(lda)
     }
+    else{
+      names(lda) = job$job.id
+    }
+  }
+  if (missing(job)){
+    job = rbindlist(lapply(lda, function(x)
+      data.table::as.data.table(data.frame((getParam(x))))), fill = TRUE)
+    job$job.id = names(lda)
+    setcolorder(job, "job.id")
   }else{
-    if (all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
-      job = data.table::as.data.table(as.integer(job))
-      if (!all(intersect(job$job.id, names(lda)) %in% union(job$job.id, names(lda))) ||
-          nrow(job) != length(lda)){
-        stop("Names of LDAs and \"job.id\" do not fit together.")
-      }
-      if (anyDuplicated(job$job.id) || anyDuplicated(names(lda))){
-        stop("Duplicated LDA names or \"job.id\".")
+    if (is.vector(job)){
+      if (all(names(.getDefaultParameters()) %in% names(job))){
+        job = data.table::data.table(job.id = as.integer(names(lda)), t(job))
+      }else{
+        stop("Not all standard parameters are specified.")
       }
     }else{
-      stop("Not all standard parameters are specified.")
+      if (all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
+        job = data.table::as.data.table(job)
+        if (!all(intersect(job$job.id, names(lda)) %in% union(job$job.id, names(lda))) ||
+            nrow(job) != length(lda)){
+          stop("Names of LDAs and \"job.id\" do not fit together.")
+        }
+        if (anyDuplicated(job$job.id) || anyDuplicated(names(lda))){
+          stop("Duplicated LDA names or \"job.id\".")
+        }
+        job$job.id = as.integer(job$job.id)
+      }else{
+        stop("Not all standard parameters are specified.")
+      }
     }
   }
 
