@@ -27,10 +27,16 @@
 #'
 #' @export LDA
 
-LDA = function(x, param, assignments = NULL, topics = NULL, document_sums = NULL,
+LDA = function(x, param = NULL, assignments = NULL, topics = NULL, document_sums = NULL,
   document_expects = NULL, log.likelihoods = NULL){
 
   if (!missing(x)){
+    if (is.null(param)){
+      if (!hasName(x, "param")){
+        stop("argument \"param\" is missing")
+      }
+      param = x$param
+    }
     if (is.null(assignments)) assignments = x$assignments
     if (is.null(topics)) topics = x$topics
     if (is.null(document_sums)) document_sums = x$document_sums
@@ -50,7 +56,7 @@ LDA = function(x, param, assignments = NULL, topics = NULL, document_sums = NULL
 
 #' @rdname LDA
 #' @export
-as.LDA = function(x, param, assignments = NULL, topics = NULL, document_sums = NULL,
+as.LDA = function(x, param = NULL, assignments = NULL, topics = NULL, document_sums = NULL,
   document_expects = NULL, log.likelihoods = NULL){
   if (!missing(x)){
     LDA(
