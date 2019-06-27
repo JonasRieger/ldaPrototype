@@ -29,8 +29,11 @@
 jaccardTopics = function(topics, limit.rel = 1/500, limit.abs = 10, progress = TRUE){
 
   N = ncol(topics)
-  index = apply(topics, 2, function(x) x > (sum(x) * limit.rel))
-  index = index & (topics > limit.abs)
+
+  index = as.integer(topics > limit.abs &
+      topics > rep(colSums(topics)*limit.rel, each = nrow(topics)))
+  #index = apply(topics, 2, function(x) x > (sum(x) * limit.rel))
+  #index = index & (topics > limit.abs)
   sims = matrix(nrow = N, ncol = N)
   colnames(sims) = rownames(sims) = colnames(topics)
 
