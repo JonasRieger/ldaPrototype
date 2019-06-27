@@ -15,7 +15,7 @@
 #' A name for the registry. If not passed, the folder's name is extracted from \code{reg}.
 #' @param obj [\code{R} object]\cr
 #' Object to test.
-#' @param verbose [\code{integer(1)}]\cr
+#' @param verbose [\code{logical(1)}]\cr
 #' Should test information be given in the console?
 #' @return [\code{named list}] with entries \code{id} for the registry's folder name,
 #' \code{jobs} for the submitted jobs' ids and its parameter settings and

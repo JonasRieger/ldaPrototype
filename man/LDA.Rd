@@ -6,11 +6,11 @@
 \alias{is.LDA}
 \title{LDA Object}
 \usage{
-LDA(x, param, assignments = NULL, topics = NULL,
+LDA(x, param = NULL, assignments = NULL, topics = NULL,
   document_sums = NULL, document_expects = NULL,
   log.likelihoods = NULL)
 
-as.LDA(x, param, assignments = NULL, topics = NULL,
+as.LDA(x, param = NULL, assignments = NULL, topics = NULL,
   document_sums = NULL, document_expects = NULL,
   log.likelihoods = NULL)
 
@@ -39,7 +39,7 @@ Names always have to contain "K", "alpha", "eta" and "num.iterations".}
 \item{obj}{[\code{R} object]\cr
 Object to test.}
 
-\item{verbose}{[\code{integer(1)}]\cr
+\item{verbose}{[\code{logical(1)}]\cr
 Should test information be given in the console?}
 }
 \value{

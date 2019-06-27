@@ -37,7 +37,7 @@ A name for the computation. If not passed, it is set to "LDARep".}
 \item{obj}{[\code{R} object]\cr
 Object to test.}
 
-\item{verbose}{[\code{integer(1)}]\cr
+\item{verbose}{[\code{logical(1)}]\cr
 Should test information be given in the console?}
 }
 \value{

@@ -18,7 +18,7 @@
 #' @param log.likelihoods Individual element for LDA object.
 #' @param obj [\code{R} object]\cr
 #' Object to test.
-#' @param verbose [\code{integer(1)}]\cr
+#' @param verbose [\code{logical(1)}]\cr
 #' Should test information be given in the console?
 #' @return [\code{named list}] LDA object.
 #'
