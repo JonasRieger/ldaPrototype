@@ -30,3 +30,6 @@
   moreArgs[lengths(moreArgs) != n] = lapply(moreArgs[lengths(moreArgs) != n], rep_len, length.out = n)
   return(moreArgs)
 }
+
+.defaultLimit.rel = function() 1/500
+.defaultLimit.abs = function() 10

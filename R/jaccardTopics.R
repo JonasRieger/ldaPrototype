@@ -11,10 +11,11 @@
 #' @param limit.rel [0,1]\cr
 #' A relative lower bound limit for which words are taken into account. All words
 #' are taken as relevant for a topic that have a count higher than \code{limit.rel}
-#' multiplied by the total count of the given topic.
+#' multiplied by the total count of the given topic. Default is \code{1/500}.
 #' @param limit.abs [\code{integer(1)}]\cr
 #' An absolute lower bound limit for which words are taken into account. All words
 #' are taken as relevant for a topic that have a count higher than \code{limit.abs}.
+#' Default is \cdoe{10}.
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default ist \code{TRUE}.
@@ -26,7 +27,10 @@
 #'
 #' @export jaccardTopics
 
-jaccardTopics = function(topics, limit.rel = 1/500, limit.abs = 10, progress = TRUE){
+jaccardTopics = function(topics, limit.rel, limit.abs, progress = TRUE){
+
+  if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
+  if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
 
   N = ncol(topics)
 
