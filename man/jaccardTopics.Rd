@@ -18,7 +18,7 @@ multiplied by the total count of the given topic. Default is \code{1/500}.}
 \item{limit.abs}{[\code{integer(1)}]\cr
 An absolute lower bound limit for which words are taken into account. All words
 are taken as relevant for a topic that have a count higher than \code{limit.abs}.
-Default is \cdoe{10}.}
+Default is \code{10}.}
 
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly
