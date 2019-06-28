@@ -2,18 +2,27 @@
 % Please edit documentation in R/getPrototype.R
 \name{getPrototype}
 \alias{getPrototype}
+\alias{getPrototype.LDABatch}
+\alias{getPrototype.LDARep}
+\alias{getPrototype.default}
 \title{...}
 \usage{
 getPrototype(...)
+
+\method{getPrototype}{LDABatch}(x, vocab, limit.rel, limit.abs,
+  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, ...)
+
+\method{getPrototype}{LDARep}(x, vocab, limit.rel, limit.abs,
+  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, ...)
+
+\method{getPrototype}{default}(lda, vocab, id, limit.rel, limit.abs,
+  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, sclop, ...)
 }
 \arguments{
 \item{...}{additional arguments}
 
 \item{x}{[\code{named list}]\cr
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}
-
-\item{lda}{[\code{named list}]\cr
-List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
 \item{vocab}{.}
 
@@ -26,6 +35,9 @@ List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 \item{keepTopics}{.}
 
 \item{keepSims}{.}
+
+\item{lda}{[\code{named list}]\cr
+List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
 \item{sclop}{.}
 }

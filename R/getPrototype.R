@@ -19,6 +19,7 @@
 #' @export getPrototype
 getPrototype = function(...) UseMethod("getPrototype")
 
+#' @rdname getPrototype
 #' @export
 getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, progress = TRUE,
   keepTopics = FALSE, keepSims = FALSE, ...){
@@ -32,6 +33,7 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, progress = TRUE
     keepTopics = keepTopics, keepSims = keepSims, progress = progress)
 }
 
+#' @rdname getPrototype
 #' @export
 getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, progress = TRUE,
   keepTopics = FALSE, keepSims = FALSE, ...){
@@ -45,6 +47,7 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, progress = TRUE,
     keepTopics = keepTopics, keepSims = keepSims, progress = progress)
 }
 
+#' @rdname getPrototype
 #' @export
 getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, progress = TRUE,
   keepTopics = FALSE, keepSims = FALSE, sclop, ...){
