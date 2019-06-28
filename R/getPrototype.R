@@ -1,16 +1,20 @@
-#' @title ...
+#' @title Determine the Prototype LDA
 #'
-#' @description ...
+#' @description Returns the Prototype LDA of a set of LDAs, which is given as
+#' \code{\link{LDABatch}} object, \code{\link{LDARep}} object, or as list of LDAs.
 #'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 #' @param lda [\code{named list}]\cr
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
-#' @param vocab .
+#' @param vocab [\code{character}]\cr
+#' Vocabularies taken into consideration for merging topic matrices.
 #' @param id .
 #' @param limit.rel .
 #' @param limit.abs .
-#' @param progress .
+#' @param progress [\code{logical(1)}]\cr
+#' Should a nice progress bar be shown? Turning it off, could lead to significantly
+#' faster calculation. Default ist \code{TRUE}.
 #' @param keepTopics .
 #' @param keepSims .
 #' @param sclop .

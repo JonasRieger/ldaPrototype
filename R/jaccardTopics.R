@@ -34,8 +34,8 @@ jaccardTopics = function(topics, limit.rel, limit.abs, progress = TRUE){
 
   N = ncol(topics)
 
-  index = as.integer(topics > limit.abs &
-      topics > rep(colSums(topics)*limit.rel, each = nrow(topics)))
+  index = topics > limit.abs &
+      topics > rep(colSums(topics)*limit.rel, each = nrow(topics))
   #index = apply(topics, 2, function(x) x > (sum(x) * limit.rel))
   #index = index & (topics > limit.abs)
   sims = matrix(nrow = N, ncol = N)

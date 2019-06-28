@@ -5,7 +5,7 @@
 \alias{getPrototype.LDABatch}
 \alias{getPrototype.LDARep}
 \alias{getPrototype.default}
-\title{...}
+\title{Determine the Prototype LDA}
 \usage{
 getPrototype(...)
 
@@ -24,13 +24,16 @@ getPrototype(...)
 \item{x}{[\code{named list}]\cr
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}
 
-\item{vocab}{.}
+\item{vocab}{[\code{character}]\cr
+Vocabularies taken into consideration for merging topic matrices.}
 
 \item{limit.rel}{.}
 
 \item{limit.abs}{.}
 
-\item{progress}{.}
+\item{progress}{[\code{logical(1)}]\cr
+Should a nice progress bar be shown? Turning it off, could lead to significantly
+faster calculation. Default ist \code{TRUE}.}
 
 \item{keepTopics}{.}
 
@@ -47,5 +50,6 @@ List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 [\code{named list}] with entries ...
 }
 \description{
-...
+Returns the Prototype LDA of a set of LDAs, which is given as
+\code{\link{LDABatch}} object, \code{\link{LDARep}} object, or as list of LDAs.
 }
