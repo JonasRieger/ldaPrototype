@@ -39,6 +39,8 @@ getPrototype(...)
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
+\item{id}{.}
+
 \item{sclop}{.}
 }
 \value{

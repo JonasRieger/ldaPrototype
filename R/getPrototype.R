@@ -7,6 +7,7 @@
 #' @param lda [\code{named list}]\cr
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
 #' @param vocab .
+#' @param id .
 #' @param limit.rel .
 #' @param limit.abs .
 #' @param progress .
