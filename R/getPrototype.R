@@ -70,10 +70,29 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, progress =
   if (!keepSims) sims = NULL
   ind = which.max(colSums(sclop, na.rm = TRUE))
   proto = lda[[ind]]
-  lda.id = names(lda)[ind]
-  res = list(lda = proto, lda.id = lda.id, id = id,
+  ldaid = names(lda)[ind]
+  res = list(lda = proto, ldaid = ldaid, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs,
     topics = topics, sims = sims, sclop = sclop)
   class(res) = "PrototypeLDA"
   invisible(res)
+}
+
+#' @export
+print.PrototypeLDA = function(x, ...){
+
+  add = ""
+  if (!is.null(x$topics)){
+    add = " (including merged topics matrix)"
+    if (!is.null(x$sims)){
+      add = " (including merged topics matrix and similarity matrix)"
+    }
+  }else{
+    if (!is.null(x$sims)) add = " (including similarity matrix)"
+  }
+
+  cat("PrototypeLDA Object", add, "\n LDA \"", x$lda.id, "\" of \"", x$id, "\"\n ",
+    paste0(paste0(names(getParam(x$lda)), ": ", round(unlist(getParam(x$lda)), 2)), collapse = ", "),
+    "\n ", paste0("limit.rel: ", x$limit.rel, ", limit.abs: ", x$limit.abs),
+    sep = "")
 }
