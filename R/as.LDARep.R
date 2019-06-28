@@ -46,10 +46,10 @@ as.LDARep.default = function(lda, job, id, ...){
     }
   }
   if (missing(job)){
-    job = rbindlist(lapply(lda, function(x)
+    job = data.table::rbindlist(lapply(lda, function(x)
       data.table::as.data.table(data.frame((getParam(x))))), fill = TRUE)
     job$job.id = names(lda)
-    setcolorder(job, "job.id")
+    data.table::setcolorder(job, "job.id")
   }else{
     if (is.vector(job)){
       if (all(names(.getDefaultParameters()) %in% names(job))){

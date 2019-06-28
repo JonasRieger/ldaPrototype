@@ -7,6 +7,8 @@
 getPrototype(...)
 }
 \arguments{
+\item{...}{additional arguments}
+
 \item{x}{[\code{named list}]\cr
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}
 
@@ -26,6 +28,9 @@ List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 \item{keepSims}{.}
 
 \item{sclop}{.}
+}
+\value{
+[\code{named list}] with entries ...
 }
 \description{
 ...

@@ -13,6 +13,8 @@
 #' @param keepTopics .
 #' @param keepSims .
 #' @param sclop .
+#' @param ... additional arguments
+#' @return [\code{named list}] with entries ...
 
 #' @export getPrototype
 getPrototype = function(...) UseMethod("getPrototype")
@@ -26,7 +28,7 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, progress = TRUE
   lda = getLDA(x)
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
-    limit.rel = limt.rel, limit.abs = limit.abs,
+    limit.rel = limit.rel, limit.abs = limit.abs,
     keepTopics = keepTopics, keepSims = keepSims, progress = progress)
 }
 
@@ -39,7 +41,7 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, progress = TRUE,
   lda = getLDA(x)
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
-    limit.rel = limt.rel, limit.abs = limit.abs,
+    limit.rel = limit.rel, limit.abs = limit.abs,
     keepTopics = keepTopics, keepSims = keepSims, progress = progress)
 }
 
@@ -54,7 +56,7 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, progress =
     topics = mergeRepTopics(lda = lda, vocab = vocab, id = id, progress = progress)
     sims = jaccardTopics(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
       progress = progress)
-    sclop = SCLOP.pairwise(sims = jacc)
+    sclop = SCLOP.pairwise(sims = sims)
   }
   if (!keepTopics) topics = NULL
   if (!keepSims) sims = NULL
