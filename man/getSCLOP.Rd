@@ -7,7 +7,7 @@
 \alias{getLDAID}
 \alias{getLDA.PrototypeLDA}
 \alias{getID.PrototypeLDA}
-\alias{getparam.PrototypeLDA}
+\alias{getParam.PrototypeLDA}
 \title{Getter for PrototypeLDA}
 \usage{
 getSCLOP(x)
@@ -22,7 +22,7 @@ getLDAID(x)
 
 \method{getID}{PrototypeLDA}(x)
 
-getparam.PrototypeLDA(x)
+\method{getParam}{PrototypeLDA}(x)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr

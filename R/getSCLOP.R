@@ -57,6 +57,6 @@ getID.PrototypeLDA = function(x){
 
 #' @rdname getSCLOP
 #' @export
-getparam.PrototypeLDA = function(x){
+getParam.PrototypeLDA = function(x){
   list(limit.rel = x$limit.rel, limit.abs = x$limit.abs)
 }
