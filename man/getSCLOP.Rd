@@ -7,6 +7,7 @@
 \alias{getLDAID}
 \alias{getLDA.PrototypeLDA}
 \alias{getID.PrototypeLDA}
+\alias{getparam.PrototypeLDA}
 \title{Getter for PrototypeLDA}
 \usage{
 getSCLOP(x)
@@ -17,14 +18,20 @@ getMergedTopics(x)
 
 getLDAID(x)
 
-\method{getLDA}{PrototypeLDA}(x)
+\method{getLDA}{PrototypeLDA}(x, job, reduce)
 
 \method{getID}{PrototypeLDA}(x)
+
+getparam.PrototypeLDA(x)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
-\code{\link{PrototypeLDA}} object.}
+\code{\link[getPrototype]{PrototypeLDA}} object.}
+
+\item{job}{not implemented (relict from \code{\link{getLDA}})}
+
+\item{reduce}{not implemented (relict from \code{\link{getLDA}})}
 }
 \description{
-Returns the corresponding element of a \code{\link{PrototypeLDA}} object.
+Returns the corresponding element of a \code{\link[getPrototype]{PrototypeLDA}} object.
 }

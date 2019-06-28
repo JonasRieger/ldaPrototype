@@ -82,17 +82,17 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, progress =
 print.PrototypeLDA = function(x, ...){
 
   add = ""
-  if (!is.null(x$topics)){
+  if (!is.null(getMergedTopics(x))){
     add = " (including merged topics matrix)"
-    if (!is.null(x$sims)){
+    if (!is.null(getSimilarity(x))){
       add = " (including merged topics matrix and similarity matrix)"
     }
   }else{
-    if (!is.null(x$sims)) add = " (including similarity matrix)"
+    if (!is.null(getSimilarity(x))) add = " (including similarity matrix)"
   }
 
-  cat("PrototypeLDA Object", add, "\n LDA \"", x$lda.id, "\" of \"", x$id, "\"\n ",
-    paste0(paste0(names(getParam(x$lda)), ": ", round(unlist(getParam(x$lda)), 2)), collapse = ", "),
-    "\n ", paste0("limit.rel: ", x$limit.rel, ", limit.abs: ", x$limit.abs),
+  cat("PrototypeLDA Object", add, "\n LDA \"", getLDAID(x), "\" of \"", x$id, "\"\n ",
+    paste0(paste0(names(getParam(getLDA(x))), ": ", round(unlist(getParam(getLDA(x))), 2)), collapse = ", "),
+    "\n ", paste0(paste0(names(getParam(x)), ": ", round(unlist(getParam(x)), 2)), collapse = ", "),
     sep = "")
 }

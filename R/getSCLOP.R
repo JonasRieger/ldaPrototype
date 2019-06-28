@@ -1,10 +1,12 @@
 #' @title Getter for PrototypeLDA
 #'
 #' @description
-#' Returns the corresponding element of a \code{\link{PrototypeLDA}} object.
+#' Returns the corresponding element of a \code{\link[getPrototype]{PrototypeLDA}} object.
 #'
 #' @param x [\code{named list}]\cr
-#' \code{\link{PrototypeLDA}} object.
+#' \code{\link[getPrototype]{PrototypeLDA}} object.
+#' @param job not implemented (relict from \code{\link{getLDA}})
+#' @param reduce not implemented (relict from \code{\link{getLDA}})
 
 #' @export getSCLOP
 getSCLOP = function(x) UseMethod("getSCLOP")
@@ -43,7 +45,7 @@ getLDAID.PrototypeLDA = function(x){
 
 #' @rdname getSCLOP
 #' @export
-getLDA.PrototypeLDA = function(x){
+getLDA.PrototypeLDA = function(x, job, reduce){
   x$lda
 }
 
@@ -51,4 +53,10 @@ getLDA.PrototypeLDA = function(x){
 #' @export
 getID.PrototypeLDA = function(x){
   x$id
+}
+
+#' @rdname getSCLOP
+#' @export
+getparam.PrototypeLDA = function(x){
+  list(limit.rel = x$limit.rel, limit.abs = x$limit.abs)
 }
