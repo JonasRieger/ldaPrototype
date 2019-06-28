@@ -94,5 +94,5 @@ print.PrototypeLDA = function(x, ...){
   cat("PrototypeLDA Object", add, "\n LDA \"", getLDAID(x), "\" of \"", x$id, "\"\n ",
     paste0(paste0(names(getParam(getLDA(x))), ": ", round(unlist(getParam(getLDA(x))), 2)), collapse = ", "),
     "\n ", paste0(paste0(names(getParam(x)), ": ", round(unlist(getParam(x)), 2)), collapse = ", "),
-    sep = "")
+    "\n\n", sep = "")
 }
