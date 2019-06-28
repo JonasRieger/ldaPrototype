@@ -26,12 +26,12 @@ getparam.PrototypeLDA(x)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr
-\code{\link[getPrototype]{PrototypeLDA}} object.}
+\code{\link[=getPrototype]{PrototypeLDA}} object.}
 
 \item{job}{not implemented (relict from \code{\link{getLDA}})}
 
 \item{reduce}{not implemented (relict from \code{\link{getLDA}})}
 }
 \description{
-Returns the corresponding element of a \code{\link[getPrototype]{PrototypeLDA}} object.
+Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}} object.
 }

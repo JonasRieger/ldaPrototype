@@ -1,10 +1,10 @@
 #' @title Getter for PrototypeLDA
 #'
 #' @description
-#' Returns the corresponding element of a \code{\link[getPrototype]{PrototypeLDA}} object.
+#' Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}} object.
 #'
 #' @param x [\code{named list}]\cr
-#' \code{\link[getPrototype]{PrototypeLDA}} object.
+#' \code{\link[=getPrototype]{PrototypeLDA}} object.
 #' @param job not implemented (relict from \code{\link{getLDA}})
 #' @param reduce not implemented (relict from \code{\link{getLDA}})
 
