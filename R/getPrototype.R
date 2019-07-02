@@ -39,7 +39,7 @@
 #' @param ... additional arguments
 #' @return [\code{named list}] with entries
 #'  \describe{
-#'   \item{\code{lda}}{\code{\link{LDA}} object.}
+#'   \item{\code{lda}}{\code{\link{LDA}} object of the determined Prototype LDA.}
 #'   \item{\code{ldaid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
 #'   \item{\code{id}}{[\code{character(1)}] See above.}
 #'   \item{\code{limit.rel}}{[0,1] See above.}
