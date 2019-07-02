@@ -57,17 +57,17 @@ List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
 \item{id}{[\code{character(1)}]\cr
 A name for the computation. If not passed, it is set to "LDARep".
-Not implemented for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
+Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
 
 \item{sclop}{[\code{symmetrical named matrix}]\cr
-All pairwise S-CLOP scores of the given LDA runs. Matching of names is not
+(optional) All pairwise S-CLOP scores of the given LDA runs. Matching of names is not
 implemented yet, so order matters.}
 }
 \value{
 [\code{named list}] with entries
  \describe{
   \item{\code{lda}}{\code{\link{LDA}} object.}
-  \item{\code{ldaid}}{[\code{character(1)}] Name (ID) of the selected Prototype LDA.}
+  \item{\code{ldaid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
   \item{\code{id}}{[\code{character(1)}] See above.}
   \item{\code{limit.rel}}{[0,1] See above.}
   \item{\code{limit.abs}}{[\code{integer(1)}] See above.}
@@ -82,4 +82,5 @@ implemented yet, so order matters.}
 \description{
 Returns the Prototype LDA of a set of LDAs, which is given as
 \code{\link{LDABatch}} object, \code{\link{LDARep}} object, or as list of LDAs.
+If the matrix of S-CLOP scores \code{sclop} is passed, no calculation is done.
 }
