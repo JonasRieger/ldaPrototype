@@ -27,7 +27,7 @@ Vocabularies taken into consideration for merging topic matrices.}
 Should a nice progress bar be shown? Turning it off, could lead to significantly
 faster calculation. Default ist \code{TRUE}.}
 
-\item{reg}{[\code{\link[=batchtools::makeRegistry]{Registry}}]\cr
+\item{reg}{[\code{\link[batchtools:makeRegistry]{Registry}}]\cr
 Registry. See \code{\link[batchtools]{reduceResultsList}}.}
 
 \item{job}{[\code{\link{data.frame}} or \code{integer}]\cr

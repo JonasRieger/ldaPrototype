@@ -10,8 +10,8 @@ as.LDABatch(reg, job, id)
 is.LDABatch(obj, verbose = FALSE)
 }
 \arguments{
-\item{reg}{[\code{\link[=batchtools::makeRegistry]{Registry}}]\cr
-Registry. See \code{\link[=batchtools::findJobs]{findDone}}.}
+\item{reg}{[\code{\link[batchtools:makeRegistry]{Registry}}]\cr
+Registry. See \code{\link[batchtools:findJobs]{findDone}}.}
 
 \item{job}{[\code{\link{data.frame}} or \code{integer}]\cr
 A data.frame or data.table with a column named "job.id" or a vector of integerish job ids.

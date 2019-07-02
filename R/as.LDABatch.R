@@ -6,8 +6,8 @@
 #'
 #' @details
 #'
-#' @param reg [\code{\link[=batchtools::makeRegistry]{Registry}}]\cr
-#' Registry. See \code{\link[=batchtools::findJobs]{findDone}}.
+#' @param reg [\code{\link[batchtools:makeRegistry]{Registry}}]\cr
+#' Registry. See \code{\link[batchtools:findJobs]{findDone}}.
 #' @param job [\code{\link{data.frame}} or \code{integer}]\cr
 #' A data.frame or data.table with a column named "job.id" or a vector of integerish job ids.
 #' See \code{\link[batchtools]{reduceResultsList}}.

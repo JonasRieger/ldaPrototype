@@ -16,7 +16,7 @@ first dot identifies the LDA run.}
 \item{ind}{[\code{integer} or \code{character}]\cr
 An integerish vector for specifying the topics taken into account. Alternatively
 a character vector can be passed. Then, all topics are taken for which the name
-contain at least one of the phrases in \code{ind} (see \code{\link[=base::grep]{grepl}}).}
+contain at least one of the phrases in \code{ind} (see \code{\link[=grep]{grepl}}).}
 
 \item{method}{[\code{character(1)}]\cr
 The agglomeration method. See \code{\link[stats]{hclust}}.}
