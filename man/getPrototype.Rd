@@ -25,29 +25,59 @@ getPrototype(...)
 \code{\link{LDABatch}} or \code{\link{LDARep}} object.}
 
 \item{vocab}{[\code{character}]\cr
-Vocabularies taken into consideration for merging topic matrices.}
+Vocabularies taken into consideration for merging topic matrices.
+Not considered, if \code{sclop} is passed.}
 
-\item{limit.rel}{.}
+\item{limit.rel}{[0,1]\cr
+See \code{\link{jaccardTopics}}. Default is \code{1/500}.
+Not considered for calculation, if \code{sclop} is passed. But should be
+passed determining the correct value for the resulting object.}
 
-\item{limit.abs}{.}
+\item{limit.abs}{[\code{integer(1)}]\cr
+See \code{\link{jaccardTopics}}. Default is \code{10}.
+Not considered for calculation, if \code{sclop} is passed. But should be
+passed determining the correct value for the resulting object.}
 
 \item{progress}{[\code{logical(1)}]\cr
-Should a nice progress bar be shown? Turning it off, could lead to significantly
-faster calculation. Default ist \code{TRUE}.}
+Should a nice progress bar be shown for the steps of \code{\link{mergeTopics}}
+and \code{\link{jaccardTopics}}? Turning it off, could lead to significantly
+faster calculation. Default ist \code{TRUE}.
+Not considered, if \code{sclop} is passed.}
 
-\item{keepTopics}{.}
+\item{keepTopics}{[\code{logical(1)}]\cr
+Should the merged topic matrix from \code{\link{mergeTopics}} be kept?
+Not considered, if \code{sclop} is passed.}
 
-\item{keepSims}{.}
+\item{keepSims}{[\code{logical(1)}]\cr
+Should the calculated topic similarities matrix from \code{\link{jaccardTopics}}
+be kept? Not considered, if \code{sclop} is passed.}
 
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
-\item{id}{.}
+\item{id}{[\code{character(1)}]\cr
+A name for the computation. If not passed, it is set to "LDARep".
+Not implemented for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
 
-\item{sclop}{.}
+\item{sclop}{[\code{symmetrical named matrix}]\cr
+All pairwise S-CLOP scores of the given LDA runs. Matching of names is not
+implemented yet, so order matters.}
 }
 \value{
-[\code{named list}] with entries ...
+[\code{named list}] with entries
+ \describe{
+  \item{\code{lda}}{\code{\link{LDA}} object.}
+  \item{\code{ldaid}}{[\code{character(1)}] Name (ID) of the selected Prototype LDA.}
+  \item{\code{id}}{[\code{character(1)}] See above.}
+  \item{\code{limit.rel}}{[0,1] See above.}
+  \item{\code{limit.abs}}{[\code{integer(1)}] See above.}
+  \item{\code{topics}}{ [\code{named matrix}] with the count of vocabularies
+  (row wise) in topics (column wise).}
+  \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
+  jaccard similarities of the given topics.}
+  \item{\code{sclop}}{[\code{symmetrical named matrix}] with all pairwise
+  S-CLOP scores of the given LDA runs.}
+}
 }
 \description{
 Returns the Prototype LDA of a set of LDAs, which is given as
