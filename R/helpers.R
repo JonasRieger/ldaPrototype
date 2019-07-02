@@ -6,14 +6,6 @@
   }
 }
 
-.getDefaultParameters = function(K){
-  if (missing(K)){
-    return(list(K = 100, alpha = 0.01, eta = 0.01, num.iterations = 200))
-  }else{
-    return(list(K = K, alpha = 1/K, eta = 1/K, num.iterations = 200))
-  }
-}
-
 .paramList = function(n, ...){
   moreArgs = list(...)
   if(anyDuplicated(names(moreArgs))){
@@ -30,6 +22,3 @@
   moreArgs[lengths(moreArgs) != n] = lapply(moreArgs[lengths(moreArgs) != n], rep_len, length.out = n)
   return(moreArgs)
 }
-
-.defaultLimit.rel = function() 1/500
-.defaultLimit.abs = function() 10
