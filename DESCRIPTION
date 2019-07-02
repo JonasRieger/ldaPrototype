@@ -11,7 +11,6 @@ Encoding: UTF-8
 Depends:
 	R (>= 3.5.0)
 Imports:
-	batchtools (>= 0.9.11),
 	data.table (>= 1.11.2),
 	dendextend,
 	fs (>= 1.2.0),
@@ -22,6 +21,7 @@ Imports:
 	utils,
 	grDevices
 Suggests:
+	batchtools (>= 0.9.11),
 	parallel,
 	parallelMap,
 	tosca

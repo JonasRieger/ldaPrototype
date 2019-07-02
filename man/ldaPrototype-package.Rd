@@ -26,7 +26,7 @@ For bug reports and feature requests please use the tracker:
 
 \code{\link{getTopics}} Getter for \code{\link{LDA}} objects.\cr
 \code{\link{getJob}} Getter for \code{\link{LDARep}} and \code{\link{LDABatch}} objects.\cr
-\code{\link{getSCLOP}} Getter for \code{\link{PrototypeLDA}} objects.\cr
+\code{\link{getSCLOP}} Getter for \code{\link[=getPrototype]{PrototypeLDA}} objects.\cr
 \code{\link{getPrototype}} Determine the Prototype LDA.
 }
 

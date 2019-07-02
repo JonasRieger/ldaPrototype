@@ -42,7 +42,7 @@ Arguments will be coerced to a vector of length \code{n}.}
 }
 \description{
 Performs multiple runs of Latent Dirichlet Allocation on a batch system using
-the package \code{\link[batchtools]{batchtools}}.
+the \code{\link[batchtools]{batchtools-package}}.
 }
 \details{
 

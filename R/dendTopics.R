@@ -14,7 +14,7 @@
 #' @param ind [\code{integer} or \code{character}]\cr
 #' An integerish vector for specifying the topics taken into account. Alternatively
 #' a character vector can be passed. Then, all topics are taken for which the name
-#' contain at least one of the phrases in \code{ind} (see \code{\link[base]{grepl}}).
+#' contain at least one of the phrases in \code{ind} (see \code{\link[=base::grep]{grepl}}).
 #' @param method [\code{character(1)}]\cr
 #' The agglomeration method. See \code{\link[stats]{hclust}}.
 #' @return [\code{\link[stats]{dendrogram}}] of all considered topics.
