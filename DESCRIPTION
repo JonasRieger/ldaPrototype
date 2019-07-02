@@ -2,7 +2,7 @@ Package: ldaPrototype
 Type: Package
 Title: Determine a Prototype from a number of Runs of Latent Dirichlet Allocation measuring its similarities with S-CLOP
 Version: 0.1.0
-Date: 2019-05-21
+Date: 2019-07-01
 Authors@R: person("Jonas", "Rieger", email="jonas.rieger@tu-dortmund.de", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0007-4478"))
 Description: A procedure to select the LDA run with highest mean pairwise similarity, which is measured by S-CLOP, to all other runs. LDA runs are specified by its assignments leading to estimators for distribution parameters. Repeated runs lead to different results, which we encounter by choosing the most representative LDA run as prototype.
 URL: https://github.com/JonasRieger/ldaPrototype

@@ -18,7 +18,7 @@
 #' Default is \code{10}.
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
-#' faster calculation. Default ist \code{TRUE}.
+#' faster calculation. Default is \code{TRUE}.
 #' @return [\code{lower triangular named matrix}] with all pairwise jaccard similarities
 #' of the given topics.
 #'
