@@ -60,8 +60,8 @@ A name for the computation. If not passed, it is set to "LDARep".
 Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
 
 \item{sclop}{[\code{symmetrical named matrix}]\cr
-(optional) All pairwise S-CLOP scores of the given LDA runs. Matching of names is not
-implemented yet, so order matters.}
+(optional) All pairwise S-CLOP scores of the given LDA runs determined by
+\code{\link{SCLOP.pairwise}}. Matching of names is not implemented yet, so order matters.}
 }
 \value{
 [\code{named list}] with entries
