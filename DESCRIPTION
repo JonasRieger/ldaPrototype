@@ -12,19 +12,19 @@ Depends:
 	R (>= 3.5.0)
 Imports:
 	checkmate (>= 1.8.5),
+	colorspace (>= 1.4-1),
 	data.table (>= 1.11.2),
 	dendextend,
 	fs (>= 1.2.0),
 	lda (>= 1.4.2),
 	progress (>= 1.1.1),
-	RColorBrewer (>= 1.1-2),
 	stats,
-	utils,
-	grDevices
+	utils
 Suggests:
 	batchtools (>= 0.9.11),
 	parallel,
 	parallelMap,
+	RColorBrewer (>= 1.1-2),
 	tosca
 RoxygenNote: 6.1.1
 LazyData: true

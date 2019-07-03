@@ -33,7 +33,7 @@ dendTopics = function(sims, ind, method = "complete"){
 
   runs = gsub(pattern = "\\.(.?)*", x = colnames(sims)[ind], replacement = "")
   runs = table(runs)
-  cols = rep(grDevices::grey(seq(0, 0.8, length.out = length(runs))), times = runs)
+  cols = rep(rainbow_hcl(n = length(runs)), times = runs)
   labels_colors(dend) = cols[order.dendrogram(dend)]
   invisible(dend)
 }
