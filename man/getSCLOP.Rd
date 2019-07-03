@@ -18,7 +18,7 @@ getMergedTopics(x)
 
 getPrototypeID(x)
 
-\method{getLDA}{PrototypeLDA}(x, job, reduce = TRUE)
+\method{getLDA}{PrototypeLDA}(x, job, reduce = TRUE, all = FALSE)
 
 \method{getID}{PrototypeLDA}(x)
 
@@ -34,7 +34,11 @@ integerish job ids. Default is the (integerish) ID of the Prototype LDA.}
 
 \item{reduce}{[\code{logical(1)}]\cr
 If the list of LDAs contains only one element, should the list be reduced and
-the single (unnamed) element be returned? Default is \code{TRUE}.}
+the single (unnamed) element be returned? Default is \code{TRUE}.
+Not considered, if \code{all} is \code{TRUE}.}
+
+\item{all}{[\code{logical(1)}]\cr
+Shortcut for \code{job}: Should all stored LDAs be returned?}
 }
 \description{
 Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}} object.

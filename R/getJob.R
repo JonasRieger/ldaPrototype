@@ -17,6 +17,8 @@
 #' @param reduce [\code{logical(1)}]\cr
 #' If the list of LDAs contains only one element, should the list be reduced and
 #' the single (unnamed) element be returned? Default is \code{TRUE}.
+#' @param all not implemented for \code{\link{LDABatch}} and \code{\link{LDARep}}
+#' object. See \code{\link[=getSCLOP]{getLDA}}
 #' @param file.dir [Vector to be coerced to a \code{\link[fs]{fs_path}} object.]\cr
 #' New file directory to overwrite the registry's old one. This can be useful
 #' if the registry is transferred from a batch system.
@@ -59,10 +61,10 @@ getRegistry.LDABatch = function(x){
 
 #' @rdname getJob
 #' @export getLDA
-getLDA = function(x, job, reduce) UseMethod("getLDA")
+getLDA = function(x, job, reduce, all) UseMethod("getLDA")
 
 #' @export
-getLDA.LDARep = function(x, job, reduce = TRUE){
+getLDA.LDARep = function(x, job, reduce = TRUE, all){
 
   if (missing(job)) job = getJob(x)
   if (is.vector(job)) job = data.frame(job.id = as.integer(job))
@@ -73,7 +75,7 @@ getLDA.LDARep = function(x, job, reduce = TRUE){
 }
 
 #' @export
-getLDA.LDABatch = function(x, job, reduce = TRUE){
+getLDA.LDABatch = function(x, job, reduce = TRUE, all){
 
   reg = getRegistry(x)
   reg = batchtools::loadRegistry(file.dir = reg$file.dir)
