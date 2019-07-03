@@ -32,7 +32,7 @@ For bug reports and feature requests please use the tracker:
 
 \section{Performing multiple LDAs}{
 
-\code{\link{LDARep}} Performing multiple LDAs local (using parallelization).\cr
+\code{\link{LDARep}} Performing multiple LDAs locally (using parallelization).\cr
 \code{\link{LDABatch}} Performing multiple LDAs on Batch Systems.
 }
 

@@ -21,7 +21,7 @@
 #' \code{\link{getPrototype}} Determine the Prototype LDA.
 #'
 #' @section Performing multiple LDAs:
-#' \code{\link{LDARep}} Performing multiple LDAs local (using parallelization).\cr
+#' \code{\link{LDARep}} Performing multiple LDAs locally (using parallelization).\cr
 #' \code{\link{LDABatch}} Performing multiple LDAs on Batch Systems.
 #'
 #' @section Calculation Steps to determine the Prototype LDA:
