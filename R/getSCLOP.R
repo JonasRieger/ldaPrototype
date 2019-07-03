@@ -11,6 +11,9 @@
 #' @param reduce [\code{logical(1)}]\cr
 #' If the list of LDAs contains only one element, should the list be reduced and
 #' the single (unnamed) element be returned? Default is \code{TRUE}.
+#' Not considered, if \code{all} is \code{TRUE}.
+#' @param all [\code{logical(1)}]\cr
+#' Shortcut for \code{job}: Should all stored LDAs be returned?
 
 #' @export getSCLOP
 getSCLOP = function(x) UseMethod("getSCLOP")
@@ -49,7 +52,8 @@ getPrototypeID.PrototypeLDA = function(x){
 
 #' @rdname getSCLOP
 #' @export
-getLDA.PrototypeLDA = function(x, job, reduce = TRUE){
+getLDA.PrototypeLDA = function(x, job, reduce = TRUE, all = FALSE){
+  if (all) return(x$lda)
   if (missing(job)) job = getPrototypeID(x)
   if (is.vector(job)) job = data.frame(job.id = as.integer(job))
 

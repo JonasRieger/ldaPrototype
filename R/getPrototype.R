@@ -117,6 +117,12 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, progress =
 #' @export
 print.PrototypeLDA = function(x, ...){
 
+  if (length(getLDA(x, all = TRUE)) > 1){
+    allLDAs = TRUE
+  }
+
+
+
   add = ""
   if (!is.null(getMergedTopics(x))){
     add = " (including merged topics matrix)"
@@ -130,7 +136,9 @@ print.PrototypeLDA = function(x, ...){
   ### obiges neu schreiben... considered ldas koennten auch noch enthalten sein!
 
 
-  cat("PrototypeLDA Object", add, "\n LDA \"", getPrototypeID(x), "\" of \"", getID(x), "\"\n ",
+  cat("PrototypeLDA Object", add,
+    "\n Prototype of computation \"", getID(x), "\" is LDA \"",
+    getPrototypeID(x), "\"\n ",
     paste0(paste0(names(getParam(getLDA(x))), ": ",
       round(unlist(getParam(getLDA(x))), 2)), collapse = ", "),
     "\n ", paste0(paste0(names(getParam(x)), ": ",
