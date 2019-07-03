@@ -54,14 +54,14 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
       param = list(...))
   }
 
-  if (!missing(pm.backend) && !is.null(pm.packend)){
+  if (!missing(pm.backend) && !is.null(pm.backend)){
     if (missing(ncpus) || !is.null(ncpus)) ncpus = parallel::detectCores()
     parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
     parallelMap::parallelExport("docs", "vocab")
   }
 
   ldas = do.call(parallelMap::parallelMap, args = args)
-  if (!missing(pm.backend) && !is.null(pm.packend)) parallelMap::parallelStop()
+  if (!missing(pm.backend) && !is.null(pm.backend)) parallelMap::parallelStop()
   job.id = seq_len(n)
   args = data.table(job.id = job.id,
     do.call(cbind, args[names(args) != "fun"]))
