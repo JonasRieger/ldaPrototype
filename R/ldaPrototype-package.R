@@ -21,8 +21,8 @@
 #' \code{\link{getPrototype}} Determine the Prototype LDA.
 #'
 #' @section Performing multiple LDAs:
-#' \code{\link{LDARep}} \cr
-#' \code{\link{LDABatch}}
+#' \code{\link{LDARep}} Performing multiple LDAs local (using parallelization).\cr
+#' \code{\link{LDABatch}} Performing multiple LDAs on Batch Systems.
 #'
 #' @section Calculation Steps to determine the Prototype LDA:
 #' \code{\link{mergeTopics}} Merge topic matrices from multiple LDAs.\cr
@@ -32,7 +32,8 @@
 #' \code{\link{getPrototype}} Shortcut which includes all steps above.
 #'
 #' @section One function to do it all:
-#' \code{\link{LDAPrototype}}
+#' \code{\link{LDAPrototype}} Shortcut which performs multiple LDAs and
+#' determines their Prototype.
 #'
 #' @import data.table
 #' @import stats

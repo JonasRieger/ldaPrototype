@@ -32,8 +32,8 @@ For bug reports and feature requests please use the tracker:
 
 \section{Performing multiple LDAs}{
 
-\code{\link{LDARep}} \cr
-\code{\link{LDABatch}}
+\code{\link{LDARep}} Performing multiple LDAs local (using parallelization).\cr
+\code{\link{LDABatch}} Performing multiple LDAs on Batch Systems.
 }
 
 \section{Calculation Steps to determine the Prototype LDA}{
@@ -47,7 +47,8 @@ For bug reports and feature requests please use the tracker:
 
 \section{One function to do it all}{
 
-\code{\link{LDAPrototype}}
+\code{\link{LDAPrototype}} Shortcut which performs multiple LDAs and
+determines their Prototype.
 }
 
 \seealso{
