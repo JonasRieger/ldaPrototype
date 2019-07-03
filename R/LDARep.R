@@ -55,7 +55,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   }
 
   if (!missing(pm.backend) && !is.null(pm.backend)){
-    if (missing(ncpus) || !is.null(ncpus)) ncpus = parallel::detectCores()
+    if (missing(ncpus) || is.null(ncpus)) ncpus = parallel::detectCores()
     parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
     parallelMap::parallelExport("docs", "vocab")
   }
