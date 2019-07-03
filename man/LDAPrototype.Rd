@@ -4,15 +4,19 @@
 \alias{LDAPrototype}
 \title{Determine the Prototype LDA}
 \usage{
-LDAPrototype(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend,
-  ncpus, limit.rel, limit.abs, progress = TRUE, keepTopics = FALSE,
-  keepSims = FALSE, keepLDAs = FALSE, ...)
+LDAPrototype(docs, vocabLDA, vocabMerge = vocabLDA, n = 100, seeds,
+  id = "LDARep", pm.backend, ncpus, limit.rel, limit.abs,
+  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
+  keepLDAs = FALSE, ...)
 }
 \arguments{
 \item{docs}{[\code{list}]\cr
 Documents as received from \code{\link[tosca]{LDAprep}}.}
 
-\item{vocab}{[\code{character}]\cr
+\item{vocabLDA}{[\code{character}]\cr
+Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.}
+
+\item{vocabMerge}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}
 
 \item{n}{[\code{integer(1)}]\cr

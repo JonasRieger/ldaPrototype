@@ -4,7 +4,9 @@
 #' this set of LDAs.
 #'
 #' @inheritParams LDARep
-#' @param vocab [\code{character}]\cr
+#' @param vocabLDA [\code{character}]\cr
+#' Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+#' @param vocabMerge [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
 #' @param limit.rel [0,1]\cr
 #' See \code{\link{jaccardTopics}}. Default is \code{1/500}.
@@ -24,9 +26,19 @@
 #'
 #' @export LDAPrototype
 
-LDAPrototype = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend,
-  ncpus, limit.rel, limit.abs, progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
-  keepLDAs = FALSE, ...){
+LDAPrototype = function(docs, vocabLDA, vocabMerge = vocabLDA, n = 100, seeds,
+  id = "LDARep", pm.backend, ncpus, limit.rel, limit.abs, progress = TRUE,
+  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
 
-  NULL
+  if (missing(seeds)) seeds = NULL
+  if (missing(pm.backend)) pm.backend = NULL
+  if (missing(ncpus)) ncpus = NULL
+  if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
+  if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
+
+  x = LDARep(docs = docs, vocab = vocabLDA, n = n, seeds = seeds, id = id,
+    pm.backend = pm.backend, ncpus = ncpus, ...)
+  getPrototype(x = x, vocab = vocabMerge, limit.rel = limit.rel,
+    limit.abs = limit.abs, progress = progress, keepTopics = keepTopics,
+    keepSims = keepSims, keepLDAs = keepLDAs)
 }
