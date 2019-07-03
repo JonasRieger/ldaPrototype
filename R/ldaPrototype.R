@@ -41,7 +41,7 @@
 #' @importFrom progress progress_bar
 #' @importFrom fs fs_path
 #' @importFrom lda lda.collapsed.gibbs.sampler
-#' @importFrom dendextend labels_colors
+#' @importFrom dendextend labels_colors labels_colors<-
 #' @importFrom colorspace rainbow_hcl
 "_PACKAGE"
 
