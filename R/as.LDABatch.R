@@ -74,7 +74,7 @@ is.LDABatch = function(obj, verbose = FALSE){
 
   if (verbose) message("jobs: ", appendLF = FALSE)
   job = getJob(obj)
-  if (!data.table::is.data.table(job) || !("job.id" %in% colnames(job))){
+  if (!is.data.table(job) || !("job.id" %in% colnames(job))){
     if (verbose) message("not a data.table with element \"job.id\"")
     return(FALSE)
   }

@@ -34,6 +34,14 @@
 #' @section One function to do it all:
 #' \code{LDAPrototype} not yet implemented
 #'
+#' @import data.table
+#' @import stats
+#' @import checkmate
+#' @importFrom utils combn hasName
+#' @importFrom progress progress_bar
+#' @importFrom fs fs_path
+#' @importFrom lda lda.collapsed.gibbs.sampler
+#' @importFrom dendextend labels_colors
 "_PACKAGE"
 
 .getDefaultParameters = function(K){

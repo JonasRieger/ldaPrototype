@@ -93,6 +93,6 @@ setFileDir = function(x, file.dir) UseMethod("setFileDir")
 
 #' @export
 setFileDir.LDABatch = function(x, file.dir){
-  x$reg$file.dir = fs::fs_path(file.dir)
+  x$reg$file.dir = fs_path(file.dir)
   invisible(x)
 }

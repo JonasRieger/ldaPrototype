@@ -46,20 +46,20 @@ as.LDARep.default = function(lda, job, id, ...){
     }
   }
   if (missing(job)){
-    job = data.table::rbindlist(lapply(lda, function(x)
-      data.table::as.data.table(data.frame((getParam(x))))), fill = TRUE)
+    job = rbindlist(lapply(lda, function(x)
+      as.data.table(data.frame((getParam(x))))), fill = TRUE)
     job$job.id = names(lda)
-    data.table::setcolorder(job, "job.id")
+    setcolorder(job, "job.id")
   }else{
     if (is.vector(job)){
       if (all(names(.getDefaultParameters()) %in% names(job))){
-        job = data.table::data.table(job.id = as.integer(names(lda)), t(job))
+        job = data.table(job.id = as.integer(names(lda)), t(job))
       }else{
         stop("Not all standard parameters are specified.")
       }
     }else{
       if (all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
-        job = data.table::as.data.table(job)
+        job = as.data.table(job)
         if (!all(intersect(job$job.id, names(lda)) %in% union(job$job.id, names(lda))) ||
             nrow(job) != length(lda)){
           stop("Names of LDAs and \"job.id\" do not fit together.")
@@ -134,7 +134,7 @@ is.LDARep = function(obj, verbose = FALSE){
 
   if (verbose) message("jobs: ", appendLF = FALSE)
   job = getJob(obj)
-  if (!data.table::is.data.table(job) ||
+  if (!is.data.table(job) ||
       !all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
     if (verbose) message("not a data.table with standard parameters")
     return(FALSE)

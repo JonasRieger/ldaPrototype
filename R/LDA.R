@@ -31,7 +31,7 @@ LDA = function(x, param = NULL, assignments = NULL, topics = NULL, document_sums
   document_expects = NULL, log.likelihoods = NULL){
 
   if (!missing(x)){
-    if (utils::hasName(x, "param")) param = x$param
+    if (hasName(x, "param")) param = x$param
     if (is.null(assignments)) assignments = x$assignments
     if (is.null(topics)) topics = x$topics
     if (is.null(document_sums)) document_sums = x$document_sums

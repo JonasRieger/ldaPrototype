@@ -29,11 +29,11 @@ dendTopics = function(sims, ind, method = "complete"){
   if (missing(ind)) ind = seq_len(ncol(sims))
   if (is.character(ind)) ind = rowSums(sapply(ind, grepl, x = colnames(sims))) > 0
 
-  dend = stats::as.dendrogram(stats::hclust(stats::as.dist(1 - sims[ind, ind]), method = method))
+  dend = as.dendrogram(hclust(as.dist(1 - sims[ind, ind]), method = method))
 
   runs = gsub(pattern = "\\.(.?)*", x = colnames(sims)[ind], replacement = "")
   runs = table(runs)
   cols = rep(grDevices::grey(seq(0, 0.8, length.out = length(runs))), times = runs)
-  dendextend::labels_colors(dend) = cols[stats::order.dendrogram(dend)]
+  labels_colors(dend) = cols[order.dendrogram(dend)]
   invisible(dend)
 }

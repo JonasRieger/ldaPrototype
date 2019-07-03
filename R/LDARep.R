@@ -38,7 +38,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   if (missing(seeds) || length(seeds) != n){
     message("No seeds given or length of given seeds differs from number of replications: sample seeds")
     if (!exists(".Random.seed", envir = globalenv())){
-      stats::runif(1)
+      runif(1)
     }
     oldseed = .Random.seed
     seeds = sample(9999999, n)
@@ -50,7 +50,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   args$seed = seeds
   args$fun = function(seed, ...){
     set.seed(seed)
-    LDA(lda::lda.collapsed.gibbs.sampler(documents = docs, vocab = vocab, ...),
+    LDA(lda.collapsed.gibbs.sampler(documents = docs, vocab = vocab, ...),
       param = list(...))
   }
 
@@ -63,7 +63,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   ldas = do.call(parallelMap::parallelMap, args = args)
   if (!missing(pm.backend)) parallelMap::parallelStop()
   job.id = seq_len(n)
-  args = data.table::data.table(job.id = job.id,
+  args = data.table(job.id = job.id,
     do.call(cbind, args[names(args) != "fun"]))
   names(ldas) = job.id
 

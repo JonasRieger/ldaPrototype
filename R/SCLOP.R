@@ -32,8 +32,8 @@
 #' @export SCLOP
 
 SCLOP = function(dend){
-  nruns = length(unique(dendextend::labels_colors(dend)))
-  return(1 - (nruns/(nruns-1)) * disparitySum(dend) / stats::nobs(dend))
+  nruns = length(unique(labels_colors(dend)))
+  return(1 - (nruns/(nruns-1)) * disparitySum(dend) / nobs(dend))
 }
 
 #' @rdname SCLOP
@@ -41,13 +41,13 @@ SCLOP = function(dend){
 
 pruneSCLOP = function(dend){
   tmpPruneSCLOPlist = list()
-  nruns = length(unique(dendextend::labels_colors(dend)))
+  nruns = length(unique(labels_colors(dend)))
   .pruneSCLOP = function(dend, nruns){
-    if(stats::is.leaf(dend)){
+    if(is.leaf(dend)){
       tmpPruneSCLOPlist[[length(tmpPruneSCLOPlist)+1]] <<- dend
     }
     else{
-      tab = table(dendextend::labels_colors(dend))
+      tab = table(labels_colors(dend))
       tmp = integer(nruns)
       tmp[1:length(tab)] = tab
       tab = tmp
@@ -68,12 +68,12 @@ pruneSCLOP = function(dend){
 #' @export disparitySum
 
 disparitySum = function(dend){
-  .disparitySum(dend = dend, nruns = length(unique(dendextend::labels_colors(dend))))
+  .disparitySum(dend = dend, nruns = length(unique(labels_colors(dend))))
 }
 
 .disparitySum = function(dend, nruns){
-  if(stats::is.leaf(dend)) return((nruns-1)/nruns)
-  tab = table(dendextend::labels_colors(dend))
+  if(is.leaf(dend)) return((nruns-1)/nruns)
+  tab = table(labels_colors(dend))
   tmp = integer(nruns)
   tmp[1:length(tab)] = tab
   tab = tmp
@@ -92,7 +92,7 @@ disparitySum = function(dend){
 SCLOP.pairwise = function(sims){
   names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
 
-  combs = utils::combn(names, 2)
+  combs = combn(names, 2)
   rownames(combs) = c("V1", "V2")
   vals = apply(combs, 2, function(x) SCLOP(dendTopics(sims = sims, ind = x)))
   dat = data.frame(t(combs))

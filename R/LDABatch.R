@@ -61,16 +61,16 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
   batchtools::addAlgorithm(paste0(id, "Algorithm"),
     fun = function(job, data, instance, seed, ...){
       set.seed(seed)
-      LDA(lda::lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...),
+      LDA(lda.collapsed.gibbs.sampler(documents = data$docs, vocab = data$vocab, ...),
         param = list(...))
     })
 
-  moreArgs = data.table::data.table(do.call(cbind, .paramList(n = n, ...)))
+  moreArgs = data.table(do.call(cbind, .paramList(n = n, ...)))
 
   if (missing(seeds) || length(seeds) != n){
     message("No seeds given or length of given seeds differs from number of replications: sample seeds")
     if (!exists(".Random.seed", envir = globalenv())){
-      stats::runif(1)
+      runif(1)
     }
     oldseed = .Random.seed
     seeds = sample(9999999, n)
@@ -79,7 +79,7 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
   if (anyDuplicated(seeds)){
     message(sum(duplicated(seeds)), " duplicated seeds.")
   }
-  moreArgs = data.table::data.table(seed = seeds, moreArgs)
+  moreArgs = data.table(seed = seeds, moreArgs)
 
   algo.designs = list(moreArgs)
   names(algo.designs) = paste0(id, "Algorithm")

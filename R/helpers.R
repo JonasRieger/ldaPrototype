@@ -1,6 +1,6 @@
 .makeProgressBar = function(progress, ...) {
   if (progress && getOption("width") >= 20L){
-    progress::progress_bar$new(...)
+    progress_bar$new(...)
   }else{
     list(tick = function(len = 1, tokens = list()) NULL, update = function(ratio, tokens) NULL)
   }
