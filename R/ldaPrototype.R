@@ -1,57 +1,32 @@
-#' @title ldaPrototype: Determine a Prototype from a number of Runs of Latent
-#' Dirichlet Allocation measuring its similarities with S-CLOP
+#' @title Determine the Prototype LDA
 #'
-#' @description A procedure to select the LDA run with highest mean pairwise
-#' similarity, which is measured by S-CLOP, to all other runs. LDA runs are
-#' specified by its assignments leading to estimators for distribution parameters.
-#' Repeated runs lead to different results, which we encounter by choosing the
-#' most representative LDA run as prototype.\cr
-#' For bug reports and feature requests please use the tracker:
-#' \url{https://github.com/JonasRieger/ldaPrototype}.
+#' @description Performs multiple runs of LDA and returns the Prototype LDA of
+#' this set of LDAs.
 #'
-#' @section Constructor:
-#' \code{\link{LDA}} LDA objects used in this package.\cr
-#' \code{\link{as.LDARep}} LDARep objects.\cr
-#' \code{\link{as.LDABatch}} LDABatch objects.
+#' @inheritParams LDARep
+#' @param vocab [\code{character}]\cr
+#' Vocabularies taken into consideration for merging topic matrices.
+#' @param limit.rel [0,1]\cr
+#' See \code{\link{jaccardTopics}}. Default is \code{1/500}.
+#' @param limit.abs [\code{integer(1)}]\cr
+#' See \code{\link{jaccardTopics}}. Default is \code{10}.
+#' @param progress [\code{logical(1)}]\cr
+#' Should a nice progress bar be shown for the steps of \code{\link{mergeTopics}}
+#' and \code{\link{jaccardTopics}}? Turning it off, could lead to significantly
+#' faster calculation. Default ist \code{TRUE}.
+#' @param keepTopics [\code{logical(1)}]\cr
+#' Should the merged topic matrix from \code{\link{mergeTopics}} be kept?
+#' @param keepSims [\code{logical(1)}]\cr
+#' Should the calculated topic similarities matrix from \code{\link{jaccardTopics}}
+#' @param keepLDAs [\code{logical(1)}]\cr
+#' Should the considered LDAs be kept?
+#' @inherit getPrototype return
 #'
-#' @section Getter:
-#' \code{\link{getTopics}} Getter for \code{\link{LDA}} objects.\cr
-#' \code{\link{getJob}} Getter for \code{\link{LDARep}} and \code{\link{LDABatch}} objects.\cr
-#' \code{\link{getSCLOP}} Getter for \code{\link[=getPrototype]{PrototypeLDA}} objects.\cr
-#' \code{\link{getPrototype}} Determine the Prototype LDA.
-#'
-#' @section Performing multiple LDAs:
-#' \code{\link{LDARep}} \cr
-#' \code{\link{LDABatch}}
-#'
-#' @section Calculation Steps to determine the Prototype LDA:
-#' \code{\link{mergeTopics}} Merge topic matrices from multiple LDAs.\cr
-#' \code{\link{jaccardTopics}} Calculate topic similarities.\cr
-#' \code{\link{dendTopics}} Create a dendrogram from topic similarities.\cr
-#' \code{\link{SCLOP}} Determine various S-CLOP values and prune dendrograms.\cr
-#' \code{\link{getPrototype}} Shortcut which includes all steps above.
-#'
-#' @section One function to do it all:
-#' \code{LDAPrototype} not yet implemented
-#'
-#' @import data.table
-#' @import stats
-#' @import checkmate
-#' @importFrom utils combn hasName
-#' @importFrom progress progress_bar
-#' @importFrom fs fs_path
-#' @importFrom lda lda.collapsed.gibbs.sampler
-#' @importFrom dendextend labels_colors labels_colors<-
-#' @importFrom colorspace rainbow_hcl
-"_PACKAGE"
+#' @export LDAPrototype
 
-.getDefaultParameters = function(K){
-  if (missing(K)){
-    return(list(K = 100, alpha = 0.01, eta = 0.01, num.iterations = 200))
-  }else{
-    return(list(K = K, alpha = 1/K, eta = 1/K, num.iterations = 200))
-  }
+LDAPrototype = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend,
+  ncpus, limit.rel, limit.abs, progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
+  keepLDAs = FALSE, ...){
+
+  NULL
 }
-
-.defaultLimit.rel = function() 1/500
-.defaultLimit.abs = function() 10

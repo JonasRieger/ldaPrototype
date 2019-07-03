@@ -10,13 +10,16 @@
 getPrototype(...)
 
 \method{getPrototype}{LDABatch}(x, vocab, limit.rel, limit.abs,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, ...)
+  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
+  keepLDAs = FALSE, ...)
 
 \method{getPrototype}{LDARep}(x, vocab, limit.rel, limit.abs,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, ...)
+  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
+  keepLDAs = FALSE, ...)
 
 \method{getPrototype}{default}(lda, vocab, id, limit.rel, limit.abs,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, sclop, ...)
+  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
+  keepLDAs = FALSE, sclop, ...)
 }
 \arguments{
 \item{...}{additional arguments}
@@ -52,6 +55,9 @@ Not considered, if \code{sclop} is passed.}
 Should the calculated topic similarities matrix from \code{\link{jaccardTopics}}
 be kept? Not considered, if \code{sclop} is passed.}
 
+\item{keepLDAs}{[\code{logical(1)}]\cr
+Should the considered LDAs be kept?}
+
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
@@ -66,8 +72,9 @@ Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
 \value{
 [\code{named list}] with entries
  \describe{
-  \item{\code{lda}}{\code{\link{LDA}} object of the determined Prototype LDA.}
-  \item{\code{ldaid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
+  \item{\code{lda}}{List of \code{\link{LDA}} objects of the determined Prototype LDA
+  and - if \code{keepLDAs} is \code{TRUE} - all considered LDAs.}
+  \item{\code{protoid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
   \item{\code{id}}{[\code{character(1)}] See above.}
   \item{\code{limit.rel}}{[0,1] See above.}
   \item{\code{limit.abs}}{[\code{integer(1)}] See above.}
@@ -80,7 +87,7 @@ Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
 }
 }
 \description{
-Returns the Prototype LDA of a set of LDAs, which is given as
+Returns the Prototype LDA of a set of LDAs. This set is given as
 \code{\link{LDABatch}} object, \code{\link{LDARep}} object, or as list of LDAs.
 If the matrix of S-CLOP scores \code{sclop} is passed, no calculation is done.
 }

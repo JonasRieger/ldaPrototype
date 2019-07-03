@@ -5,8 +5,12 @@
 #'
 #' @param x [\code{named list}]\cr
 #' \code{\link[=getPrototype]{PrototypeLDA}} object.
-#' @param job not implemented (relict from \code{\link{getLDA}})
-#' @param reduce not implemented (relict from \code{\link{getLDA}})
+#' @param job [\code{\link{data.frame}} or \code{integer}]\cr
+#' A data.frame or data.table with a column named "job.id" or a vector of
+#' integerish job ids. Default is the (integerish) ID of the Prototype LDA.
+#' @param reduce [\code{logical(1)}]\cr
+#' If the list of LDAs contains only one element, should the list be reduced and
+#' the single (unnamed) element be returned? Default is \code{TRUE}.
 
 #' @export getSCLOP
 getSCLOP = function(x) UseMethod("getSCLOP")
@@ -35,18 +39,23 @@ getMergedTopics.PrototypeLDA = function(x){
 }
 
 #' @rdname getSCLOP
-#' @export getLDAID
-getLDAID = function(x) UseMethod("getLDAID")
+#' @export getPrototypeID
+getPrototypeID = function(x) UseMethod("getPrototypeID")
 
 #' @export
-getLDAID.PrototypeLDA = function(x){
-  x$ldaid
+getPrototypeID.PrototypeLDA = function(x){
+  x$protoid
 }
 
 #' @rdname getSCLOP
 #' @export
-getLDA.PrototypeLDA = function(x, job, reduce){
-  x$lda
+getLDA.PrototypeLDA = function(x, job, reduce = TRUE){
+  if (missing(job)) job = getPrototypeID(x)
+  if (is.vector(job)) job = data.frame(job.id = as.integer(job))
+
+  lda = x$lda[match(job$job.id, names(x$lda))]
+  if (reduce && length(lda) == 1) lda = lda[[1]]
+  lda
 }
 
 #' @rdname getSCLOP

@@ -4,7 +4,7 @@
 \alias{getSCLOP}
 \alias{getSimilarity}
 \alias{getMergedTopics}
-\alias{getLDAID}
+\alias{getPrototypeID}
 \alias{getLDA.PrototypeLDA}
 \alias{getID.PrototypeLDA}
 \alias{getParam.PrototypeLDA}
@@ -16,9 +16,9 @@ getSimilarity(x)
 
 getMergedTopics(x)
 
-getLDAID(x)
+getPrototypeID(x)
 
-\method{getLDA}{PrototypeLDA}(x, job, reduce)
+\method{getLDA}{PrototypeLDA}(x, job, reduce = TRUE)
 
 \method{getID}{PrototypeLDA}(x)
 
@@ -28,9 +28,13 @@ getLDAID(x)
 \item{x}{[\code{named list}]\cr
 \code{\link[=getPrototype]{PrototypeLDA}} object.}
 
-\item{job}{not implemented (relict from \code{\link{getLDA}})}
+\item{job}{[\code{\link{data.frame}} or \code{integer}]\cr
+A data.frame or data.table with a column named "job.id" or a vector of
+integerish job ids. Default is the (integerish) ID of the Prototype LDA.}
 
-\item{reduce}{not implemented (relict from \code{\link{getLDA}})}
+\item{reduce}{[\code{logical(1)}]\cr
+If the list of LDAs contains only one element, should the list be reduced and
+the single (unnamed) element be returned? Default is \code{TRUE}.}
 }
 \description{
 Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}} object.
