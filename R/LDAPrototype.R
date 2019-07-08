@@ -29,7 +29,7 @@
 #' @export LDAPrototype
 
 LDAPrototype = function(docs, vocabLDA, vocabMerge = vocabLDA, n = 100, seeds,
-  id = "LDARep", pm.backend, ncpus, limit.rel, limit.abs, progress = TRUE,
+  id = "LDARep", pm.backend, ncpus, limit.rel, limit.abs, atLeast, progress = TRUE,
   keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
 
   if (missing(seeds)) seeds = NULL

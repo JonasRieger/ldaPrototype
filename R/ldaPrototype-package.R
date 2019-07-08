@@ -38,7 +38,7 @@
 #' @import data.table
 #' @import stats
 #' @import checkmate
-#' @importFrom utils combn hasName
+#' @importFrom utils combn hasName head
 #' @importFrom progress progress_bar
 #' @importFrom fs fs_path
 #' @importFrom lda lda.collapsed.gibbs.sampler
