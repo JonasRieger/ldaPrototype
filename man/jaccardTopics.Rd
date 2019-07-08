@@ -4,14 +4,14 @@
 \alias{jaccardTopics}
 \title{Pairwise Jaccard Coefficients}
 \usage{
-jaccardTopics(topics, limit.rel, limit.abs, progress = TRUE)
+jaccardTopics(topics, limit.rel, limit.abs, atLeast, progress = TRUE)
 }
 \arguments{
 \item{topics}{[\code{named matrix}]\cr
 The counts of vocabularies (row wise) in topics (column wise).}
 
 \item{limit.rel}{[0,1]\cr
-A relative lower bound limit for which words are taken into account. All words
+A relative lower bound limit for which words are taken into account. Those words
 are taken as relevant for a topic that have a count higher than \code{limit.rel}
 multiplied by the total count of the given topic. Default is \code{1/500}.}
 
@@ -19,6 +19,10 @@ multiplied by the total count of the given topic. Default is \code{1/500}.}
 An absolute lower bound limit for which words are taken into account. All words
 are taken as relevant for a topic that have a count higher than \code{limit.abs}.
 Default is \code{10}.}
+
+\item{atLeast}{[\code{integer(1)}]\cr
+An absolute count of how many words are at least considered as relevant for a topic.
+Default is \code{0}.}
 
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly

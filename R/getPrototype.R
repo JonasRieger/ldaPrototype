@@ -22,6 +22,10 @@
 #' See \code{\link{jaccardTopics}}. Default is \code{10}.
 #' Not considered for calculation, if \code{sclop} is passed. But should be
 #' passed determining the correct value for the resulting object.
+#' @param atLeast [\code{integer(1)}]\cr
+#' See \code{\link{jaccardTopics}}. Default is \code{0}.
+#' Not considered for calculation, if \code{sclop} is passed. But should be
+#' passed determining the correct value for the resulting object.
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown for the steps of \code{\link{mergeTopics}}
 #' and \code{\link{jaccardTopics}}? Turning it off, could lead to significantly
@@ -60,15 +64,17 @@ getPrototype = function(...) UseMethod("getPrototype")
 
 #' @rdname getPrototype
 #' @export
-getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, progress = TRUE,
+getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast, progress = TRUE,
   keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
+  if (missing(atLeast)) atLeast = .defaultAtLeast()
   lda = getLDA(x)
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
-    limit.rel = limit.rel, limit.abs = limit.abs, progress = progress,
+    limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
+    progress = progress,
     keepTopics = keepTopics, keepSims = keepSims, keepLDAs= keepLDAs)
 }
 
@@ -79,10 +85,12 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, progress = TRUE,
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
+  if (missing(atLeast)) atLeast = .defaultAtLeast()
   lda = getLDA(x)
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
-    limit.rel = limit.rel, limit.abs = limit.abs, progress = progress,
+    limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
+    progress = progress,
     keepTopics = keepTopics, keepSims = keepSims, keepLDAs= keepLDAs)
 }
 
@@ -93,6 +101,7 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, progress =
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
+  if (missing(atLeast)) atLeast = .defaultAtLeast()
   if (missing(id)) id = "LDARep"
   if (missing(sclop)){
     topics = mergeRepTopics(lda = lda, vocab = vocab, id = id, progress = progress)
@@ -108,7 +117,7 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, progress =
   protoid = names(lda)[which.max(colSums(sclop, na.rm = TRUE))]
   if (!keepLDAs) lda = lda[which.max(colSums(sclop, na.rm = TRUE))]
   res = list(lda = lda, protoid = protoid, id = id,
-    limit.rel = limit.rel, limit.abs = limit.abs,
+    param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast),
     topics = topics, sims = sims, sclop = sclop)
   class(res) = "PrototypeLDA"
   invisible(res)
@@ -126,6 +135,6 @@ print.PrototypeLDA = function(x, ...){
     paste0(paste0(names(getParam(getLDA(x))), ": ",
       round(unlist(getParam(getLDA(x))), 2)), collapse = ", "),
     "\n ", paste0(paste0(names(getParam(x)), ": ",
-      round(unlist(getParam(x)), 2)), collapse = ", "),
+      unlist(getParam(x))), collapse = ", "),
     "\n\n", sep = "")
 }

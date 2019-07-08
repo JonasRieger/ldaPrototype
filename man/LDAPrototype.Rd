@@ -59,6 +59,9 @@ Should the considered LDAs be kept?}
 
 \item{...}{additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 Arguments will be coerced to a vector of length \code{n}.}
+
+\item{atLeast}{[\code{integer(1)}]\cr
+See \code{\link{jaccardTopics}}. Default is \code{0}.}
 }
 \value{
 [\code{named list}] with entries

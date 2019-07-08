@@ -56,3 +56,4 @@
 
 .defaultLimit.rel = function() 1/500
 .defaultLimit.abs = function() 10
+.defaultAtLeast = function() 0

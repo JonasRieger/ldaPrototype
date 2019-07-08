@@ -9,7 +9,7 @@
 \usage{
 getPrototype(...)
 
-\method{getPrototype}{LDABatch}(x, vocab, limit.rel, limit.abs,
+\method{getPrototype}{LDABatch}(x, vocab, limit.rel, limit.abs, atLeast,
   progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
   keepLDAs = FALSE, ...)
 
@@ -38,6 +38,11 @@ passed determining the correct value for the resulting object.}
 
 \item{limit.abs}{[\code{integer(1)}]\cr
 See \code{\link{jaccardTopics}}. Default is \code{10}.
+Not considered for calculation, if \code{sclop} is passed. But should be
+passed determining the correct value for the resulting object.}
+
+\item{atLeast}{[\code{integer(1)}]\cr
+See \code{\link{jaccardTopics}}. Default is \code{0}.
 Not considered for calculation, if \code{sclop} is passed. But should be
 passed determining the correct value for the resulting object.}
 

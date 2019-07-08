@@ -12,6 +12,8 @@
 #' See \code{\link{jaccardTopics}}. Default is \code{1/500}.
 #' @param limit.abs [\code{integer(1)}]\cr
 #' See \code{\link{jaccardTopics}}. Default is \code{10}.
+#' @param atLeast [\code{integer(1)}]\cr
+#' See \code{\link{jaccardTopics}}. Default is \code{0}.
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown for the steps of \code{\link{mergeTopics}}
 #' and \code{\link{jaccardTopics}}? Turning it off, could lead to significantly
@@ -35,10 +37,12 @@ LDAPrototype = function(docs, vocabLDA, vocabMerge = vocabLDA, n = 100, seeds,
   if (missing(ncpus)) ncpus = NULL
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
+  if (missing(atLeast)) atLeast = .defaultAtLeast()
 
   x = LDARep(docs = docs, vocab = vocabLDA, n = n, seeds = seeds, id = id,
     pm.backend = pm.backend, ncpus = ncpus, ...)
   getPrototype(x = x, vocab = vocabMerge, limit.rel = limit.rel,
-    limit.abs = limit.abs, progress = progress, keepTopics = keepTopics,
+    limit.abs = limit.abs, atLeast = atLeast,
+    progress = progress, keepTopics = keepTopics,
     keepSims = keepSims, keepLDAs = keepLDAs)
 }
