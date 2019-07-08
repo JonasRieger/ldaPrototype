@@ -5,7 +5,7 @@
 \title{Determine the Prototype LDA}
 \usage{
 LDAPrototype(docs, vocabLDA, vocabMerge = vocabLDA, n = 100, seeds,
-  id = "LDARep", pm.backend, ncpus, limit.rel, limit.abs,
+  id = "LDARep", pm.backend, ncpus, limit.rel, limit.abs, atLeast,
   progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
   keepLDAs = FALSE, ...)
 }
@@ -43,6 +43,9 @@ See \code{\link{jaccardTopics}}. Default is \code{1/500}.}
 \item{limit.abs}{[\code{integer(1)}]\cr
 See \code{\link{jaccardTopics}}. Default is \code{10}.}
 
+\item{atLeast}{[\code{integer(1)}]\cr
+See \code{\link{jaccardTopics}}. Default is \code{0}.}
+
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown for the steps of \code{\link{mergeTopics}}
 and \code{\link{jaccardTopics}}? Turning it off, could lead to significantly
@@ -59,9 +62,6 @@ Should the considered LDAs be kept?}
 
 \item{...}{additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 Arguments will be coerced to a vector of length \code{n}.}
-
-\item{atLeast}{[\code{integer(1)}]\cr
-See \code{\link{jaccardTopics}}. Default is \code{0}.}
 }
 \value{
 [\code{named list}] with entries
