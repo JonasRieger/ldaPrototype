@@ -42,11 +42,8 @@ jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE)
       topics > rep(colSums(topics)*limit.rel, each = nrow(topics))
   ind = colSums(index) < atLeast
   if (any(ind)){
-    tmp = as.matrix(head(apply(as.matrix(topics[, ind]), 2, function(x)
-      order(x,  decreasing = TRUE)), atLeast))
-    for (i in seq_len(ncol(tmp))){
-      index[tmp[,i], which(ind)[i]] = TRUE
-    }
+    index[,ind] = apply(as.matrix(topics[,ind]), 2,
+      function(x) x >= -sort.int(-x, partial = atLeast)[atLeast])
   }
 
   #index = apply(topics, 2, function(x) x > (sum(x) * limit.rel))
