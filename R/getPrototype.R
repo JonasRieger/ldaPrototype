@@ -49,10 +49,10 @@
 #'   and - if \code{keepLDAs} is \code{TRUE} - all considered LDAs.}
 #'   \item{\code{protoid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
 #'   \item{\code{id}}{[\code{character(1)}] See above.}
-#'   \item{\code{param}{[\code{named list}]} with parameter specifications for
+#'   \item{\code{param}}{[\code{named list}] with parameter specifications for
 #'   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
 #'   \code{atLeast} [\code{integer(1)}] See above for explanation.}
-#'   \item{\code{topics}}{ [\code{named matrix}] with the count of vocabularies
+#'   \item{\code{topics}}{[\code{named matrix}] with the count of vocabularies
 #'   (row wise) in topics (column wise).}
 #'   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
 #'   jaccard similarities of the given topics.}

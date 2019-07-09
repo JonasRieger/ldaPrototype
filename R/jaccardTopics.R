@@ -28,7 +28,7 @@
 #'   jaccard similarities of the given topics.}
 #'   \item{\code{wordslimit}}{[\code{integer}] .}
 #'   \item{\code{wordsconsidered}}{[\code{integer}] .}
-#'   \item{\code{param}{[\code{named list}]} with parameter specifications for
+#'   \item{\code{param}}{[\code{named list}] with parameter specifications for
 #'   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
 #'   \code{atLeast} [\code{integer(1)}] See above for explanation.}
 #' }
