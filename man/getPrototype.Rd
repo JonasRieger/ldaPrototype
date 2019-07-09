@@ -13,12 +13,12 @@ getPrototype(...)
   progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
   keepLDAs = FALSE, ...)
 
-\method{getPrototype}{LDARep}(x, vocab, limit.rel, limit.abs,
+\method{getPrototype}{LDARep}(x, vocab, limit.rel, limit.abs, atLeast,
   progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
   keepLDAs = FALSE, ...)
 
 \method{getPrototype}{default}(lda, vocab, id, limit.rel, limit.abs,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
+  atLeast, progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
   keepLDAs = FALSE, sclop, ...)
 }
 \arguments{
