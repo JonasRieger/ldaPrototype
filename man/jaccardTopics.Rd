@@ -29,8 +29,16 @@ Should a nice progress bar be shown? Turning it off, could lead to significantly
 faster calculation. Default is \code{TRUE}.}
 }
 \value{
-[\code{lower triangular named matrix}] with all pairwise jaccard similarities
-of the given topics.
+[\code{named list}] with entries
+\describe{
+  \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
+  jaccard similarities of the given topics.}
+  \item{\code{wordslimit}}{[\code{integer}] .}
+  \item{\code{wordsconsidered}}{[\code{integer}] .}
+  \item{\code{param}{[\code{named list}]} with parameter specifications for
+  \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
+  \code{atLeast} [\code{integer(1)}] See above for explanation.}
+}
 }
 \description{
 Calculates the similarity of all pairwise topic combinations using a modified

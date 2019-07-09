@@ -2,7 +2,9 @@
 % Please edit documentation in R/getSCLOP.R
 \name{getSCLOP}
 \alias{getSCLOP}
-\alias{getSimilarity}
+\alias{getSimilarity.PrototypeLDA}
+\alias{getRelevantWords.PrototypeLDA}
+\alias{getConsideredWords.PrototypeLDA}
 \alias{getMergedTopics}
 \alias{getPrototypeID}
 \alias{getLDA.PrototypeLDA}
@@ -12,7 +14,11 @@
 \usage{
 getSCLOP(x)
 
-getSimilarity(x)
+\method{getSimilarity}{PrototypeLDA}(x)
+
+\method{getRelevantWords}{PrototypeLDA}(x)
+
+\method{getConsideredWords}{PrototypeLDA}(x)
 
 getMergedTopics(x)
 

@@ -24,12 +24,21 @@ getSCLOP.PrototypeLDA = function(x){
 }
 
 #' @rdname getSCLOP
-#' @export getSimilarity
-getSimilarity = function(x) UseMethod("getSimilarity")
-
 #' @export
 getSimilarity.PrototypeLDA = function(x){
   x$sims
+}
+
+#' @rdname getSCLOP
+#' @export
+getRelevantWords.PrototypeLDA = function(x){
+  x$wordslimit
+}
+
+#' @rdname getSCLOP
+#' @export
+getConsideredWords.PrototypeLDA = function(x){
+  x$wordsconsidered
 }
 
 #' @rdname getSCLOP

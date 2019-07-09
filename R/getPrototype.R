@@ -49,8 +49,9 @@
 #'   and - if \code{keepLDAs} is \code{TRUE} - all considered LDAs.}
 #'   \item{\code{protoid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
 #'   \item{\code{id}}{[\code{character(1)}] See above.}
-#'   \item{\code{limit.rel}}{[0,1] See above.}
-#'   \item{\code{limit.abs}}{[\code{integer(1)}] See above.}
+#'   \item{\code{param}{[\code{named list}]} with parameter specifications for
+#'   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
+#'   \code{atLeast} [\code{integer(1)}] See above for explanation.}
 #'   \item{\code{topics}}{ [\code{named matrix}] with the count of vocabularies
 #'   (row wise) in topics (column wise).}
 #'   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
@@ -106,7 +107,10 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
   if (missing(sclop)){
     topics = mergeRepTopics(lda = lda, vocab = vocab, id = id, progress = progress)
     sims = jaccardTopics(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
-      progress = progress)
+      atLeast = atLeast, progress = progress)
+    sims = getSimilarity(sims)
+    wordslimit = getRelevantWords(sims)
+    wordsconsidered = getConsideredWords(sims)
     sclop = SCLOP.pairwise(sims = sims)
     if (!keepTopics) topics = NULL
     if (!keepSims) sims = NULL
@@ -118,7 +122,8 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
   if (!keepLDAs) lda = lda[which.max(colSums(sclop, na.rm = TRUE))]
   res = list(lda = lda, protoid = protoid, id = id,
     param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast),
-    topics = topics, sims = sims, sclop = sclop)
+    topics = topics, sims = sims, wordslimit = wordslimit,
+    wordsconsidered = wordsconsidered, sclop = sclop)
   class(res) = "PrototypeLDA"
   invisible(res)
 }

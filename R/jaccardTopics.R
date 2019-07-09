@@ -22,8 +22,16 @@
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default is \code{TRUE}.
-#' @return [\code{lower triangular named matrix}] with all pairwise jaccard similarities
-#' of the given topics.
+#' @return [\code{named list}] with entries
+#' \describe{
+#'   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
+#'   jaccard similarities of the given topics.}
+#'   \item{\code{wordslimit}}{[\code{integer}] .}
+#'   \item{\code{wordsconsidered}}{[\code{integer}] .}
+#'   \item{\code{param}{[\code{named list}]} with parameter specifications for
+#'   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
+#'   \code{atLeast} [\code{integer(1)}] See above for explanation.}
+#' }
 #'
 #' @examples
 #' # TODO
@@ -40,7 +48,8 @@ jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE)
 
   index = topics > limit.abs &
       topics > rep(colSums(topics)*limit.rel, each = nrow(topics))
-  ind = colSums(index) < atLeast
+  wordsconsidered = colSums(index)
+  ind = wordsconsidered < atLeast
   if (any(ind)){
     index[,ind] = apply(as.matrix(topics[,ind]), 2,
       function(x) x >= -sort.int(-x, partial = atLeast)[atLeast])
@@ -62,5 +71,8 @@ jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE)
 
   sims[is.nan(sims)] = 0
 
-  invisible(sims)
+  res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
+    param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
+  class(res) = "TopicSimilarity"
+  invisible(res)
 }
