@@ -114,7 +114,7 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
     topics = NULL
     sims = NULL
   }
-  protoid = names(lda)[which.max(colSums(sclop, na.rm = TRUE))]
+  protoid = as.integer(names(lda)[which.max(colSums(sclop, na.rm = TRUE))])
   if (!keepLDAs) lda = lda[which.max(colSums(sclop, na.rm = TRUE))]
   res = list(lda = lda, protoid = protoid, id = id,
     param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast),

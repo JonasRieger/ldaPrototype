@@ -47,7 +47,7 @@ getPrototypeID = function(x) UseMethod("getPrototypeID")
 
 #' @export
 getPrototypeID.PrototypeLDA = function(x){
-  x$protoid
+  as.integer(x$protoid)
 }
 
 #' @rdname getSCLOP
