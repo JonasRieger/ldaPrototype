@@ -61,7 +61,8 @@ mergeRepTopics.default = function(lda, vocab, id, progress = TRUE, ...){
 
   k = 1
   for(l in topicList){
-    topics[match(colnames(l), vocab), seq_len(Ntopic[k]) + counter] = t(l)
+    ind = colnames(l) %in% vocab
+    topics[match(colnames(l)[ind], vocab), seq_len(Ntopic[k]) + counter] = t(l[,ind])
     colnames(topics)[seq_len(Ntopic[k]) + counter] = paste0(id, name[k], ".", seq_len(Ntopic[k]))
     counter = counter + Ntopic[k]
     k = k + 1
