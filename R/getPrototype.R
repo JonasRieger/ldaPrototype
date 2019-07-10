@@ -113,9 +113,9 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
     topics = mergeRepTopics(lda = lda, vocab = vocab, id = id, progress = progress)
     sims = jaccardTopics(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
       atLeast = atLeast, progress = progress)
-    sims = getSimilarity(sims)
     wordslimit = getRelevantWords(sims)
     wordsconsidered = getConsideredWords(sims)
+    sims = getSimilarity(sims)
     sclop = SCLOP.pairwise(sims = sims)
     if (!keepTopics) topics = NULL
     if (!keepSims){
