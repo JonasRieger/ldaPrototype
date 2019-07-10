@@ -33,8 +33,11 @@ faster calculation. Default is \code{TRUE}.}
 \describe{
   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
   jaccard similarities of the given topics.}
-  \item{\code{wordslimit}}{[\code{integer}] .}
-  \item{\code{wordsconsidered}}{[\code{integer}] .}
+  \item{\code{wordslimit}}{[\code{integer}] with counts of words determined as
+  relevant based on \code{limit.rel} and \code{limit.abs}.}
+  \item{\code{wordsconsidered}}{[\code{integer}] with counts of considered
+  words for similarity calculation. Could differ from \code{wordslimit}, if
+  \code{atLeast} is greater than zero.}
   \item{\code{param}}{[\code{named list}] with parameter specifications for
   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
   \code{atLeast} [\code{integer(1)}] See above for explanation.}

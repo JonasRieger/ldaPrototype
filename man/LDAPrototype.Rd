@@ -77,6 +77,11 @@ Arguments will be coerced to a vector of length \code{n}.}
   (row wise) in topics (column wise).}
   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
   jaccard similarities of the given topics.}
+  \item{\code{wordslimit}}{[\code{integer}] with counts of words determined as
+  relevant based on \code{limit.rel} and \code{limit.abs}.}
+  \item{\code{wordsconsidered}}{[\code{integer}] with counts of considered
+  words for similarity calculation. Could differ from \code{wordslimit}, if
+  \code{atLeast} is greater than zero.}
   \item{\code{sclop}}{[\code{symmetrical named matrix}] with all pairwise
   S-CLOP scores of the given LDA runs.}
 }
