@@ -118,10 +118,16 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
     wordsconsidered = getConsideredWords(sims)
     sclop = SCLOP.pairwise(sims = sims)
     if (!keepTopics) topics = NULL
-    if (!keepSims) sims = NULL
+    if (!keepSims){
+      sims = NULL
+      wordslimit = NULL
+      wordsconsidered = NULL
+    }
   }else{
     topics = NULL
     sims = NULL
+    wordslimit = NULL
+    wordsconsidered = NULL
   }
   protoid = as.integer(names(lda)[which.max(colSums(sclop, na.rm = TRUE))])
   if (!keepLDAs) lda = lda[which.max(colSums(sclop, na.rm = TRUE))]

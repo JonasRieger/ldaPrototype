@@ -7,8 +7,8 @@
 #' @details
 #'
 #' @param sims [\code{symmetrical named matrix}]\cr
-#' Pairwise jaccard similarities of underlying topics like
-#' the output from \code{\link{jaccardTopics}}. The topic names should be
+#' Pairwise jaccard similarities of underlying topics as the \code{sims} element
+#' from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
 #' @param ind [\code{integer} or \code{character}]\cr
