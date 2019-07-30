@@ -89,6 +89,8 @@ print.TopicSimilarity = function(x, ...){
     nrow(getSimilarity(x)), " Topics from ",
     length(unique(sapply(strsplit(colnames(getSimilarity(x)), "\\."), function(x) x[1]))),
     " independent runs\n ",
+    round(mean(getConsideredWords(x)), 2), " (SD: ",
+    round(sd(getConsideredWords(x)), 2),") mean considered Words per Topic\n ",
     paste0(paste0(names(getParam(x)), ": ", unlist(getParam(x))), collapse = ", "),
     "\n\n", sep = ""
   )
