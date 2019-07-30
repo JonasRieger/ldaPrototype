@@ -236,7 +236,7 @@ print.LDA = function(x, ...){
     paste0(elements, collapse = ", "), "\n ",
     val[1], " Texts with mean length of ", round(val[2], 2), " Tokens\n ",
     val[3], " different Words\n ",
-    paste0(paste0(names(getParam(x)), ": ", round(unlist(getParam(x)), 2)), collapse = ", "),
+    paste0(paste0(names(getParam(x)), ": ", round(unlist(getParam(x)), 4)), collapse = ", "),
     "\n\n", sep = ""
   )
 }

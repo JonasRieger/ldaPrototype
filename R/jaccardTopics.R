@@ -79,3 +79,17 @@ jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE)
   class(res) = "TopicSimilarity"
   invisible(res)
 }
+
+#' @export
+print.TopicSimilarity = function(x, ...){
+  elements = paste0("\"", names(which(!sapply(x, is.null))), "\"")
+  cat(
+    "TopicSimilarity Object with element(s)\n",
+    paste0(elements, collapse = ", "), "\n ",
+    nrow(getSimilarity(x)), " Topics of ",
+    length(unique(sapply(strsplit(colnames(getSimilarity(x)), "\\."), function(x) x[1]))),
+    " LDA Runs\n ",
+    paste0(paste0(names(getParam(x)), ": ", unlist(getParam(x))), collapse = ", "),
+    "\n\n", sep = ""
+  )
+}
