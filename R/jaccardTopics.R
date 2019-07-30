@@ -86,9 +86,9 @@ print.TopicSimilarity = function(x, ...){
   cat(
     "TopicSimilarity Object with element(s)\n",
     paste0(elements, collapse = ", "), "\n ",
-    nrow(getSimilarity(x)), " Topics of ",
+    nrow(getSimilarity(x)), " Topics from ",
     length(unique(sapply(strsplit(colnames(getSimilarity(x)), "\\."), function(x) x[1]))),
-    " LDA Runs\n ",
+    " independent runs\n ",
     paste0(paste0(names(getParam(x)), ": ", unlist(getParam(x))), collapse = ", "),
     "\n\n", sep = ""
   )
