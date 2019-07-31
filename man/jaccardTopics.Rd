@@ -27,7 +27,8 @@ Default is \code{0}.}
 
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly
-faster calculation. Default is \code{TRUE}.}
+faster calculation. Default is \code{TRUE}.
+If \code{pm.backend} is set, parallelization is done and no progress bar will be shown.}
 
 \item{pm.backend}{[\code{character(1)}]\cr
 One of "multicore", "socket" or "mpi".
