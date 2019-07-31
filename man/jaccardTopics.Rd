@@ -4,7 +4,8 @@
 \alias{jaccardTopics}
 \title{Pairwise Jaccard Coefficients}
 \usage{
-jaccardTopics(topics, limit.rel, limit.abs, atLeast, progress = TRUE)
+jaccardTopics(topics, limit.rel, limit.abs, atLeast, progress = TRUE,
+  pm.backend, ncpus)
 }
 \arguments{
 \item{topics}{[\code{named matrix}]\cr
@@ -27,6 +28,15 @@ Default is \code{0}.}
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly
 faster calculation. Default is \code{TRUE}.}
+
+\item{pm.backend}{[\code{character(1)}]\cr
+One of "multicore", "socket" or "mpi".
+If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
+called before computation is started and \code{\link[parallelMap]{parallelStop}}
+is called after.}
+
+\item{ncpus}{[\code{integer(1)}]\cr
+Number of (physical) CPUs to use.}
 }
 \value{
 [\code{named list}] with entries

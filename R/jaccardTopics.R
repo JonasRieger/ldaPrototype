@@ -22,6 +22,13 @@
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default is \code{TRUE}.
+#' @param pm.backend [\code{character(1)}]\cr
+#' One of "multicore", "socket" or "mpi".
+#' If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
+#' called before computation is started and \code{\link[parallelMap]{parallelStop}}
+#' is called after.
+#' @param ncpus [\code{integer(1)}]\cr
+#' Number of (physical) CPUs to use.
 #' @return [\code{named list}] with entries
 #' \describe{
 #'   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
@@ -41,16 +48,91 @@
 #'
 #' @export jaccardTopics
 
-jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE){
+jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE,
+  pm.backend, ncpus){
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
+  if (missing(ncpus)) ncpus = NULL
+  if (!missing(pm.backend)){
+    jaccardTopics.parallel(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
+      atLeast = atLeast, pm.backend = pm.backend, ncpus = ncpus)
+  }else{
+    jaccardTopics.serial(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
+      atLeast = atLeast, progress = progress)
+  }
+}
+
+#' @export
+print.TopicSimilarity = function(x, ...){
+  elements = paste0("\"", names(which(!sapply(x, is.null))), "\"")
+  cat(
+    "TopicSimilarity Object with element(s)\n",
+    paste0(elements, collapse = ", "), "\n ",
+    nrow(getSimilarity(x)), " Topics from ",
+    length(unique(sapply(strsplit(colnames(getSimilarity(x)), "\\."), function(x) x[1]))),
+    " independent runs\n ",
+    round(mean(getConsideredWords(x)), 2), " (SD: ",
+    round(sd(getConsideredWords(x)), 2),") mean considered Words per Topic\n ",
+    paste0(paste0(names(getParam(x)), ": ", unlist(getParam(x))), collapse = ", "),
+    "\n\n", sep = ""
+  )
+}
+
+jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.backend, ncpus){
 
   N = ncol(topics)
 
   index = topics > limit.abs &
-      topics > rep(colSums(topics)*limit.rel, each = nrow(topics))
+    topics > rep(colSums(topics)*limit.rel, each = nrow(topics))
+  wordsconsidered = colSums(index)
+  ind = wordsconsidered < atLeast
+  if (any(ind)){
+    index[,ind] = apply(as.matrix(topics[,ind]), 2,
+      function(x) x >= -sort.int(-x, partial = atLeast)[atLeast])
+  }
+
+  sims = matrix(nrow = N, ncol = N)
+  colnames(sims) = rownames(sims) = colnames(topics)
+
+  if (missing(ncpus) || is.null(ncpus)) ncpus = parallel::detectCores()
+  parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
+
+  fun = function(s){
+    lapply(s, function(i)
+      colSums(index[,i] * index[,(i+1):N]) / colSums((index[,i] + index[,(i+1):N]) > 0))
+  }
+
+  parallelMap::parallelExport("index", "N")
+  sequences = lapply(seq_len(max(ncpus, 2)), function(x) seq(x, N-2, max(ncpus, 2)))
+  val = parallelMap::parallelMap(fun = fun, sequences)
+  parallelMap::parallelStop()
+
+  rearrangedlist = list()
+  for (i in seq_along(sequences)){
+    rearrangedlist[sequences[[i]]] = val[[i]]
+  }
+  rm(val)
+
+  sims = matrix(nrow = N, ncol = N)
+  colnames(sims) = rownames(sims) = colnames(topics)
+  sims[lower.tri(sims)] = c(unlist(rearrangedlist),
+    sum(index[, N] & index[, N-1]) / sum(index[, N] | index[, N-1]))
+  sims[is.nan(sims)] = 0
+
+  res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
+    param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
+  class(res) = "TopicSimilarity"
+  invisible(res)
+}
+
+jaccardTopics.serial = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE){
+
+  N = ncol(topics)
+
+  index = topics > limit.abs &
+    topics > rep(colSums(topics)*limit.rel, each = nrow(topics))
   wordsconsidered = colSums(index)
   ind = wordsconsidered < atLeast
   if (any(ind)){
@@ -78,20 +160,4 @@ jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE)
     param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
   class(res) = "TopicSimilarity"
   invisible(res)
-}
-
-#' @export
-print.TopicSimilarity = function(x, ...){
-  elements = paste0("\"", names(which(!sapply(x, is.null))), "\"")
-  cat(
-    "TopicSimilarity Object with element(s)\n",
-    paste0(elements, collapse = ", "), "\n ",
-    nrow(getSimilarity(x)), " Topics from ",
-    length(unique(sapply(strsplit(colnames(getSimilarity(x)), "\\."), function(x) x[1]))),
-    " independent runs\n ",
-    round(mean(getConsideredWords(x)), 2), " (SD: ",
-    round(sd(getConsideredWords(x)), 2),") mean considered Words per Topic\n ",
-    paste0(paste0(names(getParam(x)), ": ", unlist(getParam(x))), collapse = ", "),
-    "\n\n", sep = ""
-  )
 }
