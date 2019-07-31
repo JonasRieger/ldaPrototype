@@ -64,18 +64,18 @@ parjaccardTopics = function(topics, limit.rel, limit.abs, atLeast, pm.backend, n
   if (!missing(pm.backend) && !is.null(pm.backend)){
     if (missing(ncpus) || is.null(ncpus)) ncpus = parallel::detectCores()
     parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
-    parallelMap::parallelExport("index")
   }
   
   fun = function(i){
     colSums(index[,i] * index[,(i+1):N]) / colSums((index[,i] + index[,(i+1):N]) > 0)
   }
   
+  parallelMap::parallelExport("index", "N")
   val = parallelMap::parallelMap(fun = fun, seq_len(N - 2))
   
   sims = matrix(nrow = N, ncol = N)
   colnames(sims) = rownames(sims) = colnames(topics)
-  sims[lower.tri(sims)] = c(val, sum(index[, N] & index[, N-1]) / sum(index[, N] | index[, N-1]))
+  sims[lower.tri(sims)] = c(unlist(val), sum(index[, N] & index[, N-1]) / sum(index[, N] | index[, N-1]))
   sims[is.nan(sims)] = 0
   
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
