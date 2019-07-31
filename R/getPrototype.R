@@ -31,6 +31,15 @@
 #' and \code{\link{jaccardTopics}}? Turning it off, could lead to significantly
 #' faster calculation. Default ist \code{TRUE}.
 #' Not considered, if \code{sclop} is passed.
+#' @param pm.backend [\code{character(1)}]\cr
+#' One of "multicore", "socket" or "mpi".
+#' If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
+#' called before computation is started and \code{\link[parallelMap]{parallelStop}}
+#' is called after.
+#' Not considered, if \code{sclop} is passed.
+#' @param ncpus [\code{integer(1)}]\cr
+#' Number of (physical) CPUs to use.
+#' Not considered, if \code{sclop} is passed.
 #' @param keepTopics [\code{logical(1)}]\cr
 #' Should the merged topic matrix from \code{\link{mergeTopics}} be kept?
 #' Not considered, if \code{sclop} is passed.
@@ -71,7 +80,8 @@ getPrototype = function(...) UseMethod("getPrototype")
 #' @rdname getPrototype
 #' @export
 getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
+  progress = TRUE, pm.backend, ncpus,
+  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
@@ -80,14 +90,15 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
-    progress = progress,
+    progress = progress, pm.backend = pm.backend, ncpus = ncpus,
     keepTopics = keepTopics, keepSims = keepSims, keepLDAs= keepLDAs)
 }
 
 #' @rdname getPrototype
 #' @export
 getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
+  progress = TRUE, pm.backend, ncpus,
+  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
@@ -96,14 +107,15 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
-    progress = progress,
+    progress = progress, pm.backend = pm.backend, ncpus = ncpus,
     keepTopics = keepTopics, keepSims = keepSims, keepLDAs= keepLDAs)
 }
 
 #' @rdname getPrototype
 #' @export
 getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, sclop, ...){
+  progress = TRUE, pm.backend, ncpus,
+  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, sclop, ...){
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
@@ -112,7 +124,7 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
   if (missing(sclop)){
     topics = mergeRepTopics(lda = lda, vocab = vocab, id = id, progress = progress)
     sims = jaccardTopics(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
-      atLeast = atLeast, progress = progress)
+      atLeast = atLeast, progress = progress, pm.backend = pm.backend, ncpus = ncpus)
     wordslimit = getRelevantWords(sims)
     wordsconsidered = getConsideredWords(sims)
     sims = getSimilarity(sims)

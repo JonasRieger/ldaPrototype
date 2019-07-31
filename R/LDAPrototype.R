@@ -43,6 +43,6 @@ LDAPrototype = function(docs, vocabLDA, vocabMerge = vocabLDA, n = 100, seeds,
     pm.backend = pm.backend, ncpus = ncpus, ...)
   getPrototype(x = x, vocab = vocabMerge, limit.rel = limit.rel,
     limit.abs = limit.abs, atLeast = atLeast,
-    progress = progress, keepTopics = keepTopics,
-    keepSims = keepSims, keepLDAs = keepLDAs)
+    progress = progress, pm.backend = pm.backend, ncpus = ncpus,
+    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs)
 }

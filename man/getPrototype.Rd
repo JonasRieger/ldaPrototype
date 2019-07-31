@@ -10,16 +10,16 @@
 getPrototype(...)
 
 \method{getPrototype}{LDABatch}(x, vocab, limit.rel, limit.abs, atLeast,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
-  keepLDAs = FALSE, ...)
+  progress = TRUE, pm.backend, ncpus, keepTopics = FALSE,
+  keepSims = FALSE, keepLDAs = FALSE, ...)
 
 \method{getPrototype}{LDARep}(x, vocab, limit.rel, limit.abs, atLeast,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
-  keepLDAs = FALSE, ...)
+  progress = TRUE, pm.backend, ncpus, keepTopics = FALSE,
+  keepSims = FALSE, keepLDAs = FALSE, ...)
 
 \method{getPrototype}{default}(lda, vocab, id, limit.rel, limit.abs,
-  atLeast, progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
-  keepLDAs = FALSE, sclop, ...)
+  atLeast, progress = TRUE, pm.backend, ncpus, keepTopics = FALSE,
+  keepSims = FALSE, keepLDAs = FALSE, sclop, ...)
 }
 \arguments{
 \item{...}{additional arguments}
@@ -50,6 +50,17 @@ passed determining the correct value for the resulting object.}
 Should a nice progress bar be shown for the steps of \code{\link{mergeTopics}}
 and \code{\link{jaccardTopics}}? Turning it off, could lead to significantly
 faster calculation. Default ist \code{TRUE}.
+Not considered, if \code{sclop} is passed.}
+
+\item{pm.backend}{[\code{character(1)}]\cr
+One of "multicore", "socket" or "mpi".
+If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
+called before computation is started and \code{\link[parallelMap]{parallelStop}}
+is called after.
+Not considered, if \code{sclop} is passed.}
+
+\item{ncpus}{[\code{integer(1)}]\cr
+Number of (physical) CPUs to use.
 Not considered, if \code{sclop} is passed.}
 
 \item{keepTopics}{[\code{logical(1)}]\cr
