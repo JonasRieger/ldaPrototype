@@ -66,16 +66,26 @@ parjaccardTopics = function(topics, limit.rel, limit.abs, atLeast, pm.backend, n
     parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
   }
   
-  fun = function(i){
-    colSums(index[,i] * index[,(i+1):N]) / colSums((index[,i] + index[,(i+1):N]) > 0)
+  fun = function(s){
+    lapply(s, function(i)
+      colSums(index[,i] * index[,(i+1):N]) / colSums((index[,i] + index[,(i+1):N]) > 0))
   }
   
   parallelMap::parallelExport("index", "N")
-  val = parallelMap::parallelMap(fun = fun, seq_len(N - 2))
+  sequences = lapply(seq_len(max(ncpus, 2)), function(x) seq(x, N-2, max(ncpus, 2)))
+  val = parallelMap::parallelMap(fun = fun, sequences)
+  if (!missing(pm.backend) && !is.null(pm.backend)) parallelMap::parallelStop()
+  
+  rearrangedlist = list()
+  for (i in seq_along(sequences)){
+    rearrangedlist[sequences[[i]]] = val[[i]]
+  }
+  rm(val)
   
   sims = matrix(nrow = N, ncol = N)
   colnames(sims) = rownames(sims) = colnames(topics)
-  sims[lower.tri(sims)] = c(unlist(val), sum(index[, N] & index[, N-1]) / sum(index[, N] | index[, N-1]))
+  sims[lower.tri(sims)] = c(unlist(rearrangedlist),
+    sum(index[, N] & index[, N-1]) / sum(index[, N] | index[, N-1]))
   sims[is.nan(sims)] = 0
   
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
