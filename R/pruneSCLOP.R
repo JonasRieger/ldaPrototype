@@ -19,8 +19,10 @@
 #' # TODO
 #'
 #' @export pruneSCLOP
+pruneSCLOP = function(dend) UseMethod("pruneSCLOP")
 
-pruneSCLOP = function(dend){
+#' @export
+pruneSCLOP.TopicDendrogram = function(dend){
   tmpPruneSCLOPlist = list()
   nruns = length(unique(labels_colors(dend)))
   .pruneSCLOP = function(dend, nruns){

@@ -42,12 +42,13 @@ For bug reports and feature requests please use the tracker:
 \code{\link{mergeTopics}} Merge topic matrices from multiple LDAs.\cr
 \code{\link{jaccardTopics}} Calculate topic similarities.\cr
 \code{\link{dendTopics}} Create a dendrogram from topic similarities.\cr
-\code{\link{SCLOP}} Determine various S-CLOP values and prune dendrograms.\cr
-\code{\link{getPrototype}} Shortcut which includes all steps above.
+\code{\link{SCLOP}} Determine various S-CLOP values.\cr
+\code{\link{pruneSCLOP}} Prune \code{\link[=dendTopics]{TopicDendrogram}} objects.
 }
 
-\section{One function to do it all}{
+\section{Shortcuts}{
 
+\code{\link{getPrototype}} Shortcut which includes all calculation steps.
 \code{\link{LDAPrototype}} Shortcut which performs multiple LDAs and
 determines their Prototype.
 }

@@ -8,8 +8,8 @@
 #' The label´s colors are determined based on their Run belonging using
 #' \code{\link[colorspace]{rainbow_hcl}} by default. Colors can be manipulated
 #' using \code{\link[dendextend]{color_labels}}. Analogously, the labels
-#' themself can be  manipulated using \code{\link[=dendextend::`labels<-`]{labels}}.
-#' For both the function \code{\link[=dendextend::`order.dendrogram<-`]{order.dendrogram}} is useful.
+#' themself can be  manipulated using \code{\link[dendextend:`labels<-`]{labels}}.
+#' For both the function \code{\link[dendextend:`order.dendrogram<-`]{order.dendrogram}} is useful.
 #'
 #' @param sims [\code{lower triangular named matrix}]\cr
 #' Pairwise jaccard similarities of underlying topics as the \code{sims} element
