@@ -8,7 +8,7 @@
 \usage{
 pruneSCLOP(dend)
 
-plot.PruningSCLOP(pruning, dend, pruning.par, ...)
+\method{plot}{PruningSCLOP}(x, dend, pruning.par, ...)
 
 pruning.par(pruning)
 }
@@ -18,16 +18,20 @@ pruning.par(pruning)
 (and \code{\link[stats]{dendrogram}}) object of all considered topics as the
 output from \code{\link{dendTopics}}.}
 
-\item{pruning}{[\code{list of \link[stats]{dendrogram}s}]\cr
-\code{\link[=SCLOP]{PruningSCLOP}} object specifying the best possible
-local pruning state.}
-
 \item{pruning.par}{[\code{list}]\cr
 List of parameters to mark the pruning. See \code{\link[=pruneSCLOP]{pruning.par}}
 for default parameters. Types for marking the pruning state are \code{"abline"},
 \code{"color"} and \code{"both"}.}
 
 \item{...}{additional arguments.}
+
+\item{pruning}{[\code{list of \link[stats]{dendrogram}s}]\cr
+\code{\link[=pruneSCLOP]{PruningSCLOP}} object specifying the best possible
+local pruning state.}
+
+\item{dend}{[\code{\link[stats]{dendrogram}}]\cr
+\code{\link[=dendTopics]{TopicDendrogram}}
+(and \code{\link[stats]{dendrogram}}) object of all considered topics.}
 }
 \value{
 [\code{list of \link[stats]{dendrogram}s}]

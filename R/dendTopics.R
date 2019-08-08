@@ -46,11 +46,8 @@ dendTopics = function(sims, ind, method = "complete"){
 }
 
 #' @rdname dendTopics
-#' @param dend [\code{\link[stats]{dendrogram}}]\cr
-#' \code{\link[=dendTopics]{TopicDendrogram}}
-#' (and \code{\link[stats]{dendrogram}}) object of all considered topics.
 #' @param pruning [\code{list of \link[stats]{dendrogram}s}]\cr
-#' \code{\link[=SCLOP]{PruningSCLOP}} object specifying the best possible
+#' \code{\link[=pruneSCLOP]{PruningSCLOP}} object specifying the best possible
 #' local pruning state.
 #' @param pruning.par [\code{list}]\cr
 #' List of parameters to mark the pruning. See \code{\link[=pruneSCLOP]{pruning.par}}
@@ -58,7 +55,8 @@ dendTopics = function(sims, ind, method = "complete"){
 #' \code{"color"} and \code{"both"}.
 #' @param ... additional arguments.
 #' @export
-plot.TopicDendrogram = function(dend, pruning, pruning.par, ...){
+plot.TopicDendrogram = function(x, pruning, pruning.par, ...){
+  dend = x
   class(dend) = class(dend)[-1]
   if (missing(pruning)){
     plot(dend, ...)

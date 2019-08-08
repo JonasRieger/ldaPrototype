@@ -7,7 +7,7 @@
 \usage{
 dendTopics(sims, ind, method = "complete")
 
-plot.TopicDendrogram(dend, pruning, pruning.par, ...)
+\method{plot}{TopicDendrogram}(x, pruning, pruning.par, ...)
 }
 \arguments{
 \item{sims}{[\code{lower triangular named matrix}]\cr
@@ -25,12 +25,8 @@ By default all topics are considered.}
 \item{method}{[\code{character(1)}]\cr
 The agglomeration method. See \code{\link[stats]{hclust}}.}
 
-\item{dend}{[\code{\link[stats]{dendrogram}}]\cr
-\code{\link[=dendTopics]{TopicDendrogram}}
-(and \code{\link[stats]{dendrogram}}) object of all considered topics.}
-
 \item{pruning}{[\code{list of \link[stats]{dendrogram}s}]\cr
-\code{\link[=SCLOP]{PruningSCLOP}} object specifying the best possible
+\code{\link[=pruneSCLOP]{PruningSCLOP}} object specifying the best possible
 local pruning state.}
 
 \item{pruning.par}{[\code{list}]\cr

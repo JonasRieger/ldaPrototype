@@ -48,10 +48,13 @@ pruneSCLOP = function(dend){
 
 #' @rdname pruneSCLOP
 #' @inheritParams plot.TopicDendrogram
+#' @param dend [\code{\link[stats]{dendrogram}}]\cr
+#' \code{\link[=dendTopics]{TopicDendrogram}}
+#' (and \code{\link[stats]{dendrogram}}) object of all considered topics.
 #' @export
-plot.PruningSCLOP = function(pruning, dend, pruning.par, ...){
+plot.PruningSCLOP = function(x, dend, pruning.par, ...){
   if (missing(pruning.par)) pruning.par = list()
-  plot.TopicDendrogram(dend = dend, pruning = pruning, pruning.par = pruning.par, ...)
+  plot.TopicDendrogram(dend = dend, pruning = x, pruning.par = pruning.par, ...)
 }
 
 #' @rdname pruneSCLOP
