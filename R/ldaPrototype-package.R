@@ -45,6 +45,7 @@
 #' @importFrom lda lda.collapsed.gibbs.sampler
 #' @importFrom dendextend labels_colors labels_colors<-
 #' @importFrom colorspace rainbow_hcl
+#' @importFrom graphics plot abline
 "_PACKAGE"
 
 .getDefaultParameters = function(K){
