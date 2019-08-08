@@ -48,7 +48,7 @@ For bug reports and feature requests please use the tracker:
 
 \section{Shortcuts}{
 
-\code{\link{getPrototype}} Shortcut which includes all calculation steps.
+\code{\link{getPrototype}} Shortcut which includes all calculation steps.\cr
 \code{\link{LDAPrototype}} Shortcut which performs multiple LDAs and
 determines their Prototype.
 }
