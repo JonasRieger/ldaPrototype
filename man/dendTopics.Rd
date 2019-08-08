@@ -25,6 +25,8 @@ By default all topics are considered.}
 \item{method}{[\code{character(1)}]\cr
 The agglomeration method. See \code{\link[stats]{hclust}}.}
 
+\item{x}{an R object.}
+
 \item{pruning}{[\code{list of \link[stats]{dendrogram}s}]\cr
 \code{\link[=pruneSCLOP]{PruningSCLOP}} object specifying the best possible
 local pruning state.}
@@ -48,8 +50,8 @@ cluster algorithm.
 The label´s colors are determined based on their Run belonging using
 \code{\link[colorspace]{rainbow_hcl}} by default. Colors can be manipulated
 using \code{\link[dendextend]{color_labels}}. Analogously, the labels
-themself can be  manipulated using \code{\link[dendextend]{labels}}. For both
-the function \code{\link[dendextend]{order.dendrogram}} is useful.
+themself can be  manipulated using \code{\link[=dendextend::`labels<-`]{labels}}.
+For both the function \code{\link[=dendextend::`order.dendrogram<-`]{order.dendrogram}} is useful.
 }
 \examples{
 # TODO
