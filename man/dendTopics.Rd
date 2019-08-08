@@ -2,12 +2,15 @@
 % Please edit documentation in R/dendTopics.R
 \name{dendTopics}
 \alias{dendTopics}
+\alias{plot.TopicDendrogram}
 \title{Topic Dendrogram}
 \usage{
 dendTopics(sims, ind, method = "complete")
+
+plot.TopicDendrogram(dend, pruning, pruning.par, ...)
 }
 \arguments{
-\item{sims}{[\code{symmetrical named matrix}]\cr
+\item{sims}{[\code{lower triangular named matrix}]\cr
 Pairwise jaccard similarities of underlying topics as the \code{sims} element
 from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
@@ -16,20 +19,41 @@ first dot identifies the LDA run.}
 \item{ind}{[\code{integer} or \code{character}]\cr
 An integerish vector for specifying the topics taken into account. Alternatively
 a character vector can be passed. Then, all topics are taken for which the name
-contain at least one of the phrases in \code{ind} (see \code{\link[=grep]{grepl}}).}
+contain at least one of the phrases in \code{ind} (see \code{\link[=grep]{grepl}}).
+By default all topics are considered.}
 
 \item{method}{[\code{character(1)}]\cr
 The agglomeration method. See \code{\link[stats]{hclust}}.}
+
+\item{dend}{[\code{\link[stats]{dendrogram}}]\cr
+\code{\link[=dendTopics]{TopicDendrogram}}
+(and \code{\link[stats]{dendrogram}}) object of all considered topics.}
+
+\item{pruning}{[\code{list of \link[stats]{dendrogram}s}]\cr
+\code{\link[=SCLOP]{PruningSCLOP}} object specifying the best possible
+local pruning state.}
+
+\item{pruning.par}{[\code{list}]\cr
+List of parameters to mark the pruning. See \code{\link[=pruneSCLOP]{pruning.par}}
+for default parameters. Types for marking the pruning state are \code{"abline"},
+\code{"color"} and \code{"both"}.}
+
+\item{...}{additional arguments.}
 }
 \value{
-[\code{\link[stats]{dendrogram}}] of all considered topics.
+[\code{\link[stats]{dendrogram}}] \code{\link[=dendTopics]{TopicDendrogram}}
+(and \code{\link[stats]{dendrogram}}) object of all considered topics.
 }
 \description{
 Builds a dendrogram for topics based on their pairwise similarities using a
 cluster algorithm.
 }
 \details{
-
+The label´s colors are determined based on their Run belonging using
+\code{\link[colorspace]{rainbow_hcl}} by default. Colors can be manipulated
+using \code{\link[dendextend]{color_labels}}. Analogously, the labels
+themself can be  manipulated using \code{\link[dendextend]{labels}}. For both
+the function \code{\link[dendextend]{order.dendrogram}} is useful.
 }
 \examples{
 # TODO

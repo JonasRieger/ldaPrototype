@@ -2,7 +2,7 @@
 #'
 #' @description
 #' The function \code{SCLOP} calculates the S-CLOP for the best possible local pruning state
-#' of a dendrogram from \code{\link{dendTopics}}. The function \code{pruneSCLOP}
+#' of a dendrogram from \code{\link{dendTopics}}. The function \code{\link{pruneSCLOP}}
 #' supplies the corresponding pruning state itself.\cr
 #' To get all pairwise S-CLOP scores of two LDA runs, the function \code{SCLOP.pairwise}
 #' can be used. It returnes a matrix of the pairwise S-CLOP scores.\cr
@@ -18,8 +18,6 @@
 #' \describe{
 #'   \item{\code{SCLOP}}{[0,1] value specifying the S-CLOP for the best possible
 #'   local pruning state of the given dendrogram.}
-#'   \item{\code{pruneSCLOP}}{[\code{list of \link[stats]{dendrogram}s}] specifying
-#'   the best possible local pruning state.}
 #'   \item{\code{disparitySum}}{[\code{numeric(1)}] value specifying the least
 #'   possible sum of disparities on the given dendrogram.}
 #'   \item{\code{SCLOP.pairwise}}{[\code{symmetrical named matrix}] with all
@@ -34,34 +32,6 @@
 SCLOP = function(dend){
   nruns = length(unique(labels_colors(dend)))
   return(1 - (nruns/(nruns-1)) * disparitySum(dend) / nobs(dend))
-}
-
-#' @rdname SCLOP
-#' @export pruneSCLOP
-
-pruneSCLOP = function(dend){
-  tmpPruneSCLOPlist = list()
-  nruns = length(unique(labels_colors(dend)))
-  .pruneSCLOP = function(dend, nruns){
-    if(is.leaf(dend)){
-      tmpPruneSCLOPlist[[length(tmpPruneSCLOPlist)+1]] <<- dend
-    }
-    else{
-      tab = table(labels_colors(dend))
-      tmp = integer(nruns)
-      tmp[1:length(tab)] = tab
-      tab = tmp
-      if(all.equal((mean(abs(tab-1)) * sum(tab)), .disparitySum(dend = dend, nruns = nruns)) == TRUE){
-        tmpPruneSCLOPlist[[length(tmpPruneSCLOPlist)+1]] <<- dend
-      }
-      else{
-        Recall(dend = dend[[1]], nruns = nruns)
-        Recall(dend = dend[[2]], nruns = nruns)
-      }
-    }
-  }
-  .pruneSCLOP(dend = dend, nruns = nruns)
-  return(tmpPruneSCLOPlist)
 }
 
 #' @rdname SCLOP
@@ -82,7 +52,7 @@ disparitySum = function(dend){
 }
 
 #' @rdname SCLOP
-#' @param sims [\code{symmetrical named matrix}]\cr
+#' @param sims [\code{lower triangular named matrix}]\cr
 #' Pairwise jaccard similarities of underlying topics as the \code{sims} element
 #' from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the

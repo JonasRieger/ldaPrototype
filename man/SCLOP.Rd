@@ -2,14 +2,11 @@
 % Please edit documentation in R/SCLOP.R
 \name{SCLOP}
 \alias{SCLOP}
-\alias{pruneSCLOP}
 \alias{disparitySum}
 \alias{SCLOP.pairwise}
 \title{Similarity/Stability of multiple sets of Objects using Clustering with Local Pruning}
 \usage{
 SCLOP(dend)
-
-pruneSCLOP(dend)
 
 disparitySum(dend)
 
@@ -19,7 +16,7 @@ SCLOP.pairwise(sims)
 \item{dend}{[\code{\link[stats]{dendrogram}}]\cr
 Output from \code{\link{dendTopics}}.}
 
-\item{sims}{[\code{symmetrical named matrix}]\cr
+\item{sims}{[\code{lower triangular named matrix}]\cr
 Pairwise jaccard similarities of underlying topics as the \code{sims} element
 from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
@@ -29,8 +26,6 @@ first dot identifies the LDA run.}
 \describe{
   \item{\code{SCLOP}}{[0,1] value specifying the S-CLOP for the best possible
   local pruning state of the given dendrogram.}
-  \item{\code{pruneSCLOP}}{[\code{list of \link[stats]{dendrogram}s}] specifying
-  the best possible local pruning state.}
   \item{\code{disparitySum}}{[\code{numeric(1)}] value specifying the least
   possible sum of disparities on the given dendrogram.}
   \item{\code{SCLOP.pairwise}}{[\code{symmetrical named matrix}] with all
@@ -39,7 +34,7 @@ first dot identifies the LDA run.}
 }
 \description{
 The function \code{SCLOP} calculates the S-CLOP for the best possible local pruning state
-of a dendrogram from \code{\link{dendTopics}}. The function \code{pruneSCLOP}
+of a dendrogram from \code{\link{dendTopics}}. The function \code{\link{pruneSCLOP}}
 supplies the corresponding pruning state itself.\cr
 To get all pairwise S-CLOP scores of two LDA runs, the function \code{SCLOP.pairwise}
 can be used. It returnes a matrix of the pairwise S-CLOP scores.\cr
