@@ -66,3 +66,12 @@ pruning.par = function(pruning){
       times = lengths(pruning)),
     labels = unlist(lapply(pruning, labels)))
 }
+
+#' @export
+print.PruningSCLOP = function(x, ...){
+  cat(
+    "PruningSCLOP Object consisting of ", length(x), " Topic Cluster\n ",
+    "with ", round(mean(sapply(x, function(y) length(labels(y)))), 2), " (SD: ",
+    round(sd(sapply(x, function(y) length(labels(y)))), 2),") mean Topics per Cluster\n ",
+    "and ", length(unique(unlist(lapply(x, labels_colors)))), " different Colors", sep = "")
+}

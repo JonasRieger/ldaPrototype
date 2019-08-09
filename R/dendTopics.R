@@ -7,7 +7,7 @@
 #' @details
 #' The label´s colors are determined based on their Run belonging using
 #' \code{\link[colorspace]{rainbow_hcl}} by default. Colors can be manipulated
-#' using \code{\link[dendextend]{color_labels}}. Analogously, the labels
+#' using \code{\link[dendextend]{labels_colors}}. Analogously, the labels
 #' themself can be  manipulated using \code{\link[dendextend:labels.hclust]{labels}}.
 #' For both the function \code{\link[stats]{order.dendrogram}} is useful.
 #'
@@ -66,13 +66,13 @@ plot.TopicDendrogram = function(x, pruning, pruning.par, ...){
     default = pruning.par(pruning)
     pruning.par = c(pruning.par, default[!names(default) %in% names(pruning.par)])
     if (pruning.par$type[1] %in% c("color", "both")){
-      labels_colors(dend) = pruning.par$label_colors
+      labels_colors(dend) = pruning.par$labels_colors
       labels(dend) = pruning.par$labels
     }
     plot(dend, ...)
     if (pruning.par$type[1] %in% c("abline", "both")){
       marks = cumsum(lengths(lapply(pruning, labels)))
-      pruning.par[c("type", "labels", "label_colors")] = NULL
+      pruning.par[c("type", "labels", "labels_colors")] = NULL
       pruning.par$v = marks+0.5
       do.call(abline, pruning.par)
     }
