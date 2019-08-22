@@ -57,14 +57,32 @@ disparitySum = function(dend){
 #' from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
+#' @param pm.backend [\code{character(1)}]\cr
+#' One of "multicore", "socket" or "mpi".
+#' If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
+#' called before computation is started and \code{\link[parallelMap]{parallelStop}}
+#' is called after.
+#' @param ncpus [\code{integer(1)}]\cr
+#' Number of (physical) CPUs to use.
 #' @export SCLOP.pairwise
 
-SCLOP.pairwise = function(sims){
+SCLOP.pairwise = function(sims, pm.backend, ncpus){
   names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
 
   combs = combn(names, 2)
   rownames(combs) = c("V1", "V2")
-  vals = apply(combs, 2, function(x) SCLOP(dendTopics(sims = sims, ind = x)))
+  if (!missing(pm.backend)){
+    if (missing(ncpus)){
+      ncpus = parallel::detectCores()
+    }
+    parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
+    vals = parallelMap::parallelSapply(
+      lapply(seq_len(ncol(combs)), function(i) combs[,i]),
+      function(x) SCLOP(dendTopics(sims = sims, ind = x)))
+    parallelMap::parallelStop()
+  }else{
+    vals = apply(combs, 2, function(x) SCLOP(dendTopics(sims = sims, ind = x)))
+  }
   dat = data.frame(t(combs))
   dat$SCLOP = vals
 
