@@ -10,7 +10,7 @@ SCLOP(dend)
 
 disparitySum(dend)
 
-SCLOP.pairwise(sims, pm.backend, ncpus)
+SCLOP.pairwise(sims)
 }
 \arguments{
 \item{dend}{[\code{\link[stats]{dendrogram}}]\cr
@@ -21,15 +21,6 @@ Pairwise jaccard similarities of underlying topics as the \code{sims} element
 from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 first dot identifies the LDA run.}
-
-\item{pm.backend}{[\code{character(1)}]\cr
-One of "multicore", "socket" or "mpi".
-If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
-called before computation is started and \code{\link[parallelMap]{parallelStop}}
-is called after.}
-
-\item{ncpus}{[\code{integer(1)}]\cr
-Number of (physical) CPUs to use.}
 }
 \value{
 \describe{
