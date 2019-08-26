@@ -10,7 +10,13 @@ For the development version use [devtools](https://cran.r-project.org/package=de
 devtools::install_github("JonasRieger/ldaPrototype")
 ```
 
+## Related Software
+* [tm](https://CRAN.R-project.org/package=tm) is useful for preprocessing text data.
+* [lda](https://CRAN.R-project.org/package=lda) offers a fast implementation of the Latent Dirichlet Allocation.
+* [tosca](https://CRAN.R-project.org/package=tosca) is a framework for statistical methods in content analysis including visualizations and validation techniques.
+
 ## Contribution
+This R package is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 For wishes, issues, and bugs please use the [issue tracker](https://github.com/JonasRieger/ldaPrototype/issues).
 
 [![Build Status](https://travis-ci.org/JonasRieger/ldaPrototype.svg?branch=master)](https://travis-ci.org/JonasRieger/ldaPrototype) 
