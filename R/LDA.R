@@ -10,7 +10,7 @@
 #' overwrite elements from \code{x}.
 #' @param param [\code{named list}]\cr
 #' Parameters of the function call \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-#' Names always have to contain "K", "alpha", "eta" and "num.iterations".
+#' List always should contain names "K", "alpha", "eta" and "num.iterations".
 #' @param assignments Individual element for LDA object.
 #' @param topics Individual element for LDA object.
 #' @param document_sums Individual element for LDA object.
@@ -38,15 +38,19 @@ LDA = function(x, param, assignments, topics, document_sums, document_expects,
     if (missing(document_expects)) document_expects = x$document_expects
     if (missing(log.likelihoods)) log.likelihoods = x$log.likelihoods
   }
+  if (missing(param)){
+    param = list(K = NA_real_, alpha = NA_real_, eta = NA_real_, num.iterations = NA_real_)
+  }
+  for (vars in c("assignments", "topics", "document_sums", "document_expects", "log.likelihoods")){
+    if (!exists(vars)) assign(vars, NULL)
+  }
   res = list(
-    param = get0("param",
-      ifnotfound = list(K = NA_real_, alpha = NA_real_, eta = NA_real_,
-        num.iterations = NA_real_)),
-    assignments = get0("assignments"),
-    topics = get0("topics"),
-    document_sums = get0("document_sums"),
-    document_expects = get0("document_expects"),
-    log.likelihoods = get0("log.likelihoods"))
+    param = param,
+    assignments = assignments,
+    topics = topics,
+    document_sums = document_sums,
+    document_expects = document_expects,
+    log.likelihoods = log.likelihoods)
   class(res) = "LDA"
   invisible(res)
 }
