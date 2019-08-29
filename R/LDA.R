@@ -37,12 +37,15 @@ LDA = function(x, param, assignments, topics, document_sums, document_expects,
     if (missing(document_sums)) document_sums = x$document_sums
     if (missing(document_expects)) document_expects = x$document_expects
     if (missing(log.likelihoods)) log.likelihoods = x$log.likelihoods
+  }else{
+    if (missing(assignments)) assignments = NULL
+    if (missing(topics)) topics = NULL
+    if (missing(document_sums)) document_sums = NULL
+    if (missing(document_expects)) document_expects = NULL
+    if (missing(log.likelihoods)) log.likelihoods = NULL
   }
   if (missing(param)){
     param = list(K = NA_real_, alpha = NA_real_, eta = NA_real_, num.iterations = NA_real_)
-  }
-  for (vars in c("assignments", "topics", "document_sums", "document_expects", "log.likelihoods")){
-    if (!exists(vars)) assign(vars, NULL)
   }
   res = list(
     param = param,
