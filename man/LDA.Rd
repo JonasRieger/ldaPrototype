@@ -6,13 +6,11 @@
 \alias{is.LDA}
 \title{LDA Object}
 \usage{
-LDA(x, param = NULL, assignments = NULL, topics = NULL,
-  document_sums = NULL, document_expects = NULL,
-  log.likelihoods = NULL)
+LDA(x, param, assignments, topics, document_sums, document_expects,
+  log.likelihoods)
 
-as.LDA(x, param = NULL, assignments = NULL, topics = NULL,
-  document_sums = NULL, document_expects = NULL,
-  log.likelihoods = NULL)
+as.LDA(x, param, assignments, topics, document_sums, document_expects,
+  log.likelihoods)
 
 is.LDA(obj, verbose = FALSE)
 }

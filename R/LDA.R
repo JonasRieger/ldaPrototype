@@ -27,32 +27,35 @@
 #'
 #' @export LDA
 
-LDA = function(x, param = NULL, assignments = NULL, topics = NULL, document_sums = NULL,
-  document_expects = NULL, log.likelihoods = NULL){
+LDA = function(x, param, assignments, topics, document_sums, document_expects,
+  log.likelihoods){
 
   if (!missing(x)){
-    if (hasName(x, "param")) param = x$param
-    if (is.null(assignments)) assignments = x$assignments
-    if (is.null(topics)) topics = x$topics
-    if (is.null(document_sums)) document_sums = x$document_sums
-    if (is.null(document_expects)) document_expects = x$document_expects
-    if (is.null(log.likelihoods)) log.likelihoods = x$log.likelihoods
+    if (missing(param) && hasName(x, "param")) param = x$param
+    if (missing(assignments)) assignments = x$assignments
+    if (missing(topics)) topics = x$topics
+    if (missing(document_sums)) document_sums = x$document_sums
+    if (missing(document_expects)) document_expects = x$document_expects
+    if (missing(log.likelihoods)) log.likelihoods = x$log.likelihoods
   }
   res = list(
-    param = param,
-    assignments = assignments,
-    topics = topics,
-    document_sums = document_sums,
-    document_expects = document_expects,
-    log.likelihoods = log.likelihoods)
+    param = get0("param",
+      ifnotfound = list(K = NA_real_, alpha = NA_real_, eta = NA_real_,
+        num.iterations = NA_real_)),
+    assignments = get0("assignments"),
+    topics = get0("topics"),
+    document_sums = get0("document_sums"),
+    document_expects = get0("document_expects"),
+    log.likelihoods = get0("log.likelihoods"))
   class(res) = "LDA"
   invisible(res)
 }
 
 #' @rdname LDA
 #' @export
-as.LDA = function(x, param = NULL, assignments = NULL, topics = NULL, document_sums = NULL,
-  document_expects = NULL, log.likelihoods = NULL){
+as.LDA = function(x, param, assignments, topics, document_sums, document_expects,
+  log.likelihoods){
+
   if (!missing(x)){
     LDA(
       x = x,
