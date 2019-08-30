@@ -30,8 +30,17 @@
 #' # TODO
 #'
 #' @export dendTopics
+dendTopics = function(sims, ind, method = "complete") UseMethod("dendTopics")
 
-dendTopics = function(sims, ind, method = "complete"){
+#' @export
+dendTopics.TopicSimilarity = function(sims, ind, method = "complete"){
+  if (missing(ind)) ind = seq_len(ncol(sims))
+  sims = getSimilarity(sims)
+  NextMethod("dendTopics")
+}
+
+#' @export
+dendTopics.default = function(sims, ind, method = "complete"){
   if (missing(ind)) ind = seq_len(ncol(sims))
   if (is.character(ind)) ind = rowSums(sapply(ind, grepl, x = colnames(sims))) > 0
 

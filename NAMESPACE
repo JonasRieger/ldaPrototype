@@ -3,6 +3,8 @@
 S3method(as.LDARep,LDABatch)
 S3method(as.LDARep,LDARep)
 S3method(as.LDARep,default)
+S3method(dendTopics,TopicSimilarity)
+S3method(dendTopics,default)
 S3method(getAlpha,LDA)
 S3method(getAssignments,LDA)
 S3method(getConsideredWords,PrototypeLDA)
