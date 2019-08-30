@@ -61,13 +61,18 @@ Jaccard Coefficient.
 \details{
 The Jaccard Coefficient \eqn{J_m} is calculated by
 \deqn{J_m(\bm z_{i}, \bm z_{j} \mid \bm c) = \frac{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\wedge~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\vee~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}}
-with \eqn{V} is the vocabulary size, and \eqn{n_k^{(v)}} i sthe count of
+with \eqn{V} is the vocabulary size, and \eqn{n_k^{(v)}} is the count of
 assignments of the v-th word to the k-th topic. The threshold vector \eqn{\bm c}
 is determined by the maximum threshold of the user given lower bounds \code{limit.rel}
 and \code{limit.abs}. In addition, at least \code{atLeast} words per topic are
 considered for calculation. According to this, if there are less than
 \code{atLeast} words considered as relevant after applying \code{limit.rel}
-and \code{limit.abs} the \code{atLeast} most common words per topic are taken.
+and \code{limit.abs} the \code{atLeast} most common words per topic are taken
+to determine topic similarities.
+
+The procedure of determining relevant words is executed for each topic individually.
+The values \code{wordslimit} and \code{wordsconsidered} describes the number
+of relevant words per topic.
 }
 \examples{
 # TODO
