@@ -63,7 +63,7 @@ pruning.par = function(pruning){
     type = "abline",
     lty = 3,
     labels_colors = rep(sample(rainbow_hcl(n = length(pruning))),
-      times = lengths(pruning)),
+      times = lengths(lapply(pruning, labels))),
     labels = unlist(lapply(pruning, labels)))
 }
 
