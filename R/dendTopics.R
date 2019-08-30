@@ -11,8 +11,10 @@
 #' themself can be  manipulated using \code{\link[dendextend:labels.hclust]{labels}}.
 #' For both the function \code{\link[stats]{order.dendrogram}} is useful.
 #'
-#' @param sims [\code{lower triangular named matrix}]\cr
-#' Pairwise jaccard similarities of underlying topics as the \code{sims} element
+#' @param sims [\code{\link[=jaccardTopics]{TopicSimilarity}} object
+#' or \code{lower triangular named matrix}]\cr
+#' \code{\link[=jaccardTopics]{TopicSimilarity}} object or
+#' pairwise jaccard similarities of underlying topics as the \code{sims} element
 #' from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
