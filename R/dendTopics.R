@@ -34,7 +34,6 @@ dendTopics = function(sims, ind, method = "complete") UseMethod("dendTopics")
 
 #' @export
 dendTopics.TopicSimilarity = function(sims, ind, method = "complete"){
-  if (missing(ind)) ind = seq_len(ncol(sims))
   sims = getSimilarity(sims)
   NextMethod("dendTopics")
 }
