@@ -5,6 +5,8 @@
 #' Jaccard Coefficient.
 #'
 #' @details
+#' Jaccard Coefficient is calculated by
+#' \deqn{J_m(\bm z_{i}, \bm z_{j} \mid \bm c) = \frac{\sum_{v = 1}^{V} \mathds{1}_{\left\{n_{i}^{(v)} > c_i ~\wedge~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}{\sum_{v = 1}^{V} \mathds{1}_{\left\{n_{i}^{(v)} > c_i ~\vee~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}}
 #'
 #' @param topics [\code{named matrix}]\cr
 #' The counts of vocabularies (row wise) in topics (column wise).
