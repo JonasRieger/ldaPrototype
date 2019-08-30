@@ -53,7 +53,7 @@ pruneSCLOP.TopicDendrogram = function(dend){
 #' @export
 plot.PruningSCLOP = function(x, dend, pruning.par, ...){
   if (missing(pruning.par)) pruning.par = list()
-  plot.TopicDendrogram(dend = dend, pruning = x, pruning.par = pruning.par, ...)
+  plot.TopicDendrogram(x = dend, pruning = x, pruning.par = pruning.par, ...)
 }
 
 #' @rdname pruneSCLOP
