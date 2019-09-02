@@ -12,6 +12,7 @@
 #' For both the function \code{\link[stats]{order.dendrogram}} is useful.
 #'
 #' @family plot functions
+#' @family workflow functions
 #'
 #' @param sims [\code{\link[=jaccardTopics]{TopicSimilarity}} object
 #' or \code{lower triangular named matrix}]\cr

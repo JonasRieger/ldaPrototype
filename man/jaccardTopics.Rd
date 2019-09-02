@@ -78,4 +78,12 @@ of relevant words per topic.
 # TODO
 
 }
+\seealso{
+Other TopicSimilarity functions: \code{\link{getSimilarity}}
+
+Other workflow functions: \code{\link{LDARep}},
+  \code{\link{SCLOP}}, \code{\link{dendTopics}},
+  \code{\link{mergeTopics}}
+}
 \concept{TopicSimilarity functions}
+\concept{workflow functions}

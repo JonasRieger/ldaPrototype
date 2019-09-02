@@ -8,6 +8,7 @@
 #' @details
 #'
 #' @family merge functions
+#' @family workflow functions
 #'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDARep}} or \code{\link{LDABatch}} object.

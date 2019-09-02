@@ -52,6 +52,9 @@ Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}}
 \seealso{
 Other getter functions: \code{\link{getJob}},
   \code{\link{getSimilarity}}, \code{\link{getTopics}}
+
+Other LDAPrototype functions: \code{\link{LDAPrototype}},
+  \code{\link{getPrototype}}
 }
-\concept{LDAPrototype funtions}
+\concept{LDAPrototype functions}
 \concept{getter functions}

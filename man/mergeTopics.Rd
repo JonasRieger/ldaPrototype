@@ -35,5 +35,10 @@ or \code{\link{mergeBatchTopics}}.
 \seealso{
 Other merge functions: \code{\link{mergeBatchTopics}},
   \code{\link{mergeRepTopics}}
+
+Other workflow functions: \code{\link{LDARep}},
+  \code{\link{SCLOP}}, \code{\link{dendTopics}},
+  \code{\link{jaccardTopics}}
 }
 \concept{merge functions}
+\concept{workflow functions}

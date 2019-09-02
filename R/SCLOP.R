@@ -30,6 +30,7 @@
 #' where \eqn{\sum\limits_{g \in G^*} U(g) = U_{\Sigma}(G^*)}.
 #'
 #' @family SCLOP functions
+#' @family workflow functions
 #'
 #' @param dend [\code{\link[stats]{dendrogram}}]\cr
 #' Output from \code{\link{dendTopics}}.

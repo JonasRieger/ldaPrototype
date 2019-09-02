@@ -7,6 +7,7 @@
 #'
 #' @family replication functions
 #' @family LDA functions
+#' @family workflow functions
 #'
 #' @param docs [\code{list}]\cr
 #' Documents as received from \code{\link[tosca]{LDAprep}}.

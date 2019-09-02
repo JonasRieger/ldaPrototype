@@ -21,6 +21,7 @@
 #' of relevant words per topic.
 #'
 #' @family TopicSimilarity functions
+#' @family workflow functions
 #'
 #' @param topics [\code{named matrix}]\cr
 #' The counts of vocabularies (row wise) in topics (column wise).

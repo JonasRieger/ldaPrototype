@@ -93,7 +93,8 @@ this set of LDAs.
 \seealso{
 Other shortcut functions: \code{\link{getPrototype}}
 
-Other LDAPrototype functions: \code{\link{getPrototype}}
+Other LDAPrototype functions: \code{\link{getPrototype}},
+  \code{\link{getSCLOP}}
 
 Other replication functions: \code{\link{LDARep}},
   \code{\link{as.LDARep}}, \code{\link{getJob}},

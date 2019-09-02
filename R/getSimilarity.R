@@ -4,7 +4,7 @@
 #' Returns the corresponding element of a \code{\link[=jaccardTopics]{TopicSimilarity}} object.
 #'
 #' @family getter functions
-#' @family TopicSimilarity funtions
+#' @family TopicSimilarity functions
 #'
 #' @param x [\code{named list}]\cr
 #' \code{\link[=jaccardTopics]{TopicSimilarity}} object.

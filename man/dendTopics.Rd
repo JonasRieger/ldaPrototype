@@ -61,5 +61,10 @@ For both the function \code{\link[stats]{order.dendrogram}} is useful.
 }
 \seealso{
 Other plot functions: \code{\link{pruneSCLOP}}
+
+Other workflow functions: \code{\link{LDARep}},
+  \code{\link{SCLOP}}, \code{\link{jaccardTopics}},
+  \code{\link{mergeTopics}}
 }
 \concept{plot functions}
+\concept{workflow functions}
