@@ -10,6 +10,10 @@
 #' \code{setFilDir} sets the registry's file directory for a
 #' \code{\link{LDABatch}} object.
 #'
+#' @family getter functions
+#' @family replication functions
+#' @family batch functions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 #' @param job [\code{\link{data.frame}} or \code{integer}]\cr

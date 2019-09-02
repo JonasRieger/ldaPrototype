@@ -59,3 +59,7 @@ For both the function \code{\link[stats]{order.dendrogram}} is useful.
 # TODO
 
 }
+\seealso{
+Other plot functions: \code{\link{pruneSCLOP}}
+}
+\concept{plot functions}

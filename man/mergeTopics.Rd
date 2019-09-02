@@ -32,3 +32,8 @@ or \code{\link{mergeBatchTopics}}.
 #TODO
 
 }
+\seealso{
+Other merge functions: \code{\link{mergeBatchTopics}},
+  \code{\link{mergeRepTopics}}
+}
+\concept{merge functions}

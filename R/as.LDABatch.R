@@ -6,6 +6,9 @@
 #'
 #' @details
 #'
+#' @family constructor functions
+#' @family batch functions
+#'
 #' @param reg [\code{\link[batchtools:makeRegistry]{Registry}}]\cr
 #' Registry. See \code{\link[batchtools:findJobs]{findDone}}.
 #' @param job [\code{\link{data.frame}} or \code{integer}]\cr
@@ -17,6 +20,7 @@
 #' Object to test.
 #' @param verbose [\code{logical(1)}]\cr
 #' Should test information be given in the console?
+#'
 #' @return [\code{named list}] with entries \code{id} for the registry's folder name,
 #' \code{jobs} for the submitted jobs' ids and its parameter settings and
 #' \code{reg} for the registry itself.

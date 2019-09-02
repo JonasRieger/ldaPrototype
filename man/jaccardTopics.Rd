@@ -78,3 +78,4 @@ of relevant words per topic.
 # TODO
 
 }
+\concept{TopicSimilarity functions}

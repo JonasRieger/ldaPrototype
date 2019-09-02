@@ -6,6 +6,9 @@
 #'
 #' @details
 #'
+#' @family merge functions
+#' @family batch functions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDABatch}} object. Alternatively \code{job}, \code{reg} and
 #' \code{id} can be passed or their defaults are taken.

@@ -65,3 +65,12 @@ Griffiths, Thomas L. and Steyvers, Mark. Finding scientific topics.
 Proceedings of the National Academy of Sciences 101 (suppl 1), p.5228--5235,
 DOI 10.1073/pnas.0307752101, URL \url{http://www.pnas.org/content/101/suppl_1/5228}
 }
+\seealso{
+Other getter functions: \code{\link{getJob}},
+  \code{\link{getSCLOP}}, \code{\link{getSimilarity}}
+
+Other LDA functions: \code{\link{LDABatch}},
+  \code{\link{LDARep}}, \code{\link{LDA}}
+}
+\concept{LDA functions}
+\concept{getter functions}

@@ -51,3 +51,12 @@ a given set of vocabularies.
 #TODO
 
 }
+\seealso{
+Other merge functions: \code{\link{mergeRepTopics}},
+  \code{\link{mergeTopics}}
+
+Other batch functions: \code{\link{LDABatch}},
+  \code{\link{as.LDABatch}}, \code{\link{getJob}}
+}
+\concept{batch functions}
+\concept{merge functions}

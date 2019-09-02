@@ -11,6 +11,8 @@
 #' themself can be  manipulated using \code{\link[dendextend:labels.hclust]{labels}}.
 #' For both the function \code{\link[stats]{order.dendrogram}} is useful.
 #'
+#' @family plot functions
+#'
 #' @param sims [\code{\link[=jaccardTopics]{TopicSimilarity}} object
 #' or \code{lower triangular named matrix}]\cr
 #' \code{\link[=jaccardTopics]{TopicSimilarity}} object or

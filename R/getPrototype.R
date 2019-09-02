@@ -4,6 +4,9 @@
 #' \code{\link{LDABatch}} object, \code{\link{LDARep}} object, or as list of LDAs.
 #' If the matrix of S-CLOP scores \code{sclop} is passed, no calculation is done.
 #'
+#' @family shortcut functions
+#' @family LDAPrototype functions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 #' @param lda [\code{named list}]\cr
@@ -52,6 +55,7 @@
 #' (optional) All pairwise S-CLOP scores of the given LDA runs determined by
 #' \code{\link{SCLOP.pairwise}}. Matching of names is not implemented yet, so order matters.
 #' @param ... additional arguments
+#'
 #' @return [\code{named list}] with entries
 #'  \describe{
 #'   \item{\code{lda}}{List of \code{\link{LDA}} objects of the determined Prototype LDA

@@ -3,6 +3,9 @@
 #' @description
 #' Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}} object.
 #'
+#' @family getter functions
+#' @family LDAPrototype funtions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link[=getPrototype]{PrototypeLDA}} object.
 #' @param job [\code{\link{data.frame}} or \code{integer}]\cr

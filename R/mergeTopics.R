@@ -7,6 +7,8 @@
 #'
 #' @details
 #'
+#' @family merge functions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDARep}} or \code{\link{LDABatch}} object.
 #' @param vocab [\code{character}]\cr

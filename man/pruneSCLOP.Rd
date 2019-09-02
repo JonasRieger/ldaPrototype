@@ -37,14 +37,21 @@ local pruning state.}
 local pruning state.
 }
 \description{
-The function \code{\link{SCLOP}} calculates the S-CLOP for the best possible
+The function \code{\link{SCLOP}} calculates the S-CLOP value for the best possible
 local pruning state of a dendrogram from \code{\link{dendTopics}}.
 The function \code{pruneSCLOP} supplies the corresponding pruning state itself.
 }
 \details{
-
+For details of computing the S-CLOP values see \code{\link{SCLOP}}.
 }
 \examples{
 # TODO
 
 }
+\seealso{
+Other plot functions: \code{\link{dendTopics}}
+
+Other SCLOP functions: \code{\link{SCLOP}}
+}
+\concept{SCLOP functions}
+\concept{plot functions}

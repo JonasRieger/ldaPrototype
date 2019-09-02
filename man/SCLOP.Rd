@@ -33,9 +33,9 @@ first dot identifies the LDA run.}
 }
 }
 \description{
-The function \code{SCLOP} calculates the S-CLOP for the best possible local pruning state
-of a dendrogram from \code{\link{dendTopics}}. The function \code{\link{pruneSCLOP}}
-supplies the corresponding pruning state itself.\cr
+The function \code{SCLOP} calculates the S-CLOP value for the best possible
+local pruning state of a dendrogram from \code{\link{dendTopics}}.
+The function \code{\link{pruneSCLOP}} supplies the corresponding pruning state itself.\cr
 To get all pairwise S-CLOP scores of two LDA runs, the function \code{SCLOP.pairwise}
 can be used. It returns a matrix of the pairwise S-CLOP scores.\cr
 All three functions use the function \code{disparitySum} to calculate the
@@ -65,3 +65,7 @@ where \eqn{\sum\limits_{g \in G^*} U(g) = U_{\Sigma}(G^*)}.
 # TODO
 
 }
+\seealso{
+Other SCLOP functions: \code{\link{pruneSCLOP}}
+}
+\concept{SCLOP functions}

@@ -49,3 +49,13 @@ Performs multiple runs of Latent Dirichlet Allocation.
 #TODO
 
 }
+\seealso{
+Other replication functions: \code{\link{LDAPrototype}},
+  \code{\link{as.LDARep}}, \code{\link{getJob}},
+  \code{\link{mergeRepTopics}}
+
+Other LDA functions: \code{\link{LDABatch}},
+  \code{\link{LDA}}, \code{\link{getTopics}}
+}
+\concept{LDA functions}
+\concept{replication functions}

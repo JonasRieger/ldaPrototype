@@ -5,6 +5,9 @@
 #'
 #' @details
 #'
+#' @family replication functions
+#' @family LDA functions
+#'
 #' @param docs [\code{list}]\cr
 #' Documents as received from \code{\link[tosca]{LDAprep}}.
 #' @param vocab [\code{character}]\cr

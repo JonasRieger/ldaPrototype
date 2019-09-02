@@ -90,3 +90,15 @@ Arguments will be coerced to a vector of length \code{n}.}
 Performs multiple runs of LDA and returns the Prototype LDA of
 this set of LDAs.
 }
+\seealso{
+Other shortcut functions: \code{\link{getPrototype}}
+
+Other LDAPrototype functions: \code{\link{getPrototype}}
+
+Other replication functions: \code{\link{LDARep}},
+  \code{\link{as.LDARep}}, \code{\link{getJob}},
+  \code{\link{mergeRepTopics}}
+}
+\concept{LDAPrototype functions}
+\concept{replication functions}
+\concept{shortcut functions}

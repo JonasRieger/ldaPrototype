@@ -6,6 +6,9 @@
 #'
 #' @details
 #'
+#' @family merge functions
+#' @family replication functions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDARep}} object. Alternatively \code{lda} and \code{id} can be passed.
 #' @param vocab [\code{character}]\cr

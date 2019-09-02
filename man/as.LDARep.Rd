@@ -55,3 +55,13 @@ Constructs a \code{\link{LDARep}} object for given elements \code{lda},
 #TODO
 
 }
+\seealso{
+Other constructor functions: \code{\link{LDA}},
+  \code{\link{as.LDABatch}}
+
+Other replication functions: \code{\link{LDAPrototype}},
+  \code{\link{LDARep}}, \code{\link{getJob}},
+  \code{\link{mergeRepTopics}}
+}
+\concept{constructor functions}
+\concept{replication functions}

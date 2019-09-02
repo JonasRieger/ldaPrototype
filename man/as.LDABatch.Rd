@@ -42,3 +42,12 @@ Constructs a \code{\link{LDABatch}} object for given elements \code{reg},
 #TODO
 
 }
+\seealso{
+Other constructor functions: \code{\link{LDA}},
+  \code{\link{as.LDARep}}
+
+Other batch functions: \code{\link{LDABatch}},
+  \code{\link{getJob}}, \code{\link{mergeBatchTopics}}
+}
+\concept{batch functions}
+\concept{constructor functions}

@@ -22,3 +22,9 @@ getConsideredWords(x)
 \description{
 Returns the corresponding element of a \code{\link[=jaccardTopics]{TopicSimilarity}} object.
 }
+\seealso{
+Other getter functions: \code{\link{getJob}},
+  \code{\link{getSCLOP}}, \code{\link{getTopics}}
+}
+\concept{TopicSimilarity funtions}
+\concept{getter functions}

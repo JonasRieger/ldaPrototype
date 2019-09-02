@@ -46,3 +46,17 @@ specify one or more LDAs by their id(s).\cr
 \code{setFilDir} sets the registry's file directory for a
 \code{\link{LDABatch}} object.
 }
+\seealso{
+Other getter functions: \code{\link{getSCLOP}},
+  \code{\link{getSimilarity}}, \code{\link{getTopics}}
+
+Other replication functions: \code{\link{LDAPrototype}},
+  \code{\link{LDARep}}, \code{\link{as.LDARep}},
+  \code{\link{mergeRepTopics}}
+
+Other batch functions: \code{\link{LDABatch}},
+  \code{\link{as.LDABatch}}, \code{\link{mergeBatchTopics}}
+}
+\concept{batch functions}
+\concept{getter functions}
+\concept{replication functions}

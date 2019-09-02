@@ -3,6 +3,10 @@
 #' @description Performs multiple runs of LDA and returns the Prototype LDA of
 #' this set of LDAs.
 #'
+#' @family shortcut functions
+#' @family LDAPrototype functions
+#' @family replication functions
+#'
 #' @inheritParams LDARep
 #' @param vocabLDA [\code{character}]\cr
 #' Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
@@ -24,6 +28,7 @@
 #' Should the calculated topic similarities matrix from \code{\link{jaccardTopics}}
 #' @param keepLDAs [\code{logical(1)}]\cr
 #' Should the considered LDAs be kept?
+#'
 #' @inherit getPrototype return
 #'
 #' @export LDAPrototype

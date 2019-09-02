@@ -51,3 +51,12 @@ the \code{\link[batchtools]{batchtools-package}}.
 #TODO
 
 }
+\seealso{
+Other batch functions: \code{\link{as.LDABatch}},
+  \code{\link{getJob}}, \code{\link{mergeBatchTopics}}
+
+Other LDA functions: \code{\link{LDARep}},
+  \code{\link{LDA}}, \code{\link{getTopics}}
+}
+\concept{LDA functions}
+\concept{batch functions}

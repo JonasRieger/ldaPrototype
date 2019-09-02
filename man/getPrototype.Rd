@@ -113,3 +113,10 @@ Returns the Prototype LDA of a set of LDAs. This set is given as
 \code{\link{LDABatch}} object, \code{\link{LDARep}} object, or as list of LDAs.
 If the matrix of S-CLOP scores \code{sclop} is passed, no calculation is done.
 }
+\seealso{
+Other shortcut functions: \code{\link{LDAPrototype}}
+
+Other LDAPrototype functions: \code{\link{LDAPrototype}}
+}
+\concept{LDAPrototype functions}
+\concept{shortcut functions}

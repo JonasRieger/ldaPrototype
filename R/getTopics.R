@@ -24,6 +24,9 @@
 #' Proceedings of the National Academy of Sciences 101 (suppl 1), p.5228--5235,
 #' DOI 10.1073/pnas.0307752101, URL \url{http://www.pnas.org/content/101/suppl_1/5228}
 #'
+#' @family getter functions
+#' @family LDA functions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDA}} object.
 

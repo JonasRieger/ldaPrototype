@@ -45,3 +45,13 @@ matrices for a given set of vocabularies.
 #TODO
 
 }
+\seealso{
+Other merge functions: \code{\link{mergeBatchTopics}},
+  \code{\link{mergeTopics}}
+
+Other replication functions: \code{\link{LDAPrototype}},
+  \code{\link{LDARep}}, \code{\link{as.LDARep}},
+  \code{\link{getJob}}
+}
+\concept{merge functions}
+\concept{replication functions}

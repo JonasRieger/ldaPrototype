@@ -53,3 +53,12 @@ Constructor for LDA objects used in this package.
 #TODO
 
 }
+\seealso{
+Other constructor functions: \code{\link{as.LDABatch}},
+  \code{\link{as.LDARep}}
+
+Other LDA functions: \code{\link{LDABatch}},
+  \code{\link{LDARep}}, \code{\link{getTopics}}
+}
+\concept{LDA functions}
+\concept{constructor functions}

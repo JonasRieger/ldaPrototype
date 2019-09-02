@@ -4,6 +4,9 @@
 #'
 #' @details
 #'
+#' @family constructor functions
+#' @family LDA functions
+#'
 #' @param x [\code{named list}]\cr
 #' Output from \code{\link[lda]{lda.collapsed.gibbs.sampler}}. Alternatively each
 #' element can be passed for individual results. Individually set elements

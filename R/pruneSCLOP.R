@@ -1,11 +1,15 @@
 #' @title Local Pruning State of Topic Dendrograms
 #'
 #' @description
-#' The function \code{\link{SCLOP}} calculates the S-CLOP for the best possible
+#' The function \code{\link{SCLOP}} calculates the S-CLOP value for the best possible
 #' local pruning state of a dendrogram from \code{\link{dendTopics}}.
 #' The function \code{pruneSCLOP} supplies the corresponding pruning state itself.
 #'
 #' @details
+#' For details of computing the S-CLOP values see \code{\link{SCLOP}}.
+#'
+#' @family plot functions
+#' @family SCLOP functions
 #'
 #' @param dend [\code{\link[stats]{dendrogram}}]\cr
 #' \code{\link[=dendTopics]{TopicDendrogram}}

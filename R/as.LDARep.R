@@ -6,6 +6,9 @@
 #'
 #' @details
 #'
+#' @family constructor functions
+#' @family replication functions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDABatch}} or \code{\link{LDARep}} object.
 #' @param lda [\code{named list}]\cr
@@ -23,6 +26,7 @@
 #' @param verbose [\code{logical(1)}]\cr
 #' Should test information be given in the console?
 #' @param ... additional arguments
+#'
 #' @return [\code{named list}] with entries \code{id} for computation's name,
 #' \code{jobs} for the parameter settings and \code{lda} for the results themselves.
 #'

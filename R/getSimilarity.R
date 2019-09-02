@@ -3,6 +3,9 @@
 #' @description
 #' Returns the corresponding element of a \code{\link[=jaccardTopics]{TopicSimilarity}} object.
 #'
+#' @family getter functions
+#' @family TopicSimilarity funtions
+#'
 #' @param x [\code{named list}]\cr
 #' \code{\link[=jaccardTopics]{TopicSimilarity}} object.
 

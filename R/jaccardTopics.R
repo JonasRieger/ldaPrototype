@@ -20,6 +20,8 @@
 #' The values \code{wordslimit} and \code{wordsconsidered} describes the number
 #' of relevant words per topic.
 #'
+#' @family TopicSimilarity functions
+#'
 #' @param topics [\code{named matrix}]\cr
 #' The counts of vocabularies (row wise) in topics (column wise).
 #' @param limit.rel [0,1]\cr
