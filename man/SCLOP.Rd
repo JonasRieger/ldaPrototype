@@ -37,13 +37,29 @@ The function \code{SCLOP} calculates the S-CLOP for the best possible local prun
 of a dendrogram from \code{\link{dendTopics}}. The function \code{\link{pruneSCLOP}}
 supplies the corresponding pruning state itself.\cr
 To get all pairwise S-CLOP scores of two LDA runs, the function \code{SCLOP.pairwise}
-can be used. It returnes a matrix of the pairwise S-CLOP scores.\cr
+can be used. It returns a matrix of the pairwise S-CLOP scores.\cr
 All three functions use the function \code{disparitySum} to calculate the
 least possible sum of disparities (on the best possible local pruning state)
 on a given dendrogram.
 }
 \details{
+For one specific cluster \eqn{g} and \eqn{R} LDA Runs the disparity is calculated by
+\deqn{U(g) := \frac{1}{R} \sum_{r=1}^R \vert t_r^{(g)} - 1 \vert \cdot \sum_{r=1}^R t_r^{(g)},}
+while \eqn{\bm t^{(g)} = (t_1^{(g)}, ..., t_R^{(g)})^T}
+contains the number of topics that belong to the different LDA runs and that
+occur in cluster \eqn{g}.
 
+The function \code{disparitySum} returns the least possible sum of disparities
+\eqn{U_{\Sigma}(G^*)} for the best possible pruning state \eqn{G^*}
+with \eqn{U_{\Sigma}(G) = \sum_{g \in G} U(g) \to \min}.
+The highest possible value for \eqn{U_{\Sigma}(G^*)} is limited by
+\deqn{U_{\Sigma,\textsf{max}} := \sum_{g \in \tilde{G}} U(g) = N \cdot \frac{R-1}{R},}
+with \eqn{\tilde{G}} denotes the corresponding worst case pruning state. This worst
+case scenario is useful for normalizing the SCLOP scores.
+
+The function \code{SCLOP} then calculates the value
+\deqn{\textsf{S-CLOP}(G^*) := 1 - \frac{1}{U_{\Sigma,\textsf{max}}} \cdot \sum_{g \in G^*} U(g) ~\in [0,1],}
+where \eqn{\sum\limits_{g \in G^*} U(g) = U_{\Sigma}(G^*)}.
 }
 \examples{
 # TODO

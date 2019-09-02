@@ -1,6 +1,6 @@
 Package: ldaPrototype
 Type: Package
-Title: Determine a Prototype from a number of Runs of Latent Dirichlet Allocation measuring its similarities with S-CLOP
+Title: Determine a Prototype from a Number of Runs of Latent Dirichlet Allocation Measuring Its Similarities with S-CLOP
 Version: 0.1.0
 Date: 2019-07-01
 Authors@R: person("Jonas", "Rieger", email="jonas.rieger@tu-dortmund.de", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0007-4478"))
