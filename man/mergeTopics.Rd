@@ -38,7 +38,7 @@ Other merge functions: \code{\link{mergeBatchTopics}},
 
 Other workflow functions: \code{\link{LDARep}},
   \code{\link{SCLOP}}, \code{\link{dendTopics}},
-  \code{\link{jaccardTopics}}
+  \code{\link{getPrototype}}, \code{\link{jaccardTopics}}
 }
 \concept{merge functions}
 \concept{workflow functions}

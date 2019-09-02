@@ -3,6 +3,17 @@
 #' @description Performs multiple runs of LDA and returns the Prototype LDA of
 #' this set of LDAs.
 #'
+#' @details While \code{LDAPrototype} marks the overall shortcut for performing
+#' multiple LDA runs and choosing the Prototype of them, \code{\link{getPrototype}}
+#' just hooks up at determining the Prototype. The generation of multiple LDAs
+#' has to be done before use of \code{getPrototype}.
+#'
+#' To save memory a lot of interim calculations are discarded by default.
+#'
+#' If you use parallel computation, no progress bar is shown.
+#'
+#' For details see the details sections of the workflow functions at \code{\link{getPrototype}}.
+#'
 #' @family shortcut functions
 #' @family LDAPrototype functions
 #' @family replication functions

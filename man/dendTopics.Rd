@@ -34,19 +34,19 @@ The agglomeration method. See \code{\link[stats]{hclust}}.}
 local pruning state.}
 
 \item{pruning.par}{[\code{list}]\cr
-List of parameters to mark the pruning. See \code{\link[=pruneSCLOP]{pruning.par}}
+List of parameters to mark the pruning. See section "Details" at \code{\link{dendTopics}}
 for default parameters. Types for marking the pruning state are \code{"abline"},
 \code{"color"} and \code{"both"}.}
 
 \item{...}{additional arguments.}
 }
 \value{
-[\code{\link[stats]{dendrogram}}] \code{\link[=dendTopics]{TopicDendrogram}}
-(and \code{\link[stats]{dendrogram}}) object of all considered topics.
+[\code{\link[stats]{dendrogram}}] \code{\link[=dendTopics]{TopicDendrogram}} object
+(and \code{\link[stats]{dendrogram}} object) of all considered topics.
 }
 \description{
-Builds a dendrogram for topics based on their pairwise similarities using a
-cluster algorithm.
+Builds a dendrogram for topics based on their pairwise similarities using the
+cluster algorithm \code{\link[stats]{hclust}}.
 }
 \details{
 The label´s colors are determined based on their Run belonging using
@@ -54,6 +54,12 @@ The label´s colors are determined based on their Run belonging using
 using \code{\link[dendextend]{labels_colors}}. Analogously, the labels
 themself can be  manipulated using \code{\link[dendextend:labels.hclust]{labels}}.
 For both the function \code{\link[stats]{order.dendrogram}} is useful.
+
+The resulting \code{\link[stats]{dendrogram}} can be plotted. In addition,
+it is possible to mark a pruning state in the plot, either by color or by
+separator lines (or both) setting \code{pruning.par}. For the default values
+of \code{pruning.par} call the corresponding function on any
+\code{\link[=pruneSCLOP]{PruningSCLOP}} object.
 }
 \examples{
 # TODO
@@ -62,9 +68,13 @@ For both the function \code{\link[stats]{order.dendrogram}} is useful.
 \seealso{
 Other plot functions: \code{\link{pruneSCLOP}}
 
+Other TopicSimilarity functions: \code{\link{getSimilarity}},
+  \code{\link{jaccardTopics}}
+
 Other workflow functions: \code{\link{LDARep}},
-  \code{\link{SCLOP}}, \code{\link{jaccardTopics}},
-  \code{\link{mergeTopics}}
+  \code{\link{SCLOP}}, \code{\link{getPrototype}},
+  \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
 }
+\concept{TopicSimilarity functions}
 \concept{plot functions}
 \concept{workflow functions}

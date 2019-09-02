@@ -47,7 +47,11 @@ Should test information be given in the console?}
 Constructor for LDA objects used in this package.
 }
 \details{
-
+The functions \code{LDA} and \code{as.LDA} do exactly the same. If you call
+\code{LDA} on an object \code{x} which already is of the structure of an
+\code{LDA} object (in particular a \code{LDA} object itself),
+the additional arguments \code{param, assignments, ...}
+may be used to override the specific elements.
 }
 \examples{
 #TODO

@@ -1,8 +1,8 @@
 #' @title Topic Dendrogram
 #'
 #' @description
-#' Builds a dendrogram for topics based on their pairwise similarities using a
-#' cluster algorithm.
+#' Builds a dendrogram for topics based on their pairwise similarities using the
+#' cluster algorithm \code{\link[stats]{hclust}}.
 #'
 #' @details
 #' The label´s colors are determined based on their Run belonging using
@@ -11,7 +11,14 @@
 #' themself can be  manipulated using \code{\link[dendextend:labels.hclust]{labels}}.
 #' For both the function \code{\link[stats]{order.dendrogram}} is useful.
 #'
+#' The resulting \code{\link[stats]{dendrogram}} can be plotted. In addition,
+#' it is possible to mark a pruning state in the plot, either by color or by
+#' separator lines (or both) setting \code{pruning.par}. For the default values
+#' of \code{pruning.par} call the corresponding function on any
+#' \code{\link[=pruneSCLOP]{PruningSCLOP}} object.
+#'
 #' @family plot functions
+#' @family TopicSimilarity functions
 #' @family workflow functions
 #'
 #' @param sims [\code{\link[=jaccardTopics]{TopicSimilarity}} object
@@ -28,8 +35,9 @@
 #' By default all topics are considered.
 #' @param method [\code{character(1)}]\cr
 #' The agglomeration method. See \code{\link[stats]{hclust}}.
-#' @return [\code{\link[stats]{dendrogram}}] \code{\link[=dendTopics]{TopicDendrogram}}
-#' (and \code{\link[stats]{dendrogram}}) object of all considered topics.
+#'
+#' @return [\code{\link[stats]{dendrogram}}] \code{\link[=dendTopics]{TopicDendrogram}} object
+#' (and \code{\link[stats]{dendrogram}} object) of all considered topics.
 #'
 #' @examples
 #' # TODO
@@ -64,7 +72,7 @@ dendTopics.default = function(sims, ind, method = "complete"){
 #' \code{\link[=pruneSCLOP]{PruningSCLOP}} object specifying the best possible
 #' local pruning state.
 #' @param pruning.par [\code{list}]\cr
-#' List of parameters to mark the pruning. See \code{\link[=pruneSCLOP]{pruning.par}}
+#' List of parameters to mark the pruning. See section "Details" at \code{\link{dendTopics}}
 #' for default parameters. Types for marking the pruning state are \code{"abline"},
 #' \code{"color"} and \code{"both"}.
 #' @param ... additional arguments.

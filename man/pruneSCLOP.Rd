@@ -21,7 +21,7 @@ output from \code{\link{dendTopics}}.}
 \item{x}{an R object.}
 
 \item{pruning.par}{[\code{list}]\cr
-List of parameters to mark the pruning. See \code{\link[=pruneSCLOP]{pruning.par}}
+List of parameters to mark the pruning. See section "Details" at \code{\link{dendTopics}}
 for default parameters. Types for marking the pruning state are \code{"abline"},
 \code{"color"} and \code{"both"}.}
 
@@ -43,6 +43,8 @@ The function \code{pruneSCLOP} supplies the corresponding pruning state itself.
 }
 \details{
 For details of computing the S-CLOP values see \code{\link{SCLOP}}.
+
+For details of plotting the pruning state see \code{\link{dendTopics}}.
 }
 \examples{
 # TODO

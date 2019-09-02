@@ -58,8 +58,8 @@ Other LDA functions: \code{\link{LDABatch}},
   \code{\link{LDA}}, \code{\link{getTopics}}
 
 Other workflow functions: \code{\link{SCLOP}},
-  \code{\link{dendTopics}}, \code{\link{jaccardTopics}},
-  \code{\link{mergeTopics}}
+  \code{\link{dendTopics}}, \code{\link{getPrototype}},
+  \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
 }
 \concept{LDA functions}
 \concept{replication functions}

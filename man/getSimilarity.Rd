@@ -26,7 +26,8 @@ Returns the corresponding element of a \code{\link[=jaccardTopics]{TopicSimilari
 Other getter functions: \code{\link{getJob}},
   \code{\link{getSCLOP}}, \code{\link{getTopics}}
 
-Other TopicSimilarity functions: \code{\link{jaccardTopics}}
+Other TopicSimilarity functions: \code{\link{dendTopics}},
+  \code{\link{jaccardTopics}}
 }
 \concept{TopicSimilarity functions}
 \concept{getter functions}

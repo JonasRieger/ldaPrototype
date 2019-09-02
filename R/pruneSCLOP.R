@@ -8,6 +8,9 @@
 #' @details
 #' For details of computing the S-CLOP values see \code{\link{SCLOP}}.
 #'
+#' For details of plotting the pruning state see \code{\link{dendTopics}}.
+#'
+#'
 #' @family plot functions
 #' @family SCLOP functions
 #'

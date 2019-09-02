@@ -44,7 +44,9 @@ object. \code{getLDA} returns the list of \code{\link{LDA}} objects for a
 \code{\link{LDABatch}} or \code{\link{LDARep}} object. In addition, you can
 specify one or more LDAs by their id(s).\cr
 \code{setFilDir} sets the registry's file directory for a
-\code{\link{LDABatch}} object.
+\code{\link{LDABatch}} object. This is useful if you move the registry´s folder,
+e.g. if you do your calculations on a batch system, but want to do your
+evaluation on your desktop computer.
 }
 \seealso{
 Other getter functions: \code{\link{getSCLOP}},

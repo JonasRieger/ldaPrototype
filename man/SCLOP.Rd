@@ -69,8 +69,8 @@ where \eqn{\sum\limits_{g \in G^*} U(g) = U_{\Sigma}(G^*)}.
 Other SCLOP functions: \code{\link{pruneSCLOP}}
 
 Other workflow functions: \code{\link{LDARep}},
-  \code{\link{dendTopics}}, \code{\link{jaccardTopics}},
-  \code{\link{mergeTopics}}
+  \code{\link{dendTopics}}, \code{\link{getPrototype}},
+  \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
 }
 \concept{SCLOP functions}
 \concept{workflow functions}

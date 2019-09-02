@@ -111,13 +111,33 @@ Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
 \description{
 Returns the Prototype LDA of a set of LDAs. This set is given as
 \code{\link{LDABatch}} object, \code{\link{LDARep}} object, or as list of LDAs.
-If the matrix of S-CLOP scores \code{sclop} is passed, no calculation is done.
+If the matrix of S-CLOP scores \code{sclop} is passed, no calculation is needed/done.
+}
+\details{
+While \code{\link{LDAPrototype}} marks the overall shortcut for performing
+multiple LDA runs and choosing the Prototype of them, \code{getPrototype}
+just hooks up at determining the Prototype. The generation of multiple LDAs
+has to be done before use of this function. The function is flexible enough
+to use it at at least two steps/parts of the analysis: After generating the
+LDAs (no matter whether as LDABatch or LDARep object) or after determing
+the pairwise SCLOP values.
+
+To save memory a lot of interim calculations are discarded by default.
+
+If you use parallel computation, no progress bar is shown.
+
+For details see the details sections of the workflow functions.
 }
 \seealso{
 Other shortcut functions: \code{\link{LDAPrototype}}
 
 Other LDAPrototype functions: \code{\link{LDAPrototype}},
   \code{\link{getSCLOP}}
+
+Other workflow functions: \code{\link{LDARep}},
+  \code{\link{SCLOP}}, \code{\link{dendTopics}},
+  \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
 }
 \concept{LDAPrototype functions}
 \concept{shortcut functions}
+\concept{workflow functions}

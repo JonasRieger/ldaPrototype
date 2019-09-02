@@ -3,6 +3,11 @@
 #' @description Constructor for LDA objects used in this package.
 #'
 #' @details
+#' The functions \code{LDA} and \code{as.LDA} do exactly the same. If you call
+#' \code{LDA} on an object \code{x} which already is of the structure of an
+#' \code{LDA} object (in particular a \code{LDA} object itself),
+#' the additional arguments \code{param, assignments, ...}
+#' may be used to override the specific elements.
 #'
 #' @family constructor functions
 #' @family LDA functions
@@ -63,28 +68,7 @@ LDA = function(x, param, assignments, topics, document_sums, document_expects,
 
 #' @rdname LDA
 #' @export
-as.LDA = function(x, param, assignments, topics, document_sums, document_expects,
-  log.likelihoods){
-
-  if (!missing(x)){
-    LDA(
-      x = x,
-      param = param,
-      assignments = assignments,
-      topics = topics,
-      document_sums = document_sums,
-      document_expects = document_expects,
-      log.likelihoods = log.likelihoods)
-  }else{
-    LDA(
-      param = param,
-      assignments = assignments,
-      topics = topics,
-      document_sums = document_sums,
-      document_expects = document_expects,
-      log.likelihoods = log.likelihoods)
-  }
-}
+as.LDA = LDA
 
 #' @rdname LDA
 #' @export
