@@ -72,7 +72,7 @@ dend2 = dendTopics(sim)
 
 \donttest{
 plot(dend)
-plot(dendTopics(jacc, ind = c("Batch2", "Batch3")))
+plot(dendTopics(jacc, ind = c("Rep2", "Rep3")))
 }
 
 pruned = pruneSCLOP(dend)
@@ -81,7 +81,7 @@ plot(dend, pruning = pruned)
 plot(dend, pruning = pruned, pruning.par = list(type = "color"))
 plot(dend, pruning = pruned, pruning.par = list(type = "both", lty = 1, lwd = 2, col = "red"))
 
-dend2 = dendTopics(jacc, ind = c("Batch2", "Batch3"))
+dend2 = dendTopics(jacc, ind = c("Rep2", "Rep3"))
 plot(dend2, pruning = pruneSCLOP(dend2), pruning.par = list(lwd = 2, col = "darkgrey"))
 }
 
