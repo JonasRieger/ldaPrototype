@@ -129,7 +129,8 @@ If you use parallel computation, no progress bar is shown.
 For details see the details sections of the workflow functions.
 }
 \examples{
-res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+res = LDARep(docs = reuters_docs, vocab = reuters_vocab,
+   n = 4, K = 10, num.iterations = 30)
 topics = mergeTopics(res, vocab = reuters_vocab)
 jacc = jaccardTopics(topics, atLeast = 2)
 dend = dendTopics(jacc)
@@ -137,7 +138,7 @@ sclop = SCLOP.pairwise(jacc)
 
 proto = getPrototype(lda = getLDA(res), sclop = sclop)
 
-proto = getPrototype(res, reuters_vocab, limit.abs = 20, atLeast = 10, keepSims = TRUE)
+proto = getPrototype(res, vocab = reuters_vocab)
 }
 \seealso{
 Other shortcut functions: \code{\link{LDAPrototype}}

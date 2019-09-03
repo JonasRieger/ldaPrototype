@@ -43,13 +43,14 @@
 #' @inherit getPrototype return
 #'
 #' @examples
-#' res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+#' res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab,
+#'    n = 4, K = 10, num.iterations = 30)
 #' res
 #' getPrototype(res) # = getLDA(res)
 #' getSCLOP(res)
 #'
-#' res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 4, K = 10, num.iterations = 30,
-#'    keepLDAs = TRUE)
+#' res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab,
+#'    n = 4, K = 10, num.iterations = 30, keepLDAs = TRUE)
 #' res
 #' getLDA(res, all = TRUE)
 #' getPrototypeID(res)

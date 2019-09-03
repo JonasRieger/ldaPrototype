@@ -103,13 +103,14 @@ If you use parallel computation, no progress bar is shown.
 For details see the details sections of the workflow functions at \code{\link{getPrototype}}.
 }
 \examples{
-res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab,
+   n = 4, K = 10, num.iterations = 30)
 res
 getPrototype(res) # = getLDA(res)
 getSCLOP(res)
 
-res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 4, K = 10, num.iterations = 30,
-   keepLDAs = TRUE)
+res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab,
+   n = 4, K = 10, num.iterations = 30, keepLDAs = TRUE)
 res
 getLDA(res, all = TRUE)
 getPrototypeID(res)

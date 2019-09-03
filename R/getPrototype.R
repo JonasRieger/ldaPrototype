@@ -94,7 +94,8 @@
 #' }
 #'
 #' @examples
-#' res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+#' res = LDARep(docs = reuters_docs, vocab = reuters_vocab,
+#'    n = 4, K = 10, num.iterations = 30)
 #' topics = mergeTopics(res, vocab = reuters_vocab)
 #' jacc = jaccardTopics(topics, atLeast = 2)
 #' dend = dendTopics(jacc)
@@ -102,7 +103,7 @@
 #'
 #' proto = getPrototype(lda = getLDA(res), sclop = sclop)
 #'
-#' proto = getPrototype(res, reuters_vocab, limit.abs = 20, atLeast = 10, keepSims = TRUE)
+#' proto = getPrototype(res, vocab = reuters_vocab)
 #' @export getPrototype
 getPrototype = function(...) UseMethod("getPrototype")
 
@@ -127,7 +128,7 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
     progress = progress, pm.backend = pm.backend, ncpus = ncpus,
-    keepTopics = keepTopics, keepSims = keepSims, keepLDAs= keepLDAs)
+    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, ...)
 }
 
 #' @rdname getPrototype
@@ -146,7 +147,7 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
     progress = progress, pm.backend = pm.backend, ncpus = ncpus,
-    keepTopics = keepTopics, keepSims = keepSims, keepLDAs= keepLDAs)
+    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, ...)
 }
 
 #' @rdname getPrototype
@@ -167,8 +168,8 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
       atLeast = atLeast, progress = progress, pm.backend = pm.backend, ncpus = ncpus)
     wordslimit = getRelevantWords(sims)
     wordsconsidered = getConsideredWords(sims)
+    sclop = SCLOP.pairwise(sims)
     sims = getSimilarity(sims)
-    sclop = SCLOP.pairwise(sims = sims)
     if (!keepTopics) topics = NULL
     if (!keepSims){
       sims = NULL
