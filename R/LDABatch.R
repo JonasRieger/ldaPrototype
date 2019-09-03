@@ -40,7 +40,7 @@
 #' \code{reg} for the registry itself.
 #'
 #' @examples
-#' \donottest{
+#' \donttest{
 #' batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 15)
 #' batch
 #' getRegistry(batch)

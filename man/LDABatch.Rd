@@ -55,7 +55,7 @@ The function returns a \code{LDABatch} object. You can receive results and
 all other elements of this object with getter functions (see \code{\link{getJob}}).
 }
 \examples{
-\\donottest{
+\donttest{
 batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 15)
 batch
 getRegistry(batch)
