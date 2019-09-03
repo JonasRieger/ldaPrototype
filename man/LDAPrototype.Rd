@@ -105,13 +105,13 @@ For details see the details sections of the workflow functions at \code{\link{ge
 \seealso{
 Other shortcut functions: \code{\link{getPrototype}}
 
-Other LDAPrototype functions: \code{\link{getPrototype}},
+Other PrototypeLDA functions: \code{\link{getPrototype}},
   \code{\link{getSCLOP}}
 
 Other replication functions: \code{\link{LDARep}},
   \code{\link{as.LDARep}}, \code{\link{getJob}},
   \code{\link{mergeRepTopics}}
 }
-\concept{LDAPrototype functions}
+\concept{PrototypeLDA functions}
 \concept{replication functions}
 \concept{shortcut functions}

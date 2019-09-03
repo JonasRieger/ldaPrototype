@@ -15,7 +15,7 @@
 #' For details see the details sections of the workflow functions at \code{\link{getPrototype}}.
 #'
 #' @family shortcut functions
-#' @family LDAPrototype functions
+#' @family PrototypeLDA functions
 #' @family replication functions
 #'
 #' @inheritParams LDARep

@@ -54,7 +54,20 @@ a \code{\link{LDARep}} object, which can be handled using the getter functions
 at \code{\link{getJob}}.
 }
 \examples{
-#TODO
+res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 7, num.iterations = 20)
+lda = getLDA(res)
+
+res2 = as.LDARep(lda, id = "newName")
+res2
+getJob(res2)
+getJob(res)
+
+\\donottest{
+batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, id = "TEMP", K = 30)
+res3 = as.LDARep(batch)
+res3
+getJob(res3)
+}
 
 }
 \seealso{

@@ -131,13 +131,13 @@ For details see the details sections of the workflow functions.
 \seealso{
 Other shortcut functions: \code{\link{LDAPrototype}}
 
-Other LDAPrototype functions: \code{\link{LDAPrototype}},
+Other PrototypeLDA functions: \code{\link{LDAPrototype}},
   \code{\link{getSCLOP}}
 
 Other workflow functions: \code{\link{LDARep}},
   \code{\link{SCLOP}}, \code{\link{dendTopics}},
   \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
 }
-\concept{LDAPrototype functions}
+\concept{PrototypeLDA functions}
 \concept{shortcut functions}
 \concept{workflow functions}

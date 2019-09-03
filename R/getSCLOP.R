@@ -4,7 +4,7 @@
 #' Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}} object.
 #'
 #' @family getter functions
-#' @family LDAPrototype functions
+#' @family PrototypeLDA functions
 #'
 #' @param x [\code{named list}]\cr
 #' \code{\link[=getPrototype]{PrototypeLDA}} object.

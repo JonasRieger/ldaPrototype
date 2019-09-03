@@ -55,7 +55,17 @@ The function returns a \code{LDABatch} object. You can receive results and
 all other elements of this object with getter functions (see \code{\link{getJob}}).
 }
 \examples{
-#TODO
+\\donottest{
+batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 15)
+batch
+getRegistry(batch)
+getJob(batch)
+getLDA(batch, 2)
+
+batch2 = LDABatch(docs = reuters_docs, vocab = reuters_vocab, K = 15, chunk.size = 20)
+batch2
+head(getJob(batch2))
+}
 
 }
 \seealso{

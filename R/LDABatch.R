@@ -40,7 +40,17 @@
 #' \code{reg} for the registry itself.
 #'
 #' @examples
-#' #TODO
+#' \donottest{
+#' batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 15)
+#' batch
+#' getRegistry(batch)
+#' getJob(batch)
+#' getLDA(batch, 2)
+#'
+#' batch2 = LDABatch(docs = reuters_docs, vocab = reuters_vocab, K = 15, chunk.size = 20)
+#' batch2
+#' head(getJob(batch2))
+#' }
 #'
 #' @export LDABatch
 
@@ -112,14 +122,15 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
 
   res = list(id = id, jobs = cbind(ids, moreArgs), reg = reg)
   class(res) = "LDABatch"
-  invisible(res)
+  res
 }
 
 #' @export
 print.LDABatch = function(x, ...){
   jobs = getJob(x)
   chunked = ifelse("chunk" %in% colnames(jobs), "Chunked ", "")
-  parameters = unique(jobs[, !colnames(jobs) %in% c("job.id", "chunk", "seed"), with = FALSE])
+  parameters = unique(jobs[, !colnames(jobs) %in%
+      c("job.id", "chunk", "seed", "problem", "algorithm"), with = FALSE])
   if (nrow(parameters) == 1){
     parameters = paste0("parameters ",
       paste0(paste0(colnames(parameters), ": ", as.character(round(parameters, 4))), collapse = ", "))

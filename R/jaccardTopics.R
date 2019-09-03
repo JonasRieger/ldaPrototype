@@ -142,7 +142,7 @@ jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.back
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
     param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
   class(res) = "TopicSimilarity"
-  invisible(res)
+  res
 }
 
 jaccardTopics.serial = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE){
@@ -177,5 +177,5 @@ jaccardTopics.serial = function(topics, limit.rel, limit.abs, atLeast, progress 
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
     param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
   class(res) = "TopicSimilarity"
-  invisible(res)
+  res
 }

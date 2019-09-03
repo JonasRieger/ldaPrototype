@@ -19,7 +19,7 @@
 #' For details see the details sections of the workflow functions.
 #'
 #' @family shortcut functions
-#' @family LDAPrototype functions
+#' @family PrototypeLDA functions
 #' @family workflow functions
 #'
 #' @param x [\code{named list}]\cr
@@ -95,6 +95,11 @@
 
 #' @export getPrototype
 getPrototype = function(...) UseMethod("getPrototype")
+
+#' @export
+getPrototype.PrototypeLDA = function(x, ...){
+  getLDA(x, ...)
+}
 
 #' @rdname getPrototype
 #' @export

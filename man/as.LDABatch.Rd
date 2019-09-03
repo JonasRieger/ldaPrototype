@@ -41,7 +41,21 @@ a \code{\link{LDABatch}} object, which can be handled using the getter functions
 at \code{\link{getJob}}.
 }
 \examples{
-#TODO
+\\donottest{
+batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, K = 15, chunk.size = 20)
+batch
+
+batch2 = as.LDABatch(reg = getRegistry(batch))
+batch2
+head(getJob(batch2))
+
+batch3 = as.LDABatch()
+batch3
+
+### one way of loading an existing registry ###
+batchtools::loadRegistry("LDABatch")
+batch = as.LDABatch()
+}
 
 }
 \seealso{

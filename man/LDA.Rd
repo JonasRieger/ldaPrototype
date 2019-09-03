@@ -54,7 +54,17 @@ the additional arguments \code{param, assignments, ...}
 may be used to override the specific elements.
 }
 \examples{
-#TODO
+res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 1, K = 10)
+lda = getLDA(res)
+
+LDA(lda)
+# does not change anything
+
+LDA(lda, assignments = NULL)
+# creates a new LDA object without the assignments element
+
+LDA(param = getParam(lda), topics = getTopics(lda))
+# creates a new LDA object with elements param and topics
 
 }
 \seealso{

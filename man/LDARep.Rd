@@ -51,7 +51,17 @@ The function returns a \code{LDARep} object. You can receive results and
 all other elements of this object with getter functions (see \code{\link{getJob}}).
 }
 \examples{
-#TODO
+res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, seeds = 1:4,
+   id = "myComputation", K = 7:10, alpha = 1, eta = 0.01, num.iterations = 20)
+res
+getJob(res)
+getID(res)
+getLDA(res, 4)
+
+\\donottest{
+LDARep(docs = reuters_docs, vocab = reuters_vocab,
+   K = 10, num.iterations = 100, pm.backend = "socket")
+}
 
 }
 \seealso{

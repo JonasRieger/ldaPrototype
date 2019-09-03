@@ -37,7 +37,17 @@
 #' \code{jobs} for the parameter settings and \code{lda} for the results itself.
 #'
 #' @examples
-#' #TODO
+#' res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, seeds = 1:4,
+#'    id = "myComputation", K = 7:10, alpha = 1, eta = 0.01, num.iterations = 20)
+#' res
+#' getJob(res)
+#' getID(res)
+#' getLDA(res, 4)
+#'
+#' \donottest{
+#' LDARep(docs = reuters_docs, vocab = reuters_vocab,
+#'    K = 10, num.iterations = 100, pm.backend = "socket")
+#' }
 #'
 #' @export LDARep
 
@@ -78,7 +88,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
 
   res = list(id = id, lda = ldas, jobs = args)
   class(res) = "LDARep"
-  invisible(res)
+  res
 }
 
 #' @export

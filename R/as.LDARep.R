@@ -34,7 +34,20 @@
 #' \code{jobs} for the parameter settings and \code{lda} for the results themselves.
 #'
 #' @examples
-#' #TODO
+#' res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 7, num.iterations = 20)
+#' lda = getLDA(res)
+#'
+#' res2 = as.LDARep(lda, id = "newName")
+#' res2
+#' getJob(res2)
+#' getJob(res)
+#'
+#' \donottest{
+#' batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, id = "TEMP", K = 30)
+#' res3 = as.LDARep(batch)
+#' res3
+#' getJob(res3)
+#' }
 #'
 #' @export as.LDARep
 as.LDARep = function(...) UseMethod("as.LDARep")
@@ -83,7 +96,7 @@ as.LDARep.default = function(lda, job, id, ...){
 
   res = list(id = id, lda = lda, jobs = job)
   class(res) = "LDARep"
-  invisible(res)
+  res
 }
 
 #' @rdname as.LDARep
@@ -96,12 +109,12 @@ as.LDARep.LDABatch = function(x, ...){
 
   res = list(id = id, lda = lda, jobs = job)
   class(res) = "LDARep"
-  invisible(res)
+  res
 }
 
 #' @export
 as.LDARep.LDARep = function(x, ...){
-  invisible(x)
+  x
 }
 
 
