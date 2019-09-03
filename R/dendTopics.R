@@ -53,7 +53,7 @@
 #' plot(dendTopics(jacc, ind = c("Batch2", "Batch3")))
 #' }
 #'
-#' pruned = pruneSCLOP(dend1)
+#' pruned = pruneSCLOP(dend)
 #' \donttest{
 #' plot(dend, pruning = pruned)
 #' plot(dend, pruning = pruned, pruning.par = list(type = "color"))
