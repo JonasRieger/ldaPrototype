@@ -4,7 +4,14 @@
 #' Performs multiple runs of Latent Dirichlet Allocation on a batch system using
 #' the \code{\link[batchtools]{batchtools-package}}.
 #'
-#' @details
+#' @details The function generates multiple LDA runs with the possability of
+#' using a batch system. The integration is done by the
+#' \code{\link[batchtools]{batchtools-package}}. After all jobs of the
+#' corresponding registry are terminated, the whole registry can be ported to
+#' your local computer for further analysis.
+#'
+#' The function returns a \code{LDABatch} object. You can receive results and
+#' all other elements of this object with getter functions (see \code{\link{getJob}}).
 #'
 #' @family batch functions
 #' @family LDA functions
@@ -27,6 +34,7 @@
 #' Computational resources for the jobs to submit. See \code{\link[batchtools]{submitJobs}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 #' Arguments will be coerced to a vector of length \code{n}.
+#'
 #' @return [\code{named list}] with entries \code{id} for the registry's folder name,
 #' \code{jobs} for the submitted jobs' ids and its parameter settings and
 #' \code{reg} for the registry itself.

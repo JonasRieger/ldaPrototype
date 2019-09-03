@@ -3,7 +3,12 @@
 #' @description
 #' Performs multiple runs of Latent Dirichlet Allocation.
 #'
-#' @details
+#' @details The function generates multiple LDA runs with the possability of
+#' using parallelization. The integration is done by the package
+#' \code{\link[parallelMap]{parallelMap}}.
+#'
+#' The function returns a \code{LDARep} object. You can receive results and
+#' all other elements of this object with getter functions (see \code{\link{getJob}}).
 #'
 #' @family replication functions
 #' @family LDA functions

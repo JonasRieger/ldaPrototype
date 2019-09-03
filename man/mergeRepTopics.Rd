@@ -39,11 +39,7 @@ Collects LDA results from a list of replicated runs and merges their topic
 matrices for a given set of vocabularies.
 }
 \details{
-
-}
-\examples{
-#TODO
-
+See \code{\link{mergeTopics}}.
 }
 \seealso{
 Other merge functions: \code{\link{mergeBatchTopics}},

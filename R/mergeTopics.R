@@ -1,11 +1,14 @@
 #' @title Merge LDA Topic Matrices
 #'
 #' @description
-#' Generic function, which collects LDA results and merges their topic matrices for a
-#' given set of vocabularies. Uses the function \code{\link{mergeRepTopics}}
-#' or \code{\link{mergeBatchTopics}}.
+#' Generic function, which collects LDA results and merges their topic matrices
+#' for a given set of vocabularies.
 #'
 #' @details
+#' This function uses the function \code{\link{mergeRepTopics}} or
+#' \code{\link{mergeBatchTopics}}. The topic matrices are transponed and cbinded,
+#' so that the resulting matrix contains the counts of vocabularies/words (row wise)
+#' in topics (column wise).
 #'
 #' @family merge functions
 #' @family workflow functions
@@ -17,6 +20,7 @@
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default ist \code{TRUE}.
+#'
 #' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @examples

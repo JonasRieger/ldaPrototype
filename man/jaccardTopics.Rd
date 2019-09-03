@@ -9,7 +9,7 @@ jaccardTopics(topics, limit.rel, limit.abs, atLeast, progress = TRUE,
 }
 \arguments{
 \item{topics}{[\code{named matrix}]\cr
-The counts of vocabularies (row wise) in topics (column wise).}
+The counts of vocabularies/words (row wise) in topics (column wise).}
 
 \item{limit.rel}{[0,1]\cr
 A relative lower bound limit for which words are taken into account. Those words

@@ -45,7 +45,14 @@ Performs multiple runs of Latent Dirichlet Allocation on a batch system using
 the \code{\link[batchtools]{batchtools-package}}.
 }
 \details{
+The function generates multiple LDA runs with the possability of
+using a batch system. The integration is done by the
+\code{\link[batchtools]{batchtools-package}}. After all jobs of the
+corresponding registry are terminated, the whole registry can be ported to
+your local computer for further analysis.
 
+The function returns a \code{LDABatch} object. You can receive results and
+all other elements of this object with getter functions (see \code{\link{getJob}}).
 }
 \examples{
 #TODO

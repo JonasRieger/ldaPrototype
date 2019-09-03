@@ -34,6 +34,7 @@
 #'
 #' @param dend [\code{\link[stats]{dendrogram}}]\cr
 #' Output from \code{\link{dendTopics}}.
+#'
 #' @return
 #' \describe{
 #'   \item{\code{SCLOP}}{[0,1] value specifying the S-CLOP for the best possible

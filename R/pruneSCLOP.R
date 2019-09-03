@@ -10,7 +10,6 @@
 #'
 #' For details of plotting the pruning state see \code{\link{dendTopics}}.
 #'
-#'
 #' @family plot functions
 #' @family SCLOP functions
 #'
@@ -18,6 +17,7 @@
 #' \code{\link[=dendTopics]{TopicDendrogram}}
 #' (and \code{\link[stats]{dendrogram}}) object of all considered topics as the
 #' output from \code{\link{dendTopics}}.
+#'
 #' @return[\code{list of \link[stats]{dendrogram}s}]
 #' \code{\link[=pruneSCLOP]{PruningSCLOP}} object specifying the best possible
 #' local pruning state.

@@ -5,6 +5,7 @@
 #' a given set of vocabularies.
 #'
 #' @details
+#' See \code{\link{mergeTopics}}.
 #'
 #' @family merge functions
 #' @family batch functions
@@ -25,10 +26,8 @@
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default ist \code{TRUE}.
 #' @param ... additional arguments
-#' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
-#' @examples
-#' #TODO
+#' @return [\code{named matrix}] with the count of vocabularies (row wise) in topics (column wise).
 #'
 #' @export mergeBatchTopics
 
