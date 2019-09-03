@@ -128,7 +128,7 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
     progress = progress, pm.backend = pm.backend, ncpus = ncpus,
-    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, ...)
+    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, sclop = NULL)
 }
 
 #' @rdname getPrototype
@@ -147,7 +147,7 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
     progress = progress, pm.backend = pm.backend, ncpus = ncpus,
-    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, ...)
+    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, sclop = NULL)
 }
 
 #' @rdname getPrototype
@@ -162,7 +162,7 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
   if (missing(pm.backend)) pm.backend = NULL
   if (missing(ncpus)) ncpus = NULL
   if (missing(id)) id = "LDARep"
-  if (missing(sclop)){
+  if (missing(sclop) || is.null(sclop)){
     topics = mergeRepTopics(lda = lda, vocab = vocab, id = id, progress = progress)
     sims = jaccardTopics(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
       atLeast = atLeast, progress = progress, pm.backend = pm.backend, ncpus = ncpus)
