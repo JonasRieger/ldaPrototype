@@ -62,7 +62,28 @@ of \code{pruning.par} call the corresponding function on any
 \code{\link[=pruneSCLOP]{PruningSCLOP}} object.
 }
 \examples{
-# TODO
+res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+topics = mergeTopics(res, vocab = reuters_vocab)
+jacc = jaccardTopics(topics, atLeast = 2)
+sim = getSimilarity(jacc)
+
+dend = dendTopics(jacc)
+dend2 = dendTopics(sim)
+
+\donttest{
+plot(dend)
+plot(dendTopics(jacc, ind = c("Batch2", "Batch3")))
+}
+
+pruned = pruneSCLOP(dend1)
+\donttest{
+plot(dend, pruning = pruned)
+plot(dend, pruning = pruned, pruning.par = list(type = "color"))
+plot(dend, pruning = pruned, pruning.par = list(type = "both", lty = 1, lwd = 2, col = "red"))
+
+dend2 = dendTopics(jacc, ind = c("Batch2", "Batch3"))
+plot(dend2, pruning = pruneSCLOP(dend2), pruning.par = list(lwd = 2, col = "darkgrey"))
+}
 
 }
 \seealso{

@@ -8,7 +8,7 @@
 #' @details
 #' For details of computing the S-CLOP values see \code{\link{SCLOP}}.
 #'
-#' For details of plotting the pruning state see \code{\link{dendTopics}}.
+#' For details and examples of plotting the pruning state see \code{\link{dendTopics}}.
 #'
 #' @family plot functions
 #' @family SCLOP functions
@@ -21,9 +21,6 @@
 #' @return[\code{list of \link[stats]{dendrogram}s}]
 #' \code{\link[=pruneSCLOP]{PruningSCLOP}} object specifying the best possible
 #' local pruning state.
-#'
-#' @examples
-#' # TODO
 #'
 #' @export pruneSCLOP
 pruneSCLOP = function(dend) UseMethod("pruneSCLOP")

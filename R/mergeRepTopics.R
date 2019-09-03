@@ -5,7 +5,7 @@
 #' matrices for a given set of vocabularies.
 #'
 #' @details
-#' See \code{\link{mergeTopics}}.
+#' For details and examples see \code{\link{mergeTopics}}.
 #'
 #' @family merge functions
 #' @family replication functions

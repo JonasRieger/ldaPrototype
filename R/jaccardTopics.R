@@ -62,7 +62,17 @@
 #' }
 #'
 #' @examples
-#' # TODO
+#' res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+#' topics = mergeTopics(res, vocab = reuters_vocab)
+#' jacc = jaccardTopics(topics, atLeast = 2)
+#' jacc
+#'
+#' n1 = getConsideredWords(jacc)
+#' n2 = getRelevantWords(jacc)
+#' (n1 - n2)[n1 - n2 != 0]
+#'
+#' sim = getSimilarity(jacc)
+#' dim(sim)
 #'
 #' @export jaccardTopics
 

@@ -44,11 +44,7 @@ The function \code{pruneSCLOP} supplies the corresponding pruning state itself.
 \details{
 For details of computing the S-CLOP values see \code{\link{SCLOP}}.
 
-For details of plotting the pruning state see \code{\link{dendTopics}}.
-}
-\examples{
-# TODO
-
+For details and examples of plotting the pruning state see \code{\link{dendTopics}}.
 }
 \seealso{
 Other plot functions: \code{\link{dendTopics}}

@@ -45,7 +45,7 @@ Collects LDA results from a given registry and merges their topic matrices for
 a given set of vocabularies.
 }
 \details{
-See \code{\link{mergeTopics}}.
+For details and examples see \code{\link{mergeTopics}}.
 }
 \seealso{
 Other merge functions: \code{\link{mergeRepTopics}},
