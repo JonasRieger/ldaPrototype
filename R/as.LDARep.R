@@ -5,6 +5,9 @@
 #' \code{job} and \code{id}.
 #'
 #' @details
+#' Given a list of \code{\link{LDA}} objects the function returns
+#' a \code{\link{LDARep}} object, which can be handled using the getter functions
+#' at \code{\link{getJob}}.
 #'
 #' @family constructor functions
 #' @family replication functions

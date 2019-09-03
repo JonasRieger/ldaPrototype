@@ -36,7 +36,9 @@ Constructs a \code{\link{LDABatch}} object for given elements \code{reg},
 \code{job} and \code{id}.
 }
 \details{
-
+Given a \code{\link[batchtools:makeRegistry]{Registry}} the function returns
+a \code{\link{LDABatch}} object, which can be handled using the getter functions
+at \code{\link{getJob}}.
 }
 \examples{
 #TODO
