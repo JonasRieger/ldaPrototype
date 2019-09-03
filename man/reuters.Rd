@@ -10,7 +10,7 @@
 \title{A Snippet of the Reuters Dataset}
 \format{\code{reuters_docs} is a list of documents of length 91 prepared by \code{\link[tosca]{LDAprep}}.
 
-\code{reuters_vocab} is a \code{character} vector of length 2139}
+\code{reuters_vocab} is a \code{character} vector of length 2141.}
 \source{
 \url{http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/}
 }
@@ -20,7 +20,8 @@ data(reuters_docs)
 data(reuters_vocab)
 }
 \description{
-bla
+Example Dataset from Reuters consisting of 91 articles. It can be used to
+familiarize with the bunch of functions offered by this package.
 }
 \references{
 Lewis, David (1997). \emph{Reuters-21578 Text Categorization Collection Distribution 1.0}.

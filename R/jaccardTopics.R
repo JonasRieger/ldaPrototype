@@ -73,7 +73,7 @@ jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE,
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
   if (missing(ncpus)) ncpus = NULL
-  if (!missing(pm.backend)){
+  if (!missing(pm.backend) && !is.null(pm.backend)){
     jaccardTopics.parallel(topics = topics, limit.rel = limit.rel, limit.abs = limit.abs,
       atLeast = atLeast, pm.backend = pm.backend, ncpus = ncpus)
   }else{

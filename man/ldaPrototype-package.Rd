@@ -15,6 +15,11 @@ most representative LDA run as prototype.\cr
 For bug reports and feature requests please use the tracker:
 \url{https://github.com/JonasRieger/ldaPrototype}.
 }
+\section{Data}{
+
+\code{\link{reuters}} Example Dataset (91 articles from Reuters) for testing.
+}
+
 \section{Constructor}{
 
 \code{\link{LDA}} LDA objects used in this package.\cr
@@ -37,7 +42,7 @@ For bug reports and feature requests please use the tracker:
 \code{\link{LDABatch}} Performing multiple LDAs on Batch Systems.
 }
 
-\section{Calculation Steps to determine the Prototype LDA}{
+\section{Calculation Steps (Workflow) to determine the Prototype LDA}{
 
 \code{\link{mergeTopics}} Merge topic matrices from multiple LDAs.\cr
 \code{\link{jaccardTopics}} Calculate topic similarities.\cr

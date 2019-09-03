@@ -1,6 +1,8 @@
 #' @title A Snippet of the Reuters Dataset
 #'
-#' @description bla
+#' @description
+#' Example Dataset from Reuters consisting of 91 articles. It can be used to
+#' familiarize with the bunch of functions offered by this package.
 #'
 #' @name reuters
 #' @aliases reuters_docs reuters_vocab docs vocab
@@ -9,7 +11,7 @@
 #' @format
 #' \code{reuters_docs} is a list of documents of length 91 prepared by \code{\link[tosca]{LDAprep}}.
 #'
-#' \code{reuters_vocab} is a \code{character} vector of length 2139
+#' \code{reuters_vocab} is a \code{character} vector of length 2141.
 #'
 #' @usage data(reuters_docs)
 #'
