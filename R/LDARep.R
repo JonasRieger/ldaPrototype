@@ -44,7 +44,7 @@
 #' getID(res)
 #' getLDA(res, 4)
 #'
-#' \donottest{
+#' \donttest{
 #' LDARep(docs = reuters_docs, vocab = reuters_vocab,
 #'    K = 10, num.iterations = 100, pm.backend = "socket")
 #' }
