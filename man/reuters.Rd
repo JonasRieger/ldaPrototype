@@ -8,7 +8,9 @@
 \alias{docs}
 \alias{vocab}
 \title{A Snippet of the Reuters Dataset}
-\format{An object of class \code{list} of length 99.}
+\format{\code{reuters_docs} is a list of documents of length 91 prepared by \code{\link[tosca]{LDAprep}}.
+
+\code{reuters_vocab} is a \code{character} vector of length 2139}
 \source{
 \url{http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/}
 }
@@ -23,6 +25,7 @@ bla
 \references{
 Lewis, David (1997). \emph{Reuters-21578 Text Categorization Collection Distribution 1.0}.
 \url{http://kdd.ics.uci.edu/databases/reuters21578/reuters21578.html}
+
 Luz, Saturnino. \emph{XML-encoded version of Reuters-21578}.
 \url{http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/}
 }
