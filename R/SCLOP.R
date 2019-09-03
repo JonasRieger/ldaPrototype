@@ -46,7 +46,16 @@
 #' }
 #'
 #' @examples
-#' # TODO
+#' res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+#' topics = mergeTopics(res, vocab = reuters_vocab)
+#' jacc = jaccardTopics(topics, atLeast = 2)
+#' dend = dendTopics(jacc)
+#'
+#' SCLOP(dend)
+#' disparitySum(dend)
+#'
+#' SCLOP.pairwise(jacc)
+#' SCLOP.pairwise(getSimilarity(jacc))
 #'
 #' @export SCLOP
 
@@ -73,14 +82,24 @@ disparitySum = function(dend){
 }
 
 #' @rdname SCLOP
-#' @param sims [\code{lower triangular named matrix}]\cr
-#' Pairwise jaccard similarities of underlying topics as the \code{sims} element
+#' @param sims [\code{\link[=jaccardTopics]{TopicSimilarity}} object
+#' or \code{lower triangular named matrix}]\cr
+#' \code{\link[=jaccardTopics]{TopicSimilarity}} object or
+#' pairwise jaccard similarities of underlying topics as the \code{sims} element
 #' from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
 #' @export SCLOP.pairwise
+SCLOP.pairwise = function(sims) UseMethod("SCLOP.pairwise")
 
-SCLOP.pairwise = function(sims){
+#' @export
+SCLOP.pairwise.TopicSimilarity = function(sims){
+  sims = getSimilarity(sims)
+  NextMethod("SCLOP.pairwise")
+}
+
+#' @export
+SCLOP.pairwise.default = function(sims){
   names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
 
   combs = combn(names, 2)
