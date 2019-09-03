@@ -92,7 +92,17 @@
 #'   \item{\code{sclop}}{[\code{symmetrical named matrix}] with all pairwise
 #'   S-CLOP scores of the given LDA runs.}
 #' }
-
+#'
+#' @examples
+#' res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
+#' topics = mergeTopics(res, vocab = reuters_vocab)
+#' jacc = jaccardTopics(topics, atLeast = 2)
+#' dend = dendTopics(jacc)
+#' sclop = SCLOP.pairwise(jacc)
+#'
+#' proto = getPrototype(lda = getLDA(res), sclop = sclop)
+#'
+#' proto = getPrototype(res, reuters_vocab, limit.abs = 20, atLeast = 10, keepSims = TRUE)
 #' @export getPrototype
 getPrototype = function(...) UseMethod("getPrototype")
 
@@ -110,6 +120,8 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
+  if (missing(pm.backend)) pm.backend = NULL
+  if (missing(ncpus)) ncpus = NULL
   lda = getLDA(x)
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
@@ -127,6 +139,8 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
+  if (missing(pm.backend)) pm.backend = NULL
+  if (missing(ncpus)) ncpus = NULL
   lda = getLDA(x)
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
@@ -144,6 +158,8 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
+  if (missing(pm.backend)) pm.backend = NULL
+  if (missing(ncpus)) ncpus = NULL
   if (missing(id)) id = "LDARep"
   if (missing(sclop)){
     topics = mergeRepTopics(lda = lda, vocab = vocab, id = id, progress = progress)
