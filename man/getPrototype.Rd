@@ -136,9 +136,16 @@ jacc = jaccardTopics(topics, atLeast = 2)
 dend = dendTopics(jacc)
 sclop = SCLOP.pairwise(jacc)
 
-proto = getPrototype(lda = getLDA(res), sclop = sclop)
+getPrototype(lda = getLDA(res), sclop = sclop)
 
-proto = getPrototype(res, vocab = reuters_vocab)
+proto = getPrototype(res, vocab = reuters_vocab, keepSims = TRUE,
+   limit.abs = 20, atLeast = 10)
+proto
+getPrototype(proto)
+getConsideredWords(proto)
+# > 10 if there is more than one word which is the 10-th often word (ties)
+getRelevantWords(proto)
+getSCLOP(proto)
 }
 \seealso{
 Other shortcut functions: \code{\link{LDAPrototype}}
