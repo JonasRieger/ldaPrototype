@@ -49,15 +49,21 @@ e.g. if you do your calculations on a batch system, but want to do your
 evaluation on your desktop computer.
 }
 \seealso{
-Other getter functions: \code{\link{getSCLOP}},
-  \code{\link{getSimilarity}}, \code{\link{getTopics}}
+Other getter functions: 
+\code{\link{getSCLOP}()},
+\code{\link{getSimilarity}()},
+\code{\link{getTopics}()}
 
-Other replication functions: \code{\link{LDAPrototype}},
-  \code{\link{LDARep}}, \code{\link{as.LDARep}},
-  \code{\link{mergeRepTopics}}
+Other replication functions: 
+\code{\link{LDAPrototype}()},
+\code{\link{LDARep}()},
+\code{\link{as.LDARep}()},
+\code{\link{mergeRepTopics}()}
 
-Other batch functions: \code{\link{LDABatch}},
-  \code{\link{as.LDABatch}}, \code{\link{mergeBatchTopics}}
+Other batch functions: 
+\code{\link{LDABatch}()},
+\code{\link{as.LDABatch}()},
+\code{\link{mergeBatchTopics}()}
 }
 \concept{batch functions}
 \concept{getter functions}

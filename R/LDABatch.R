@@ -29,7 +29,7 @@
 #' @param load [\code{logical(1)}]\cr
 #' If a folder with name \code{id} exists: should the existing registry be loaded?
 #' @param chunk.size [\code{integer(1)}]\cr
-#' Requested number of chunks. See \code{\link[batchtools]{chunk}}.
+#' Requested chunk size for each single chunk. See \code{\link[batchtools]{chunk}}.
 #' @param resources [\code{named list}]\cr
 #' Computational resources for the jobs to submit. See \code{\link[batchtools]{submitJobs}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.

@@ -6,11 +6,25 @@
 \alias{is.LDA}
 \title{LDA Object}
 \usage{
-LDA(x, param, assignments, topics, document_sums, document_expects,
-  log.likelihoods)
+LDA(
+  x,
+  param,
+  assignments,
+  topics,
+  document_sums,
+  document_expects,
+  log.likelihoods
+)
 
-as.LDA(x, param, assignments, topics, document_sums, document_expects,
-  log.likelihoods)
+as.LDA(
+  x,
+  param,
+  assignments,
+  topics,
+  document_sums,
+  document_expects,
+  log.likelihoods
+)
 
 is.LDA(obj, verbose = FALSE)
 }
@@ -68,11 +82,14 @@ LDA(param = getParam(lda), topics = getTopics(lda))
 
 }
 \seealso{
-Other constructor functions: \code{\link{as.LDABatch}},
-  \code{\link{as.LDARep}}
+Other constructor functions: 
+\code{\link{as.LDABatch}()},
+\code{\link{as.LDARep}()}
 
-Other LDA functions: \code{\link{LDABatch}},
-  \code{\link{LDARep}}, \code{\link{getTopics}}
+Other LDA functions: 
+\code{\link{LDABatch}()},
+\code{\link{LDARep}()},
+\code{\link{getTopics}()}
 }
 \concept{LDA functions}
 \concept{constructor functions}

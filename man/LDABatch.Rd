@@ -4,8 +4,17 @@
 \alias{LDABatch}
 \title{LDA Replications on a Batch System}
 \usage{
-LDABatch(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE,
-  chunk.size = 1, resources, ...)
+LDABatch(
+  docs,
+  vocab,
+  n = 100,
+  seeds,
+  id = "LDABatch",
+  load = FALSE,
+  chunk.size = 1,
+  resources,
+  ...
+)
 }
 \arguments{
 \item{docs}{[\code{list}]\cr
@@ -27,7 +36,7 @@ Name for the registry's folder.}
 If a folder with name \code{id} exists: should the existing registry be loaded?}
 
 \item{chunk.size}{[\code{integer(1)}]\cr
-Requested number of chunks. See \code{\link[batchtools]{chunk}}.}
+Requested chunk size for each single chunk. See \code{\link[batchtools]{chunk}}.}
 
 \item{resources}{[\code{named list}]\cr
 Computational resources for the jobs to submit. See \code{\link[batchtools]{submitJobs}}.}
@@ -69,11 +78,15 @@ head(getJob(batch2))
 
 }
 \seealso{
-Other batch functions: \code{\link{as.LDABatch}},
-  \code{\link{getJob}}, \code{\link{mergeBatchTopics}}
+Other batch functions: 
+\code{\link{as.LDABatch}()},
+\code{\link{getJob}()},
+\code{\link{mergeBatchTopics}()}
 
-Other LDA functions: \code{\link{LDARep}},
-  \code{\link{LDA}}, \code{\link{getTopics}}
+Other LDA functions: 
+\code{\link{LDARep}()},
+\code{\link{LDA}()},
+\code{\link{getTopics}()}
 }
 \concept{LDA functions}
 \concept{batch functions}

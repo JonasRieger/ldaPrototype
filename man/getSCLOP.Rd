@@ -50,11 +50,14 @@ Shortcut for \code{job}: Should all stored LDAs be returned?}
 Returns the corresponding element of a \code{\link[=getPrototype]{PrototypeLDA}} object.
 }
 \seealso{
-Other getter functions: \code{\link{getJob}},
-  \code{\link{getSimilarity}}, \code{\link{getTopics}}
+Other getter functions: 
+\code{\link{getJob}()},
+\code{\link{getSimilarity}()},
+\code{\link{getTopics}()}
 
-Other PrototypeLDA functions: \code{\link{LDAPrototype}},
-  \code{\link{getPrototype}}
+Other PrototypeLDA functions: 
+\code{\link{LDAPrototype}()},
+\code{\link{getPrototype}()}
 }
 \concept{PrototypeLDA functions}
 \concept{getter functions}

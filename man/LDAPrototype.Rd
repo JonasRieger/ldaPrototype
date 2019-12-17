@@ -4,10 +4,24 @@
 \alias{LDAPrototype}
 \title{Determine the Prototype LDA}
 \usage{
-LDAPrototype(docs, vocabLDA, vocabMerge = vocabLDA, n = 100, seeds,
-  id = "LDARep", pm.backend, ncpus, limit.rel, limit.abs, atLeast,
-  progress = TRUE, keepTopics = FALSE, keepSims = FALSE,
-  keepLDAs = FALSE, ...)
+LDAPrototype(
+  docs,
+  vocabLDA,
+  vocabMerge = vocabLDA,
+  n = 100,
+  seeds,
+  id = "LDARep",
+  pm.backend,
+  ncpus,
+  limit.rel,
+  limit.abs,
+  atLeast,
+  progress = TRUE,
+  keepTopics = FALSE,
+  keepSims = FALSE,
+  keepLDAs = FALSE,
+  ...
+)
 }
 \arguments{
 \item{docs}{[\code{list}]\cr
@@ -55,7 +69,7 @@ faster calculation. Default ist \code{TRUE}.}
 Should the merged topic matrix from \code{\link{mergeTopics}} be kept?}
 
 \item{keepSims}{[\code{logical(1)}]\cr
-Should the calculated topic similarities matrix from \code{\link{jaccardTopics}}}
+Should the calculated topic similarities matrix from \code{\link{jaccardTopics}} be kept?}
 
 \item{keepLDAs}{[\code{logical(1)}]\cr
 Should the considered LDAs be kept?}
@@ -118,14 +132,18 @@ getParam(res)
 
 }
 \seealso{
-Other shortcut functions: \code{\link{getPrototype}}
+Other shortcut functions: 
+\code{\link{getPrototype}()}
 
-Other PrototypeLDA functions: \code{\link{getPrototype}},
-  \code{\link{getSCLOP}}
+Other PrototypeLDA functions: 
+\code{\link{getPrototype}()},
+\code{\link{getSCLOP}()}
 
-Other replication functions: \code{\link{LDARep}},
-  \code{\link{as.LDARep}}, \code{\link{getJob}},
-  \code{\link{mergeRepTopics}}
+Other replication functions: 
+\code{\link{LDARep}()},
+\code{\link{as.LDARep}()},
+\code{\link{getJob}()},
+\code{\link{mergeRepTopics}()}
 }
 \concept{PrototypeLDA functions}
 \concept{replication functions}

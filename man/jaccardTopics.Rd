@@ -4,8 +4,15 @@
 \alias{jaccardTopics}
 \title{Pairwise Jaccard Coefficients}
 \usage{
-jaccardTopics(topics, limit.rel, limit.abs, atLeast, progress = TRUE,
-  pm.backend, ncpus)
+jaccardTopics(
+  topics,
+  limit.rel,
+  limit.abs,
+  atLeast,
+  progress = TRUE,
+  pm.backend,
+  ncpus
+)
 }
 \arguments{
 \item{topics}{[\code{named matrix}]\cr
@@ -89,12 +96,16 @@ dim(sim)
 
 }
 \seealso{
-Other TopicSimilarity functions: \code{\link{dendTopics}},
-  \code{\link{getSimilarity}}
+Other TopicSimilarity functions: 
+\code{\link{dendTopics}()},
+\code{\link{getSimilarity}()}
 
-Other workflow functions: \code{\link{LDARep}},
-  \code{\link{SCLOP}}, \code{\link{dendTopics}},
-  \code{\link{getPrototype}}, \code{\link{mergeTopics}}
+Other workflow functions: 
+\code{\link{LDARep}()},
+\code{\link{SCLOP}()},
+\code{\link{dendTopics}()},
+\code{\link{getPrototype}()},
+\code{\link{mergeTopics}()}
 }
 \concept{TopicSimilarity functions}
 \concept{workflow functions}

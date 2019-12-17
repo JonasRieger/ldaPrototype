@@ -47,9 +47,11 @@ For details of computing the S-CLOP values see \code{\link{SCLOP}}.
 For details and examples of plotting the pruning state see \code{\link{dendTopics}}.
 }
 \seealso{
-Other plot functions: \code{\link{dendTopics}}
+Other plot functions: 
+\code{\link{dendTopics}()}
 
-Other SCLOP functions: \code{\link{SCLOP}}
+Other SCLOP functions: 
+\code{\link{SCLOP}()}
 }
 \concept{SCLOP functions}
 \concept{plot functions}

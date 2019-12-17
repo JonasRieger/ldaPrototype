@@ -66,6 +66,6 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Jonas Rieger \email{jonas.rieger@tu-dortmund.de} (0000-0002-0007-4478)
+\strong{Maintainer}: Jonas Rieger \email{jonas.rieger@tu-dortmund.de} (\href{https://orcid.org/0000-0002-0007-4478}{ORCID})
 
 }

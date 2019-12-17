@@ -59,11 +59,14 @@ batch = as.LDABatch()
 
 }
 \seealso{
-Other constructor functions: \code{\link{LDA}},
-  \code{\link{as.LDARep}}
+Other constructor functions: 
+\code{\link{LDA}()},
+\code{\link{as.LDARep}()}
 
-Other batch functions: \code{\link{LDABatch}},
-  \code{\link{getJob}}, \code{\link{mergeBatchTopics}}
+Other batch functions: 
+\code{\link{LDABatch}()},
+\code{\link{getJob}()},
+\code{\link{mergeBatchTopics}()}
 }
 \concept{batch functions}
 \concept{constructor functions}

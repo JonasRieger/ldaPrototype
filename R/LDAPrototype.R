@@ -36,7 +36,7 @@
 #' @param keepTopics [\code{logical(1)}]\cr
 #' Should the merged topic matrix from \code{\link{mergeTopics}} be kept?
 #' @param keepSims [\code{logical(1)}]\cr
-#' Should the calculated topic similarities matrix from \code{\link{jaccardTopics}}
+#' Should the calculated topic similarities matrix from \code{\link{jaccardTopics}} be kept?
 #' @param keepLDAs [\code{logical(1)}]\cr
 #' Should the considered LDAs be kept?
 #'

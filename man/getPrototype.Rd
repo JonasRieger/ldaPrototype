@@ -9,17 +9,52 @@
 \usage{
 getPrototype(...)
 
-\method{getPrototype}{LDABatch}(x, vocab, limit.rel, limit.abs, atLeast,
-  progress = TRUE, pm.backend, ncpus, keepTopics = FALSE,
-  keepSims = FALSE, keepLDAs = FALSE, ...)
+\method{getPrototype}{LDABatch}(
+  x,
+  vocab,
+  limit.rel,
+  limit.abs,
+  atLeast,
+  progress = TRUE,
+  pm.backend,
+  ncpus,
+  keepTopics = FALSE,
+  keepSims = FALSE,
+  keepLDAs = FALSE,
+  ...
+)
 
-\method{getPrototype}{LDARep}(x, vocab, limit.rel, limit.abs, atLeast,
-  progress = TRUE, pm.backend, ncpus, keepTopics = FALSE,
-  keepSims = FALSE, keepLDAs = FALSE, ...)
+\method{getPrototype}{LDARep}(
+  x,
+  vocab,
+  limit.rel,
+  limit.abs,
+  atLeast,
+  progress = TRUE,
+  pm.backend,
+  ncpus,
+  keepTopics = FALSE,
+  keepSims = FALSE,
+  keepLDAs = FALSE,
+  ...
+)
 
-\method{getPrototype}{default}(lda, vocab, id, limit.rel, limit.abs,
-  atLeast, progress = TRUE, pm.backend, ncpus, keepTopics = FALSE,
-  keepSims = FALSE, keepLDAs = FALSE, sclop, ...)
+\method{getPrototype}{default}(
+  lda,
+  vocab,
+  id,
+  limit.rel,
+  limit.abs,
+  atLeast,
+  progress = TRUE,
+  pm.backend,
+  ncpus,
+  keepTopics = FALSE,
+  keepSims = FALSE,
+  keepLDAs = FALSE,
+  sclop,
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments}
@@ -148,14 +183,19 @@ getRelevantWords(proto)
 getSCLOP(proto)
 }
 \seealso{
-Other shortcut functions: \code{\link{LDAPrototype}}
+Other shortcut functions: 
+\code{\link{LDAPrototype}()}
 
-Other PrototypeLDA functions: \code{\link{LDAPrototype}},
-  \code{\link{getSCLOP}}
+Other PrototypeLDA functions: 
+\code{\link{LDAPrototype}()},
+\code{\link{getSCLOP}()}
 
-Other workflow functions: \code{\link{LDARep}},
-  \code{\link{SCLOP}}, \code{\link{dendTopics}},
-  \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
+Other workflow functions: 
+\code{\link{LDARep}()},
+\code{\link{SCLOP}()},
+\code{\link{dendTopics}()},
+\code{\link{jaccardTopics}()},
+\code{\link{mergeTopics}()}
 }
 \concept{PrototypeLDA functions}
 \concept{shortcut functions}

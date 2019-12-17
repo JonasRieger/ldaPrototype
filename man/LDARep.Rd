@@ -4,8 +4,7 @@
 \alias{LDARep}
 \title{LDA Replications}
 \usage{
-LDARep(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
-  ...)
+LDARep(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus, ...)
 }
 \arguments{
 \item{docs}{[\code{list}]\cr
@@ -65,16 +64,23 @@ LDARep(docs = reuters_docs, vocab = reuters_vocab,
 
 }
 \seealso{
-Other replication functions: \code{\link{LDAPrototype}},
-  \code{\link{as.LDARep}}, \code{\link{getJob}},
-  \code{\link{mergeRepTopics}}
+Other replication functions: 
+\code{\link{LDAPrototype}()},
+\code{\link{as.LDARep}()},
+\code{\link{getJob}()},
+\code{\link{mergeRepTopics}()}
 
-Other LDA functions: \code{\link{LDABatch}},
-  \code{\link{LDA}}, \code{\link{getTopics}}
+Other LDA functions: 
+\code{\link{LDABatch}()},
+\code{\link{LDA}()},
+\code{\link{getTopics}()}
 
-Other workflow functions: \code{\link{SCLOP}},
-  \code{\link{dendTopics}}, \code{\link{getPrototype}},
-  \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
+Other workflow functions: 
+\code{\link{SCLOP}()},
+\code{\link{dendTopics}()},
+\code{\link{getPrototype}()},
+\code{\link{jaccardTopics}()},
+\code{\link{mergeTopics}()}
 }
 \concept{LDA functions}
 \concept{replication functions}

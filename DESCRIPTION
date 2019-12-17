@@ -26,5 +26,5 @@ Suggests:
 	parallelMap,
 	RColorBrewer (>= 1.1-2),
 	tosca
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 LazyData: true

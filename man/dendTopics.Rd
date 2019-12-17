@@ -87,14 +87,19 @@ plot(dend2, pruning = pruneSCLOP(dend2), pruning.par = list(lwd = 2, col = "dark
 
 }
 \seealso{
-Other plot functions: \code{\link{pruneSCLOP}}
+Other plot functions: 
+\code{\link{pruneSCLOP}()}
 
-Other TopicSimilarity functions: \code{\link{getSimilarity}},
-  \code{\link{jaccardTopics}}
+Other TopicSimilarity functions: 
+\code{\link{getSimilarity}()},
+\code{\link{jaccardTopics}()}
 
-Other workflow functions: \code{\link{LDARep}},
-  \code{\link{SCLOP}}, \code{\link{getPrototype}},
-  \code{\link{jaccardTopics}}, \code{\link{mergeTopics}}
+Other workflow functions: 
+\code{\link{LDARep}()},
+\code{\link{SCLOP}()},
+\code{\link{getPrototype}()},
+\code{\link{jaccardTopics}()},
+\code{\link{mergeTopics}()}
 }
 \concept{TopicSimilarity functions}
 \concept{plot functions}

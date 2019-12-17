@@ -44,12 +44,16 @@ length(reuters_vocab)
 }
 }
 \seealso{
-Other merge functions: \code{\link{mergeBatchTopics}},
-  \code{\link{mergeRepTopics}}
+Other merge functions: 
+\code{\link{mergeBatchTopics}()},
+\code{\link{mergeRepTopics}()}
 
-Other workflow functions: \code{\link{LDARep}},
-  \code{\link{SCLOP}}, \code{\link{dendTopics}},
-  \code{\link{getPrototype}}, \code{\link{jaccardTopics}}
+Other workflow functions: 
+\code{\link{LDARep}()},
+\code{\link{SCLOP}()},
+\code{\link{dendTopics}()},
+\code{\link{getPrototype}()},
+\code{\link{jaccardTopics}()}
 }
 \concept{merge functions}
 \concept{workflow functions}

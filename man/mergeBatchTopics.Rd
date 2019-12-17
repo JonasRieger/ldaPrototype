@@ -10,8 +10,7 @@ mergeBatchTopics(...)
 
 \method{mergeBatchTopics}{LDABatch}(x, vocab, progress = TRUE, ...)
 
-\method{mergeBatchTopics}{default}(vocab, reg, job, id, progress = TRUE,
-  ...)
+\method{mergeBatchTopics}{default}(vocab, reg, job, id, progress = TRUE, ...)
 }
 \arguments{
 \item{...}{additional arguments}
@@ -48,11 +47,14 @@ a given set of vocabularies.
 For details and examples see \code{\link{mergeTopics}}.
 }
 \seealso{
-Other merge functions: \code{\link{mergeRepTopics}},
-  \code{\link{mergeTopics}}
+Other merge functions: 
+\code{\link{mergeRepTopics}()},
+\code{\link{mergeTopics}()}
 
-Other batch functions: \code{\link{LDABatch}},
-  \code{\link{as.LDABatch}}, \code{\link{getJob}}
+Other batch functions: 
+\code{\link{LDABatch}()},
+\code{\link{as.LDABatch}()},
+\code{\link{getJob}()}
 }
 \concept{batch functions}
 \concept{merge functions}

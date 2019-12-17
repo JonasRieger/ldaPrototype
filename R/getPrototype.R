@@ -128,10 +128,12 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
+  if (missing(vocab)) vocab = .defaultVocab(x)
   if (missing(pm.backend)) pm.backend = NULL
   if (missing(ncpus)) ncpus = NULL
   lda = getLDA(x)
   id = getID(x)
+
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
     progress = progress, pm.backend = pm.backend, ncpus = ncpus,
@@ -147,6 +149,7 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
+  if (missing(vocab)) vocab = .defaultVocab(x)
   if (missing(pm.backend)) pm.backend = NULL
   if (missing(ncpus)) ncpus = NULL
   lda = getLDA(x)
@@ -166,6 +169,7 @@ getPrototype.default = function(lda, vocab, id, limit.rel, limit.abs, atLeast,
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
+  if (missing(vocab)) vocab = .defaultVocab(lda)
   if (missing(pm.backend)) pm.backend = NULL
   if (missing(ncpus)) ncpus = NULL
   if (missing(id)) id = "LDARep"

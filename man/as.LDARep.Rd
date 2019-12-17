@@ -71,12 +71,15 @@ getJob(res3)
 
 }
 \seealso{
-Other constructor functions: \code{\link{LDA}},
-  \code{\link{as.LDABatch}}
+Other constructor functions: 
+\code{\link{LDA}()},
+\code{\link{as.LDABatch}()}
 
-Other replication functions: \code{\link{LDAPrototype}},
-  \code{\link{LDARep}}, \code{\link{getJob}},
-  \code{\link{mergeRepTopics}}
+Other replication functions: 
+\code{\link{LDAPrototype}()},
+\code{\link{LDARep}()},
+\code{\link{getJob}()},
+\code{\link{mergeRepTopics}()}
 }
 \concept{constructor functions}
 \concept{replication functions}
