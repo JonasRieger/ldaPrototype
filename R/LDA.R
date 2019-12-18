@@ -123,7 +123,7 @@ is.LDA = function(obj, verbose = FALSE){
       return(FALSE)
     }
     NDocs = lengths(assignments)
-    if (NTopic != max(unlist(assignments)) + 1){
+    if (!is.na(NTopic) && NTopic != max(unlist(assignments)) + 1){
       warning("Check Assignments. Maximum of Assignments do not correspond to Number of Topics.")
     }
     if (!all(sapply(assignments, is.integer))){
@@ -140,9 +140,18 @@ is.LDA = function(obj, verbose = FALSE){
       if (verbose) message("not a matrix")
       return(FALSE)
     }
-    if (NTopic != nrow(topics)){
-      if (verbose) message("number of topics is not consistent")
-      return(FALSE)
+    if (!is.na(NTopic)){
+      if (NTopic != nrow(topics)){
+        if (verbose) message("number of topics is not consistent")
+        return(FALSE)
+      }
+    }else{
+      NTopic = nrow(topics)
+      if (!is.null(assignments)){
+        if (NTopic != max(unlist(assignments)) + 1){
+          warning("Check Assignments. Maximum of Assignments do not correspond to Number of Topics.")
+        }
+      }
     }
     if (!is.integer(topics)){
       if (verbose) message("matrix is not integerish")
