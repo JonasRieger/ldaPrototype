@@ -8,6 +8,9 @@ args = list(K = 10, num.iterations = 20, alpha = 0.1, eta = 0.1,
   documents = reuters_docs, vocab = reuters_vocab)
 param = args[1:5]
 
+if (!exists(".Random.seed", envir = globalenv())){
+  runif(1)
+}
 oldseed = .Random.seed
 set.seed(1895)
 result = do.call(lda::lda.collapsed.gibbs.sampler, args)
