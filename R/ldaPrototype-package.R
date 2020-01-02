@@ -68,10 +68,10 @@
 # returns the considered vocabulary of the first LDA object
 # (useful for the case of simply having replications of the same parameters)
 .defaultVocab = function(x){
-  if (class(x) %in% c("LDARep", "LDABatch")){
+  if (inherits(x, c("LDARep", "LDABatch"))){
     x = getLDA(x, job = getJob(x)$job.id[1], reduce = TRUE)
   }
-  if (class(x) == "LDA"){
+  if (inherits(x, "LDA")){
     return(colnames(getTopics(x)))
   }else{
     return(colnames(getTopics(x[[1]])))
