@@ -32,7 +32,7 @@ lda4 = LDA(lda, topics = NULL)
 lda3.manip = lda3
 lda3.manip$topics = NULL
 lda3.manip = as.LDA(lda3.manip)
-lda5 = LDA(topics = getTopics(lda))
+lda5 = LDA(topics = getTopics(lda), document_sums = getDocument_sums(lda), document_expects = getDocument_expects(lda))
 lda6 = LDA()
 
 est = getEstimators(lda)
@@ -160,6 +160,7 @@ test_that("print.LDA", {
   expect_output(print(lda3.manip), "LDA Object")
   expect_output(print(lda4), "LDA Object")
   expect_output(print(lda5), "LDA Object")
+  expect_output(print(LDA(topics = getTopics(lda), document_expects = getDocument_expects(lda))), "LDA object")
   expect_output(print(lda6), "LDA Object")
 })
 
