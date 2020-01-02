@@ -60,8 +60,8 @@ mergeBatchTopics.default = function(vocab, reg, job, id, progress = TRUE, ...){
     id = as.character(gsub(pattern = trimws(file.path(reg$work.dir, " ")),
       replacement = "", x = reg$file.dir))
   if (is.vector(job)) job = data.frame(job.id = job)
-  if (missing(vocab)) vocab = .defaultVocab(x)
   topicList = batchtools::reduceResultsList(ids = job, fun = function(x) getTopics(LDA(x)), reg = reg)
+  if (missing(vocab)) vocab = colnames(topicList[[1]])
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)
 
