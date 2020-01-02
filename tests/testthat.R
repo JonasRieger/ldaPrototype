@@ -6,5 +6,6 @@ Sys.setenv("R_TESTS" = "")
 library(testthat)
 library(ldaPrototype)
 library(data.table)
+library(dendextend)
 
 test_check("ldaPrototype")
