@@ -48,6 +48,7 @@ test_that("SCLOP.pairwise", {
   expect_true(all(is.na(diag(pairs))))
   expect_true(isSymmetric(pairs))
   expect_true(all(pairs[lower.tri(pairs)] <= 1 & pairs[lower.tri(pairs)] >= 0))
+  expect_identical(nrow(getJob(res)), ncol(pairs))
   expect_identical(pairs, pairs2)
 })
 
