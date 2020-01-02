@@ -8,6 +8,7 @@ jacc = jaccardTopics(mtopics)
 jacc2 = jaccardTopics(mtopics, pm.backend = "socket")
 
 jacc3 = jaccardTopics(mtopics, atLeast = 1, limit.abs = max(mtopics)+1, progress = FALSE)
+jacc4 = jaccardTopics(mtopics, atLeast = 1, limit.abs = max(mtopics)+1, pm.backend = "socket")
 
 test_that("jaccardTopics_success", {
   tmp = 20 # n*K
@@ -39,6 +40,7 @@ test_that("jaccardTopics_success", {
   expect_true(all(is.na(diag(getSimilarity(jacc3)))))
   expect_true(all(getSimilarity(jacc3)[lower.tri(getSimilarity(jacc3))] >= 0))
   expect_true(all(getSimilarity(jacc3)[lower.tri(getSimilarity(jacc3))] <= 1))
+  expect_equal(jacc3, jacc4)
 })
 
 if(FALSE){ # noch inaktiv (aktivieren, wenn checkmate eingebunden)
