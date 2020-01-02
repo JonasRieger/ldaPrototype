@@ -101,7 +101,7 @@ as.LDARep.default = function(lda, job, id, ...){
 
 #' @rdname as.LDARep
 #' @export
-as.LDARep.LDABatch = function(x, ...){
+as.LDARep.LDARep = function(x, ...){
 
   lda = getLDA(x)
   job = getJob(x)
@@ -113,9 +113,7 @@ as.LDARep.LDABatch = function(x, ...){
 }
 
 #' @export
-as.LDARep.LDARep = function(x, ...){
-  x
-}
+as.LDARep.LDABatch = as.LDARep.LDARep
 
 
 #' @rdname as.LDARep
