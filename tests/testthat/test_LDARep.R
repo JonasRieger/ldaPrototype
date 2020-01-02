@@ -42,21 +42,59 @@ test_that("as.LDARep", {
   expect_error(as.LDARep(lda = list(ldawoparam)))
   # duplicated names
   expect_error(as.LDARep(lda = list("1" = lda, "1" = lda)))
+  # names of lda and jobs do not correspond
+  nores = res
+  nores$jobs = nores$jobs[-1,]
+  expect_false(all(all.equal(as.LDARep(nores), nores) == TRUE))
+})
+
+test_that("is.LDARep", {
+  expect_true(is.LDARep(res))
+  expect_true(is.LDARep(resrepsocket))
+  expect_true(is.LDARep(res2, verbose = TRUE))
+  expect_true(is.LDARep(res3))
+  expect_true(is.LDARep(res4))
+  expect_true(is.LDARep(res5))
+
+  # id
+  nores = res
+  nores$id = c("id1", "id2")
+  expect_false(is.LDARep(nores, verbose = TRUE))
+  nores$id = 1
+  expect_false(is.LDARep(nores, verbose = TRUE))
+
+  # jobs
+  nores = res
+  nores$jobs = getJob(res)[-1,]
+  expect_true(is.LDARep(nores)) # although the names arent matching
+  nores = res
+  nores$jobs$job.id = as.character(getJob(res)$job.id)
+  expect_false(is.LDARep(nores, verbose = TRUE))
+  nores$jobs = rbind(getJob(res), getJob(res))
+  expect_false(is.LDARep(nores, verbose = TRUE))
+  nores$jobs = as.data.frame(getJob(res))
+  expect_false(is.LDARep(nores, verbose = TRUE))
+
+  # lda
+  nores = res
+  nores$lda = getLDA(res)[[1]]
+  expect_false(is.LDARep(nores, verbose = TRUE))
+  nores$lda = unlist(getLDA(res))
+  expect_false(is.LDARep(nores, verbose = TRUE))
+
+  # general
+  nores = res
+  nores$id = NULL
+  expect_false(is.LDARep(nores, verbose = TRUE))
+  nores = 1
+  class(nores) = "LDARep"
+  expect_false(is.LDARep(nores, verbose = TRUE))
+  nores = res
+  class(nores) = "abc"
+  expect_false(is.LDARep(nores, verbose = TRUE))
 })
 
 test_that("print.LDARep", {
   expect_output(print(res), "LDARep Object")
   expect_output(print(resrepsocket), "LDARep Object")
-})
-
-test_that("x", {
-
-})
-
-test_that("x", {
-
-})
-
-test_that("x", {
-
 })
