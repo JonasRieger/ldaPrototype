@@ -160,7 +160,7 @@ test_that("print.LDA", {
   expect_output(print(lda3.manip), "LDA Object")
   expect_output(print(lda4), "LDA Object")
   expect_output(print(lda5), "LDA Object")
-  expect_output(print(LDA(topics = getTopics(lda), document_expects = getDocument_expects(lda))), "LDA object")
+  expect_output(print(LDA(topics = getTopics(lda), document_expects = getDocument_expects(lda))), "LDA Object")
   expect_output(print(lda6), "LDA Object")
 })
 
