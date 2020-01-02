@@ -13,7 +13,8 @@
 #' @param x [\code{named list}]\cr
 #' \code{\link{LDARep}} object. Alternatively \code{lda} and \code{id} can be passed.
 #' @param vocab [\code{character}]\cr
-#' Vocabularies taken into consideration for merging topic matrices.
+#' Vocabularies taken into consideration for merging topic matrices. Default is
+#' the vocabulary of the first LDA.
 #' @param lda [\code{named list}]\cr
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
 #' @param id [\code{character(1)}]\cr
@@ -35,9 +36,9 @@ mergeRepTopics.LDARep = function(x, vocab, progress = TRUE, ...){
   if (!is.LDARep(x)){
     stop("object is not a \"LDARep\" object")
   }
-
   lda = getLDA(x)
   id = getID(x)
+  if (missing(vocab)) vocab = .defaultVocab(x)
 
   NextMethod("mergeRepTopics", lda = lda, vocab = vocab, id = id, progress = progress)
 }
@@ -46,6 +47,7 @@ mergeRepTopics.LDARep = function(x, vocab, progress = TRUE, ...){
 #' @export
 mergeRepTopics.default = function(lda, vocab, id, progress = TRUE, ...){
 
+  if (missing(vocab)) vocab = .defaultVocab(x)
   if (missing(id)) id = "LDARep"
   topicList = lapply(lda, getTopics)
   Ntopic = sapply(topicList, nrow)

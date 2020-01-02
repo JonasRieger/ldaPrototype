@@ -14,7 +14,8 @@
 #' \code{\link{LDABatch}} object. Alternatively \code{job}, \code{reg} and
 #' \code{id} can be passed or their defaults are taken.
 #' @param vocab [\code{character}]\cr
-#' Vocabularies taken into consideration for merging topic matrices.
+#' Vocabularies taken into consideration for merging topic matrices. Default is
+#' the vocabulary of the first LDA.
 #' @param job [\code{\link{data.frame}} or \code{integer}]\cr
 #' A data.frame or data.table with a column named "job.id" or a vector of integerish job ids.
 #' See \code{\link[batchtools]{reduceResultsList}}.
@@ -44,6 +45,7 @@ mergeBatchTopics.LDABatch = function(x, vocab, progress = TRUE, ...){
   job = getJob(x)
   reg = getRegistry(x)
   reg = batchtools::loadRegistry(reg$file.dir)
+  if (missing(vocab)) vocab = .defaultVocab(x)
 
   NextMethod("mergeBatchTopics", vocab = vocab, reg = reg, job = job, id = id, progress = progress)
 }
@@ -58,6 +60,7 @@ mergeBatchTopics.default = function(vocab, reg, job, id, progress = TRUE, ...){
     id = as.character(gsub(pattern = trimws(file.path(reg$work.dir, " ")),
       replacement = "", x = reg$file.dir))
   if (is.vector(job)) job = data.frame(job.id = job)
+  if (missing(vocab)) vocab = .defaultVocab(x)
   topicList = batchtools::reduceResultsList(ids = job, fun = function(x) getTopics(LDA(x)), reg = reg)
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)

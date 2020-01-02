@@ -28,7 +28,7 @@
 #' List of \code{\link{LDA}} objects, named by the corresponding "job.id".
 #' @param vocab [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
-#' Not considered, if \code{sclop} is passed.
+#' Not considered, if \code{sclop} is passed. Default is the vocabulary of the first LDA.
 #' @param id [\code{character(1)}]\cr
 #' A name for the computation. If not passed, it is set to "LDARep".
 #' Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.
