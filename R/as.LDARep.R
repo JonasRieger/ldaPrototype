@@ -141,7 +141,7 @@ is.LDARep = function(obj, verbose = FALSE){
   }
 
   if (verbose) message("lda: ", appendLF = FALSE)
-  lda = getLDA(obj)
+  lda = getLDA(obj, reduce = FALSE)
   if(!is.list(lda)){
     if (verbose) message("not a list")
     return(FALSE)
@@ -167,7 +167,7 @@ is.LDARep = function(obj, verbose = FALSE){
     if (verbose) message("\"job.id\" is not integerish")
     return(FALSE)
   }
-  if (!all(intersect(job$job.id, names(lda)) %in% union(job$job.id, names(lda))) ||
+  if (!all(union(job$job.id, names(lda)) %in% intersect(job$job.id, names(lda))) ||
       nrow(job) != length(lda)){
     if (verbose) message("names of LDAs and \"job.id\" do not fit together")
     return(FALSE)
