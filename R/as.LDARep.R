@@ -84,14 +84,14 @@ as.LDARep.default = function(lda, job, id, ...){
             nrow(job) != length(lda)){
           stop("Names of LDAs and \"job.id\" do not fit together.")
         }
-        if (anyDuplicated(job$job.id) || anyDuplicated(names(lda))){
-          stop("Duplicated LDA names or \"job.id\".")
-        }
         job$job.id = as.integer(job$job.id)
       }else{
         stop("Not all standard parameters are specified.")
       }
     }
+  }
+  if (anyDuplicated(job$job.id) || anyDuplicated(names(lda))){
+    stop("Duplicated LDA names or \"job.id\".")
   }
 
   res = list(id = id, lda = lda, jobs = job)
