@@ -14,7 +14,7 @@ devtools::install_github("JonasRieger/ldaPrototype")
 * [tm](https://CRAN.R-project.org/package=tm) is useful for preprocessing text data.
 * [lda](https://CRAN.R-project.org/package=lda) offers a fast implementation of the Latent Dirichlet Allocation and is used by ldaPrototype.
 * [quanteda](https://quanteda.io/) is a framework for "Quantitative Analysis of Textual Data".
-+ [stm](https://www.structuraltopicmodel.com/) is a framework for Structural Topic Models.
+* [stm](https://www.structuraltopicmodel.com/) is a framework for Structural Topic Models.
 * [tosca](https://CRAN.R-project.org/package=tosca) is a framework for statistical methods in content analysis including visualizations and validation techniques. It is also useful for managing and manipulating text data to a structure requested by ldaPrototype.
 * [topicmodels](https://CRAN.R-project.org/package=topicmodels) is another framework for various topic models based on Latent Dirichlet Allocation and Correlated Topics Models.
 
