@@ -37,7 +37,7 @@ lda6 = LDA()
 
 est = getEstimators(lda)
 
-test_that("LDA_as.LDA", {
+test_that("as.LDA", {
   expect_identical(names(lda), names(lda6))
   expect_identical(names(lda), names(lda4))
   expect_identical(names(lda), names(lda3.manip))
