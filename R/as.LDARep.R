@@ -80,7 +80,7 @@ as.LDARep.default = function(lda, job, id, ...){
     }else{
       if (all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
         job = as.data.table(job)
-        if (!all(intersect(job$job.id, names(lda)) %in% union(job$job.id, names(lda))) ||
+        if (!all(union(job$job.id, names(lda)) %in% intersect(job$job.id, names(lda))) ||
             nrow(job) != length(lda)){
           stop("Names of LDAs and \"job.id\" do not fit together.")
         }
