@@ -21,9 +21,15 @@ mtopics7 = mergeTopics(res, vocab = voc, progress = FALSE)
 
 
 test_that("mergeTopics_success", {
+  expect_true(all(mtopics >= 0))
+  expect_true(all(as.integer(mtopics) == c(mtopics)))
+  expect_equal(ncol(mtopics), sum(sapply(lda, getK)))
+  expect_equal(nrow(mtopics), length(reuters_vocab))
   expect_equal(mtopics, mtopics2)
   expect_equal(mtopics2, mtopics3)
   expect_equal(mtopics3, mtopics4)
+  expect_equal(ncol(mtopics5), sum(sapply(lda, getK)))
+  expect_equal(nrow(mtopics5), length(voc))
   expect_equal(mtopics5, mtopics6)
   expect_equal(mtopics6, mtopics7)
 })
