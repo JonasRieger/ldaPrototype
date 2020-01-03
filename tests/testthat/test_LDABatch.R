@@ -7,6 +7,7 @@ resrep = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 3,
   K = 10:12, num.iterations = 5, seeds = 1:3)
 resbatch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 3,
   K = 10:12, num.iterations = 5, seeds = 1:3)
+mtopics = mergeBatchTopics()
 resbatch2 = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 3,
   K = 10:12, num.iterations = 5, seeds = rep(4,3), load = TRUE, chunk.size = 3, resources = list(memory = 1024))
 
@@ -34,6 +35,14 @@ test_that("LDABatch_registry2", {
 
 resbatchrep = as.LDARep(resbatch)
 resbatchbatch = as.LDABatch(job = getJob(resbatch))
+
+test_that("mergeBatchTopics", {
+  expect_identical(mergeTopics(resbatch), mtopics)
+  expect_identical(mergeTopics(resbatchrep), mtopics)
+  expect_error(mergeBatchTopics(resbatchrep))
+  class(resbatchrep) = "LDABatch"
+  expect_error(mergeBatchTopics(resbatchrep))
+})
 
 proto = getPrototype(resrep)
 proto2 = getPrototype(resbatchrep, keepLDAs = TRUE, keepSims = TRUE, keepTopics = TRUE)
