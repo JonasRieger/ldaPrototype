@@ -123,7 +123,7 @@ getPrototype.PrototypeLDA = function(x, ...){
 #' @export
 getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
   progress = TRUE, pm.backend, ncpus,
-  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
+  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, sclop, ...){
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
@@ -131,20 +131,21 @@ getPrototype.LDABatch = function(x, vocab, limit.rel, limit.abs, atLeast,
   if (missing(vocab)) vocab = .defaultVocab(x)
   if (missing(pm.backend)) pm.backend = NULL
   if (missing(ncpus)) ncpus = NULL
+  if (missing(sclop)) sclop = NULL
   lda = getLDA(x)
   id = getID(x)
 
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
     progress = progress, pm.backend = pm.backend, ncpus = ncpus,
-    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, sclop = NULL)
+    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, sclop = sclop)
 }
 
 #' @rdname getPrototype
 #' @export
 getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
   progress = TRUE, pm.backend, ncpus,
-  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, ...){
+  keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, sclop, ...){
 
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
@@ -152,12 +153,13 @@ getPrototype.LDARep = function(x, vocab, limit.rel, limit.abs, atLeast,
   if (missing(vocab)) vocab = .defaultVocab(x)
   if (missing(pm.backend)) pm.backend = NULL
   if (missing(ncpus)) ncpus = NULL
+  if (missing(sclop)) sclop = NULL
   lda = getLDA(x)
   id = getID(x)
   NextMethod("getPrototype", lda = lda, vocab = vocab, id = id,
     limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast,
     progress = progress, pm.backend = pm.backend, ncpus = ncpus,
-    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, sclop = NULL)
+    keepTopics = keepTopics, keepSims = keepSims, keepLDAs = keepLDAs, sclop = sclop)
 }
 
 #' @rdname getPrototype
