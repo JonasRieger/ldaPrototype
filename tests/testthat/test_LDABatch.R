@@ -14,7 +14,8 @@ test_that("LDABatch_registry", {
   # no load = TRUE
   expect_error(LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 3,
     K = 10:12, num.iterations = 5, seeds = 1:3))
-  expect_warning(is.LDABatch(resbatch))
+  #expect_warning(is.LDABatch(resbatch))
+  expect_error(is.LDABatch(resbatch))
   expect_true(suppressWarnings(is.LDABatch(resbatch)))
   expect_silent(is.LDABatch(resbatch2))
   expect_true(is.LDABatch(resbatch2))
@@ -124,7 +125,8 @@ test_that("is.LDABatch", {
   # registry
   nores = res
   setFileDir(nores, "a")
-  expect_true(is.LDABatch(nores, verbose = TRUE))
+  #expect_true(is.LDABatch(nores, verbose = TRUE))
+  expect_false(is.LDABatch(nores, verbose = TRUE))
   expect_error(getLDA(nores))
 
   # repeated num.iterations
@@ -133,6 +135,7 @@ test_that("is.LDABatch", {
   expect_true(is.LDABatch(res0))
   expect_equal(getNum.iterations(getLDA(res0)), 5)
   expect_equal(getK(getLDA(res0)), 100)
+  expect_output(print(res0), "LDABatch Object")
 })
 
 test_that("print.LDABatch", {
@@ -141,5 +144,4 @@ test_that("print.LDABatch", {
   expect_output(print(resbatchbatch), "LDABatch Object")
   expect_output(print(resbatchbatch2), "LDABatch Object")
   expect_output(print(resbatchcomplete), "LDABatch Object")
-  expect_output(print(res0), "LDABatch Object")
 })
