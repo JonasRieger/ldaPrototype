@@ -9,7 +9,7 @@ resbatch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 3,
   K = 10:12, num.iterations = 5, seeds = 1:3)
 mtopics = mergeBatchTopics()
 voc = sample(reuters_vocab, length(reuters_vocab)/2)
-mtopics2 = mergeBatchTopics(voc)
+mtopics2 = mergeBatchTopics(voc, job = 1:3)
 resbatch2 = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 3,
   K = 10:12, num.iterations = 5, seeds = rep(4,3), load = TRUE, chunk.size = 3, resources = list(memory = 1024))
 
