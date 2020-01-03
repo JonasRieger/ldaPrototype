@@ -1,4 +1,4 @@
-context("dendTopics")
+context("dend_and_sclop")
 
 data("reuters_docs")
 data("reuters_vocab")
