@@ -95,8 +95,13 @@ is.LDABatch = function(obj, verbose = FALSE){
 
   if (verbose) message("jobs: ", appendLF = FALSE)
   job = getJob(obj)
-  if (!is.data.table(job) || !("job.id" %in% colnames(job))){
-    if (verbose) message("not a data.table with element \"job.id\"")
+  if (!is.data.table(job) ||
+      !all(c(names(.getDefaultParameters()), "job.id", "seed") %in% colnames(job))){
+    if (verbose) message("not a data.table with standard parameters")
+    return(FALSE)
+  }
+  if (anyDuplicated(job$job.id)){
+    if (verbose) message("duplicated \"job.id\"")
     return(FALSE)
   }
   if (!is.integer(job$job.id)){

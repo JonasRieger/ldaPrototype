@@ -153,7 +153,7 @@ is.LDARep = function(obj, verbose = FALSE){
   if (verbose) message("jobs: ", appendLF = FALSE)
   job = getJob(obj)
   if (!is.data.table(job) ||
-      !all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
+      !all(c(names(.getDefaultParameters()), "job.id", "seed") %in% colnames(job))){
     if (verbose) message("not a data.table with standard parameters")
     return(FALSE)
   }

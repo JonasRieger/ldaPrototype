@@ -1,4 +1,4 @@
-context("LDARep object")
+context("LDARep")
 
 data("reuters_docs")
 data("reuters_vocab")
