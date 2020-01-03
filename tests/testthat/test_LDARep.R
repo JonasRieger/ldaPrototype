@@ -98,6 +98,7 @@ test_that("is.LDARep", {
     vocab = reuters_vocab, n = 1, num.iterations = 10, num.iterations = 5))
   expect_equal(getNum.iterations(getLDA(res0)), 5)
   expect_equal(getK(getLDA(res0)), 100)
+  expect_true(is.LDARep(res0))
 })
 
 test_that("print.LDARep", {
