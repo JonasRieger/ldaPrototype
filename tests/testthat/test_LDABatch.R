@@ -15,7 +15,7 @@ test_that("LDABatch_registry", {
   expect_error(LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 3,
     K = 10:12, num.iterations = 5, seeds = 1:3))
   #expect_warning(is.LDABatch(resbatch))
-  expect_error(is.LDABatch(resbatch))
+  #expect_error(is.LDABatch(resbatch))
   expect_true(suppressWarnings(is.LDABatch(resbatch)))
   expect_silent(is.LDABatch(resbatch2))
   expect_true(is.LDABatch(resbatch2))
