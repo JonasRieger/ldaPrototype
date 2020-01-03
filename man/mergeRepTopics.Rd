@@ -19,7 +19,8 @@ mergeRepTopics(...)
 \code{\link{LDARep}} object. Alternatively \code{lda} and \code{id} can be passed.}
 
 \item{vocab}{[\code{character}]\cr
-Vocabularies taken into consideration for merging topic matrices.}
+Vocabularies taken into consideration for merging topic matrices. Default is
+the vocabulary of the first LDA.}
 
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly

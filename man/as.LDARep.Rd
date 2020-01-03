@@ -3,7 +3,7 @@
 \name{as.LDARep}
 \alias{as.LDARep}
 \alias{as.LDARep.default}
-\alias{as.LDARep.LDABatch}
+\alias{as.LDARep.LDARep}
 \alias{is.LDARep}
 \title{LDARep Constructor}
 \usage{
@@ -11,7 +11,7 @@ as.LDARep(...)
 
 \method{as.LDARep}{default}(lda, job, id, ...)
 
-\method{as.LDARep}{LDABatch}(x, ...)
+\method{as.LDARep}{LDARep}(x, ...)
 
 is.LDARep(obj, verbose = FALSE)
 }

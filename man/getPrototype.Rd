@@ -21,6 +21,7 @@ getPrototype(...)
   keepTopics = FALSE,
   keepSims = FALSE,
   keepLDAs = FALSE,
+  sclop,
   ...
 )
 
@@ -36,6 +37,7 @@ getPrototype(...)
   keepTopics = FALSE,
   keepSims = FALSE,
   keepLDAs = FALSE,
+  sclop,
   ...
 )
 
@@ -64,7 +66,7 @@ getPrototype(...)
 
 \item{vocab}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.
-Not considered, if \code{sclop} is passed.}
+Not considered, if \code{sclop} is passed. Default is the vocabulary of the first LDA.}
 
 \item{limit.rel}{[0,1]\cr
 See \code{\link{jaccardTopics}}. Default is \code{1/500}.
@@ -109,16 +111,16 @@ be kept? Not considered, if \code{sclop} is passed.}
 \item{keepLDAs}{[\code{logical(1)}]\cr
 Should the considered LDAs be kept?}
 
+\item{sclop}{[\code{symmetrical named matrix}]\cr
+(optional) All pairwise S-CLOP scores of the given LDA runs determined by
+\code{\link{SCLOP.pairwise}}. Matching of names is not implemented yet, so order matters.}
+
 \item{lda}{[\code{named list}]\cr
 List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 
 \item{id}{[\code{character(1)}]\cr
 A name for the computation. If not passed, it is set to "LDARep".
 Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
-
-\item{sclop}{[\code{symmetrical named matrix}]\cr
-(optional) All pairwise S-CLOP scores of the given LDA runs determined by
-\code{\link{SCLOP.pairwise}}. Matching of names is not implemented yet, so order matters.}
 }
 \value{
 [\code{named list}] with entries
