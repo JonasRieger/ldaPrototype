@@ -1,5 +1,8 @@
 # ldaPrototype
 
+[![Build Status](https://travis-ci.org/JonasRieger/ldaPrototype.svg?branch=master)](https://travis-ci.org/JonasRieger/ldaPrototype) 
+[![Coverage Status](https://coveralls.io/repos/github/JonasRieger/ldaPrototype/badge.svg?branch=master)](https://coveralls.io/github/JonasRieger/ldaPrototype?branch=master)
+
 ## Determine a Prototype from a Number of Runs of Latent Dirichlet Allocation Measuring Its Similarities with S-CLOP
 A procedure to select the LDA run with highest mean pairwise similarity, which is measured by S-CLOP, to all other runs. LDA runs are specified by its assignments leading to estimators for distribution parameters. Repeated runs lead to different results, which we encounter by choosing the most representative LDA run as prototype.
 
@@ -21,6 +24,3 @@ devtools::install_github("JonasRieger/ldaPrototype")
 ## Contribution
 This R package is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 For wishes, issues, and bugs please use the [issue tracker](https://github.com/JonasRieger/ldaPrototype/issues).
-
-[![Build Status](https://travis-ci.org/JonasRieger/ldaPrototype.svg?branch=master)](https://travis-ci.org/JonasRieger/ldaPrototype) 
-[![Coverage Status](https://coveralls.io/repos/github/JonasRieger/ldaPrototype/badge.svg?branch=master)](https://coveralls.io/github/JonasRieger/ldaPrototype?branch=master)
