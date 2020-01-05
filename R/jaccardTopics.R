@@ -46,7 +46,8 @@
 #' called before computation is started and \code{\link[parallelMap]{parallelStop}}
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
-#' Number of (physical) CPUs to use.
+#' Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+#' default is determined by \code{\link[future]{availableCores}}.
 #' @return [\code{named list}] with entries
 #' \describe{
 #'   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
@@ -124,7 +125,7 @@ jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.back
   sims = matrix(nrow = N, ncol = N)
   colnames(sims) = rownames(sims) = colnames(topics)
 
-  if (missing(ncpus) || is.null(ncpus)) ncpus = parallel::detectCores()
+  if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
   parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
 
   fun = function(s){

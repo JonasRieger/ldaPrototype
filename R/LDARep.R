@@ -30,7 +30,8 @@
 #' called before computation is started and \code{\link[parallelMap]{parallelStop}}
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
-#' Number of (physical) CPUs to use.
+#' Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+#' default is determined by \code{\link[future]{availableCores}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 #' Arguments will be coerced to a vector of length \code{n}.
 #' @return [\code{named list}] with entries \code{id} for computation's name,
@@ -74,7 +75,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   }
 
   if (!missing(pm.backend) && !is.null(pm.backend)){
-    if (missing(ncpus) || is.null(ncpus)) ncpus = parallel::detectCores()
+    if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
     parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
   }
 

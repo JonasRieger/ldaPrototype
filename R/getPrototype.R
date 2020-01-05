@@ -56,7 +56,8 @@
 #' is called after.
 #' Not considered, if \code{sclop} is passed.
 #' @param ncpus [\code{integer(1)}]\cr
-#' Number of (physical) CPUs to use.
+#' Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+#' default is determined by \code{\link[future]{availableCores}}.
 #' Not considered, if \code{sclop} is passed.
 #' @param keepTopics [\code{logical(1)}]\cr
 #' Should the merged topic matrix from \code{\link{mergeTopics}} be kept?

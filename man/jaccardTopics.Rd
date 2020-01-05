@@ -44,7 +44,8 @@ called before computation is started and \code{\link[parallelMap]{parallelStop}}
 is called after.}
 
 \item{ncpus}{[\code{integer(1)}]\cr
-Number of (physical) CPUs to use.}
+Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+default is determined by \code{\link[future]{availableCores}}.}
 }
 \value{
 [\code{named list}] with entries
