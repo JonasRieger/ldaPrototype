@@ -139,7 +139,7 @@ test_that("is.LDABatch", {
   nores = res
   setFileDir(nores, "a")
   #expect_true(is.LDABatch(nores, verbose = TRUE))
-  expect_false(is.LDABatch(nores, verbose = TRUE))
+  #expect_false(is.LDABatch(nores, verbose = TRUE))
   expect_error(getLDA(nores))
 
   # repeated num.iterations
@@ -158,3 +158,4 @@ test_that("print.LDABatch", {
   expect_output(print(resbatchbatch2), "LDABatch Object")
   expect_output(print(resbatchcomplete), "LDABatch Object")
 })
+

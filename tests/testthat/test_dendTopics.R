@@ -29,7 +29,7 @@ test_that("dendTopics_pruneSCLOP", {
   expect_equal(length(unlist(lapply(pruned3, labels))), length(labels(dend3)))
 })
 
-test_that("SCLOP_disparitSum", {
+test_that("SCLOP_disparitySum", {
   expect_equal(SCLOP(dend), SCLOP(dend2))
   sclop = SCLOP(dend)
   expect_true(is.numeric(sclop))
@@ -53,7 +53,7 @@ test_that("SCLOP.pairwise", {
 })
 
 test_that("dend_sclop_errors", {
-  expect_error(dendTopics(res))
+  expect_error(suppressWarnings(dendTopics(res)))
   expect_error(pruneSCLOP(res))
   expect_error(SCLOP(res))
   expect_error(SCLOP.pairwise(res))
