@@ -12,8 +12,8 @@ similarity, which is measured by S-CLOP, to all other runs. LDA runs are
 specified by its assignments leading to estimators for distribution parameters.
 Repeated runs lead to different results, which we encounter by choosing the
 most representative LDA run as prototype.\cr
-For bug reports and feature requests please use the tracker:
-\url{https://github.com/JonasRieger/ldaPrototype}.
+For bug reports and feature requests please use the issue tracker:
+\url{https://github.com/JonasRieger/ldaPrototype/issues}.
 }
 \section{Data}{
 
@@ -61,7 +61,9 @@ determines their Prototype.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/JonasRieger/ldaPrototype https://doi.org/10.5281/zenodo.3597978}
+  \item \url{https://github.com/JonasRieger/ldaPrototype}
+  \item \url{https://doi.org/10.5281/zenodo.3597978}
+  \item Report bugs at \url{https://github.com/JonasRieger/ldaPrototype/issues}
 }
 
 }

@@ -6,8 +6,8 @@
 #' specified by its assignments leading to estimators for distribution parameters.
 #' Repeated runs lead to different results, which we encounter by choosing the
 #' most representative LDA run as prototype.\cr
-#' For bug reports and feature requests please use the tracker:
-#' \url{https://github.com/JonasRieger/ldaPrototype}.
+#' For bug reports and feature requests please use the issue tracker:
+#' \url{https://github.com/JonasRieger/ldaPrototype/issues}.
 #'
 #' @section Data:
 #' \code{\link{reuters}} Example Dataset (91 articles from Reuters) for testing.
