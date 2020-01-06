@@ -61,7 +61,7 @@ determines their Prototype.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/JonasRieger/ldaPrototype}
+  \item \url{https://github.com/JonasRieger/ldaPrototype https://doi.org/10.5281/zenodo.3597978}
 }
 
 }
