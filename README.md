@@ -5,11 +5,13 @@
 [![Coverage Status](https://coveralls.io/repos/github/JonasRieger/ldaPrototype/badge.svg?branch=master)](https://coveralls.io/github/JonasRieger/ldaPrototype?branch=master)
 [![DOI](https://zenodo.org/badge/187803702.svg)](https://zenodo.org/badge/latestdoi/187803702)
 
-## Determine a Prototype from a Number of Runs of Latent Dirichlet Allocation Measuring Its Similarities with S-CLOP
-A procedure to select the LDA run with highest mean pairwise similarity, which is measured by S-CLOP, to all other runs. LDA runs are specified by its assignments leading to estimators for distribution parameters. Repeated runs lead to different results, which we encounter by choosing the most representative LDA run as prototype.
+## Prototype of multiple Latent Dirichlet Allocation Runs
+Determine a Prototype from a number of runs of Latent Dirichlet Allocation (LDA) measuring its similarities with S-CLOP: A procedure to select the LDA run with highest mean pairwise similarity, which is measured by S-CLOP (Similarity of multiple sets by Clustering with Local Pruning), to all other runs. LDA runs are specified by its assignments leading to estimators for distribution parameters. Repeated runs lead to different results, which we encounter by choosing the most representative LDA run as prototype.
 
 ## Installation
-A realease on CRAN is intended.
+```{R}
+install.packages("ldaPrototype")
+```
 For the development version use [devtools](https://cran.r-project.org/package=devtools):
 ```{R}
 devtools::install_github("JonasRieger/ldaPrototype")
