@@ -4,14 +4,15 @@
 \name{ldaPrototype-package}
 \alias{ldaPrototype}
 \alias{ldaPrototype-package}
-\title{ldaPrototype: Determine a Prototype from a number of Runs of Latent
-Dirichlet Allocation measuring its similarities with S-CLOP}
+\title{ldaPrototype: Prototype of multiple Latent Dirichlet Allocation Runs}
 \description{
-A procedure to select the LDA run with highest mean pairwise
-similarity, which is measured by S-CLOP, to all other runs. LDA runs are
-specified by its assignments leading to estimators for distribution parameters.
-Repeated runs lead to different results, which we encounter by choosing the
-most representative LDA run as prototype.\cr
+Determine a Prototype from a number of runs of Latent Dirichlet
+Allocation (LDA) measuring its similarities with S-CLOP: A procedure to select
+the LDA run with highest mean pairwise similarity, which is measured by S-CLOP
+(Similarity of multiple sets by Clustering with Local Pruning), to all other
+runs. LDA runs are specified by its assignments leading to estimators for
+distribution parameters. Repeated runs lead to different results, which we
+encounter by choosing the most representative LDA run as prototype.\cr
 For bug reports and feature requests please use the issue tracker:
 \url{https://github.com/JonasRieger/ldaPrototype/issues}.
 }
