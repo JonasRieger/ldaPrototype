@@ -4,7 +4,7 @@
 \name{ldaPrototype-package}
 \alias{ldaPrototype}
 \alias{ldaPrototype-package}
-\title{ldaPrototype: Prototype of multiple Latent Dirichlet Allocation Runs}
+\title{ldaPrototype: Prototype of Multiple Latent Dirichlet Allocation Runs}
 \description{
 Determine a Prototype from a number of runs of Latent Dirichlet
 Allocation (LDA) measuring its similarities with S-CLOP: A procedure to select

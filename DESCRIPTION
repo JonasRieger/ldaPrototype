@@ -1,6 +1,6 @@
 Package: ldaPrototype
 Type: Package
-Title: Prototype of multiple Latent Dirichlet Allocation Runs
+Title: Prototype of Multiple Latent Dirichlet Allocation Runs
 Version: 0.1.1
 Date: 2020-01-08
 Authors@R: person("Jonas", "Rieger", email="jonas.rieger@tu-dortmund.de", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0007-4478"))
