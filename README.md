@@ -83,8 +83,8 @@ reps = LDARep(docs = reuters_docs, vocab = reuters_vocab,
   n = 5, K = 12, alpha = 0.1, eta = 0.1, compute.log.likelihood = TRUE,
   burnin = 5, num.iterations = 20, seeds = 1:5)
 ```
-#### Step 2: Merging the Topic Matrices of the Replications
-The topic matrices of all replications are merged and reduced to the vocabulary given in vocab. By default the vocabulary of the first topic matrix is used as a simplification of the case that all LDAs contain the same vocabulary set.
+#### Step 2: Merging Topic Matrices of Replications
+The topic matrices of all replications are merged and reduced to the vocabulary given in ``vocab``. By default the vocabulary of the first topic matrix is used as a simplification of the case that all LDAs contain the same vocabulary set.
 ```{R}
 topics = mergeTopics(reps, vocab = reuters_vocab)
 ```
@@ -117,7 +117,7 @@ For determination of the LDAPrototype the pairwise S-CLOP similarities of the 5 
 ```{R}
 sclop = SCLOP.pairwise(jacc)
 ```
-#### Step 5: Determine the LDAPrototype
+#### Step 5: Determine LDAPrototype
 In the last step the LDAPrototype itself is determined by maximizing the mean pairwise S-CLOP per LDA.
 ```{R}
 res2 = getPrototype(reps, sclop = sclop)
