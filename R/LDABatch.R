@@ -40,14 +40,14 @@
 #' \code{reg} for the registry itself.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 15)
 #' batch
 #' getRegistry(batch)
 #' getJob(batch)
 #' getLDA(batch, 2)
 #'
-#' batch2 = LDABatch(id = "Ex2", docs = reuters_docs, vocab = reuters_vocab, K = 15, chunk.size = 20)
+#' batch2 = LDABatch(docs = reuters_docs, vocab = reuters_vocab, K = 15, chunk.size = 20)
 #' batch2
 #' head(getJob(batch2))
 #' }

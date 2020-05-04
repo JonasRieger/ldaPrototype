@@ -36,7 +36,7 @@ topics = mergeTopics(res, vocab = reuters_vocab)
 dim(topics)
 length(reuters_vocab)
 
-\donttest{
+\dontrun{
 res = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
 topics = mergeTopics(res, vocab = reuters_vocab)
 dim(topics)

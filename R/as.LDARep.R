@@ -42,7 +42,7 @@
 #' getJob(res2)
 #' getJob(res)
 #'
-#' \donttest{
+#' \dontrun{
 #' batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, n = 4, id = "TEMP", K = 30)
 #' res3 = as.LDARep(batch)
 #' res3

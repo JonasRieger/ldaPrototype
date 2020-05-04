@@ -29,7 +29,7 @@
 #' \code{reg} for the registry itself.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' batch = LDABatch(docs = reuters_docs, vocab = reuters_vocab, K = 15, chunk.size = 20)
 #' batch
 #'
