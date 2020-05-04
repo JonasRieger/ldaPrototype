@@ -27,4 +27,5 @@ devtools::install_github("JonasRieger/ldaPrototype")
 
 ## Contribution
 This R package is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
-For bug reports and feature requests please use the [issue tracker](https://github.com/JonasRieger/ldaPrototype/issues).
+For bug reports (lack of documentation, misleading or wrong documentation, unexpected behaviour, ...) and feature requests please use the [issue tracker](https://github.com/JonasRieger/ldaPrototype/issues).
+Pull requests are welcome and will be included at the discretion of the author.
