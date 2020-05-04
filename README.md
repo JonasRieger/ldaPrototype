@@ -18,20 +18,20 @@ devtools::install_github("JonasRieger/ldaPrototype")
 ```
 
 ## (Quick Start) Example
-Load the package and the example dataset from Reuters consisting of 91 articles (you can use [tosca::LDAprep](https://github.com/Docma-TU/tosca/blob/master/R/LDAprep.R) to manipulate your text data to the format requested by ``ldaPrototype``):
+Load the package and the example dataset from Reuters consisting of 91 articles - [tosca::LDAprep](https://github.com/Docma-TU/tosca/blob/master/R/LDAprep.R) can be used to manipulate text data to the format requested by ``ldaPrototype``.
 ```{R}
 library("ldaPrototype")
 data(reuters_docs)
 data(reuters_vocab)
 ```
-Run the shortcut function to create a LDAPrototype object. It consists of the LDAPrototype of 4 LDA runs (with specified seeds) with 10 topics each. The LDA selected by the algorithm can be retrieved using ``getPrototype`` or ``getLDA``:
+Run the shortcut function to create a LDAPrototype object. It consists of the LDAPrototype of 4 LDA runs (with specified seeds) with 10 topics each. The LDA selected by the algorithm can be retrieved using ``getPrototype`` or ``getLDA``.
 ```{R}
 res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 4, K = 10, seeds = 1:4)
 res
 
 proto = getPrototype(res) #= getLDA(res)
 ```
-The same result can also be achieved by executing the following lines of code in several steps, which can be useful for interim evaluations:
+The same result can also be achieved by executing the following lines of code in several steps, which can be useful for interim evaluations.
 ```{R}
 reps = LDARep(docs = reuters_docs, vocab = reuters_vocab,
   n = 4, K = 10, seeds = 1:4)
