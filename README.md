@@ -51,7 +51,7 @@ To get an overview of the workflow, the associated functions and getters for eac
 
 ## (Slightly more detailed) Example
 Similar to the quick start example, the shortcut of one single call is again compared with the step-by-step procedure. 
-We model 5 LDAs with ``K = 12`` topics, hyperparameters ``alpha = eta = 0.1`` and seeds ``1:5``. We want to calculate the log likelihoods for the 20 iterations after 5 burn-in iterations and topic similarities should be based on ``atLeast = 3`` words (see below). In addition, we want to keep all interim calculations, which would be discarded by default to save memory space.
+We model 5 LDAs with ``K = 12`` topics, hyperparameters ``alpha = eta = 0.1`` and seeds ``1:5``. We want to calculate the log likelihoods for the 20 iterations after 5 burn-in iterations and topic similarities should be based on ``atLeast = 3`` words (see Step 3 below). In addition, we want to keep all interim calculations, which would be discarded by default to save memory space.
 ```{R}
 res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab,
   n = 5, K = 12, alpha = 0.1, eta = 0.1, compute.log.likelihood = TRUE,
@@ -83,24 +83,32 @@ n2 = getConsideredWords(jacc)
 (n2-n1)[n2-n1 != 0]
 ```
 #### Step 3.1: Representation of Topic Similarities as Dendrogram
+It is possible to represent the calulcated pairwise topic similarities as dendrogram using ``dendTopics`` and related ``plot`` options.
 ```{R}
 dend = dendTopics(sims)
 dend
 plot(dend)
 ```
+The S-CLOP algorithm results in a pruning state of the dendrogram, which can be retrieved calling ``pruneSCLOP``. By default each of the topics is colorized by its LDA run belonging; but the cluster belongings can also be visualized by the colors or by vertical lines with freely chosen parameters.
 ```{R}
 pruned = pruneSCLOP(dend)
 pruned
-plot(dend, pruneSCLOP(dend))
+plot(dend, pruned)
 plot(dend, pruning = pruned, pruning.par = list(type = "both", lty = 1, lwd = 2, col = "red"))
 ```
-#### Step 4: Pairwise LDA Model Similarities (SCLOP)
+#### Step 4: Pairwise LDA Model Similarities (S-CLOP)
+For determination of the LDAPrototype the pairwise S-CLOP similarities of the 5 LDA runs are needed.
 ```{R}
 sclop = SCLOP.pairwise(jacc)
 ```
 #### Step 5: Determine the LDAPrototype
+In the last step the LDAPrototype itself is determined by maximizing the mean pairwise S-CLOP per LDA.
 ```{R}
 res2 = getPrototype(reps, sclop = sclop)
+```
+There are several possabilites for using shortcut functions to summarize steps of the procedure. For example, we can determine the LDAPrototype after Step 1:
+```{R}
+res3 = getPrototype(reps, atLeast = 3)
 ```
 
 ## Related Software
