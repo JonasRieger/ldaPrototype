@@ -106,7 +106,7 @@ In the last step the LDAPrototype itself is determined by maximizing the mean pa
 ```{R}
 res2 = getPrototype(reps, sclop = sclop)
 ```
-There are several possabilites for using shortcut functions to summarize steps of the procedure. For example, we can determine the LDAPrototype after Step 1:
+There are several possibilites for using shortcut functions to summarize steps of the procedure. For example, we can determine the LDAPrototype after Step 1:
 ```{R}
 res3 = getPrototype(reps, atLeast = 3)
 ```
