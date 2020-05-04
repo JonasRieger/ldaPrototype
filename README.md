@@ -27,8 +27,6 @@ data(reuters_vocab)
 Run the shortcut function to create a LDAPrototype object. It consists of the LDAPrototype of 4 LDA runs (with specified seeds) with 10 topics each. The LDA selected by the algorithm can be retrieved using ``getPrototype`` or ``getLDA``.
 ```{R}
 res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 4, K = 10, seeds = 1:4)
-res
-
 proto = getPrototype(res) #= getLDA(res)
 ```
 The same result can also be achieved by executing the following lines of code in several steps, which can be useful for interim evaluations.
@@ -58,6 +56,26 @@ res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab,
   burnin = 5, num.iterations = 20, atLeast = 3, seeds = 1:5,
   keepLDAs = TRUE, keepSims = TRUE, keepTopics = TRUE)
 ```
+Based on ``res`` we can have a look at several getter functions:
+```{R}
+getID(res)
+getPrototypeID(res)
+
+getParam(res)
+getParam(getLDA(res))
+
+getLDA(res, all = TRUE)
+getLDA(res)
+
+est = getEstimators(getLDA(res))
+est$phi[,1:3]
+est$theta[,1:3]
+getLog.likelihoods(getLDA(res))
+
+getSCLOP(res)
+getSimilarity(res)[1:5, 1:5]
+tosca::topWords(getTopics(getLDA(res)), 5)
+```
 #### Step 1: LDA Replications
 In the first step we simply run the LDA procedure five times with the given parameters. This can also be done with support of [batchtools](https://github.com/mllg/batchtools) using ``LDABatch`` instead of ``LDARep`` or [parallelMap](https://github.com/mlr-org/parallelMap) setting the ``pm.backend`` and (optionally) ``ncpus`` argument(s).
 ```{R}
@@ -86,13 +104,11 @@ n2 = getConsideredWords(jacc)
 It is possible to represent the calulcated pairwise topic similarities as dendrogram using ``dendTopics`` and related ``plot`` options.
 ```{R}
 dend = dendTopics(sims)
-dend
 plot(dend)
 ```
 The S-CLOP algorithm results in a pruning state of the dendrogram, which can be retrieved calling ``pruneSCLOP``. By default each of the topics is colorized by its LDA run belonging; but the cluster belongings can also be visualized by the colors or by vertical lines with freely chosen parameters.
 ```{R}
 pruned = pruneSCLOP(dend)
-pruned
 plot(dend, pruned)
 plot(dend, pruning = pruned, pruning.par = list(type = "both", lty = 1, lwd = 2, col = "red"))
 ```
