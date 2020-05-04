@@ -17,6 +17,92 @@ For the development version use [devtools](https://cran.r-project.org/package=de
 devtools::install_github("JonasRieger/ldaPrototype")
 ```
 
+## (Quick Start) Example
+Load the package and the example dataset from Reuters consisting of 91 articles (you can use [tosca::LDAprep](https://github.com/Docma-TU/tosca/blob/master/R/LDAprep.R) to manipulate your text data to the format requested by ``ldaPrototype``):
+```{R}
+library("ldaPrototype")
+data(reuters_docs)
+data(reuters_vocab)
+```
+Run the shortcut function to create a LDAPrototype object. It consists of the LDAPrototype of 4 LDA runs (with specified seeds) with 10 topics each. The LDA selected by the algorithm can be retrieved using ``getPrototype`` or ``getLDA``:
+```{R}
+res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 4, K = 10, seeds = 1:4)
+res
+
+proto = getPrototype(res) #= getLDA(res)
+```
+The same result can also be achieved by executing the following lines of code in several steps, which can be useful for interim evaluations:
+```{R}
+reps = LDARep(docs = reuters_docs, vocab = reuters_vocab,
+  n = 4, K = 10, seeds = 1:4)
+topics = mergeTopics(reps, vocab = reuters_vocab)
+jacc = jaccardTopics(topics)
+sclop = SCLOP.pairwise(jacc)
+res2 = getPrototype(reps, sclop = sclop)
+
+proto2 = getPrototype(res2) #= getLDA(res2)
+
+identical(res, res2)
+```
+To get an overview of the workflow, the associated functions and getters for each type of object, the following call is helpful:
+```{R}
+?`ldaPrototype-package`
+```
+
+## (Slightly more detailed) Example
+Similar to the quick start example, the shortcut of one single call is again compared with the step-by-step procedure. 
+We model 5 LDAs with ``K = 12`` topics, hyperparameters ``alpha = eta = 0.1`` and seeds ``1:5``. We want to calculate the log likelihoods for the 20 iterations after 5 burn-in iterations and topic similarities should be based on ``atLeast = 3`` words (see below). In addition, we want to keep all interim calculations, which would be discarded by default to save memory space.
+```{R}
+res = LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab,
+  n = 5, K = 12, alpha = 0.1, eta = 0.1, compute.log.likelihood = TRUE,
+  burnin = 5, num.iterations = 20, atLeast = 3, seeds = 1:5,
+  keepLDAs = TRUE, keepSims = TRUE, keepTopics = TRUE)
+```
+#### Step 1: LDA Replications
+In the first step we simply run the LDA procedure five times with the given parameters. This can also be done with support of [batchtools](https://github.com/mllg/batchtools) using ``LDABatch`` instead of ``LDARep`` or [parallelMap](https://github.com/mlr-org/parallelMap) setting the ``pm.backend`` and (optionally) ``ncpus`` argument(s).
+```{R}
+reps = LDARep(docs = reuters_docs, vocab = reuters_vocab,
+  n = 5, K = 12, alpha = 0.1, eta = 0.1, compute.log.likelihood = TRUE,
+  burnin = 5, num.iterations = 20, seeds = 1:5)
+```
+#### Step 2: Merging the Topic Matrices of the Replications
+The topic matrices of all replications are merged and reduced to the vocabulary given in vocab. By default the vocabulary of the first topic matrix is used as a simplification of the case that all LDAs contain the same vocabulary set.
+```{R}
+topics = mergeTopics(reps, vocab = reuters_vocab)
+```
+#### Step 3: Topic Similarities
+We use the merged topic matrix to calculate pairwise topic similarites using the Jaccard coefficient with parameters adjusting the consideration of words. A word is taken as relevant for a topic if its count passes thresholds given by ``limit.rel`` and ``limit.abs``. A word is considered for calculation of similarities if it's relevant for the topic or if it belongs to the (``atLeast =``) 3 most common words in the corresponding topic.
+```{R}
+jacc = jaccardTopics(topics, limit.rel = 1/500, limit.abs = 10, atLeast = 3)
+getSimilarity(jacc)[1:3, 1:3]
+```
+We can check the number of relevant and considered words using the ad-hoc getter. The difference between ``n1`` and ``n2`` can become larger than (``atLeast =``) 3 if there are ties in the count of words, which is negligible for large sample sizes.
+```{R}
+n1 = getRelevantWords(jacc)
+n2 = getConsideredWords(jacc)
+(n2-n1)[n2-n1 != 0]
+```
+#### Step 3.1: Representation of Topic Similarities as Dendrogram
+```{R}
+dend = dendTopics(sims)
+dend
+plot(dend)
+```
+```{R}
+pruned = pruneSCLOP(dend)
+pruned
+plot(dend, pruneSCLOP(dend))
+plot(dend, pruning = pruned, pruning.par = list(type = "both", lty = 1, lwd = 2, col = "red"))
+```
+#### Step 4: Pairwise LDA Model Similarities (SCLOP)
+```{R}
+sclop = SCLOP.pairwise(jacc)
+```
+#### Step 5: Determine the LDAPrototype
+```{R}
+res2 = getPrototype(reps, sclop = sclop)
+```
+
 ## Related Software
 * [tm](https://CRAN.R-project.org/package=tm) is useful for preprocessing text data.
 * [lda](https://CRAN.R-project.org/package=lda) offers a fast implementation of the Latent Dirichlet Allocation and is used by ``ldaPrototype``.
