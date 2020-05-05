@@ -12,19 +12,19 @@ Encoding: UTF-8
 Depends:
 	R (>= 3.5.0)
 Imports:
+	batchtools (>= 0.9.11),
 	checkmate (>= 1.8.5),
 	colorspace (>= 1.4-1),
 	data.table (>= 1.11.2),
 	dendextend,
 	fs (>= 1.2.0),
+	future,
 	lda (>= 1.4.2),
+	parallelMap,
 	progress (>= 1.1.1),
 	stats,
 	utils
 Suggests:
-	batchtools (>= 0.9.11),
-	future,
-	parallelMap,
 	RColorBrewer (>= 1.1-2),
 	testthat,
 	tosca
