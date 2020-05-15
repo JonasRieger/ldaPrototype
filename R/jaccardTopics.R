@@ -118,7 +118,6 @@ print.TopicSimilarity = function(x, ...){
 }
 
 jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.backend, ncpus){
-
   N = ncol(topics)
 
   index = topics > limit.abs &
@@ -129,9 +128,6 @@ jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.back
     index[,ind] = apply(as.matrix(topics[,ind]), 2,
       function(x) x >= -sort.int(-x, partial = atLeast)[atLeast])
   }
-
-  sims = matrix(nrow = N, ncol = N)
-  colnames(sims) = rownames(sims) = colnames(topics)
 
   if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
   parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
@@ -166,7 +162,6 @@ jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.back
 }
 
 jaccardTopics.serial = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE){
-
   N = ncol(topics)
 
   index = topics > limit.abs &

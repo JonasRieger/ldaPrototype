@@ -4,7 +4,7 @@
 \alias{cosineTopics}
 \title{Pairwise Cosine Similarities}
 \usage{
-cosineTopics(topics, progress = TRUE)
+cosineTopics(topics, progress = TRUE, pm.backend, ncpus)
 }
 \arguments{
 \item{topics}{[\code{named matrix}]\cr

@@ -75,6 +75,46 @@ jsTopics = function(topics, epsilon = 1e-6, progress = TRUE, pm.backend, ncpus){
   }
 }
 
+jsTopics.parallel = function(topics, epsilon, pm.backend, ncpus){
+  N = ncol(topics)
+
+  rel = topics + epsilon
+  rel = t(t(rel)/colSums(rel)) #faster than apply
+  logrel = colSums(rel*log(rel))
+
+  if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
+  parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
+
+  fun = function(s){
+    lapply(s, function(i)
+      logrel[i] + logrel[(i+1):N] -
+        colSums((rel[,i] + rel[,(i+1):N]) * log(rel[,i] + rel[,(i+1):N])))
+  }
+
+  parallelMap::parallelExport("rel", "logrel", "N")
+  sequences = lapply(seq_len(max(ncpus, 2)), function(x) seq(x, N-2, max(ncpus, 2)))
+  val = parallelMap::parallelMap(fun = fun, sequences)
+  parallelMap::parallelStop()
+
+  rearrangedlist = list()
+  for (i in seq_along(sequences)){
+    rearrangedlist[sequences[[i]]] = val[[i]]
+  }
+  rm(val)
+
+  sims = matrix(nrow = N, ncol = N)
+  colnames(sims) = rownames(sims) = colnames(topics)
+  sims[lower.tri(sims)] = c(unlist(rearrangedlist),
+    logrel[N] + logrel[N-1] -
+      sum((rel[,N] + rel[,N-1]) * log(rel[,N] + rel[,N-1])))
+
+  wordsconsidered = rep(nrow(topics), N)
+  res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = wordsconsidered,
+    param = list(type = "Jensen-Shannon Divergence"))
+  class(res) = "TopicSimilarity"
+  res
+}
+
 jsTopics.serial = function(topics, epsilon, progress = TRUE){
   N = ncol(topics)
 

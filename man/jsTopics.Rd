@@ -4,7 +4,7 @@
 \alias{jsTopics}
 \title{Pairwise Jensen-Shannon Similarities (Divergences)}
 \usage{
-jsTopics(topics, epsilon = 1e-06, progress = TRUE)
+jsTopics(topics, epsilon = 1e-06, progress = TRUE, pm.backend, ncpus)
 }
 \arguments{
 \item{topics}{[\code{named matrix}]\cr

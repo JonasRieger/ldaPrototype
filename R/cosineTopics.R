@@ -58,10 +58,48 @@ cosineTopics = function(topics, progress = TRUE, pm.backend, ncpus){
   }
 }
 
+cosineTopics.parallel = function(topics, pm.backend, ncpus){
+  N = ncol(topics)
+
+  rel = t(t(topics)/colSums(topics)) #faster than apply
+  squaresums = sqrt(colSums(rel^2))
+
+  if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
+  parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
+
+  fun = function(s){
+    lapply(s, function(i)
+      colSums(rel[,i] * rel[,(i+1):N]) / squaresums[i] / squaresums[(i+1):N])
+  }
+
+  parallelMap::parallelExport("rel", "squaresums", "N")
+  sequences = lapply(seq_len(max(ncpus, 2)), function(x) seq(x, N-2, max(ncpus, 2)))
+  val = parallelMap::parallelMap(fun = fun, sequences)
+  parallelMap::parallelStop()
+
+  rearrangedlist = list()
+  for (i in seq_along(sequences)){
+    rearrangedlist[sequences[[i]]] = val[[i]]
+  }
+  rm(val)
+
+  sims = matrix(nrow = N, ncol = N)
+  colnames(sims) = rownames(sims) = colnames(topics)
+  sims[lower.tri(sims)] = c(unlist(rearrangedlist),
+    sum(rel[,N] * rel[,N-1]) / squaresums[N] / squaresums[N-1])
+
+  wordsconsidered = rep(nrow(topics), N)
+  res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = wordsconsidered,
+    param = list(type = "Cosine Similarity"))
+  class(res) = "TopicSimilarity"
+  res
+}
+
 cosineTopics.serial = function(topics, progress = TRUE){
   N = ncol(topics)
 
   rel = t(t(topics)/colSums(topics)) #faster than apply
+  squaresums = sqrt(colSums(rel^2))
 
   sims = matrix(nrow = N, ncol = N)
   colnames(sims) = rownames(sims) = colnames(topics)
@@ -69,10 +107,10 @@ cosineTopics.serial = function(topics, progress = TRUE){
   pb = .makeProgressBar(progress = progress,
     total = N-1, format = "Calculate Similarities [:bar] :percent eta: :eta")
   for(i in seq_len(N - 2)){
-    sims[(i+1):N,i] = colSums(rel[,i] * rel[,(i+1):N]) / (sqrt(sum(rel[,i]^2))*sqrt(colSums(rel[,(i+1):N]^2)))
+    sims[(i+1):N,i] = colSums(rel[,i] * rel[,(i+1):N]) / squaresums[i] / squaresums[(i+1):N]
     pb$tick()
   }
-  sims[N, N-1] = sum(rel[,N] * rel[,N-1]) / (sqrt(sum(rel[,N]^2))*sqrt(sum(rel[,N-1]^2)))
+  sims[N, N-1] = sum(rel[,N] * rel[,N-1]) / squaresums[N] / squaresums[N-1]
   pb$tick()
 
   wordsconsidered = rep(nrow(topics), N)
