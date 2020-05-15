@@ -50,10 +50,13 @@ Jensen-Shannon Divergence.
 \details{
 The Jensen-Shannon Similarity for two topics \eqn{\bm z_{i}} and
 \eqn{\bm z_{j}} is calculated by
-\deqn{\text{JS}(\bm z_{i}, \bm z_{j}) = 1 - \left( \text{KLD}(p_i, (p_i+p_j)/2) + \text{KLD}((p_j, (p_i+p_j)/2)) \right)/2 }
-
-with \eqn{V} is the vocabulary size and \eqn{n_k^{(v)}} is the count of
-assignments of the \eqn{v}-th word to the \eqn{k}-th topic.
+\deqn{JS(\bm z_{i}, \bm z_{j}) = 1 - \left( KLD(p_i, (p_i+p_j)/2) + KLD((p_j, (p_i+p_j)/2)) \right)/2}
+\deqn{= 1 - \left( KLD(p_i, p_i+p_j) + KLD((p_j, p_i+p_j)) \right)/2 - \log(2)}
+with \eqn{V} is the vocabulary size, \eqn{p_k = (p_k^{(1)}, ..., p_k^{(V)})},
+and \eqn{p_k^{(v)}} is the proportion of assignments of the
+\eqn{v}-th word to the \eqn{k}-th topic. KLD defines the Kullback-Leibler
+Divergence calculated by
+\deqn{KLD(\bm p_{k}, \bm p_{\Sigma}) = \sum_{v=1}^{V} p_k^{(v)} \log{\frac{p_k^{(v)}}{p_{\Sigma}^{(v)}}}.}
 }
 \examples{
 res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
