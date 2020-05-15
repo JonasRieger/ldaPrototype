@@ -39,7 +39,7 @@ default is determined by \code{\link[future]{availableCores}}.}
   \item{\code{wordsconsidered}}{[\code{integer}] = vocabulary size. See
   \code{\link{jaccardTopics}} for original purpose.}
   \item{\code{param}}{[\code{named list}] with parameter specifications for
-  \code{type} [\code{character(1)}] = "Cosine Similarity" and
+  \code{type} [\code{character(1)}] \code{= "Cosine Similarity"} and
   \code{epsilon} [\code{numeric(1)}]. See above for explanation.}
 }
 }

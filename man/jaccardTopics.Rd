@@ -58,7 +58,7 @@ default is determined by \code{\link[future]{availableCores}}.}
   words for similarity calculation. Could differ from \code{wordslimit}, if
   \code{atLeast} is greater than zero.}
   \item{\code{param}}{[\code{named list}] with parameter specifications for
-  \code{type} [\code{character(1)}] = "Jaccard Coefficient",
+  \code{type} [\code{character(1)}] \code{= "Jaccard Coefficient"},
   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
   \code{atLeast} [\code{integer(1)}]. See above for explanation.}
 }

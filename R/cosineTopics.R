@@ -43,7 +43,7 @@
 #'   \item{\code{wordsconsidered}}{[\code{integer}] = vocabulary size. See
 #'   \code{\link{jaccardTopics}} for original purpose.}
 #'   \item{\code{param}}{[\code{named list}] with parameter
-#'   \code{type} [\code{character(1)}] = "Cosine Similarity".}
+#'   \code{type} [\code{character(1)}] \code{= "Cosine Similarity"}.}
 #' }
 #'
 #' @examples
