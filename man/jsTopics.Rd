@@ -48,7 +48,7 @@ Calculates the similarity of all pairwise topic combinations using the
 Jensen-Shannon Divergence.
 }
 \details{
-The Jensen-Shannon Similarity for two topics \bm z_{i} and \bm z_{j} ...
+The Jensen-Shannon Similarity for two topics \eqn{\bm z_{i}} and \eqn{\bm z_{j}} ...
 
 \eqn{J_m} is calculated by
 \deqn{J_m(\bm z_{i}, \bm z_{j} \mid \bm c) = \frac{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\wedge~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\vee~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}}

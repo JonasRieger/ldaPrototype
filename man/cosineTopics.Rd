@@ -43,8 +43,8 @@ Calculates the similarity of all pairwise topic combinations using the
 Cosine Similarity.
 }
 \details{
-The Cosine Similarity for two topics \bm z_{i} and \bm z_{j} is calculated by
-\deqn{ \cos(\bm z_{i}, \bm z_{j}) = \frac{ \sum_{v=1}^{V}{n_{i}^{(v)} \cdot n_{j}^{(v)}} }{ \sqrt{\sum_{v=1}^{V}{\left(n_{i}^{(v)}\right)^2}} \cdot \sqrt{\sum_{v=1}^{V}{\left(n_{j}^{(v)}\right)^2}} }}
+The Cosine Similarity for two topics \eqn{\bm z_{i}} and \eqn{\bm z_{j}} is calculated by
+\deqn{ \cos(\theta,\bm z_{i}, \bm z_{j}) = \frac{ \sum_{v=1}^{V}{n_{i}^{(v)} \cdot n_{j}^{(v)}} }{ \sqrt{\sum_{v=1}^{V}{\left(n_{i}^{(v)}\right)^2}} \cdot \sqrt{\sum_{v=1}^{V}{\left(n_{j}^{(v)}\right)^2}} }}
 with \eqn{V} is the vocabulary size, and \eqn{n_k^{(v)}} is the count of
 assignments of the \eqn{v}-th word to the \eqn{k}-th topic.
 }
