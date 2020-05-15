@@ -7,21 +7,24 @@
 #' @details
 #' The Jensen-Shannon Similarity for two topics \eqn{\bm z_{i}} and
 #' \eqn{\bm z_{j}} is calculated by
-#' \deqn{JS(\bm z_{i}, \bm z_{j}) = 1 - \left( KLD(p_i, (p_i+p_j)/2) + KLD((p_j, (p_i+p_j)/2)) \right)/2}
-#' \deqn{= 1 - \left( KLD(p_i, p_i+p_j) + KLD((p_j, p_i+p_j)) \right)/2 - \log(2)}
-#' with \eqn{V} is the vocabulary size, \eqn{p_k = (p_k^{(1)}, ..., p_k^{(V)})},
+#' \deqn{JS(\bm z_{i}, \bm z_{j}) = 1 - \left( KLD\left(\bm p_i, \frac{\bm p_i + \bm p_j}{2}\right) + KLD\left(\bm p_j, \frac{\bm p_i + \bm p_j}{2}\right) \right)/2}
+#' \deqn{= 1 - KLD(\bm p_i, \bm p_i + \bm p_j)/2 - KLD(\bm p_j, \bm p_i + \bm p_j)/2 - \log(2)}
+#' with \eqn{V} is the vocabulary size, \eqn{\bm p_k = \left(p_k^{(1)}, ..., p_k^{(V)}\right)},
 #' and \eqn{p_k^{(v)}} is the proportion of assignments of the
 #' \eqn{v}-th word to the \eqn{k}-th topic. KLD defines the Kullback-Leibler
 #' Divergence calculated by
 #' \deqn{KLD(\bm p_{k}, \bm p_{\Sigma}) = \sum_{v=1}^{V} p_k^{(v)} \log{\frac{p_k^{(v)}}{p_{\Sigma}^{(v)}}}.}
+#'
+#' There is an \code{epsilon} added to every \eqn{n_k^{(v)}}, the count
+#' (not proportion) of assignments to ensure computability with respect to zeros.
 #'
 #' @family TopicSimilarity functions
 #'
 #' @param topics [\code{named matrix}]\cr
 #' The counts of vocabularies/words (row wise) in topics (column wise).
 #' @param epsilon [\code{numeric(1)}]\cr
-#' TODO!
-#' Default is \code{1e-6}.
+#' Numerical value added to \code{topics} to ensure computability. See details.
+#' Default is \code{1e-06}.
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default is \code{TRUE}.

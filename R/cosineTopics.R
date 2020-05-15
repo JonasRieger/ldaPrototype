@@ -7,7 +7,7 @@
 #' @details
 #' The Cosine Similarity for two topics \eqn{\bm z_{i}} and \eqn{\bm z_{j}}
 #' is calculated by
-#' \deqn{ \cos(\theta | \bm z_{i}, \bm z_{j}) = \frac{ \sum_{v=1}^{V}{n_{i}^{(v)} \cdot n_{j}^{(v)}} }{ \sqrt{\sum_{v=1}^{V}{\left(n_{i}^{(v)}\right)^2}} \cdot \sqrt{\sum_{v=1}^{V}{\left(n_{j}^{(v)}\right)^2}} }}
+#' \deqn{ \cos(\theta | \bm z_{i}, \bm z_{j}) = \frac{ \sum_{v=1}^{V}{n_{i}^{(v)} n_{j}^{(v)}} }{ \sqrt{\sum_{v=1}^{V}{\left(n_{i}^{(v)}\right)^2}} \sqrt{\sum_{v=1}^{V}{\left(n_{j}^{(v)}\right)^2}} }}
 #' with \eqn{\theta} determining the angle between the corresponding
 #' count vectors \eqn{\bm z_{i}} and \eqn{\bm z_{j}},
 #' \eqn{V} is the vocabulary size and \eqn{n_k^{(v)}} is the count of
