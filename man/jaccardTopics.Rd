@@ -44,7 +44,7 @@ called before computation is started and \code{\link[parallelMap]{parallelStop}}
 is called after.}
 
 \item{ncpus}{[\code{integer(1)}]\cr
-Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+Number of (physical) CPUs to use. If \code{pm.backend} is passed,
 default is determined by \code{\link[future]{availableCores}}.}
 }
 \value{
@@ -58,8 +58,9 @@ default is determined by \code{\link[future]{availableCores}}.}
   words for similarity calculation. Could differ from \code{wordslimit}, if
   \code{atLeast} is greater than zero.}
   \item{\code{param}}{[\code{named list}] with parameter specifications for
+  \code{type} [\code{character(1)}] = "Jaccard Coefficient",
   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
-  \code{atLeast} [\code{integer(1)}] See above for explanation.}
+  \code{atLeast} [\code{integer(1)}]. See above for explanation.}
 }
 }
 \description{
@@ -95,11 +96,20 @@ n2 = getRelevantWords(jacc)
 sim = getSimilarity(jacc)
 dim(sim)
 
+# Comparison to Cosine and Jensen-Shannon (more interesting on large datasets)
+cosine = cosineTopics(topics)
+js = jsTopics(topics)
+
+sims = list(jaccard = sim, cosine = getSimilarity(cosine), js = getSimilarity(js))
+pairs(do.call(cbind, lapply(sims, as.vector)))
+
 }
 \seealso{
 Other TopicSimilarity functions: 
+\code{\link{cosineTopics}()},
 \code{\link{dendTopics}()},
-\code{\link{getSimilarity}()}
+\code{\link{getSimilarity}()},
+\code{\link{jsTopics}()}
 
 Other workflow functions: 
 \code{\link{LDARep}()},

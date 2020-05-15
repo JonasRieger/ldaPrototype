@@ -91,8 +91,10 @@ Other plot functions:
 \code{\link{pruneSCLOP}()}
 
 Other TopicSimilarity functions: 
+\code{\link{cosineTopics}()},
 \code{\link{getSimilarity}()},
-\code{\link{jaccardTopics}()}
+\code{\link{jaccardTopics}()},
+\code{\link{jsTopics}()}
 
 Other workflow functions: 
 \code{\link{LDARep}()},

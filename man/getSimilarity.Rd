@@ -29,8 +29,10 @@ Other getter functions:
 \code{\link{getTopics}()}
 
 Other TopicSimilarity functions: 
+\code{\link{cosineTopics}()},
 \code{\link{dendTopics}()},
-\code{\link{jaccardTopics}()}
+\code{\link{jaccardTopics}()},
+\code{\link{jsTopics}()}
 }
 \concept{TopicSimilarity functions}
 \concept{getter functions}
