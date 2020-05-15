@@ -86,7 +86,6 @@ Arguments will be coerced to a vector of length \code{n}.}
   \item{\code{protoid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
   \item{\code{id}}{[\code{character(1)}] See above.}
   \item{\code{param}}{[\code{named list}] with parameter specifications for
-  \code{type} [\code{character(1)}] \code{= "Jaccard Coefficient"},
   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
   \code{atLeast} [\code{integer(1)}]. See above for explanation.}
   \item{\code{topics}}{[\code{named matrix}] with the count of vocabularies

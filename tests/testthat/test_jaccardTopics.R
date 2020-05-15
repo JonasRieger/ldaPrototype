@@ -54,9 +54,9 @@ if(FALSE){ # noch inaktiv (aktivieren, wenn checkmate eingebunden)
 
 test_that("print.TopicSimilarity", {
   expect_output(print(jacc), "TopicSimilarity Object")
-  expect_output(print(jacc), "type: Jaccard coefficient")
+  expect_output(print(jacc), "type: Jaccard Coefficient")
   expect_output(print(jacc2), "TopicSimilarity Object")
-  expect_output(print(jacc2), "type: Jaccard coefficient")
+  expect_output(print(jacc2), "type: Jaccard Coefficient")
   expect_output(print(jacc3), "TopicSimilarity Object")
-  expect_output(print(jacc3), "type: Jaccard coefficient")
+  expect_output(print(jacc3), "type: Jaccard Coefficient")
 })
