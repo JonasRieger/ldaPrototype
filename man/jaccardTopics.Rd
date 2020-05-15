@@ -68,7 +68,7 @@ Calculates the similarity of all pairwise topic combinations using a modified
 Jaccard Coefficient.
 }
 \details{
-The modified Jaccard Coefficient \eqn{J_m} is calculated by
+The modified Jaccard Coefficient for two topics \bm z_{i} and \bm z_{j} is calculated by
 \deqn{J_m(\bm z_{i}, \bm z_{j} \mid \bm c) = \frac{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\wedge~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\vee~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}}
 with \eqn{V} is the vocabulary size, and \eqn{n_k^{(v)}} is the count of
 assignments of the \eqn{v}-th word to the \eqn{k}-th topic. The threshold vector \eqn{\bm c}

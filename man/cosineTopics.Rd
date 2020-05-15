@@ -43,18 +43,10 @@ Calculates the similarity of all pairwise topic combinations using the
 Cosine Similarity.
 }
 \details{
-The Cosine Similarity ...
-
-\eqn{J_m} is calculated by
-\deqn{J_m(\bm z_{i}, \bm z_{j} \mid \bm c) = \frac{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\wedge~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\vee~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}}
+The Cosine Similarity for two topics \bm z_{i} and \bm z_{j} is calculated by
+\deqn{ \cos(\bm z_{i}, \bm z_{j}) = \frac{ \sum_{v=1}^{V}{n_{i}^{(v)} \cdot n_{j}^{(v)}} }{ \sqrt{\sum_{v=1}^{V}{\left(n_{i}^{(v)}\right)^2}} \cdot \sqrt{\sum_{v=1}^{V}{\left(n_{j}^{(v)}\right)^2}} }}
 with \eqn{V} is the vocabulary size, and \eqn{n_k^{(v)}} is the count of
-assignments of the \eqn{v}-th word to the \eqn{k}-th topic. The threshold vector \eqn{\bm c}
-is determined by the maximum threshold of the user given lower bounds \code{limit.rel}
-and \code{limit.abs}. In addition, at least \code{atLeast} words per topic are
-considered for calculation. According to this, if there are less than
-\code{atLeast} words considered as relevant after applying \code{limit.rel}
-and \code{limit.abs} the \code{atLeast} most common words per topic are taken
-to determine topic similarities.
+assignments of the \eqn{v}-th word to the \eqn{k}-th topic.
 }
 \examples{
 res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
