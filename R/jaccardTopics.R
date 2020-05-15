@@ -46,7 +46,7 @@
 #' called before computation is started and \code{\link[parallelMap]{parallelStop}}
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
-#' Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+#' Number of (physical) CPUs to use. If \code{pm.backend} is passed,
 #' default is determined by \code{\link[future]{availableCores}}.
 #' @return [\code{named list}] with entries
 #' \describe{
@@ -169,8 +169,6 @@ jaccardTopics.serial = function(topics, limit.rel, limit.abs, atLeast, progress 
       function(x) x >= -sort.int(-x, partial = atLeast)[atLeast])
   }
 
-  #index = apply(topics, 2, function(x) x > (sum(x) * limit.rel))
-  #index = index & (topics > limit.abs)
   sims = matrix(nrow = N, ncol = N)
   colnames(sims) = rownames(sims) = colnames(topics)
 

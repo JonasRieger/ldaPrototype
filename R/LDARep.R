@@ -30,7 +30,7 @@
 #' called before computation is started and \code{\link[parallelMap]{parallelStop}}
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
-#' Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+#' Number of (physical) CPUs to use. If \code{pm.backend} is passed,
 #' default is determined by \code{\link[future]{availableCores}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 #' Arguments will be coerced to a vector of length \code{n}.

@@ -56,7 +56,7 @@
 #' is called after.
 #' Not considered, if \code{sclop} is passed.
 #' @param ncpus [\code{integer(1)}]\cr
-#' Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+#' Number of (physical) CPUs to use. If \code{pm.backend} is passed,
 #' default is determined by \code{\link[future]{availableCores}}.
 #' Not considered, if \code{sclop} is passed.
 #' @param keepTopics [\code{logical(1)}]\cr
