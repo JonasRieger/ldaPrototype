@@ -94,7 +94,7 @@ is.LDA = function(obj, verbose = FALSE){
     return(FALSE)
   }
 
-  emptyLDA = LDA(param = .getDefaultParameters())
+  emptyLDA = LDA(param = .getDefaultParameters(1))
   if (length(setdiff(names(obj), names(emptyLDA))) != 0  ||
       length(intersect(names(obj), names(emptyLDA))) != 6){
     if (verbose) message("object does not contain exactly the list elements of an \"LDA\" object")
