@@ -103,7 +103,7 @@ n2 = getConsideredWords(jacc)
 #### Step 3.1: Representation of Topic Similarities as Dendrogram
 It is possible to represent the calulcated pairwise topic similarities as dendrogram using ``dendTopics`` and related ``plot`` options.
 ```{R}
-dend = dendTopics(sims)
+dend = dendTopics(jacc)
 plot(dend)
 ```
 The S-CLOP algorithm results in a pruning state of the dendrogram, which can be retrieved calling ``pruneSCLOP``. By default each of the topics is colorized by its LDA run belonging; but the cluster belongings can also be visualized by the colors or by vertical lines with freely chosen parameters.
