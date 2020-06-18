@@ -134,6 +134,7 @@ res3 = getPrototype(reps, atLeast = 3)
 * [stm](https://www.structuraltopicmodel.com/) is a framework for Structural Topic Models.
 * [tosca](https://CRAN.R-project.org/package=tosca) is a framework for statistical methods in content analysis including visualizations and validation techniques. It is also useful for managing and manipulating text data to a structure requested by ``ldaPrototype``.
 * [topicmodels](https://CRAN.R-project.org/package=topicmodels) is another framework for various topic models based on the Latent Dirichlet Allocation and Correlated Topics Models.
+* [mallet](https://github.com/mimno/RMallet) provides an interface for the Java based machine learning tool [MALLET](http://mallet.cs.umass.edu/).
 
 ## Contribution
 This R package is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
