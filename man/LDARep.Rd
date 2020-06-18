@@ -29,11 +29,13 @@ called before computation is started and \code{\link[parallelMap]{parallelStop}}
 is called after.}
 
 \item{ncpus}{[\code{integer(1)}]\cr
-Number of (physical) CPUs to use. If \code{pm.backend} is passes,
+Number of (physical) CPUs to use. If \code{pm.backend} is passed,
 default is determined by \code{\link[future]{availableCores}}.}
 
 \item{...}{additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-Arguments will be coerced to a vector of length \code{n}.}
+Arguments will be coerced to a vector of length \code{n}.
+Default parameters are \code{alpha = eta = 1/K} and \code{num.iterations = 200}.
+There is no default for \code{K}.}
 }
 \value{
 [\code{named list}] with entries \code{id} for computation's name,

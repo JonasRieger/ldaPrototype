@@ -55,7 +55,8 @@
 
 .getDefaultParameters = function(K){
   if (missing(K)){
-    return(list(K = 100, alpha = 0.01, eta = 0.01, num.iterations = 200))
+    stop("Parameter K (number of modeled topics) must be set, no default!")
+    #return(list(K = 100, alpha = 0.01, eta = 0.01, num.iterations = 200))
   }else{
     return(list(K = K, alpha = 1/K, eta = 1/K, num.iterations = 200))
   }
