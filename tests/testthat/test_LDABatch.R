@@ -143,11 +143,13 @@ test_that("is.LDABatch", {
   expect_error(getLDA(nores))
 
   # repeated num.iterations
-  expect_warning(res0 <- LDABatch(docs = reuters_docs,
+  expect_error(LDABatch(docs = reuters_docs,
     vocab = reuters_vocab, n = 1, num.iterations = 10, num.iterations = 5, id = "tmp"))
+  expect_warning(res0 <- LDABatch(docs = reuters_docs, K = 2,
+    vocab = reuters_vocab, n = 1, num.iterations = 10, num.iterations = 5, id = "tmp2"))
   expect_true(is.LDABatch(res0))
   expect_equal(getNum.iterations(getLDA(res0)), 5)
-  expect_equal(getK(getLDA(res0)), 100)
+  expect_equal(getK(getLDA(res0)), 2)
   expect_output(print(res0), "LDABatch Object")
 })
 
