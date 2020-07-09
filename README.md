@@ -8,6 +8,25 @@
 ## Prototype of Multiple Latent Dirichlet Allocation Runs
 Determine a Prototype from a number of runs of Latent Dirichlet Allocation (LDA) measuring its similarities with S-CLOP: A procedure to select the LDA run with highest mean pairwise similarity, which is measured by S-CLOP (Similarity of multiple sets by Clustering with Local Pruning), to all other runs. LDA runs are specified by its assignments leading to estimators for distribution parameters. Repeated runs lead to different results, which we encounter by choosing the most representative LDA run as prototype.
 
+## References
+* Rieger, J., Rahnenführer, J. & Jentsch, C. (2020). Improving Latent Dirichlet Allocation: On Reliability of the Novel Method LDAPrototype. [Natural Language Processing and Information Systems, NLDB 2020.](https://doi.org/10.1007/978-3-030-51310-8_11) LNCS 12089, pp. 118-125.
+* Rieger, J., Koppers, L., Jentsch, C. & Rahnenführer, J.: Improving Reliability of Latent Dirichlet Allocation by Assessing Its Stability using Clustering Techniques on Replicated Runs. [working paper](https://arxiv.org/abs/2003.04980)
+* Rieger, J.: ldaPrototype: A method in R to get a Prototype of multiple Latent Dirichlet Allocations. [JOSS review](https://github.com/openjournals/joss-reviews/issues/2181)
+
+## Related Software
+* [tm](https://CRAN.R-project.org/package=tm) is useful for preprocessing text data.
+* [lda](https://CRAN.R-project.org/package=lda) offers a fast implementation of the Latent Dirichlet Allocation and is used by ``ldaPrototype``.
+* [quanteda](https://quanteda.io/) is a framework for "Quantitative Analysis of Textual Data".
+* [stm](https://www.structuraltopicmodel.com/) is a framework for Structural Topic Models.
+* [tosca](https://CRAN.R-project.org/package=tosca) is a framework for statistical methods in content analysis including visualizations and validation techniques. It is also useful for managing and manipulating text data to a structure requested by ``ldaPrototype``.
+* [topicmodels](https://CRAN.R-project.org/package=topicmodels) is another framework for various topic models based on the Latent Dirichlet Allocation and Correlated Topics Models.
+* [mallet](https://github.com/mimno/RMallet) provides an interface for the Java based machine learning tool [MALLET](http://mallet.cs.umass.edu/).
+
+## Contribution
+This R package is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
+For bug reports (lack of documentation, misleading or wrong documentation, unexpected behaviour, ...) and feature requests please use the [issue tracker](https://github.com/JonasRieger/ldaPrototype/issues).
+Pull requests are welcome and will be included at the discretion of the author.
+
 ## Installation
 ```{R}
 install.packages("ldaPrototype")
@@ -126,17 +145,3 @@ There are several possibilites for using shortcut functions to summarize steps o
 ```{R}
 res3 = getPrototype(reps, atLeast = 3)
 ```
-
-## Related Software
-* [tm](https://CRAN.R-project.org/package=tm) is useful for preprocessing text data.
-* [lda](https://CRAN.R-project.org/package=lda) offers a fast implementation of the Latent Dirichlet Allocation and is used by ``ldaPrototype``.
-* [quanteda](https://quanteda.io/) is a framework for "Quantitative Analysis of Textual Data".
-* [stm](https://www.structuraltopicmodel.com/) is a framework for Structural Topic Models.
-* [tosca](https://CRAN.R-project.org/package=tosca) is a framework for statistical methods in content analysis including visualizations and validation techniques. It is also useful for managing and manipulating text data to a structure requested by ``ldaPrototype``.
-* [topicmodels](https://CRAN.R-project.org/package=topicmodels) is another framework for various topic models based on the Latent Dirichlet Allocation and Correlated Topics Models.
-* [mallet](https://github.com/mimno/RMallet) provides an interface for the Java based machine learning tool [MALLET](http://mallet.cs.umass.edu/).
-
-## Contribution
-This R package is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
-For bug reports (lack of documentation, misleading or wrong documentation, unexpected behaviour, ...) and feature requests please use the [issue tracker](https://github.com/JonasRieger/ldaPrototype/issues).
-Pull requests are welcome and will be included at the discretion of the author.
