@@ -60,7 +60,7 @@ determines their Prototype.
 }
 
 \references{
-Rieger, Jonas (2020). ldaPrototype: A method in R to get a Prototype of multiple Latent
+FIXME: Rieger, Jonas (2020). ldaPrototype: A method in R to get a Prototype of multiple Latent
 Dirichlet Allocations. Journal of Open Source Software, \bold{X}(xx), y,
 DOI 10.21105/joss.02181, URL \url{https://doi.org/10.21105/joss.02181}.
 
