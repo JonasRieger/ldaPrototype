@@ -9,9 +9,9 @@
 Determine a Prototype from a number of runs of Latent Dirichlet Allocation (LDA) measuring its similarities with S-CLOP: A procedure to select the LDA run with highest mean pairwise similarity, which is measured by S-CLOP (Similarity of multiple sets by Clustering with Local Pruning), to all other runs. LDA runs are specified by its assignments leading to estimators for distribution parameters. Repeated runs lead to different results, which we encounter by choosing the most representative LDA run as prototype.
 
 ## References
+* Rieger, J. (2020). ldaPrototype: A method in R to get a Prototype of multiple Latent Dirichlet Allocations. [Journal of Open Source Software](https://doi.org/10.21105/joss.02181), 5(51), 2181.
 * Rieger, J., Rahnenführer, J. & Jentsch, C. (2020). Improving Latent Dirichlet Allocation: On Reliability of the Novel Method LDAPrototype. [Natural Language Processing and Information Systems, NLDB 2020.](https://doi.org/10.1007/978-3-030-51310-8_11) LNCS 12089, pp. 118-125.
 * Rieger, J., Koppers, L., Jentsch, C. & Rahnenführer, J.: Improving Reliability of Latent Dirichlet Allocation by Assessing Its Stability using Clustering Techniques on Replicated Runs. [working paper](https://arxiv.org/abs/2003.04980)
-* Rieger, J.: ldaPrototype: A method in R to get a Prototype of multiple Latent Dirichlet Allocations. [JOSS review](https://github.com/openjournals/joss-reviews/issues/2181)
 
 ## Related Software
 * [tm](https://CRAN.R-project.org/package=tm) is useful for preprocessing text data.
