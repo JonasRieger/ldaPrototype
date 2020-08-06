@@ -48,9 +48,13 @@ test_that("mergeBatchTopics", {
   expect_error(mergeBatchTopics(resbatchrep))
 })
 
-proto = getPrototype(resrep)
-proto2 = getPrototype(resbatchrep, keepLDAs = TRUE, keepSims = TRUE, keepTopics = TRUE)
-proto3 = getPrototype(resbatchbatch, keepLDAs = TRUE, keepSims = TRUE, keepTopics = TRUE)
+proto = expect_warning(getPrototype(resrep))
+proto2 = expect_warning(getPrototype(resbatchrep, keepLDAs = TRUE, keepSims = TRUE, keepTopics = TRUE))
+proto3 = expect_warning(getPrototype(resbatchbatch, keepLDAs = TRUE, keepSims = TRUE, keepTopics = TRUE))
+
+setcolorder(proto$jobs, c("job.id", "seed"))
+proto3$jobs[, problem := NULL]
+proto3$jobs[, algorithm := NULL]
 
 proto2.manip = proto2
 proto2.manip$lda = getLDA(proto2.manip, reduce = FALSE)
@@ -68,12 +72,14 @@ test_that("as.LDABatch", {
 })
 
 resbatchbatch2 = as.LDABatch(job = getJob(resbatch2)$job.id)
-proto4 = getPrototype(resbatch2)
-proto5 = getPrototype(resbatchbatch2)
-
+proto4 = expect_warning(getPrototype(resbatch2))
+proto5 = expect_warning(getPrototype(resbatchbatch2))
+proto4$jobs[, chunk := NULL]
+proto5$jobs[, problem := NULL]
+proto5$jobs[, algorithm := NULL]
 
 test_that("as.LDABatch", {
-  expect_identical(proto4, proto5)
+  expect_identical(proto4, proto5.manip)
 })
 
 resbatchcomplete = as.LDABatch()

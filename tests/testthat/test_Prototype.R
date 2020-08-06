@@ -16,6 +16,7 @@ sclop2 = SCLOP.pairwise(jacc2)
 proto = LDAPrototype(docs = reuters_docs, K = 22, vocabLDA = reuters_vocab, n = 3, seeds = 1:3, num.iterations = 5)
 proto2 = getPrototype(res)
 proto3 = getPrototype(lda)
+proto3$jobs[, seed := 1:3]
 proto4 = getPrototype(res, sclop = sclop)
 
 protoall = getPrototype(res, keepTopics = TRUE, keepSims = TRUE, keepLDAs = TRUE)
