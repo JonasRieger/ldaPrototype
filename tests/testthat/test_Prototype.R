@@ -37,7 +37,7 @@ protolda3 = getLDA(proto, job = getPrototypeID(proto))
 
 test_that("Prototype_success", {
   expect_identical(proto, proto2)
-  expect_identical(proto, proto3)
+  expect_equal(proto, proto3)
   expect_identical(proto, proto4)
   expect_identical(proto, protoall.manip)
 

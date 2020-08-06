@@ -79,7 +79,7 @@ proto5$jobs[, problem := NULL]
 proto5$jobs[, algorithm := NULL]
 
 test_that("as.LDABatch", {
-  expect_identical(proto4, proto5.manip)
+  expect_identical(proto4, proto5)
 })
 
 resbatchcomplete = as.LDABatch()
