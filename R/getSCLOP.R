@@ -85,3 +85,9 @@ getID.PrototypeLDA = function(x){
 getParam.PrototypeLDA = function(x){
   x$param
 }
+
+#' @rdname getSCLOP
+#' @export
+getJob.PrototypeLDA = function(x){
+  x$jobs
+}
