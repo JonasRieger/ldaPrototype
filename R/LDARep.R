@@ -58,7 +58,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
 
   args = .paramList(n = n, ...)
   if (missing(seeds) || length(seeds) != n){
-    message("No seeds given or length of given seeds differs from number of replications: sample seeds")
+    message("No seeds given or length of given seeds differs from number of replications: sample seeds. Sampled seeds can be obtained via getJob().")
     if (!exists(".Random.seed", envir = globalenv())){
       runif(1)
     }
