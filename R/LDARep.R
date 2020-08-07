@@ -18,6 +18,7 @@
 #' Documents as received from \code{\link[tosca]{LDAprep}}.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+#' For additional (and necessary) arguments passed, see ellipsis (three-dot argument).
 #' @param n [\code{integer(1)}]\cr
 #' Number of Replications.
 #' @param seeds [\code{integer(n)}]\cr

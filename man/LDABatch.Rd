@@ -21,7 +21,8 @@ LDABatch(
 Documents as received from \code{\link[tosca]{LDAprep}}.}
 
 \item{vocab}{[\code{character}]\cr
-Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.}
+Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+For additional (and necessary) arguments passed, see ellipsis (three-dot argument).}
 
 \item{n}{[\code{integer(1)}]\cr
 Number of Replications.}

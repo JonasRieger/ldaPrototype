@@ -1,6 +1,6 @@
 #' @title Determine the Prototype LDA
 #'
-#' @description Performs multiple runs of LDA and returns the Prototype LDA of
+#' @description Performs multiple runs of LDA and computes the Prototype LDA of
 #' this set of LDAs.
 #'
 #' @details While \code{LDAPrototype} marks the overall shortcut for performing
@@ -21,6 +21,7 @@
 #' @inheritParams LDARep
 #' @param vocabLDA [\code{character}]\cr
 #' Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+#' For additional (and necessary) arguments passed, see ellipsis (three-dot argument).
 #' @param vocabMerge [\code{character}]\cr
 #' Vocabularies taken into consideration for merging topic matrices.
 #' @param limit.rel [0,1]\cr

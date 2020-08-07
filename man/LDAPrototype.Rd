@@ -28,7 +28,8 @@ LDAPrototype(
 Documents as received from \code{\link[tosca]{LDAprep}}.}
 
 \item{vocabLDA}{[\code{character}]\cr
-Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.}
+Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+For additional (and necessary) arguments passed, see ellipsis (three-dot argument).}
 
 \item{vocabMerge}{[\code{character}]\cr
 Vocabularies taken into consideration for merging topic matrices.}
@@ -105,7 +106,7 @@ There is no default for \code{K}.}
 }
 }
 \description{
-Performs multiple runs of LDA and returns the Prototype LDA of
+Performs multiple runs of LDA and computes the Prototype LDA of
 this set of LDAs.
 }
 \details{
