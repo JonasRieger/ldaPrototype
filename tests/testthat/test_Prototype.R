@@ -65,7 +65,7 @@ test_that("Prototype_success", {
   job = getJob(proto)
   expect_true(is.data.table(job))
   expect_true(all(c(names(.getDefaultParameters(1)), "job.id") %in% colnames(job)))
-  expect_false(anyDuplicated(job$job.id))
+  expect_true(anyDuplicated(job$job.id) == 0)
   expect_true(is.integer(job$job.id))
 })
 
