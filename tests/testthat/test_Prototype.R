@@ -60,7 +60,13 @@ test_that("Prototype_success", {
   expect_identical(getSCLOP(protoall2), SCLOP.pairwise(jacc2))
   expect_identical(getMergedTopics(protoall2), mtopics2)
 
-  expect_true(is.LDA(getPrototype(LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 5, num.iterations = 5, K = 25))))
+  expect_true(is.LDA(getPrototype(LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 5, num.iterations = 5, K = 25))))#
+
+  job = getJob(proto)
+  expect_true(is.data.table(job))
+  expect_true(all(c(names(.getDefaultParameters(1)), "job.id") %in% colnames(job)))
+  expect_false(anyDuplicated(job$job.id))
+  expect_true(is.integer(job$job.id))
 })
 
 test_that("Prototype_not_true_error", {
