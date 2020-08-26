@@ -97,11 +97,11 @@ rboTopics.parallel = function(topics, k, p, pm.backend, ncpus){
     2 * sum(tmp1&tmp2) / (sum(tmp1)+sum(tmp2)) * p^d
     # sum(tmp1&tmp2) / sum(tmp1|tmp2) * p^d
   })
-  sims[lower.tri(sims)] = c(unlist(rearrangedlist), tmp[k] + sum(k) * (1-p) / p)
+  sims[lower.tri(sims)] = c(unlist(rearrangedlist), tmp[k] + sum(tmp) * (1-p) / p)
 
   wordsconsidered = colSums(ranks < k+1)
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = wordsconsidered,
-             param = list(type = "RBO Similarity"))
+             param = list(type = "RBO Similarity", k = k, p = p))
   class(res) = "TopicSimilarity"
   res
 }
@@ -132,12 +132,12 @@ rboTopics.serial = function(topics, k, p, progress = TRUE){
     2 * sum(tmp1&tmp2) / (sum(tmp1)+sum(tmp2)) * p^d
     # sum(tmp1&tmp2) / sum(tmp1|tmp2) * p^d
   })
-  sims[N, N-1] = tmp[k] + sum(k) * (1-p) / p
+  sims[N, N-1] = tmp[k] + sum(tmp) * (1-p) / p
   pb$tick()
 
   wordsconsidered = colSums(ranks < k+1)
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = wordsconsidered,
-             param = list(type = "RBO Similarity"))
+             param = list(type = "RBO Similarity", k = k, p = p))
   class(res) = "TopicSimilarity"
   res
 }
