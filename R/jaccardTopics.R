@@ -5,9 +5,10 @@
 #' Jaccard Coefficient.
 #'
 #' @details
-#' The modified Jaccard Coefficient \eqn{J_m} is calculated by
+#' The modified Jaccard Coefficient for two topics \eqn{\bm z_{i}} and
+#' \eqn{\bm z_{j}} is calculated by
 #' \deqn{J_m(\bm z_{i}, \bm z_{j} \mid \bm c) = \frac{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\wedge~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}{\sum_{v = 1}^{V} 1_{\left\{n_{i}^{(v)} > c_i ~\vee~ n_{j}^{(v)} > c_j\right\}}\left(n_{i}^{(v)}, n_{j}^{(v)}\right)}}
-#' with \eqn{V} is the vocabulary size, and \eqn{n_k^{(v)}} is the count of
+#' with \eqn{V} is the vocabulary size and \eqn{n_k^{(v)}} is the count of
 #' assignments of the \eqn{v}-th word to the \eqn{k}-th topic. The threshold vector \eqn{\bm c}
 #' is determined by the maximum threshold of the user given lower bounds \code{limit.rel}
 #' and \code{limit.abs}. In addition, at least \code{atLeast} words per topic are
@@ -58,8 +59,9 @@
 #'   words for similarity calculation. Could differ from \code{wordslimit}, if
 #'   \code{atLeast} is greater than zero.}
 #'   \item{\code{param}}{[\code{named list}] with parameter specifications for
+#'   \code{type} [\code{character(1)}] \code{= "Jaccard Coefficient"},
 #'   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
-#'   \code{atLeast} [\code{integer(1)}] See above for explanation.}
+#'   \code{atLeast} [\code{integer(1)}]. See above for explanation.}
 #' }
 #'
 #' @examples
@@ -74,6 +76,13 @@
 #'
 #' sim = getSimilarity(jacc)
 #' dim(sim)
+#'
+#' # Comparison to Cosine and Jensen-Shannon (more interesting on large datasets)
+#' cosine = cosineTopics(topics)
+#' js = jsTopics(topics)
+#'
+#' sims = list(jaccard = sim, cosine = getSimilarity(cosine), js = getSimilarity(js))
+#' pairs(do.call(cbind, lapply(sims, as.vector)))
 #'
 #' @export jaccardTopics
 
@@ -110,7 +119,6 @@ print.TopicSimilarity = function(x, ...){
 }
 
 jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.backend, ncpus){
-
   N = ncol(topics)
 
   index = topics > limit.abs &
@@ -121,9 +129,6 @@ jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.back
     index[,ind] = apply(as.matrix(topics[,ind]), 2,
       function(x) x >= -sort.int(-x, partial = atLeast)[atLeast])
   }
-
-  sims = matrix(nrow = N, ncol = N)
-  colnames(sims) = rownames(sims) = colnames(topics)
 
   if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
   parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
@@ -151,13 +156,13 @@ jaccardTopics.parallel = function(topics, limit.rel, limit.abs, atLeast, pm.back
   sims[is.nan(sims)] = 0
 
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
-    param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
+    param = list(type = "Jaccard Coefficient",
+      limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
   class(res) = "TopicSimilarity"
   res
 }
 
 jaccardTopics.serial = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE){
-
   N = ncol(topics)
 
   index = topics > limit.abs &
@@ -184,7 +189,8 @@ jaccardTopics.serial = function(topics, limit.rel, limit.abs, atLeast, progress 
   sims[is.nan(sims)] = 0
 
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = colSums(index),
-    param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
+    param = list(type = "Jaccard Coefficient",
+      limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast))
   class(res) = "TopicSimilarity"
   res
 }

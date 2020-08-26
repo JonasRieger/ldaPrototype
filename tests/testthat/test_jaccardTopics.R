@@ -12,7 +12,7 @@ jacc4 = jaccardTopics(mtopics, atLeast = 1, limit.abs = max(mtopics)+1, pm.backe
 
 test_that("jaccardTopics_success", {
   tmp = 20 # n*K
-  expect_equal(getParam(jacc), list(limit.rel = 1/500, limit.abs = 10, atLeast = 0))
+  expect_equal(getParam(jacc), list(type = "Jaccard Coefficient", limit.rel = 1/500, limit.abs = 10, atLeast = 0))
   expect_equal(names(getRelevantWords(jacc)), names(getConsideredWords(jacc)))
   expect_equal(length(getRelevantWords(jacc)), tmp)
   expect_equal(length(getConsideredWords(jacc)), tmp)
@@ -27,7 +27,7 @@ test_that("jaccardTopics_success", {
   expect_true(all(getSimilarity(jacc)[lower.tri(getSimilarity(jacc))] <= 1))
   expect_equal(jacc, jacc2)
 
-  expect_equal(getParam(jacc3), list(limit.rel = 1/500, limit.abs = max(mtopics)+1, atLeast = 1))
+  expect_equal(getParam(jacc3), list(type = "Jaccard Coefficient", limit.rel = 1/500, limit.abs = max(mtopics)+1, atLeast = 1))
   expect_equal(names(getRelevantWords(jacc3)), names(getConsideredWords(jacc3)))
   expect_equal(length(getRelevantWords(jacc3)), tmp)
   expect_equal(length(getConsideredWords(jacc3)), tmp)
@@ -54,6 +54,9 @@ if(FALSE){ # noch inaktiv (aktivieren, wenn checkmate eingebunden)
 
 test_that("print.TopicSimilarity", {
   expect_output(print(jacc), "TopicSimilarity Object")
+  expect_output(print(jacc), "type: Jaccard Coefficient")
   expect_output(print(jacc2), "TopicSimilarity Object")
+  expect_output(print(jacc2), "type: Jaccard Coefficient")
   expect_output(print(jacc3), "TopicSimilarity Object")
+  expect_output(print(jacc3), "type: Jaccard Coefficient")
 })

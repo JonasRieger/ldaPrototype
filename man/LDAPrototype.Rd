@@ -91,7 +91,7 @@ There is no default for \code{K}.}
   \item{\code{jobs}}{[\code{data.table}] with parameter specifications for the LDAs.}
   \item{\code{param}}{[\code{named list}] with parameter specifications for
   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
-  \code{atLeast} [\code{integer(1)}] See above for explanation.}
+  \code{atLeast} [\code{integer(1)}]. See above for explanation.}
   \item{\code{topics}}{[\code{named matrix}] with the count of vocabularies
   (row wise) in topics (column wise).}
   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
