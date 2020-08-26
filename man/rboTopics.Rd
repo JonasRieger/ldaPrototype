@@ -10,6 +10,10 @@ rboTopics(topics, k, p, progress = TRUE, pm.backend, ncpus)
 \item{topics}{[\code{named matrix}]\cr
 The counts of vocabularies/words (row wise) in topics (column wise).}
 
+\item{k}{tba}
+
+\item{p}{tba}
+
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly
 faster calculation. Default is \code{TRUE}.
@@ -49,7 +53,7 @@ is calculated by ...
 \examples{
 res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
 topics = mergeTopics(res, vocab = reuters_vocab)
-rbo = rboTopics(topics)
+rbo = rboTopics(topics, k = 12, p = 0.9)
 rbo
 
 sim = getSimilarity(rbo)
