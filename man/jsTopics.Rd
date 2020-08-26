@@ -81,6 +81,7 @@ Other TopicSimilarity functions:
 \code{\link{cosineTopics}()},
 \code{\link{dendTopics}()},
 \code{\link{getSimilarity}()},
-\code{\link{jaccardTopics}()}
+\code{\link{jaccardTopics}()},
+\code{\link{rboTopics}()}
 }
 \concept{TopicSimilarity functions}

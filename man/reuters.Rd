@@ -8,9 +8,13 @@
 \alias{docs}
 \alias{vocab}
 \title{A Snippet of the Reuters Dataset}
-\format{\code{reuters_docs} is a list of documents of length 91 prepared by \code{\link[tosca]{LDAprep}}.
+\format{
+\code{reuters_docs} is a list of documents of length 91 prepared by \code{\link[tosca]{LDAprep}}.
 
-\code{reuters_vocab} is a \code{character} vector of length 2141.}
+\code{reuters_vocab} is a \code{character} vector of length 2141.
+
+An object of class \code{character} of length 2141.
+}
 \source{
 \url{http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/}
 }

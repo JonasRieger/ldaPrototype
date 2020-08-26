@@ -110,7 +110,8 @@ Other TopicSimilarity functions:
 \code{\link{cosineTopics}()},
 \code{\link{dendTopics}()},
 \code{\link{getSimilarity}()},
-\code{\link{jsTopics}()}
+\code{\link{jsTopics}()},
+\code{\link{rboTopics}()}
 
 Other workflow functions: 
 \code{\link{LDARep}()},
