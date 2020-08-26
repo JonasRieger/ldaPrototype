@@ -10,9 +10,11 @@ rboTopics(topics, k, p, progress = TRUE, pm.backend, ncpus)
 \item{topics}{[\code{named matrix}]\cr
 The counts of vocabularies/words (row wise) in topics (column wise).}
 
-\item{k}{tba}
+\item{k}{[\code{integer(1)}]\cr
+Maximum depth for evaluation. Words down to this rank are considered for the calculation of similarities.}
 
-\item{p}{tba}
+\item{p}{[0,1]\cr
+Weighting parameter. Higher values emphasizes top ranked words.}
 
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly
@@ -48,7 +50,13 @@ rank-biased overlap (RBO) Similarity.
 }
 \details{
 The RBO Similarity for two topics \eqn{\bm z_{i}} and \eqn{\bm z_{j}}
-is calculated by ...
+is calculated by
+\deqn{RBO(\bm z_{i}, \bm z_{j} \mid k, p) = 2p^k\frac{\left|Z_{i}^{(k)} \cap Z_{j}^{(k)}\right|}{\left|Z_{i}^{(k)}\right| + \left|Z_{j}^{(k)}\right|} + \frac{1-p}{p} \sum_{d=1}^k 2 p^d\frac{\left|Z_{i}^{(d)} \cap Z_{j}^{(d)}\right|}{\left|Z_{i}^{(d)}\right| + \left|Z_{j}^{(d)}\right|}}
+with \eqn{Z_{i}^{(d)}} is the vocabulary set of topic \eqn{\bm z_{i}} down to
+rank \eqn{d}. Ties in ranks are resolved by taking the minimum.
+
+The value \code{wordsconsidered} describes the number of words per topic
+ranked at rank \eqn{k} or above.
 }
 \examples{
 res = LDARep(docs = reuters_docs, vocab = reuters_vocab, n = 4, K = 10, num.iterations = 30)
@@ -59,6 +67,13 @@ rbo
 sim = getSimilarity(rbo)
 dim(sim)
 
+}
+\references{
+Webber, William, Alistair Moffat and Justin Zobel (2010).
+"A similarity measure for indefinite rankings".
+In: \emph{ACM Transations on Information Systems} 28(4), p.20:1–-20:38,
+DOI 10.1145/1852102.1852106,
+URL \url{http://doi.acm.org/10.1145/1852102.1852106}
 }
 \seealso{
 Other TopicSimilarity functions: 
