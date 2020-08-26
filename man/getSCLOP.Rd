@@ -10,6 +10,7 @@
 \alias{getLDA.PrototypeLDA}
 \alias{getID.PrototypeLDA}
 \alias{getParam.PrototypeLDA}
+\alias{getJob.PrototypeLDA}
 \title{Getter for PrototypeLDA}
 \usage{
 getSCLOP(x)
@@ -29,6 +30,8 @@ getPrototypeID(x)
 \method{getID}{PrototypeLDA}(x)
 
 \method{getParam}{PrototypeLDA}(x)
+
+\method{getJob}{PrototypeLDA}(x)
 }
 \arguments{
 \item{x}{[\code{named list}]\cr

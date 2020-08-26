@@ -2,14 +2,14 @@
 % Please edit documentation in R/getPrototype.R
 \name{getPrototype}
 \alias{getPrototype}
-\alias{getPrototype.LDABatch}
 \alias{getPrototype.LDARep}
+\alias{getPrototype.LDABatch}
 \alias{getPrototype.default}
 \title{Determine the Prototype LDA}
 \usage{
 getPrototype(...)
 
-\method{getPrototype}{LDABatch}(
+\method{getPrototype}{LDARep}(
   x,
   vocab,
   limit.rel,
@@ -25,7 +25,7 @@ getPrototype(...)
   ...
 )
 
-\method{getPrototype}{LDARep}(
+\method{getPrototype}{LDABatch}(
   x,
   vocab,
   limit.rel,
@@ -45,6 +45,7 @@ getPrototype(...)
   lda,
   vocab,
   id,
+  job,
   limit.rel,
   limit.abs,
   atLeast,
@@ -122,14 +123,22 @@ List of \code{\link{LDA}} objects, named by the corresponding "job.id".}
 \item{id}{[\code{character(1)}]\cr
 A name for the computation. If not passed, it is set to "LDARep".
 Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
+
+\item{job}{[\code{\link{data.frame}} or \code{named vector}]\cr
+A data.frame or data.table with named columns (at least)
+"job.id" (\code{integerish}), "K", "alpha", "eta" and "num.iterations"
+or a named vector with entries (at least) "K", "alpha", "eta" and "num.iterations".
+If not passed, it is interpreted from \code{param} of each LDA.
+Not considered for \code{\link{LDABatch}} or \code{\link{LDARep}} objects.}
 }
 \value{
 [\code{named list}] with entries
  \describe{
+  \item{\code{id}}{[\code{character(1)}] See above.}
+  \item{\code{protoid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
   \item{\code{lda}}{List of \code{\link{LDA}} objects of the determined Prototype LDA
   and - if \code{keepLDAs} is \code{TRUE} - all considered LDAs.}
-  \item{\code{protoid}}{[\code{character(1)}] Name (ID) of the determined Prototype LDA.}
-  \item{\code{id}}{[\code{character(1)}] See above.}
+  \item{\code{jobs}}{[\code{data.table}] with parameter specifications for the LDAs.}
   \item{\code{param}}{[\code{named list}] with parameter specifications for
   \code{limit.rel} [0,1], \code{limit.abs} [\code{integer(1)}] and
   \code{atLeast} [\code{integer(1)}]. See above for explanation.}

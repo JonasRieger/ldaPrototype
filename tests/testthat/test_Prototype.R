@@ -16,6 +16,7 @@ sclop2 = SCLOP.pairwise(jacc2)
 proto = LDAPrototype(docs = reuters_docs, K = 22, vocabLDA = reuters_vocab, n = 3, seeds = 1:3, num.iterations = 5)
 proto2 = getPrototype(res)
 proto3 = getPrototype(lda)
+proto3$jobs[, seed := 1:3]
 proto4 = getPrototype(res, sclop = sclop)
 
 protoall = getPrototype(res, keepTopics = TRUE, keepSims = TRUE, keepLDAs = TRUE)
@@ -36,7 +37,7 @@ protolda3 = getLDA(proto, job = getPrototypeID(proto))
 
 test_that("Prototype_success", {
   expect_identical(proto, proto2)
-  expect_identical(proto, proto3)
+  expect_equal(proto, proto3)
   expect_identical(proto, proto4)
   expect_identical(proto, protoall.manip)
 
@@ -59,7 +60,13 @@ test_that("Prototype_success", {
   expect_identical(getSCLOP(protoall2), SCLOP.pairwise(jacc2))
   expect_identical(getMergedTopics(protoall2), mtopics2)
 
-  expect_true(is.LDA(getPrototype(LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 5, num.iterations = 5, K = 25))))
+  expect_true(is.LDA(getPrototype(LDAPrototype(docs = reuters_docs, vocabLDA = reuters_vocab, n = 5, num.iterations = 5, K = 25))))#
+
+  job = getJob(proto)
+  expect_true(is.data.table(job))
+  expect_true(all(c(names(.getDefaultParameters(1)), "job.id") %in% colnames(job)))
+  expect_true(anyDuplicated(job$job.id) == 0)
+  expect_true(is.integer(job$job.id))
 })
 
 test_that("Prototype_not_true_error", {

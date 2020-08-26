@@ -20,6 +20,7 @@
 #' Documents as received from \code{\link[tosca]{LDAprep}}.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+#' For additional (and necessary) arguments passed, see ellipsis (three-dot argument).
 #' @param n [\code{integer(1)}]\cr
 #' Number of Replications.
 #' @param seeds [\code{integer(n)}]\cr
@@ -34,6 +35,8 @@
 #' Computational resources for the jobs to submit. See \code{\link[batchtools]{submitJobs}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 #' Arguments will be coerced to a vector of length \code{n}.
+#' Default parameters are \code{alpha = eta = 1/K} and \code{num.iterations = 200}.
+#' There is no default for \code{K}.
 #'
 #' @return [\code{named list}] with entries \code{id} for the registry's folder name,
 #' \code{jobs} for the submitted jobs' ids and its parameter settings and
@@ -89,7 +92,7 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
   moreArgs = data.table(do.call(cbind, .paramList(n = n, ...)))
 
   if (missing(seeds) || length(seeds) != n){
-    message("No seeds given or length of given seeds differs from number of replications: sample seeds")
+    message("No seeds given or length of given seeds differs from number of replications: sample seeds. Sampled seeds can be obtained via getJob().")
     if (!exists(".Random.seed", envir = globalenv())){
       runif(1)
     }

@@ -18,6 +18,7 @@
 #' Documents as received from \code{\link[tosca]{LDAprep}}.
 #' @param vocab [\code{character}]\cr
 #' Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+#' For additional (and necessary) arguments passed, see ellipsis (three-dot argument).
 #' @param n [\code{integer(1)}]\cr
 #' Number of Replications.
 #' @param seeds [\code{integer(n)}]\cr
@@ -34,6 +35,8 @@
 #' default is determined by \code{\link[future]{availableCores}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 #' Arguments will be coerced to a vector of length \code{n}.
+#' Default parameters are \code{alpha = eta = 1/K} and \code{num.iterations = 200}.
+#' There is no default for \code{K}.
 #' @return [\code{named list}] with entries \code{id} for computation's name,
 #' \code{jobs} for the parameter settings and \code{lda} for the results itself.
 #'
@@ -56,7 +59,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
 
   args = .paramList(n = n, ...)
   if (missing(seeds) || length(seeds) != n){
-    message("No seeds given or length of given seeds differs from number of replications: sample seeds")
+    message("No seeds given or length of given seeds differs from number of replications: sample seeds. Sampled seeds can be obtained via getJob().")
     if (!exists(".Random.seed", envir = globalenv())){
       runif(1)
     }

@@ -72,13 +72,13 @@ as.LDARep.default = function(lda, job, id, ...){
     setcolorder(job, "job.id")
   }else{
     if (is.vector(job)){
-      if (all(names(.getDefaultParameters()) %in% names(job))){
+      if (all(names(.getDefaultParameters(1)) %in% names(job))){
         job = data.table(job.id = as.integer(names(lda)), t(job))
       }else{
         stop("Not all standard parameters are specified.")
       }
     }else{
-      if (all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
+      if (all(c(names(.getDefaultParameters(1)), "job.id") %in% colnames(job))){
         job = as.data.table(job)
         if (!all(union(job$job.id, names(lda)) %in% intersect(job$job.id, names(lda))) ||
             nrow(job) != length(lda)){
@@ -153,7 +153,7 @@ is.LDARep = function(obj, verbose = FALSE){
   if (verbose) message("jobs: ", appendLF = FALSE)
   job = getJob(obj)
   if (!is.data.table(job) ||
-      !all(c(names(.getDefaultParameters()), "job.id") %in% colnames(job))){
+      !all(c(names(.getDefaultParameters(1)), "job.id") %in% colnames(job))){
     if (verbose) message("not a data.table with standard parameters")
     return(FALSE)
   }

@@ -11,7 +11,7 @@
 #' @format
 #' \code{reuters_docs} is a list of documents of length 91 prepared by \code{\link[tosca]{LDAprep}}.
 #'
-#' \code{reuters_vocab} is a \code{character} vector of length 2141.
+#' \code{reuters_vocab} is
 #'
 #' @usage data(reuters_docs)
 #'

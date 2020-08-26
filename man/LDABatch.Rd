@@ -21,7 +21,8 @@ LDABatch(
 Documents as received from \code{\link[tosca]{LDAprep}}.}
 
 \item{vocab}{[\code{character}]\cr
-Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.}
+Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+For additional (and necessary) arguments passed, see ellipsis (three-dot argument).}
 
 \item{n}{[\code{integer(1)}]\cr
 Number of Replications.}
@@ -42,7 +43,9 @@ Requested chunk size for each single chunk. See \code{\link[batchtools]{chunk}}.
 Computational resources for the jobs to submit. See \code{\link[batchtools]{submitJobs}}.}
 
 \item{...}{additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-Arguments will be coerced to a vector of length \code{n}.}
+Arguments will be coerced to a vector of length \code{n}.
+Default parameters are \code{alpha = eta = 1/K} and \code{num.iterations = 200}.
+There is no default for \code{K}.}
 }
 \value{
 [\code{named list}] with entries \code{id} for the registry's folder name,

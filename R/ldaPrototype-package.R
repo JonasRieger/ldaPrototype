@@ -8,7 +8,8 @@
 #' distribution parameters. Repeated runs lead to different results, which we
 #' encounter by choosing the most representative LDA run as prototype.\cr
 #' For bug reports and feature requests please use the issue tracker:
-#' \url{https://github.com/JonasRieger/ldaPrototype/issues}.
+#' \url{https://github.com/JonasRieger/ldaPrototype/issues}. Also have a look at
+#' the (detailed) example at \url{https://github.com/JonasRieger/ldaPrototype}.
 #'
 #' @section Data:
 #' \code{\link{reuters}} Example Dataset (91 articles from Reuters) for testing.
@@ -41,6 +42,21 @@
 #' \code{\link{LDAPrototype}} Shortcut which performs multiple LDAs and
 #' determines their Prototype.
 #'
+#' @references
+#' Rieger, Jonas (2020). ldaPrototype: A method in R to get a Prototype of multiple Latent
+#' Dirichlet Allocations. Journal of Open Source Software, \bold{5}(51), 2181,
+#' DOI 10.21105/joss.02181, URL \url{https://doi.org/10.21105/joss.02181}.
+#'
+#' Rieger, Jonas, Jörg Rahnenführer and Carsten Jentsch (2020).
+#' "Improving Latent Dirichlet Allocation: On Reliability of the Novel Method LDAPrototype."
+#' In: \emph{Natural Language Processing and Information Systems, NLDB 2020.} LNCS 12089, pp. 118--125,
+#' DOI 10.1007/978-3-030-51310-8_11, URL \url{https://doi.org/10.1007/978-3-030-51310-8_11}.
+#'
+#' Rieger, Jonas, Lars Koppers, Carsten Jentsch and Jörg Rahnenführer (2020).
+#' "Improving Reliability of Latent Dirichlet Allocation by Assessing Its Stability using Clustering Techniques on Replicated Runs."
+#' arXiv 2003.04980, URL \url{https://arxiv.org/abs/2003.04980}.
+#'
+#'
 #' @import data.table
 #' @import stats
 #' @import checkmate
@@ -55,7 +71,8 @@
 
 .getDefaultParameters = function(K){
   if (missing(K)){
-    return(list(K = 100, alpha = 0.01, eta = 0.01, num.iterations = 200))
+    stop("Parameter K (number of modeled topics) must be set, no default!")
+    #return(list(K = 100, alpha = 0.01, eta = 0.01, num.iterations = 200))
   }else{
     return(list(K = K, alpha = 1/K, eta = 1/K, num.iterations = 200))
   }

@@ -11,7 +11,8 @@ LDARep(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus, ...)
 Documents as received from \code{\link[tosca]{LDAprep}}.}
 
 \item{vocab}{[\code{character}]\cr
-Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.}
+Vocabularies passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
+For additional (and necessary) arguments passed, see ellipsis (three-dot argument).}
 
 \item{n}{[\code{integer(1)}]\cr
 Number of Replications.}
@@ -33,7 +34,9 @@ Number of (physical) CPUs to use. If \code{pm.backend} is passed,
 default is determined by \code{\link[future]{availableCores}}.}
 
 \item{...}{additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
-Arguments will be coerced to a vector of length \code{n}.}
+Arguments will be coerced to a vector of length \code{n}.
+Default parameters are \code{alpha = eta = 1/K} and \code{num.iterations = 200}.
+There is no default for \code{K}.}
 }
 \value{
 [\code{named list}] with entries \code{id} for computation's name,
