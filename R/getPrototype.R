@@ -159,6 +159,7 @@ getPrototype.default = function(lda, vocab, id, job, limit.rel, limit.abs, atLea
   progress = TRUE, pm.backend, ncpus,
   keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, sclop, ...){
 
+  K = NULL
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
