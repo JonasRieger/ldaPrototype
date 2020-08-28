@@ -41,7 +41,8 @@ default is determined by \code{\link[future]{availableCores}}.}
   \item{\code{wordsconsidered}}{[\code{integer}] = vocabulary size. See
   \code{\link{jaccardTopics}} for original purpose.}
   \item{\code{param}}{[\code{named list}] with parameter
-  \code{type} [\code{character(1)}] \code{= "RBO Similarity"}.}
+  \code{type} [\code{character(1)}] \code{= "RBO Similarity"},
+  \code{k} [\code{integer(1)}] and \code{p} [0,1]. See above for explanation.}
 }
 }
 \description{
