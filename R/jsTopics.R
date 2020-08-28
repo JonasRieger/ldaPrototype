@@ -107,10 +107,11 @@ jsTopics.parallel = function(topics, epsilon, pm.backend, ncpus){
   sims[lower.tri(sims)] = c(unlist(rearrangedlist),
     logrel[N] + logrel[N-1] -
       sum((rel[,N] + rel[,N-1]) * log(rel[,N] + rel[,N-1])))
+  sims = 1 - sims/2 - log(2)
 
   wordsconsidered = rep(nrow(topics), N)
   res = list(sims = sims, wordslimit = wordsconsidered, wordsconsidered = wordsconsidered,
-    param = list(type = "Jensen-Shannon Divergence"))
+    param = list(type = "Jensen-Shannon Divergence", epsilon = epsilon))
   class(res) = "TopicSimilarity"
   res
 }

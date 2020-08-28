@@ -43,14 +43,19 @@ test_that("jaccardTopics_success", {
   expect_equal(jacc3, jacc4)
 })
 
-if(FALSE){ # noch inaktiv (aktivieren, wenn checkmate eingebunden)
-  test_that("jaccardTopics_errors", {
-    expect_error(jaccardTopics(mtopics, limit.abs = -1))
-    expect_error(jaccardTopics(mtopics, limit.rel = 1.1))
-    expect_error(jaccardTopics(mtopics, limit.rel = -0.4))
-    expect_error(jaccardTopics(mtopics, atLeast = -10))
-  })
-}
+# noch inaktiv (aktivieren, wenn checkmate eingebunden)
+test_that("jaccardTopics_errors", {
+  #expect_error(jaccardTopics(mtopics, limit.abs = -1))
+  #expect_error(jaccardTopics(mtopics, limit.rel = 1.1))
+  #expect_error(jaccardTopics(mtopics, limit.rel = -0.4))
+  #expect_error(jaccardTopics(mtopics, atLeast = -10))
+  expect_error(jaccardTopics(mtopics, ncpus = -1, pm.backend = "socket"))
+  expect_error(jaccardTopics(mtopics, ncpus = 3.2, pm.backend = "socket"))
+  expect_error(jaccardTopics(mtopics, pm.backend = TRUE))
+  expect_error(jaccardTopics(mtopics, pm.backend = ""))
+  expect_error(jaccardTopics(mtopics, progress = "TRUE"))
+  # Checks auf mtopics Basis...
+})
 
 test_that("print.TopicSimilarity", {
   expect_output(print(jacc), "TopicSimilarity Object")
