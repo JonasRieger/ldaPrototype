@@ -67,7 +67,6 @@ LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, 
   assert_int(n, lower = 1)
   assert_flag(load)
   assert_int(chunk.size, lower = 1)
-  assert_integerish(K, lower = 2, any.missing = FALSE, min.len = 1, max.len = n)
 
   fd = file.path(id)
   if (dir.exists(fd)){

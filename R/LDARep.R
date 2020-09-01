@@ -63,7 +63,6 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
             all(sapply(docs, function(x) all(x[2,] == 1))))
   assert_character(vocab, any.missing = FALSE, unique = TRUE, min.len = 2)
   assert_int(n, lower = 1)
-  assert_integerish(K, lower = 2, any.missing = FALSE, min.len = 1, max.len = n)
 
   args = .paramList(n = n, ...)
   if (missing(seeds) || length(seeds) != n){
