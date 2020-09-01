@@ -123,8 +123,8 @@ plot.TopicDendrogram = function(x, pruning, pruning.par, ...){
     default = pruning.par(pruning)
     pruning.par = c(pruning.par, default[!names(default) %in% names(pruning.par)])
 
-    assert_list(pruning.par, len = 4, names = "named")
-    assert_set_equal(names(pruning.par),c("type", "lty", "labels", "labels_colors"))
+    assert_list(pruning.par, min.len = 4, names = "named")
+    assert_subset(names(pruning.par), c("type", "lty", "labels", "labels_colors"))
     assert_choice(pruning.par$type, c("abline", "color", "both"))
     assert_true(length(pruning.par$labels) == nobs(dend))
 
