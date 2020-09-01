@@ -49,6 +49,12 @@ mergeRepTopics.default = function(lda, vocab, id, progress = TRUE, ...){
 
   if (missing(vocab)) vocab = .defaultVocab(lda)
   if (missing(id)) id = "LDARep"
+
+  assert_flag(progress)
+  assert_string(id, min.chars = 1)
+  assert_list(lda, types = "LDA", any.missing = FALSE, min.len = 1, names = "named")
+  assert_character(vocab, any.missing = FALSE, unique = TRUE, min.len = 2)
+
   topicList = lapply(lda, getTopics)
   Ntopic = sapply(topicList, nrow)
   N = sum(Ntopic)

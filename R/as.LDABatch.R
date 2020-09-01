@@ -68,6 +68,7 @@ as.LDABatch = function(reg, job, id){
 #' @rdname as.LDABatch
 #' @export
 is.LDABatch = function(obj, verbose = FALSE){
+  assert_flag(verbose)
 
   if (!inherits(obj, "LDABatch")){
     if (verbose) message("object is not of class \"LDABatch\"")

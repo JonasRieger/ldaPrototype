@@ -68,6 +68,7 @@ SCLOP = function(dend){
 #' @export disparitySum
 
 disparitySum = function(dend){
+  assert_class(dend, c("TopicDendrogram", "dendrogram"))
   .disparitySum(dend = dend, nruns = length(unique(labels_colors(dend))))
 }
 
@@ -100,7 +101,14 @@ SCLOP.pairwise.TopicSimilarity = function(sims){
 
 #' @export
 SCLOP.pairwise.default = function(sims){
-  names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
+  assert_matrix(sims, mode = "numeric", all.missing = FALSE, nrows = ncol(sims), row.names = "strict", min.cols = 2)
+  assert_numeric(sims[lower.tri(sims)], lower = 0, upper = 1, any.missing = FALSE)
+  assert_true(all(colnames(sims) == row.names(sims)))
+  assert_true(all(grepl("\\.", colnames(sims))))
+
+  #names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
+  # deprecated: delete commented if code dont fail
+  names = unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1]))
 
   combs = combn(names, 2)
   rownames(combs) = c("V1", "V2")

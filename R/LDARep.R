@@ -57,6 +57,14 @@
 
 LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus, ...){
 
+  assert_string(id, min.chars = 1)
+  assert_list(docs, min.len = 1, names = "unique", types = "matrix", any.missing = FALSE)
+  stopifnot(all(sapply(docs, nrow) == 2),
+            all(sapply(docs, function(x) all(x[2,] == 1))))
+  assert_character(vocab, any.missing = FALSE, unique = TRUE, min.len = 2)
+  assert_int(n, lower = 1)
+  assert_integerish(K, lower = 2, any.missing = FALSE, min.len = 1, max.len = n)
+
   args = .paramList(n = n, ...)
   if (missing(seeds) || length(seeds) != n){
     message("No seeds given or length of given seeds differs from number of replications: sample seeds. Sampled seeds can be obtained via getJob().")
@@ -79,6 +87,8 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
 
   if (!missing(pm.backend) && !is.null(pm.backend)){
     if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
+    assert_choice(pm.backend, choices = c("multicore", "socket", "mpi"))
+    assert_int(ncpus, lower = 1)
     parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
   }
 

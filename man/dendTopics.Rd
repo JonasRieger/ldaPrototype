@@ -18,8 +18,9 @@ from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names shou
 formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 first dot identifies the LDA run.}
 
-\item{ind}{[\code{integer} or \code{character}]\cr
-An integerish vector for specifying the topics taken into account. Alternatively
+\item{ind}{[\code{integer}, \code{logical} or \code{character}]\cr
+An integerish vector (or logical of the same length as the number of rows and columns)
+for specifying the topics taken into account. Alternatively
 a character vector can be passed. Then, all topics are taken for which the name
 contain at least one of the phrases in \code{ind} (see \code{\link[=grep]{grepl}}).
 By default all topics are considered.}

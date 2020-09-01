@@ -65,11 +65,16 @@ getPrototypeID.PrototypeLDA = function(x){
 #' @rdname getSCLOP
 #' @export
 getLDA.PrototypeLDA = function(x, job, reduce = TRUE, all = FALSE){
+  assert_flag(reduce)
+  assert_flag(all)
+
   if (all) return(x$lda)
   if (missing(job)) job = getPrototypeID(x)
   if (is.vector(job)) job = data.frame(job.id = as.integer(job))
 
-  lda = x$lda[match(job$job.id, names(x$lda))]
+  assert_integerish(job$job.id, lower = 1, any.missing = FALSE, min.len = 1)
+
+  lda = x$lda[na.omit(match(job$job.id, names(x$lda)))]
   if (reduce && length(lda) == 1) lda = lda[[1]]
   lda
 }

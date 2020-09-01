@@ -66,6 +66,12 @@
 #' @export rboTopics
 
 rboTopics = function(topics, k, p, progress = TRUE, pm.backend, ncpus){
+  assert_matrix(topics, mode = "integerish", any.missing = FALSE,
+                col.names = "strict", min.cols = 2, min.rows = 2)
+  assert_flag(progress)
+  assert_number(p, lower = .Machine$double.eps, upper = 1 - .Machine$double.eps)
+  assert_int(k, lower = 0, upper = nrow(topics))
+
   if (missing(ncpus)) ncpus = NULL
   if (!missing(pm.backend) && !is.null(pm.backend)){
     rboTopics.parallel(topics = topics, k = k, p = p, pm.backend = pm.backend, ncpus = ncpus)
@@ -75,11 +81,14 @@ rboTopics = function(topics, k, p, progress = TRUE, pm.backend, ncpus){
 }
 
 rboTopics.parallel = function(topics, k, p, pm.backend, ncpus){
+  assert_choice(pm.backend, choices = c("multicore", "socket", "mpi"))
+  if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
+  assert_int(ncpus, lower = 1)
+
   N = ncol(topics)
 
   ranks = apply(-topics, 2, frank, ties.method = "min") #faster than rank
 
-  if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
   parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
 
   fun = function(s){

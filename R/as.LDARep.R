@@ -56,6 +56,8 @@ as.LDARep = function(...) UseMethod("as.LDARep")
 #' @export
 as.LDARep.default = function(lda, job, id, ...){
 
+  assert_list(lda, types = "LDA", any.missing = FALSE, min.len = 1)
+
   if (missing(id)) id = "LDARep"
   if (is.null(names(lda))){
     if (missing(job) || is.vector(job)){
@@ -119,6 +121,7 @@ as.LDARep.LDABatch = as.LDARep.LDARep
 #' @rdname as.LDARep
 #' @export
 is.LDARep = function(obj, verbose = FALSE){
+  assert_flag(verbose)
 
   if (!inherits(obj, "LDARep")){
     if (verbose) message("object is not of class \"LDARep\"")

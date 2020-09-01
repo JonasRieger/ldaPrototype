@@ -28,8 +28,9 @@
 #' from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
-#' @param ind [\code{integer} or \code{character}]\cr
-#' An integerish vector for specifying the topics taken into account. Alternatively
+#' @param ind [\code{integer}, \code{logical} or \code{character}]\cr
+#' An integerish vector (or logical of the same length as the number of rows and columns)
+#' for specifying the topics taken into account. Alternatively
 #' a character vector can be passed. Then, all topics are taken for which the name
 #' contain at least one of the phrases in \code{ind} (see \code{\link[=grep]{grepl}}).
 #' By default all topics are considered.
@@ -74,8 +75,19 @@ dendTopics.TopicSimilarity = function(sims, ind, method = "complete"){
 
 #' @export
 dendTopics.default = function(sims, ind, method = "complete"){
+  assert_matrix(sims, mode = "numeric", all.missing = FALSE, nrows = ncol(sims), row.names = "strict", min.cols = 2)
+  assert_numeric(sims[lower.tri(sims)], lower = 0, upper = 1, any.missing = FALSE)
+  assert_true(all(colnames(sims) == row.names(sims)))
+  assert_true(all(grepl("\\.", colnames(sims))))
+  assert_choice(method, c("complete", "single", "average"))
+
   if (missing(ind)) ind = seq_len(ncol(sims))
   if (is.character(ind)) ind = rowSums(sapply(ind, grepl, x = colnames(sims))) > 0
+  if (is.logical(ind)){
+    assert_logical(ind, len = ncol(sims))
+    ind = which(ind)
+  }
+  assert_integerish(ind, lower = 1, upper = ncol(sims))
 
   dend = as.dendrogram(hclust(as.dist(1 - sims[ind, ind]), method = method))
 
@@ -100,6 +112,9 @@ dendTopics.default = function(sims, ind, method = "complete"){
 #' @export
 plot.TopicDendrogram = function(x, pruning, pruning.par, ...){
   dend = x
+  assert_class(dend, c("TopicDendrogram", "dendrogram"))
+  assert_class(pruning, "PruningSCLOP")
+  assert_list(pruning, types = "dendrogram", any.missing = FALSE, min.len = 1)
   class(dend) = class(dend)[-1]
   if (missing(pruning)){
     plot(dend, ...)
@@ -107,12 +122,18 @@ plot.TopicDendrogram = function(x, pruning, pruning.par, ...){
     if (missing(pruning.par)) pruning.par = list()
     default = pruning.par(pruning)
     pruning.par = c(pruning.par, default[!names(default) %in% names(pruning.par)])
-    if (pruning.par$type[1] %in% c("color", "both")){
+
+    assert_list(pruning.par, len = 4, names = "named")
+    assert_set_equal(names(pruning.par),c("type", "lty", "labels", "labels_colors"))
+    assert_choice(pruning.par$type, c("abline", "color", "both"))
+    assert_true(length(pruning.par$labels) == nobs(dend))
+
+    if (pruning.par$type %in% c("color", "both")){
       labels_colors(dend) = pruning.par$labels_colors
       labels(dend) = pruning.par$labels
     }
     plot(dend, ...)
-    if (pruning.par$type[1] %in% c("abline", "both")){
+    if (pruning.par$type %in% c("abline", "both")){
       marks = head(cumsum(lengths(lapply(pruning, labels))), -1)
       pruning.par[c("type", "labels", "labels_colors")] = NULL
       pruning.par$v = marks+0.5

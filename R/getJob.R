@@ -71,23 +71,29 @@ getLDA = function(x, job, reduce, all) UseMethod("getLDA")
 
 #' @export
 getLDA.LDARep = function(x, job, reduce = TRUE, all){
+  assert_flag(reduce)
 
   if (missing(job)) job = getJob(x)
   if (is.vector(job)) job = data.frame(job.id = as.integer(job))
 
-  lda = x$lda[match(job$job.id, names(x$lda))]
+  assert_integerish(job$job.id, lower = 1, any.missing = FALSE, min.len = 1)
+
+  lda = x$lda[na.omit(match(job$job.id, names(x$lda)))]
   if (reduce && length(lda) == 1) lda = lda[[1]]
   lda
 }
 
 #' @export
 getLDA.LDABatch = function(x, job, reduce = TRUE, all){
+  assert_flag(reduce)
 
   reg = getRegistry(x)
   reg = batchtools::loadRegistry(file.dir = reg$file.dir)
 
   if (missing(job)) job = getJob(x)
   if (is.vector(job)) job = data.frame(job.id = as.integer(job))
+
+  assert_integerish(job$job.id, lower = 1, any.missing = FALSE, min.len = 1)
 
   lda = batchtools::reduceResultsList(ids = job, fun = LDA, reg = reg)
   names(lda) = job$job.id

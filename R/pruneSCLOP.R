@@ -63,6 +63,8 @@ plot.PruningSCLOP = function(x, dend, pruning.par, ...){
 #' @rdname pruneSCLOP
 #' @export
 pruning.par = function(pruning){
+  assert_class(pruning, "PruningSCLOP")
+  assert_list(pruning, types = "dendrogram", any.missing = FALSE, min.len = 1)
   list(
     type = "abline",
     lty = 3,

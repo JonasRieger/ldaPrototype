@@ -59,13 +59,15 @@
 
 LDABatch = function(docs, vocab, n = 100, seeds, id = "LDABatch", load = FALSE, chunk.size = 1, resources, ...){
 
-  stopifnot(is.character(id), length(id) == 1,
-    is.list(docs), all(sapply(docs, is.matrix)), all(sapply(docs, nrow) == 2),
-    all(sapply(docs, function(x) all(x[2,] == 1))),
-    is.character(vocab),
-    is.numeric(n), length(n) == 1, as.integer(n) == n,
-    is.logical(load), length(load) == 1,
-    is.numeric(chunk.size), as.integer(chunk.size) == chunk.size)
+  assert_string(id, min.chars = 1)
+  assert_list(docs, min.len = 1, names = "unique", types = "matrix", any.missing = FALSE)
+  stopifnot(all(sapply(docs, nrow) == 2),
+            all(sapply(docs, function(x) all(x[2,] == 1))))
+  assert_character(vocab, any.missing = FALSE, unique = TRUE, min.len = 2)
+  assert_int(n, lower = 1)
+  assert_flag(load)
+  assert_int(chunk.size, lower = 1)
+  assert_integerish(K, lower = 2, any.missing = FALSE, min.len = 1, max.len = n)
 
   fd = file.path(id)
   if (dir.exists(fd)){

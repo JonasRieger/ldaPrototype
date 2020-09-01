@@ -159,11 +159,16 @@ getPrototype.default = function(lda, vocab, id, job, limit.rel, limit.abs, atLea
   progress = TRUE, pm.backend, ncpus,
   keepTopics = FALSE, keepSims = FALSE, keepLDAs = FALSE, sclop, ...){
 
+  assert_flag(keepTopics)
+  assert_flag(keepSims)
+  assert_flag(keepLDAs)
+
   K = NULL
   if (missing(limit.rel)) limit.rel = .defaultLimit.rel()
   if (missing(limit.abs)) limit.abs = .defaultLimit.abs()
   if (missing(atLeast)) atLeast = .defaultAtLeast()
   if (missing(vocab)) vocab = .defaultVocab(lda)
+  assert_character(vocab, any.missing = FALSE, unique = TRUE, min.len = 2)
   if (missing(pm.backend)) pm.backend = NULL
   if (missing(ncpus)) ncpus = NULL
   x = as.LDARep.default(lda = lda, job = job, id = id)
@@ -192,8 +197,15 @@ getPrototype.default = function(lda, vocab, id, job, limit.rel, limit.abs, atLea
     wordslimit = NULL
     wordsconsidered = NULL
   }
+  assert_matrix(sclop, mode = "numeric", all.missing = FALSE, nrows = ncol(sclop), ncols = length(lda), row.names = "strict")
+  # uncomment if SCLOP.pairwise fail
+  #assert_matrix(sclop, mode = "numeric", all.missing = FALSE, nrows = ncol(sclop), ncols = length(lda), row.names = "unique")
+  assert_numeric(sclop[lower.tri(sclop)], lower = 0, upper = 1, any.missing = FALSE)
+  assert_numeric(sclop[upper.tri(sclop)], lower = 0, upper = 1, any.missing = FALSE)
+  assert_true(all(colnames(sclop) == row.names(sclop)))
+
   protoid = as.integer(names(lda)[which.max(colSums(sclop, na.rm = TRUE))])
-  if (!keepLDAs) lda = lda[which.max(colSums(sclop, na.rm = TRUE))]
+  if (!keepLDAs) lda = lda[match(protoid, names(lda))]
   res = list(id = id, protoid = protoid, lda = lda, jobs = job,
     param = list(limit.rel = limit.rel, limit.abs = limit.abs, atLeast = atLeast),
     topics = topics, sims = sims, wordslimit = wordslimit,

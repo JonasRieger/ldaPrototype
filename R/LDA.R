@@ -63,8 +63,28 @@ LDA = function(x, param, assignments, topics, document_sums, document_expects,
     if (missing(log.likelihoods)) log.likelihoods = NULL
   }
   if (missing(param)){
-    param = list(K = NA_real_, alpha = NA_real_, eta = NA_real_, num.iterations = NA_real_)
+    param = list(K = NA_integer_, alpha = NA_real_, eta = NA_real_, num.iterations = NA_integer_)
   }
+  assert_list(param, names = "named")
+  assert_subset(c("K", "alpha", "eta", "num.iterations"), names(param))
+  assert_list(assignments, null.ok = TRUE, types = "integerish")
+  assert_matrix(topics, null.ok = TRUE,
+                mode = "integerish", any.missing = FALSE, col.names = "unique",
+                row.names = "unnamed", min.cols = 2, min.rows = 2)
+  assert_integerish(topics, null.ok = TRUE, lower = 0)
+  assert_matrix(document_sums, null.ok = TRUE,
+                mode = "integerish", any.missing = FALSE, col.names = "unnamed",
+                row.names = "unnamed", min.cols = 2, min.rows = 2)
+  assert_integerish(document_sums, null.ok = TRUE, lower = 0)
+  assert_matrix(document_expects, null.ok = TRUE,
+                mode = "integerish", any.missing = FALSE, col.names = "unnamed",
+                row.names = "unnamed", min.cols = 2, min.rows = 2)
+  assert_integerish(document_expects, null.ok = TRUE, lower = 0)
+  assert_matrix(log.likelihoods, null.ok = TRUE,
+                mode = "numeric", any.missing = FALSE, col.names = "unnamed",
+                row.names = "unnamed", min.cols = 2, nrows = 2)
+  assert_numeric(log.likelihoods, null.ok = TRUE, upper = 0)
+
   res = list(
     param = param,
     assignments = assignments,
@@ -83,6 +103,7 @@ as.LDA = LDA
 #' @rdname LDA
 #' @export
 is.LDA = function(obj, verbose = FALSE){
+  assert_flag(verbose)
 
   if (!inherits(obj, "LDA")){
     if (verbose) message("object is not of class \"LDA\"")
