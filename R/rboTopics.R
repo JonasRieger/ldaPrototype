@@ -27,7 +27,8 @@
 #' @param k [\code{integer(1)}]\cr
 #' Maximum depth for evaluation. Words down to this rank are considered for the calculation of similarities.
 #' @param p [0,1]\cr
-#' Weighting parameter. Higher values emphasizes top ranked words.
+#' Weighting parameter. Lower values emphasizes top ranked words while values
+#' that go towards 1 correspond to equal weights for each evaluation depth.
 #' @param progress [\code{logical(1)}]\cr
 #' Should a nice progress bar be shown? Turning it off, could lead to significantly
 #' faster calculation. Default is \code{TRUE}.

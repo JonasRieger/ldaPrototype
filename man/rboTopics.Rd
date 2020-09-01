@@ -14,7 +14,8 @@ The counts of vocabularies/words (row wise) in topics (column wise).}
 Maximum depth for evaluation. Words down to this rank are considered for the calculation of similarities.}
 
 \item{p}{[0,1]\cr
-Weighting parameter. Higher values emphasizes top ranked words.}
+Weighting parameter. Lower values emphasizes top ranked words while values
+that go towards 1 correspond to equal weights for each evaluation depth.}
 
 \item{progress}{[\code{logical(1)}]\cr
 Should a nice progress bar be shown? Turning it off, could lead to significantly
