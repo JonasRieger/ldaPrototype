@@ -113,12 +113,12 @@ dendTopics.default = function(sims, ind, method = "complete"){
 plot.TopicDendrogram = function(x, pruning, pruning.par, ...){
   dend = x
   assert_class(dend, c("TopicDendrogram", "dendrogram"))
-  assert_class(pruning, "PruningSCLOP")
-  assert_list(pruning, types = "dendrogram", any.missing = FALSE, min.len = 1)
   class(dend) = class(dend)[-1]
   if (missing(pruning)){
     plot(dend, ...)
   }else{
+    assert_class(pruning, "PruningSCLOP")
+    assert_list(pruning, types = "dendrogram", any.missing = FALSE, min.len = 1)
     if (missing(pruning.par)) pruning.par = list()
     default = pruning.par(pruning)
     pruning.par = c(pruning.par, default[!names(default) %in% names(pruning.par)])
