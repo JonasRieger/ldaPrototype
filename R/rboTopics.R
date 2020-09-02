@@ -68,6 +68,7 @@
 rboTopics = function(topics, k, p, progress = TRUE, pm.backend, ncpus){
   assert_matrix(topics, mode = "integerish", any.missing = FALSE,
                 col.names = "strict", min.cols = 2, min.rows = 2)
+  assert_integerish(topics, lower = 0, any.missing = FALSE)
   assert_flag(progress)
   assert_number(p, lower = .Machine$double.eps, upper = 1 - .Machine$double.eps)
   assert_int(k, lower = 0, upper = nrow(topics))
@@ -103,7 +104,7 @@ rboTopics.parallel = function(topics, k, p, pm.backend, ncpus){
     })
   }
 
-  parallelMap::parallelExport("ranks", "N")
+  parallelMap::parallelExport("ranks", "N") # p and k exported by function
   sequences = lapply(seq_len(max(ncpus, 2)), function(x) seq(x, N-2, max(ncpus, 2)))
   val = parallelMap::parallelMap(fun = fun, sequences)
   parallelMap::parallelStop()

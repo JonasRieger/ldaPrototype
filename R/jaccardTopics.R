@@ -95,6 +95,7 @@ jaccardTopics = function(topics, limit.rel, limit.abs, atLeast, progress = TRUE,
 
   assert_matrix(topics, mode = "integerish", any.missing = FALSE,
                 col.names = "strict", min.cols = 2, min.rows = 2)
+  assert_integerish(topics, lower = 0, any.missing = FALSE)
   assert_flag(progress)
   assert_number(limit.rel, lower = 0, upper = 1)
   assert_int(limit.abs, lower = 0)

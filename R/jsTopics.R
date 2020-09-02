@@ -69,6 +69,7 @@
 jsTopics = function(topics, epsilon = 1e-6, progress = TRUE, pm.backend, ncpus){
   assert_matrix(topics, mode = "integerish", any.missing = FALSE,
                 col.names = "strict", min.cols = 2, min.rows = 2)
+  assert_integerish(topics, lower = 0, any.missing = FALSE)
   assert_flag(progress)
   assert_number(epsilon, lower = 0)
 

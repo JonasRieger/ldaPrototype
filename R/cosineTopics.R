@@ -55,6 +55,7 @@
 cosineTopics = function(topics, progress = TRUE, pm.backend, ncpus){
   assert_matrix(topics, mode = "integerish", any.missing = FALSE,
                 col.names = "strict", min.cols = 2, min.rows = 2)
+  assert_integerish(topics, lower = 0, any.missing = FALSE)
   assert_flag(progress)
 
   if (missing(ncpus)) ncpus = NULL
