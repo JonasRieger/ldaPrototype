@@ -50,7 +50,18 @@ test_that("jsTopics_errors", {
   expect_error(jsTopics(mtopics, pm.backend = TRUE))
   expect_error(jsTopics(mtopics, pm.backend = ""))
   expect_error(jsTopics(mtopics, progress = "TRUE"))
-  # Checks auf mtopics Basis...
+  colnames(mtopics)[1] = ""
+  expect_error(jsTopics(mtopics))
+  colnames(mtopics)[1:2] = "LDARep1.1"
+  expect_error(jsTopics(mtopics))
+  colnames(mtopics)[2] = "LDARep1.2"
+  expect_silent(jsTopics(mtopics))
+  expect_error(jsTopics(mtopics-1))
+  expect_error(jsTopics(as.data.frame(mtopics)))
+  mtopics[sample(seq_len(nrow(mtopics)), 1), sample(seq_len(ncol(mtopics)), 1)] = NA
+  expect_error(jsTopics(mtopics))
+  expect_error(jsTopics(1:100))
+  expect_error(jsTopics())
 })
 
 

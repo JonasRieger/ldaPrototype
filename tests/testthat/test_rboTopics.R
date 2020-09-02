@@ -44,16 +44,32 @@ test_that("rboTopics_success", {
 })
 
 test_that("rboTopics_errors", {
+  expect_error(rboTopics(mtopics, k = 5))
+  expect_error(rboTopics(mtopics, p = 0.9))
   expect_error(rboTopics(mtopics, k = 0, p = 0.9))
+  expect_error(rboTopics(mtopics, k = 12.4, p = 0.9))
   expect_error(rboTopics(mtopics, k = -1, p = 0.9))
   expect_error(rboTopics(mtopics, p = 1.1, k = 1))
   expect_error(rboTopics(mtopics, p = -0.4, k = 1))
+  expect_silent(rboTopics(mtopics, p = 0.9, k = 1))
   expect_error(rboTopics(mtopics, ncpus = -1, pm.backend = "socket", k = 1, p = 0.9))
   expect_error(rboTopics(mtopics, ncpus = 3.2, pm.backend = "socket", k = 1, p = 0.9))
-  expect_error(rboTopics(mtopics, pm.backend = TRUE))
-  expect_error(rboTopics(mtopics, pm.backend = ""))
-  expect_error(rboTopics(mtopics, progress = "TRUE"))
-  # Checks auf mtopics Basis...
+  expect_error(rboTopics(mtopics, pm.backend = TRUE, k = 1, p = 0.9))
+  expect_error(rboTopics(mtopics, pm.backend = "", k = 1, p = 0.9))
+  expect_error(rboTopics(mtopics, progress = "TRUE", k = 1, p = 0.9))
+  colnames(mtopics)[1] = ""
+  expect_error(rboTopics(mtopics, p = 0.9, k = 1))
+  colnames(mtopics)[1:2] = "LDARep1.1"
+  expect_error(rboTopics(mtopics, p = 0.9, k = 1))
+  colnames(mtopics)[2] = "LDARep1.2"
+  expect_silent(rboTopics(mtopics, p = 0.9, k = 1))
+  expect_error(rboTopics(mtopics-1, p = 0.9, k = 1))
+  expect_error(rboTopics(as.data.frame(mtopics), p = 0.9, k = 1))
+  mtopics[sample(seq_len(nrow(mtopics)), 1), sample(seq_len(ncol(mtopics)), 1)] = NA
+  expect_error(rboTopics(mtopics, p = 0.9, k = 1))
+  expect_error(rboTopics(1:100, p = 0.9, k = 1))
+  expect_error(rboTopics(p = 0.9, k = 1))
+  expect_error(rboTopics())
 })
 
 test_that("print.TopicSimilarity", {

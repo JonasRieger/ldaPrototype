@@ -33,7 +33,18 @@ test_that("cosineTopics_errors", {
   expect_error(cosineTopics(mtopics, pm.backend = TRUE))
   expect_error(cosineTopics(mtopics, pm.backend = ""))
   expect_error(cosineTopics(mtopics, progress = "TRUE"))
-  # Checks auf mtopics Basis...
+  colnames(mtopics)[1] = ""
+  expect_error(cosineTopics(mtopics))
+  colnames(mtopics)[1:2] = "LDARep1.1"
+  expect_error(cosineTopics(mtopics))
+  colnames(mtopics)[2] = "LDARep1.2"
+  expect_silent(cosineTopics(mtopics))
+  expect_error(cosineTopics(mtopics-1))
+  expect_error(cosineTopics(as.data.frame(mtopics)))
+  mtopics[sample(seq_len(nrow(mtopics)), 1), sample(seq_len(ncol(mtopics)), 1)] = NA
+  expect_error(cosineTopics(mtopics))
+  expect_error(cosineTopics(1:100))
+  expect_error(cosineTopics())
 })
 
 test_that("print.TopicSimilarity", {

@@ -45,15 +45,28 @@ test_that("jaccardTopics_success", {
 
 test_that("jaccardTopics_errors", {
   expect_error(jaccardTopics(mtopics, limit.abs = -1))
+  expect_error(jaccardTopics(mtopics, limit.abs = 0.9))
   expect_error(jaccardTopics(mtopics, limit.rel = 1.1))
   expect_error(jaccardTopics(mtopics, limit.rel = -0.4))
   expect_error(jaccardTopics(mtopics, atLeast = -10))
+  expect_error(jaccardTopics(mtopics, atLeast = length(reuters_vocab)+1))
   expect_error(jaccardTopics(mtopics, ncpus = -1, pm.backend = "socket"))
   expect_error(jaccardTopics(mtopics, ncpus = 3.2, pm.backend = "socket"))
   expect_error(jaccardTopics(mtopics, pm.backend = TRUE))
   expect_error(jaccardTopics(mtopics, pm.backend = ""))
   expect_error(jaccardTopics(mtopics, progress = "TRUE"))
-  # Checks auf mtopics Basis...
+  colnames(mtopics)[1] = ""
+  expect_error(jaccardTopics(mtopics))
+  colnames(mtopics)[1:2] = "LDARep1.1"
+  expect_error(jaccardTopics(mtopics))
+  colnames(mtopics)[2] = "LDARep1.2"
+  expect_silent(jaccardTopics(mtopics))
+  expect_error(jaccardTopics(mtopics-1))
+  expect_error(jaccardTopics(as.data.frame(mtopics)))
+  mtopics[sample(seq_len(nrow(mtopics)), 1), sample(seq_len(ncol(mtopics)), 1)] = NA
+  expect_error(jaccardTopics(mtopics))
+  expect_error(jaccardTopics(1:100))
+  expect_error(jaccardTopics())
 })
 
 test_that("print.TopicSimilarity", {
