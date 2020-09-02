@@ -135,11 +135,21 @@ is.LDARep = function(obj, verbose = FALSE){
 
   testNames = c("id", "jobs", "lda")
 
-  if (length(setdiff(names(obj), testNames)) != 0  ||
-      length(intersect(names(obj), testNames)) != 3){
+  #if (length(setdiff(names(obj), testNames)) != 0  ||
+  #    length(intersect(names(obj), testNames)) != 3){
+  if (!test_list(obj, types = c("character", "list", "data.table"), names = "named", any.missing = FALSE) ||
+      !test_set_equal(names(obj), testNames)){
     if (verbose) message("object does not contain exactly the list elements of a \"LDARep\" object")
     return(FALSE)
   }
+
+  if (verbose) message("id: ", appendLF = FALSE)
+  id = getID(obj)
+  if (!is.character(id) || !(length(id) == 1)){
+    if (verbose) message("not a character of length 1")
+    return(FALSE)
+  }
+  if (verbose) message("checked")
 
   if (verbose) message("lda: ", appendLF = FALSE)
   lda = try(getLDA(obj, reduce = FALSE), silent = verbose)
@@ -176,14 +186,6 @@ is.LDARep = function(obj, verbose = FALSE){
   #  if (verbose) message("names of LDAs and \"job.id\" do not fit together")
   #  return(FALSE)
   #}
-  if (verbose) message("checked")
-
-  if (verbose) message("id: ", appendLF = FALSE)
-  id = getID(obj)
-  if (!is.character(id) || !(length(id) == 1)){
-    if (verbose) message("not a character of length 1")
-    return(FALSE)
-  }
   if (verbose) message("checked")
 
   return(TRUE)
