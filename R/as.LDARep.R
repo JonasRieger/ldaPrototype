@@ -156,8 +156,8 @@ is.LDARep = function(obj, verbose = FALSE){
   if(inherits(lda, "try-error")){
     return(FALSE)
   }
-  if(!is.list(lda)){
-    if (verbose) message("not a list")
+  if(!is.list(lda) || length(lda) < 1){
+    if (verbose) message("not a (non-empty) list of \"LDA\" objects")
     return(FALSE)
   }
   if(!all(sapply(lda, is.LDA))){
