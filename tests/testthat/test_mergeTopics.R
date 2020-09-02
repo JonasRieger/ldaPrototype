@@ -36,6 +36,6 @@ test_that("mergeTopics_success", {
 
 test_that("mergeTopics_errors", {
   expect_error(mergeTopics(nores))
-  expect_warning(mergeRepTopics(lda, id = 1:15))
-  expect_silent(mergeTopics(res, vocab = 1:10))
+  expect_error(mergeRepTopics(lda, id = 1:15))
+  expect_error(mergeTopics(res, vocab = 1:10))
 })
