@@ -43,12 +43,11 @@ test_that("rboTopics_success", {
   expect_equal(rbo3, rbo4)
 })
 
-# noch inaktiv (aktivieren, wenn checkmate eingebunden)
 test_that("rboTopics_errors", {
   expect_error(rboTopics(mtopics, k = 0, p = 0.9))
   expect_error(rboTopics(mtopics, k = -1, p = 0.9))
-  #expect_error(rboTopics(mtopics, p = 1.1, k = 1))
-  #expect_error(rboTopics(mtopics, p = -0.4, k = 1))
+  expect_error(rboTopics(mtopics, p = 1.1, k = 1))
+  expect_error(rboTopics(mtopics, p = -0.4, k = 1))
   expect_error(rboTopics(mtopics, ncpus = -1, pm.backend = "socket", k = 1, p = 0.9))
   expect_error(rboTopics(mtopics, ncpus = 3.2, pm.backend = "socket", k = 1, p = 0.9))
   expect_error(rboTopics(mtopics, pm.backend = TRUE))

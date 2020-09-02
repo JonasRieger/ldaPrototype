@@ -43,12 +43,11 @@ test_that("jaccardTopics_success", {
   expect_equal(jacc3, jacc4)
 })
 
-# noch inaktiv (aktivieren, wenn checkmate eingebunden)
 test_that("jaccardTopics_errors", {
-  #expect_error(jaccardTopics(mtopics, limit.abs = -1))
-  #expect_error(jaccardTopics(mtopics, limit.rel = 1.1))
-  #expect_error(jaccardTopics(mtopics, limit.rel = -0.4))
-  #expect_error(jaccardTopics(mtopics, atLeast = -10))
+  expect_error(jaccardTopics(mtopics, limit.abs = -1))
+  expect_error(jaccardTopics(mtopics, limit.rel = 1.1))
+  expect_error(jaccardTopics(mtopics, limit.rel = -0.4))
+  expect_error(jaccardTopics(mtopics, atLeast = -10))
   expect_error(jaccardTopics(mtopics, ncpus = -1, pm.backend = "socket"))
   expect_error(jaccardTopics(mtopics, ncpus = 3.2, pm.backend = "socket"))
   expect_error(jaccardTopics(mtopics, pm.backend = TRUE))

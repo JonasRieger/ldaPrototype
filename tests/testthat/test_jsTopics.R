@@ -43,9 +43,8 @@ test_that("jsTopics_success", {
   expect_equal(js3, js4)
 })
 
-# noch inaktiv (aktivieren, wenn checkmate eingebunden)
 test_that("jsTopics_errors", {
-  #expect_error(jsTopics(mtopics, epsilon = -1))
+  expect_error(jsTopics(mtopics, epsilon = -1))
   expect_error(jsTopics(mtopics, ncpus = -1, pm.backend = "socket"))
   expect_error(jsTopics(mtopics, ncpus = 3.2, pm.backend = "socket"))
   expect_error(jsTopics(mtopics, pm.backend = TRUE))

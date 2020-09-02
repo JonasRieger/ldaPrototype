@@ -27,7 +27,6 @@ test_that("cosineTopics_success", {
   expect_equal(cosine, cosine3)
 })
 
-# noch inaktiv (aktivieren, wenn checkmate eingebunden)
 test_that("cosineTopics_errors", {
   expect_error(cosineTopics(mtopics, ncpus = -1, pm.backend = "socket"))
   expect_error(cosineTopics(mtopics, ncpus = 3.2, pm.backend = "socket"))
