@@ -142,7 +142,7 @@ is.LDARep = function(obj, verbose = FALSE){
   }
 
   if (verbose) message("lda: ", appendLF = FALSE)
-  lda = try(getLDA(obj, silent = verbose))
+  lda = try(getLDA(obj), silent = verbose)
   if(inherits(lda, "try-error")) return(FALSE)
   if(!is.list(lda)){
     if (verbose) message("not a list")
