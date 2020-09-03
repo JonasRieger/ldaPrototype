@@ -101,7 +101,7 @@ dendTopics.default = function(sims, ind, method = "complete"){
 
 dendTopics.intern = function(sims, ind){
   ind = rowSums(sapply(ind, grepl, x = colnames(sims))) > 0
-  dend = as.dendrogram(hclust(as.dist(1 - sims[ind, ind]), method = method))
+  dend = as.dendrogram(hclust(as.dist(1 - sims[ind, ind]), method = "complete"))
 
   runs = gsub(pattern = "\\.(.?)*", x = colnames(sims)[ind], replacement = "")
   runs = table(runs)
