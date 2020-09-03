@@ -50,7 +50,6 @@ test_that("SCLOP.pairwise", {
   expect_true(all(pairs[lower.tri(pairs)] <= 1 & pairs[lower.tri(pairs)] >= 0))
   expect_identical(nrow(getJob(res)), ncol(pairs))
   expect_identical(pairs, pairs2)
-  expect_identical(pairs, pairs3)
 })
 
 test_that("dend_sclop_errors", {
