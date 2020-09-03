@@ -67,6 +67,7 @@ as.LDARep.default = function(lda, job, id, ...){
       names(lda) = job$job.id
     }
   }
+  assert_integerish(suppressWarnings(as.numeric(names(lda))), any.missing = FALSE)
   if (missing(job)){
     job = rbindlist(lapply(lda, function(x)
       as.data.table(data.frame((getParam(x))))), fill = TRUE)
@@ -178,7 +179,7 @@ is.LDARep = function(obj, verbose = FALSE){
     return(FALSE)
   }
   if (!is.integer(job$job.id)){
-    if (verbose) message("\"job.id\" is not integerish")
+    if (verbose) message("\"job.id\" is not an integer")
     return(FALSE)
   }
   #if (!all(union(job$job.id, names(lda)) %in% intersect(job$job.id, names(lda))) ||

@@ -18,6 +18,7 @@ pruned3 = pruneSCLOP(dend3)
 
 pairs = SCLOP.pairwise(jacc)
 pairs2 = SCLOP.pairwise(getSimilarity(jacc))
+pairs3 = SCLOP.pairwise(jacc, pm.backend = "socket")
 
 test_that("dendTopics_pruneSCLOP", {
   expect_true(is.dendrogram(dend))
@@ -50,6 +51,7 @@ test_that("SCLOP.pairwise", {
   expect_true(all(pairs[lower.tri(pairs)] <= 1 & pairs[lower.tri(pairs)] >= 0))
   expect_identical(nrow(getJob(res)), ncol(pairs))
   expect_identical(pairs, pairs2)
+  expect_identical(pairs, pairs3)
 })
 
 test_that("dend_sclop_errors", {

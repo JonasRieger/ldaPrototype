@@ -37,7 +37,7 @@ test_that("as.LDARep", {
   # ids not fitting data.frame
   expect_error(as.LDARep(lda = list("1" = lda), job = as.data.frame(c(job.id = 2, getParam(lda)))))
   # names lda not integerish (only a warning!!)
-  expect_warning(as.LDARep(lda = list("abc" = lda)))
+  expect_error(as.LDARep(lda = list("abc" = lda)))
   # no param in lda to interprete and no job given
   expect_error(as.LDARep(lda = list(ldawoparam)))
   # duplicated names
@@ -70,6 +70,8 @@ test_that("is.LDARep", {
   nores = res
   nores$jobs$job.id = as.character(getJob(res)$job.id)
   expect_false(is.LDARep(nores, verbose = TRUE))
+  nores$jobs$job.id = as.numeric(getJob(res)$job.id)
+  expect_false(is.LDARep(nores, verbose = TRUE))
   nores$jobs = rbind(getJob(res), getJob(res))
   expect_false(is.LDARep(nores, verbose = TRUE))
   nores$jobs = as.data.frame(getJob(res))
@@ -80,6 +82,9 @@ test_that("is.LDARep", {
   nores$lda = getLDA(res)[[1]]
   expect_false(is.LDARep(nores, verbose = TRUE))
   nores$lda = unlist(getLDA(res))
+  expect_false(is.LDARep(nores, verbose = TRUE))
+  nores$lda = getLDA(res)
+  nores$lda[[1]]$param = NULL
   expect_false(is.LDARep(nores, verbose = TRUE))
 
   # general
