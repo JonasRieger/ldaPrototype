@@ -99,6 +99,18 @@ dendTopics.default = function(sims, ind, method = "complete"){
   invisible(dend)
 }
 
+dendTopics.intern = function(sims, ind){
+  ind = rowSums(sapply(ind, grepl, x = colnames(sims))) > 0
+  dend = as.dendrogram(hclust(as.dist(1 - sims[ind, ind]), method = method))
+
+  runs = gsub(pattern = "\\.(.?)*", x = colnames(sims)[ind], replacement = "")
+  runs = table(runs)
+  cols = rep(rainbow_hcl(n = length(runs)), times = runs)
+  labels_colors(dend) = cols[order.dendrogram(dend)]
+  class(dend) = c("TopicDendrogram", class(dend))
+  invisible(dend)
+}
+
 #' @rdname dendTopics
 #' @param x an R object.
 #' @param pruning [\code{list of \link[stats]{dendrogram}s}]\cr
