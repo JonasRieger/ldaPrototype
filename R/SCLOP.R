@@ -131,7 +131,7 @@ SCLOP.pairwise.serial = function(sims){
   mat = matrix(ncol = length(names), nrow = length(names))
   i = match(combs[2,], names)
   j = match(combs[1,], names)
-  for(k in seq_len(nrow(dat))){
+  for(k in seq_len(length(vals))){
     mat[i[k], j[k]] = vals[k]
     mat[j[k], i[k]] = vals[k]
   }
@@ -156,7 +156,7 @@ SCLOP.pairwise.parallel = function(sims, pm.backend, ncpus){
   mat = matrix(ncol = length(names), nrow = length(names))
   i = match(combs[2,], names)
   j = match(combs[1,], names)
-  for(k in seq_len(nrow(dat))){
+  for(k in seq_len(length(vals))){
     mat[i[k], j[k]] = vals[k]
     mat[j[k], i[k]] = vals[k]
   }
