@@ -126,7 +126,7 @@ SCLOP.pairwise.serial = function(sims){
   names = unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1]))
 
   combs = combn(names, 2)
-  vals = apply(combs, 2, function(x) SCLOP(dendTopics(sims = sims, ind = paste0(x, "."))))
+  vals = apply(combs, 2, function(x) SCLOP(dendTopics(sims = sims, ind = paste0(x, "\\."))))
 
   mat = matrix(ncol = length(names), nrow = length(names))
   i = match(combs[2,], names)
@@ -148,7 +148,7 @@ SCLOP.pairwise.parallel = function(sims, pm.backend, ncpus){
 
   combs = combn(names, 2)
   parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
-  vals = parallelMap::parallelMap(fun = function(x) SCLOP(dendTopics(sims = sims, ind = paste0(x, "."))),
+  vals = parallelMap::parallelMap(fun = function(x) SCLOP(dendTopics(sims = sims, ind = paste0(x, "\\."))),
                                  split(combs, rep(seq_len(ncol(combs)), each = 2)))
   parallelMap::parallelStop()
   vals = unlist(vals)
