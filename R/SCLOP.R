@@ -90,39 +90,75 @@ disparitySum = function(dend){
 #' from \code{\link[=jaccardTopics]{TopicSimilarity}} objects. The topic names should be
 #' formatted as <\emph{Run X}>.<\emph{Topic Y}>, so that the name before the
 #' first dot identifies the LDA run.
+#' @param pm.backend [\code{character(1)}]\cr
+#' One of "multicore", "socket" or "mpi".
+#' If \code{pm.backend} is set, \code{\link[parallelMap]{parallelStart}} is
+#' called before computation is started and \code{\link[parallelMap]{parallelStop}}
+#' is called after.
+#' @param ncpus [\code{integer(1)}]\cr
+#' Number of (physical) CPUs to use. If \code{pm.backend} is passed,
+#' default is determined by \code{\link[future]{availableCores}}.
 #' @export SCLOP.pairwise
-SCLOP.pairwise = function(sims) UseMethod("SCLOP.pairwise")
+SCLOP.pairwise = function(sims, pm.backend, ncpus) UseMethod("SCLOP.pairwise")
 
 #' @export
-SCLOP.pairwise.TopicSimilarity = function(sims){
+SCLOP.pairwise.TopicSimilarity = function(sims, pm.backend, ncpus){
   sims = getSimilarity(sims)
   NextMethod("SCLOP.pairwise")
 }
 
 #' @export
-SCLOP.pairwise.default = function(sims){
+SCLOP.pairwise.default = function(sims, pm.backend, ncpus){
   assert_matrix(sims, mode = "numeric", all.missing = FALSE, nrows = ncol(sims), row.names = "strict", min.cols = 2)
   assert_numeric(sims[lower.tri(sims)], lower = 0, upper = 1, any.missing = FALSE)
   assert_true(all(colnames(sims) == row.names(sims)))
   assert_true(all(grepl("\\.", colnames(sims))))
 
-  #names = paste0(unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1])), "\\.")
-  # deprecated: delete commented if code dont fail
+  if (missing(ncpus)) ncpus = NULL
+  if (!missing(pm.backend) && !is.null(pm.backend)){
+    SCLOP.pairwise.parallel(sims = sims, pm.backend = pm.backend, ncpus = ncpus)
+  }else{
+    SCLOP.pairwise.serial(sims = sims)
+  }
+}
+
+SCLOP.pairwise.serial = function(sims){
   names = unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1]))
 
   combs = combn(names, 2)
-  rownames(combs) = c("V1", "V2")
   vals = apply(combs, 2, function(x) SCLOP(dendTopics(sims = sims, ind = x)))
-  dat = data.frame(t(combs))
-  dat$SCLOP = vals
 
   mat = matrix(ncol = length(names), nrow = length(names))
-  k = 1
-  i = match(dat$V2, names)
-  j = match(dat$V1, names)
+  i = match(combs[2,], names)
+  j = match(combs[1,], names)
   for(k in seq_len(nrow(dat))){
-    mat[i[k], j[k]] = dat$SCLOP[k]
-    mat[j[k], i[k]] = dat$SCLOP[k]
+    mat[i[k], j[k]] = vals[k]
+    mat[j[k], i[k]] = vals[k]
+  }
+  colnames(mat) = rownames(mat) = names
+  return(mat)
+}
+
+SCLOP.pairwise.parallel = function(sims, pm.backend, ncpus){
+  assert_choice(pm.backend, choices = c("multicore", "socket", "mpi"))
+  if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
+  assert_int(ncpus, lower = 1)
+
+  names = unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1]))
+
+  combs = combn(names, 2)
+  parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
+  val = parallelMap::parallelMap(fun = function(x) SCLOP(dendTopics(sims = sims, ind = x)),
+                                 split(combs, rep(seq_len(ncol(combs)), each = 2)))
+  parallelMap::parallelStop()
+  vals = unlist(vals)
+
+  mat = matrix(ncol = length(names), nrow = length(names))
+  i = match(combs[2,], names)
+  j = match(combs[1,], names)
+  for(k in seq_len(nrow(dat))){
+    mat[i[k], j[k]] = vals[k]
+    mat[j[k], i[k]] = vals[k]
   }
   colnames(mat) = rownames(mat) = names
   return(mat)
