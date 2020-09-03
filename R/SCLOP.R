@@ -148,7 +148,7 @@ SCLOP.pairwise.parallel = function(sims, pm.backend, ncpus){
 
   combs = combn(names, 2)
   parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)
-  val = parallelMap::parallelMap(fun = function(x) SCLOP(dendTopics(sims = sims, ind = x)),
+  vals = parallelMap::parallelMap(fun = function(x) SCLOP(dendTopics(sims = sims, ind = x)),
                                  split(combs, rep(seq_len(ncol(combs)), each = 2)))
   parallelMap::parallelStop()
   vals = unlist(vals)
