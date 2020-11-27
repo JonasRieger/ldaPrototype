@@ -88,6 +88,15 @@ jsTopics.parallel = function(topics, epsilon, pm.backend, ncpus){
 
   N = ncol(topics)
 
+  if(ncpus > N-2){
+    ncpus = N-2
+    message("The selected number of cores exceeds the parallelizable complexity of the task, set ncpus to ", ncpus, ".")
+  }
+  if(ncpus == 1){
+    message("There is only one core on the running system or one core selected, falling back to serial version.")
+    jsTopics.serial(topics = topics, epsilon = epsilon)
+  }
+
   rel = topics + epsilon
   rel = t(t(rel)/colSums(rel)) #faster than apply
   logrel = colSums(rel*log(rel))

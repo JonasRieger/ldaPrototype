@@ -73,6 +73,15 @@ cosineTopics.parallel = function(topics, pm.backend, ncpus){
 
   N = ncol(topics)
 
+  if(ncpus > N-2){
+    ncpus = N-2
+    message("The selected number of cores exceeds the parallelizable complexity of the task, set ncpus to ", ncpus, ".")
+  }
+  if(ncpus == 1){
+    message("There is only one core on the running system or one core selected, falling back to serial version.")
+    cosineTopics.serial(topics = topics)
+  }
+
   rel = t(t(topics)/colSums(topics)) #faster than apply
   squaresums = sqrt(colSums(rel^2))
 

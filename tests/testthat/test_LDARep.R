@@ -99,8 +99,8 @@ test_that("is.LDARep", {
   expect_false(is.LDARep(nores, verbose = TRUE))
 
   # repeated num.iterations
-  expect_error(LDARep(docs = reuters_docs,
-    vocab = reuters_vocab, n = 1, num.iterations = 10, num.iterations = 5))
+  expect_error(suppressWarnings(LDARep(docs = reuters_docs,
+    vocab = reuters_vocab, n = 1, num.iterations = 10, num.iterations = 5)))
   expect_warning(res0 <- LDARep(docs = reuters_docs, K = 2,
     vocab = reuters_vocab, n = 1, num.iterations = 10, num.iterations = 5))
   expect_equal(getNum.iterations(getLDA(res0)), 5)
