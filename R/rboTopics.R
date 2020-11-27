@@ -94,7 +94,7 @@ rboTopics.parallel = function(topics, k, p, pm.backend, ncpus){
   }
   if(ncpus == 1){
     message("There is only one core on the running system or one core selected, falling back to serial version.")
-    jsTopics.serial(topics = topics, k = k, p = p)
+    rboTopics.serial(topics = topics, k = k, p = p)
   }
 
   ranks = apply(-topics, 2, frank, ties.method = "min") #faster than rank
