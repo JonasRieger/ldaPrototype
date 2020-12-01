@@ -78,6 +78,8 @@ proto2 = getPrototype(res2) #= getLDA(res2)
 
 identical(res, res2)
 ```
+There is also the option to use similarity measures other than the Jaccard coefficient. Currently, the measures cosine similarity (``cosineTopics``), Jensen-Shannon divergence (``jsTopics``) and rank-biased overlap (``rboTopics``) are implemented in addition to the standard Jaccard coefficient (``jaccardTopics``).
+
 To get an overview of the workflow, the associated functions and getters for each type of object, the following call is helpful:
 ```{R}
 ?`ldaPrototype-package`
@@ -136,6 +138,7 @@ n1 = getRelevantWords(jacc)
 n2 = getConsideredWords(jacc)
 (n2-n1)[n2-n1 != 0]
 ```
+Alternatively, the similarities can also be calculated considering the cosine similarity (``cosineTopics``), Jensen-Shannon divergence (``jsTopics`` - parameter ``epsilon`` to ensure computability) or rank-biased overlap (``rboTopics`` - parameter ``k`` for maximum depth of evaluation and ``p`` as weighting parameter).
 #### Step 3.1: Representation of Topic Similarities as Dendrogram
 It is possible to represent the calulcated pairwise topic similarities as dendrogram using ``dendTopics`` and related ``plot`` options.
 ```{R}
