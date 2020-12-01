@@ -127,7 +127,7 @@ The topic matrices of all replications are merged and reduced to the vocabulary 
 topics = mergeTopics(reps, vocab = reuters_vocab)
 ```
 #### Step 3: Topic Similarities
-We use the merged topic matrix to calculate pairwise topic similarites using the Jaccard coefficient with parameters adjusting the consideration of words. A word is taken as relevant for a topic if its count passes thresholds given by ``limit.rel`` and ``limit.abs``. A word is considered for calculation of similarities if it's relevant for the topic or if it belongs to the (``atLeast =``) 3 most common words in the corresponding topic.
+We use the merged topic matrix to calculate pairwise topic similarites using the Jaccard coefficient with parameters adjusting the consideration of words. A word is taken as relevant for a topic if its count passes thresholds given by ``limit.rel`` and ``limit.abs``. A word is considered for calculation of similarities if it's relevant for the topic or if it belongs to the (``atLeast =``) 3 most common words in the corresponding topic. Alternatively, the similarities can also be calculated considering the cosine similarity (``cosineTopics``), Jensen-Shannon divergence (``jsTopics`` - parameter ``epsilon`` to ensure computability) or rank-biased overlap (``rboTopics`` - parameter ``k`` for maximum depth of evaluation and ``p`` as weighting parameter).
 ```{R}
 jacc = jaccardTopics(topics, limit.rel = 1/500, limit.abs = 10, atLeast = 3)
 getSimilarity(jacc)[1:3, 1:3]
@@ -138,7 +138,6 @@ n1 = getRelevantWords(jacc)
 n2 = getConsideredWords(jacc)
 (n2-n1)[n2-n1 != 0]
 ```
-Alternatively, the similarities can also be calculated considering the cosine similarity (``cosineTopics``), Jensen-Shannon divergence (``jsTopics`` - parameter ``epsilon`` to ensure computability) or rank-biased overlap (``rboTopics`` - parameter ``k`` for maximum depth of evaluation and ``p`` as weighting parameter).
 #### Step 3.1: Representation of Topic Similarities as Dendrogram
 It is possible to represent the calulcated pairwise topic similarities as dendrogram using ``dendTopics`` and related ``plot`` options.
 ```{R}
