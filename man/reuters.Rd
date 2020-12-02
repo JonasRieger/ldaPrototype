@@ -16,7 +16,7 @@
 An object of class \code{character} of length 2141.
 }
 \source{
-\url{http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/}
+temporarily unavailable: http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/
 }
 \usage{
 data(reuters_docs)
@@ -32,6 +32,6 @@ Lewis, David (1997). \emph{Reuters-21578 Text Categorization Collection Distribu
 \url{http://kdd.ics.uci.edu/databases/reuters21578/reuters21578.html}
 
 Luz, Saturnino. \emph{XML-encoded version of Reuters-21578}.
-\url{http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/}
+http://ronaldo.cs.tcd.ie/esslli07/data/reuters21578-xml/ (temporarily unavailable)
 }
 \keyword{datasets}

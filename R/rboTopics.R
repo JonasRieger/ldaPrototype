@@ -18,7 +18,7 @@
 #' "A similarity measure for indefinite rankings".
 #' In: \emph{ACM Transations on Information Systems} 28(4), p.20:1–-20:38,
 #' DOI 10.1145/1852102.1852106,
-#' URL \url{http://doi.acm.org/10.1145/1852102.1852106}
+#' URL \url{https://doi.acm.org/10.1145/1852102.1852106}
 #'
 #' @family TopicSimilarity functions
 #'
