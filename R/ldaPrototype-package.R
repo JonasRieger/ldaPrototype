@@ -32,10 +32,16 @@
 #'
 #' @section Calculation Steps (Workflow) to determine the Prototype LDA:
 #' \code{\link{mergeTopics}} Merge topic matrices from multiple LDAs.\cr
-#' \code{\link{jaccardTopics}} Calculate topic similarities.\cr
+#' \code{\link{jaccardTopics}} Calculate topic similarities using the Jaccard coefficient (see Similarity Measures for other possible measures).\cr
 #' \code{\link{dendTopics}} Create a dendrogram from topic similarities.\cr
 #' \code{\link{SCLOP}} Determine various S-CLOP values.\cr
 #' \code{\link{pruneSCLOP}} Prune \code{\link[=dendTopics]{TopicDendrogram}} objects.
+#'
+#' @section Similarity Measures:
+#' \code{\link{cosineTopics}} Cosine Similarity.\cr
+#' \code{\link{jaccardTopics}} Jaccard Coefficient.\cr
+#' \code{\link{jsTopics}} Jensen-Shannon Divergence.\cr
+#' \code{\link{rboTopics}} rank-biased overlap.
 #'
 #' @section Shortcuts:
 #' \code{\link{getPrototype}} Shortcut which includes all calculation steps.\cr
