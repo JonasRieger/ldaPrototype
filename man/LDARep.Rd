@@ -46,7 +46,7 @@ There is no default for \code{K}.}
 Performs multiple runs of Latent Dirichlet Allocation.
 }
 \details{
-The function generates multiple LDA runs with the possability of
+The function generates multiple LDA runs with the possibility of
 using parallelization. The integration is done by the
 \code{\link[parallelMap:parallelMap]{parallelMap-package}}.
 
