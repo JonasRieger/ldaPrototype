@@ -1,8 +1,8 @@
 Package: ldaPrototype
 Type: Package
 Title: Prototype of Multiple Latent Dirichlet Allocation Runs
-Version: 0.3.0
-Date: 2020-12-02
+Version: 0.3.1
+Date: 2021-08-27
 Authors@R: person("Jonas", "Rieger", email="jonas.rieger@tu-dortmund.de", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0007-4478"))
 Description: Determine a Prototype from a number of runs of Latent Dirichlet Allocation (LDA) measuring its similarities with S-CLOP: A procedure to select the LDA run with highest mean pairwise similarity, which is measured by S-CLOP (Similarity of multiple sets by Clustering with Local Pruning), to all other runs. LDA runs are specified by its assignments leading to estimators for distribution parameters. Repeated runs lead to different results, which we encounter by choosing the most representative LDA run as prototype.
 URL: https://github.com/JonasRieger/ldaPrototype, https://doi.org/10.5281/zenodo.3597978
@@ -25,6 +25,7 @@ Imports:
 	stats,
 	utils
 Suggests:
+	covr,
 	RColorBrewer (>= 1.1-2),
 	testthat,
 	tosca

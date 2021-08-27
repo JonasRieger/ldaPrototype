@@ -1,8 +1,15 @@
 language: r
 cache: packages
 
-r_github_packages:
-  - jimhester/covr
+os: linux
+arch:
+  - arm64
+  - ppc64le
+  - s390x
+
+r:
+  - release
+  - devel
 
 after_success:
-  - Rscript -e 'covr::coveralls()'
+  - Rscript -e 'covr::coveralls(type = "all")'
