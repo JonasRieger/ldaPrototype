@@ -71,12 +71,12 @@ determines their Prototype.
 \references{
 Rieger, Jonas (2020). "ldaPrototype: A method in R to get a Prototype of multiple Latent
 Dirichlet Allocations". Journal of Open Source Software, \bold{5}(51), 2181,
-DOI 10.21105/joss.02181, URL \url{https://doi.org/10.21105/joss.02181}.
+\doi{10.21105/joss.02181}.
 
 Rieger, Jonas, Jörg Rahnenführer and Carsten Jentsch (2020).
 "Improving Latent Dirichlet Allocation: On Reliability of the Novel Method LDAPrototype".
 In: \emph{Natural Language Processing and Information Systems, NLDB 2020.} LNCS 12089, pp. 118--125,
-DOI 10.1007/978-3-030-51310-8_11, URL \url{https://doi.org/10.1007/978-3-030-51310-8_11}.
+\doi{10.1007/978-3-030-51310-8_11}.
 
 Rieger, Jonas, Lars Koppers, Carsten Jentsch and Jörg Rahnenführer (2020).
 "Improving Reliability of Latent Dirichlet Allocation by Assessing Its Stability using Clustering Techniques on Replicated Runs".
@@ -86,7 +86,6 @@ arXiv 2003.04980, URL \url{https://arxiv.org/abs/2003.04980}.
 Useful links:
 \itemize{
   \item \url{https://github.com/JonasRieger/ldaPrototype}
-  \item \url{https://doi.org/10.5281/zenodo.3597978}
   \item Report bugs at \url{https://github.com/JonasRieger/ldaPrototype/issues}
 }
 

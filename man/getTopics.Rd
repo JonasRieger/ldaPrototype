@@ -63,7 +63,7 @@ assigned tokens to topic \eqn{k}.
 \references{
 Griffiths, Thomas L. and Mark Steyvers (2004). "Finding scientific topics".
 In: \emph{Proceedings of the National Academy of Sciences} \bold{101} (suppl 1), pp.5228--5235,
-DOI 10.1073/pnas.0307752101, URL \url{https://doi.org/10.1073/pnas.0307752101}.
+\doi{10.1073/pnas.0307752101}.
 }
 \seealso{
 Other getter functions: 
