@@ -1,8 +1,8 @@
 # ldaPrototype
 [![status](https://joss.theoj.org/papers/ecce89f69453dc2ee0c697fbcb776de8/status.svg)](https://joss.theoj.org/papers/10.21105/joss.02181)
+[![CRAN](https://www.r-pkg.org/badges/version/ldaPrototype)](https://cran.r-project.org/package=ldaPrototype)
 [![R build status](https://github.com/JonasRieger/ldaPrototype/workflows/R-CMD-check/badge.svg)](https://github.com/JonasRieger/ldaPrototype/actions)
 [![Build status](https://ci.appveyor.com/api/projects/status/6nm48mamn79n6xf4?svg=true)](https://ci.appveyor.com/project/JonasRieger/ldaprototype)
-[![CRAN](https://www.r-pkg.org/badges/version/ldaPrototype)](https://cran.r-project.org/package=ldaPrototype)
 [![Coverage Status](https://coveralls.io/repos/github/JonasRieger/ldaPrototype/badge.svg?branch=master)](https://coveralls.io/github/JonasRieger/ldaPrototype?branch=master)
 [![codecov](https://codecov.io/gh/JonasRieger/ldaPrototype/branch/master/graph/badge.svg?token=IUWLTOW2HV)](https://codecov.io/gh/JonasRieger/ldaPrototype)
 [![DOI](https://zenodo.org/badge/187803702.svg)](https://zenodo.org/badge/latestdoi/187803702)
