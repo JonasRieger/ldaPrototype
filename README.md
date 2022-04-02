@@ -27,10 +27,9 @@ Please cite the [JOSS](https://doi.org/10.21105/joss.02181) paper using the BibT
 which is also obtained by the call ``citation("ldaPrototype")``.
 
 ## References
-* Rieger, J., Jentsch, C. & Rahnenführer, J.: LDAPrototype: A Model Selection Algorithm to Improve Reliability of Latent Dirichlet Allocation. [working paper](https://www.statistik.tu-dortmund.de/fileadmin/user_upload/rieger_ldaproto.pdf)
+* Rieger, J., Jentsch, C. & Rahnenführer, J.: LDAPrototype: A Model Selection Algorithm to Improve Reliability of Latent Dirichlet Allocation. [preprint](https://doi.org/10.21203/rs.3.rs-1486359/v1)
 * Rieger, J. (2020). ldaPrototype: A method in R to get a Prototype of multiple Latent Dirichlet Allocations. [Journal of Open Source Software](https://doi.org/10.21105/joss.02181), 5(51), 2181.
 * Rieger, J., Rahnenführer, J. & Jentsch, C. (2020). Improving Latent Dirichlet Allocation: On Reliability of the Novel Method LDAPrototype. [Natural Language Processing and Information Systems, NLDB 2020.](https://doi.org/10.1007/978-3-030-51310-8_11) LNCS 12089, pp. 118-125.
-* Rieger, J., Koppers, L., Jentsch, C. & Rahnenführer, J. (2020). Improving Reliability of Latent Dirichlet Allocation by Assessing Its Stability using Clustering Techniques on Replicated Runs. [arXiv](https://arxiv.org/abs/2003.04980)
 
 ## Related Software
 * [tm](https://CRAN.R-project.org/package=tm) is useful for preprocessing text data.
