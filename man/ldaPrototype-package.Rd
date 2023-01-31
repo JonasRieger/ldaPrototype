@@ -78,9 +78,9 @@ Rieger, Jonas, Jörg Rahnenführer and Carsten Jentsch (2020).
 In: \emph{Natural Language Processing and Information Systems, NLDB 2020.} LNCS 12089, pp. 118--125,
 \doi{10.1007/978-3-030-51310-8_11}.
 
-Rieger, Jonas, Lars Koppers, Carsten Jentsch and Jörg Rahnenführer (2020).
-"Improving Reliability of Latent Dirichlet Allocation by Assessing Its Stability using Clustering Techniques on Replicated Runs".
-arXiv 2003.04980, URL \url{https://arxiv.org/abs/2003.04980}.
+Rieger, Jonas, Carsten Jentsch and Jörg Rahnenführer (2022).
+"LDAPrototype: A Model Selection Algorithm to Improve Reliability of Latent Dirichlet Allocation".
+Preprint on Research Square, \doi{10.21203/rs.3.rs-1486359/v1}.
 }
 \seealso{
 Useful links:
