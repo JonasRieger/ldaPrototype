@@ -7,3 +7,4 @@ paper
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^\.github$
+shim_package.sh
