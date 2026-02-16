@@ -18,7 +18,7 @@ Imports:
 	data.table (>= 1.11.2),
 	dendextend,
 	fs (>= 1.2.0),
-	future,
+	parallelly,
 	lda (>= 1.4.2),
 	parallelMap,
 	progress (>= 1.1.1),

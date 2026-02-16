@@ -32,7 +32,7 @@
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
 #' Number of (physical) CPUs to use. If \code{pm.backend} is passed,
-#' default is determined by \code{\link[future]{availableCores}}.
+#' default is determined by \code{\link[parallelly]{availableCores}}.
 #' @param ... additional arguments passed to \code{\link[lda]{lda.collapsed.gibbs.sampler}}.
 #' Arguments will be coerced to a vector of length \code{n}.
 #' Default parameters are \code{alpha = eta = 1/K} and \code{num.iterations = 200}.
@@ -85,7 +85,7 @@ LDARep = function(docs, vocab, n = 100, seeds, id = "LDARep", pm.backend, ncpus,
   }
 
   if (!missing(pm.backend) && !is.null(pm.backend)){
-    if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
+    if (missing(ncpus) || is.null(ncpus)) ncpus = parallelly::availableCores()
     assert_choice(pm.backend, choices = c("multicore", "socket", "mpi"))
     assert_int(ncpus, lower = 1)
     parallelMap::parallelStart(mode = pm.backend, cpus = ncpus)

@@ -28,7 +28,7 @@
 #' is called after.
 #' @param ncpus [\code{integer(1)}]\cr
 #' Number of (physical) CPUs to use. If \code{pm.backend} is passed,
-#' default is determined by \code{\link[future]{availableCores}}.
+#' default is determined by \code{\link[parallelly]{availableCores}}.
 #' @return [\code{named list}] with entries
 #' \describe{
 #'   \item{\code{sims}}{[\code{lower triangular named matrix}] with all pairwise
@@ -68,7 +68,7 @@ cosineTopics = function(topics, progress = TRUE, pm.backend, ncpus){
 
 cosineTopics.parallel = function(topics, pm.backend, ncpus){
   assert_choice(pm.backend, choices = c("multicore", "socket", "mpi"))
-  if (missing(ncpus) || is.null(ncpus)) ncpus = future::availableCores()
+  if (missing(ncpus) || is.null(ncpus)) ncpus = parallelly::availableCores()
   assert_int(ncpus, lower = 1)
 
   N = ncol(topics)
