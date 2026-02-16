@@ -99,7 +99,7 @@ dendTopics.default = function(sims, ind, method = "complete"){
   invisible(dend)
 }
 
-dendTopics.intern = function(sims, ind){
+dendTopics_intern = function(sims, ind){
   ind = rowSums(sapply(ind, grepl, x = colnames(sims))) > 0
   dend = as.dendrogram(hclust(as.dist(1 - sims[ind, ind]), method = "complete"))
 

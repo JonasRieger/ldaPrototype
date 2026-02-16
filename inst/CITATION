@@ -1,6 +1,6 @@
 citHeader("To cite ldaPrototype in publications use:")
 
-citEntry(entry = "Article",
+bibentry(bibtype = "Article",
   title        = "{ldaPrototype}: A method in {R} to get a Prototype of multiple Latent Dirichlet Allocations",
   author       = "Jonas Rieger",
   journal      = "Journal of Open Source Software",

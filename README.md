@@ -3,7 +3,7 @@
 [![CRAN](https://www.r-pkg.org/badges/version/ldaPrototype)](https://cran.r-project.org/package=ldaPrototype)
 [![R build status](https://github.com/JonasRieger/ldaPrototype/workflows/R-CMD-check/badge.svg)](https://github.com/JonasRieger/ldaPrototype/actions)
 [![Build status](https://ci.appveyor.com/api/projects/status/6nm48mamn79n6xf4?svg=true)](https://ci.appveyor.com/project/JonasRieger/ldaprototype)
-[![codecov](https://codecov.io/gh/JonasRieger/ldaPrototype/branch/master/graph/badge.svg?token=IUWLTOW2HV)](https://codecov.io/gh/JonasRieger/ldaPrototype)
+[![codecov](https://codecov.io/gh/JonasRieger/ldaPrototype/branch/master/graph/badge.svg?token=IUWLTOW2HV)](https://app.codecov.io/gh/JonasRieger/ldaPrototype)
 [![DOI](https://zenodo.org/badge/187803702.svg)](https://zenodo.org/badge/latestdoi/187803702)
 
 ## Prototype of Multiple Latent Dirichlet Allocation Runs

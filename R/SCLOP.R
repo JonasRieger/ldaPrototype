@@ -109,7 +109,7 @@ SCLOP.pairwise.default = function(sims){
   names = unique(sapply(strsplit(colnames(sims), "\\."), function(x) x[1]))
 
   combs = combn(names, 2)
-  vals = apply(combs, 2, function(x) SCLOP(dendTopics.intern(sims = sims, ind = paste0(x, "\\."))))
+  vals = apply(combs, 2, function(x) SCLOP(dendTopics_intern(sims = sims, ind = paste0(x, "\\."))))
 
   mat = matrix(ncol = length(names), nrow = length(names))
   i = match(combs[2,], names)
