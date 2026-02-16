@@ -72,9 +72,9 @@ Other getter functions:
 \code{\link{getSimilarity}()}
 
 Other LDA functions: 
+\code{\link{LDA}()},
 \code{\link{LDABatch}()},
-\code{\link{LDARep}()},
-\code{\link{LDA}()}
+\code{\link{LDARep}()}
 }
 \concept{LDA functions}
 \concept{getter functions}

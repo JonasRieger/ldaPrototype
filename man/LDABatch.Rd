@@ -81,14 +81,14 @@ head(getJob(batch2))
 
 }
 \seealso{
-Other batch functions: 
+Other batch functions:
 \code{\link{as.LDABatch}()},
 \code{\link{getJob}()},
 \code{\link{mergeBatchTopics}()}
 
-Other LDA functions: 
-\code{\link{LDARep}()},
+Other LDA functions:
 \code{\link{LDA}()},
+\code{\link{LDARep}()},
 \code{\link{getTopics}()}
 }
 \concept{LDA functions}
